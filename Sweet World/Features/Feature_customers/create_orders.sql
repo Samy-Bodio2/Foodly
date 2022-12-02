@@ -1,0 +1,1 @@
+INSERT INTO Orders(id_order,order_date,id_resto,id_panier)VALUES(&id_order,'&order_date',&id_resto,&id_panier);

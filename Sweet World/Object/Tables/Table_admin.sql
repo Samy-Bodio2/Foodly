@@ -9,8 +9,8 @@ SET ECHO OFF
 
 
 
-CREATE TABLE [ADMIN] (
+CREATE TABLE ADMIN (
     id_admin int not null,
-    name_admin nvarchar(50) not null,
-    pwd_admin nvarchar(20) not null
+    name_admin varchar(50) not null,
+    pwd_admin varchar(20) not null
 );

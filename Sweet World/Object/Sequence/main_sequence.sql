@@ -6,6 +6,11 @@ Prompt
 Prompt***************************** SEQUENCE CREATION FOR SWEET_WORLD SCHEMA *****************************
 Prompt
 
+Prompt
+Prompt***************************** CREATION OF THE ADMIN SEQUENCE *****************************
+Prompt
+
+@Object/Sequence/sequence_admin
 
 Prompt
 Prompt***************************** CREATION OF THE USER SEQUENCE *****************************

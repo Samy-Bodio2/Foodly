@@ -10,6 +10,12 @@ Prompt*********************************************FOREIGN KEY******************
 Prompt
 
 Prompt
+Prompt***************************** CONSTRAINT FOREIGN KEY OF THE Users TABLE *****************************
+Prompt
+
+@Object/Constraints/Foreign_Key/Constraint_users
+
+Prompt
 Prompt***************************** CONSTRAINT FOREIGN KEY OF THE CUSTOMERS TABLE *****************************
 Prompt
 

@@ -7,6 +7,12 @@ Prompt***************************** POPULATING SWEET_WORLD SCHEMA **************
 Prompt
 
 Prompt
+Prompt***************************** POPULATING ADMIN TABLE *****************************
+Prompt
+
+@Datas/Datas_admin
+
+Prompt
 Prompt***************************** POPULATING USER TABLE *****************************
 Prompt
 

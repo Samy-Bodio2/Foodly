@@ -1,0 +1,1 @@
+INSERT INTO Note(id_note,Valeur,id_cust,id_resto)Values(&id_note,&Valeur,&id_cust,&id_resto);

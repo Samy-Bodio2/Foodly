@@ -1,4 +1,4 @@
-UPDATE Menu
+ UPDATE Menu
 SET       
     Menu_title = '&Menu_title' ,      
     Menu_description = '&Menu_description' ,

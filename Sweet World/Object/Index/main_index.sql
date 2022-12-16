@@ -6,6 +6,11 @@ Prompt
 Prompt***************************** INDEX CREATION FOR SWEET_WORLD SCHEMA *****************************
 Prompt
 
+Prompt
+Prompt***************************** CREATION OF THE ADMIN INDEX *****************************
+Prompt
+
+@Object/Index/index_admin
 
 Prompt
 Prompt***************************** CREATION OF THE USER INDEX *****************************

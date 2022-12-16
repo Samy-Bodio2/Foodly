@@ -26,8 +26,11 @@ specify log path as parameter 5:
 
 specify connect string as parameter 6:
 
+DROP USER swl CASCADE
+          *
+ERROR at line 1:
+ORA-01918: user 'SWL' does not exist
 
-User dropped.
 
 
 User created.
@@ -64,6 +67,12 @@ Session altered.
 
 
 ***************************** SEQUENCE CREATION FOR SWEET_WORLD SCHEMA *****************************
+
+
+***************************** CREATION OF THE ADMIN SEQUENCE *****************************
+
+
+Sequence created.
 
 
 ***************************** CREATION OF THE USER SEQUENCE *****************************
@@ -145,6 +154,12 @@ Session altered.
 
 
 ***************************** TABLE CREATION FOR SWEET_WORLD SCHEMA *****************************
+
+
+***************************** CREATION OF THE ADMIN TABLE *****************************
+
+
+Table created.
 
 
 ***************************** CREATION OF THE USER TABLE *****************************
@@ -232,6 +247,12 @@ Session altered.
 
 
 ***************************** INDEX CREATION FOR SWEET_WORLD SCHEMA *****************************
+
+
+***************************** CREATION OF THE ADMIN INDEX *****************************
+
+
+Index created.
 
 
 ***************************** CREATION OF THE USER INDEX *****************************
@@ -324,6 +345,12 @@ Session altered.
 ********************************************** PRIMARY KEY *******************************************
 
 
+***************************** CONSTRAINT PRIMARY KEY OF THE ADMIN TABLE *****************************
+
+
+Table altered.
+
+
 ***************************** CONSTRAINT PRIMARY KEY OF THE USER TABLE *****************************
 
 
@@ -414,6 +441,12 @@ Session altered.
 *********************************************FOREIGN KEY**********************************************
 
 
+***************************** CONSTRAINT FOREIGN KEY OF THE Users TABLE *****************************
+
+
+Table altered.
+
+
 ***************************** CONSTRAINT FOREIGN KEY OF THE CUSTOMERS TABLE *****************************
 
 
@@ -483,6 +516,12 @@ Session altered.
 ***************************** CHECK CREATION FOR SWEET_WORLD SCHEMA *****************************
 
 
+***************************** CREATION OF THE ADMIN CHECK *****************************
+
+
+Table altered.
+
+
 ***************************** CREATION OF THE USER CHECK *****************************
 
 
@@ -538,6 +577,42 @@ Session altered.
 
 
 ***************************** POPULATING SWEET_WORLD SCHEMA *****************************
+
+
+***************************** POPULATING ADMIN TABLE *****************************
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
 
 
 ***************************** POPULATING USER TABLE *****************************
@@ -1229,6 +1304,7 @@ Session altered.
 
 TABLE_NAME
 --------------------------------------------------------------------------------------------------------------------------------
+ADMIN
 USERS
 RESTAURANT
 CUSTOMERS
@@ -1242,7 +1318,7 @@ NOTE
 CONFIG
 CONTROL_PANIER_MENU
 
-12 rows selected.
+13 rows selected.
 
 
 *******************************************************************SWEET_WORLD*************************************************************************

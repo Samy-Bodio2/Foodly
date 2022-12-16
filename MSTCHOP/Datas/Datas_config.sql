@@ -1,0 +1,10 @@
+INSERT INTO config(id_config,marge) VALUES (1,0.05);
+INSERT INTO config(id_config,marge) VALUES (2,0.1);
+INSERT INTO config(id_config,marge) VALUES (3,0.15);
+INSERT INTO config(id_config,marge) VALUES (4,0.2);
+INSERT INTO config(id_config,marge) VALUES (5,0.25);
+INSERT INTO config(id_config,marge) VALUES (6,0.3);
+INSERT INTO config(id_config,marge) VALUES (7,0.3);
+INSERT INTO config(id_config,marge) VALUES (8,0.3);
+INSERT INTO config(id_config,marge) VALUES (9,0.3);
+INSERT INTO config(id_config,marge) VALUES (10,0.3);

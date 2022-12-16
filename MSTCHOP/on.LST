@@ -1,0 +1,2424 @@
+
+Session altered.
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** CREATION USER  *****************************
+
+
+Session altered.
+
+specify password for FindFood as parameter 1:
+
+specify default tablespeace for FindFood as parameter 2:
+
+specify temporary tablespace for FindFood as parameter 3:
+
+specify password for SYS as parameter 4:
+
+specify log path as parameter 5:
+
+specify connect string as parameter 6:
+
+DROP USER FindFood CASCADE
+*
+ERROR at line 1:
+ORA-01940: cannot drop a user that is currently connected 
+
+
+CREATE USER FindFood IDENTIFIED BY FindFood
+            *
+ERROR at line 1:
+ORA-01920: user name 'FINDFOOD' conflicts with another user or role name 
+
+
+ALTER USER SET DEFAUT TABLE
+
+User altered.
+
+ALTER USER GIVE A TEMPORARY TABLESSPACE
+
+User altered.
+
+GRAND ACESS CREATE VIEW, ALTER SESSION, CREATE SEQUENCE TO FindFood
+
+Grant succeeded.
+
+GRANT CREATE SESSION, CREATE VIEW, ALTER SESSION, CREATE SEQUENCE TO FindFood
+
+Grant succeeded.
+
+Connecté.
+
+Autorisation de privilèges (GRANT) acceptée.
+
+Connecté.
+
+***************************** CREATION SEQUENCE  *****************************
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** SEQUENCE CREATION FOR SWEET_WORLD SCHEMA *****************************
+
+
+***************************** CREATION OF THE USER SEQUENCE *****************************
+
+CREATE SEQUENCE id_user_seq
+                *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE ORDERS SEQUENCE *****************************
+
+CREATE SEQUENCE id_order_seq
+                *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE NOTE SEQUENCE *****************************
+
+CREATE SEQUENCE id_note_seq
+                *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE CONFIG SEQUENCE *****************************
+
+CREATE SEQUENCE id_config_seq
+                *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE PANIER SEQUENCE *****************************
+
+CREATE SEQUENCE id_panier_seq
+                *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE RESTAURANT SEQUENCE *****************************
+
+CREATE SEQUENCE id_resto_seq
+                *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE CUSTOMERS SEQUENCE *****************************
+
+CREATE SEQUENCE id_customers_seq
+                *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE MENU SEQUENCE *****************************
+
+CREATE SEQUENCE id_menu_seq
+                *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE DISH SEQUENCE *****************************
+
+CREATE SEQUENCE id_dish_seq
+                *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE GARNISH SEQUENCE *****************************
+
+CREATE SEQUENCE id_garnish_seq
+                *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE SECULANT SEQUENCE *****************************
+
+CREATE SEQUENCE id_seculant_seq
+                *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+*******************************************************************SWEET_WORLD*************************************************************************
+
+
+***************************** CREATION TABLE  *****************************
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** TABLE CREATION FOR SWEET_WORLD SCHEMA *****************************
+
+
+***************************** CREATION OF THE USER TABLE *****************************
+
+CREATE TABLE Users
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE RESTAURANT TABLE *****************************
+
+CREATE TABLE Restaurant
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE CUSTOMERS TABLE *****************************
+
+CREATE TABLE Customers
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE MENU TABLE *****************************
+
+CREATE TABLE Menu
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE DISH TABLE *****************************
+
+CREATE TABLE Dish
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE GARNISH TABLE *****************************
+
+CREATE TABLE Garnish
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE SECULANT TABLE *****************************
+
+CREATE TABLE Seculant
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE ORDERS TABLE *****************************
+
+CREATE TABLE Orders
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE PANIER TABLE *****************************
+
+CREATE TABLE Panier
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE NOTE TABLE *****************************
+
+CREATE TABLE Note
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE CONFIG TABLE *****************************
+
+CREATE TABLE Config
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE CHOIX TABLE *****************************
+
+CREATE TABLE Choix
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION INDEX  *****************************
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** INDEX CREATION FOR SWEET_WORLD SCHEMA *****************************
+
+
+***************************** CREATION OF THE USER INDEX *****************************
+
+CREATE UNIQUE INDEX id_user_ix
+                    *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE RESTAURANT INDEX *****************************
+
+CREATE UNIQUE INDEX id_resto_ix
+                    *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+***************************** CREATION OF THE CUSTOMERS INDEX *****************************
+
+ON Customers(id_cust)
+             *
+ERROR at line 2:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+
+***************************** CREATION OF THE MENU INDEX *****************************
+
+ON Menu(id_menu)
+        *
+ERROR at line 2:
+ORA-00904: "ID_MENU": invalid identifier 
+
+
+
+***************************** CREATION OF THE DISH INDEX *****************************
+
+ON Dish(id_dish)
+        *
+ERROR at line 2:
+ORA-00904: "ID_DISH": invalid identifier 
+
+
+
+***************************** CREATION OF THE GARNISH INDEX *****************************
+
+ON Garnish(id_garnish)
+           *
+ERROR at line 2:
+ORA-00904: "ID_GARNISH": invalid identifier 
+
+
+
+***************************** CREATION OF THE SECULANT INDEX *****************************
+
+ON Seculant(id_seculant)
+            *
+ERROR at line 2:
+ORA-00904: "ID_SECULANT": invalid identifier 
+
+
+
+***************************** CREATION OF THE ORDERS INDEX *****************************
+
+ON Orders(id_order)
+          *
+ERROR at line 2:
+ORA-00904: "ID_ORDER": invalid identifier 
+
+
+
+***************************** CREATION OF THE PANIER INDEX *****************************
+
+ON Panier(id_panier)
+          *
+ERROR at line 2:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+
+***************************** CREATION OF THE NOTE INDEX *****************************
+
+ON Note(id_note)
+        *
+ERROR at line 2:
+ORA-01408: such column list already indexed 
+
+
+
+***************************** CREATION OF THE CONFIG INDEX *****************************
+
+ON Config(id_config)
+          *
+ERROR at line 2:
+ORA-01408: such column list already indexed 
+
+
+
+*******************************************************************SWEET_WORLD*************************************************************************
+
+
+***************************** CREATION UNIQUE  *****************************
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** UNIQUE CREATION FOR SWEET_WORLD SCHEMA *****************************
+
+
+***************************** CREATION OF THE USER UNIQUE *****************************
+
+ADD CONSTRAINT user_unique UNIQUE (username,password)
+                           *
+ERROR at line 2:
+ORA-02261: such unique or primary key already exists in the table 
+
+
+
+***************************** CREATION OF THE RESTAURANT UNIQUE *****************************
+
+ADD CONSTRAINT resto_unique UNIQUE (name_resto)
+                            *
+ERROR at line 2:
+ORA-02261: such unique or primary key already exists in the table 
+
+
+
+***************************** CREATION OF THE CUSTOMERS UNIQUE *****************************
+
+ADD CONSTRAINT cust_unique UNIQUE (Email,phone_number)
+                                   *
+ERROR at line 2:
+ORA-00904: "EMAIL": invalid identifier 
+
+
+
+***************************** CREATION OF THE DISH UNIQUE *****************************
+
+ADD CONSTRAINT dish_unique UNIQUE (Name_dish)
+                                   *
+ERROR at line 2:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+
+***************************** CREATION OF THE GARNISH UNIQUE *****************************
+
+ADD CONSTRAINT garnish_unique UNIQUE (Name_garnish)
+                                      *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+
+***************************** CREATION OF THE SECULANT UNIQUE *****************************
+
+ADD CONSTRAINT seculant_unique UNIQUE (Name_Seculant)
+                                       *
+ERROR at line 2:
+ORA-00904: "NAME_SECULANT": invalid identifier 
+
+
+
+***************************** CREATION PRIMARY KEY  *****************************
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** CONSTRAINT CREATION FOR SWEET_WORLD SCHEMA *****************************
+
+
+********************************************** PRIMARY KEY *******************************************
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE USER TABLE *****************************
+
+		PRIMARY KEY(id_user)
+		*
+ERROR at line 4:
+ORA-02260: table can have only one primary key 
+
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE RESTAURANT TABLE *****************************
+
+	    PRIMARY KEY(id_resto)
+	    *
+ERROR at line 4:
+ORA-02260: table can have only one primary key 
+
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE CUSTOMERS TABLE *****************************
+
+        PRIMARY KEY(id_cust)
+                    *
+ERROR at line 4:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE MENU TABLE *****************************
+
+        PRIMARY KEY (id_menu)
+                     *
+ERROR at line 4:
+ORA-00904: "ID_MENU": invalid identifier 
+
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE DISH TABLE *****************************
+
+        PRIMARY KEY(id_dish)
+                    *
+ERROR at line 4:
+ORA-00904: "ID_DISH": invalid identifier 
+
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE GARNISH TABLE *****************************
+
+		PRIMARY KEY(id_garnish)
+		            *
+ERROR at line 4:
+ORA-00904: "ID_GARNISH": invalid identifier 
+
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE SECULANT TABLE *****************************
+
+        PRIMARY KEY (id_seculant)
+                     *
+ERROR at line 4:
+ORA-00904: "ID_SECULANT": invalid identifier 
+
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE ORDERS TABLE *****************************
+
+		PRIMARY KEY(id_order)
+		            *
+ERROR at line 4:
+ORA-00904: "ID_ORDER": invalid identifier 
+
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE PANIER TABLE *****************************
+
+	    PRIMARY KEY(id_panier)
+	                *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE NOTE TABLE *****************************
+
+        PRIMARY KEY(id_note)
+        *
+ERROR at line 5:
+ORA-02260: table can have only one primary key 
+
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE CONFIG TABLE *****************************
+
+		PRIMARY KEY(id_config)
+		*
+ERROR at line 4:
+ORA-02260: table can have only one primary key 
+
+
+
+*******************************************************************SWEET_WORLD*************************************************************************
+
+
+***************************** CREATION FOREIGN KEY  *****************************
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** CONSTRAINT CREATION FOR SWEET_WORLD SCHEMA *****************************
+
+
+*********************************************FOREIGN KEY**********************************************
+
+
+***************************** CONSTRAINT FOREIGN KEY OF THE CUSTOMERS TABLE *****************************
+
+        FOREIGN KEY (id_user)
+                     *
+ERROR at line 4:
+ORA-00904: "ID_USER": invalid identifier 
+
+
+
+***************************** CONSTRAINT FOREIGN KEY OF THE MENU TABLE *****************************
+
+        FOREIGN KEY(id_dish)
+                    *
+ERROR at line 4:
+ORA-00904: "ID_DISH": invalid identifier 
+
+
+        FOREIGN KEY(id_seculant)
+                    *
+ERROR at line 4:
+ORA-00904: "ID_SECULANT": invalid identifier 
+
+
+        FOREIGN KEY(id_garnish )
+                    *
+ERROR at line 4:
+ORA-00904: "ID_GARNISH": invalid identifier 
+
+
+        FOREIGN KEY(id_resto)
+                    *
+ERROR at line 4:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+        FOREIGN KEY(id_config)
+        *
+ERROR at line 4:
+ORA-02275: such a referential constraint already exists in the table 
+
+
+
+***************************** CONSTRAINT FOREIGN KEY OF THE ORDERS TABLE *****************************
+
+        FOREIGN KEY (id_resto)
+                     *
+ERROR at line 4:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+        FOREIGN KEY (id_panier)
+                     *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+
+***************************** CONSTRAINT  FOREIGN KEY OF THE RESTAURANT TABLE *****************************
+
+		FOREIGN KEY (id_user)
+		*
+ERROR at line 4:
+ORA-02275: such a referential constraint already exists in the table 
+
+
+
+***************************** CONSTRAINT FOREIGN KEY OF THE NOTE TABLE *****************************
+
+        FOREIGN KEY (id_cust)
+                     *
+ERROR at line 4:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+        FOREIGN KEY (id_resto)
+                     *
+ERROR at line 4:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+
+***************************** CONSTRAINT  FOREIGN KEY OF THE PANIER TABLE *****************************
+
+		FOREIGN KEY (id_cust)
+		             *
+ERROR at line 4:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+
+***************************** CONSTRAINT  FOREIGN KEY OF THE CHOIX TABLE *****************************
+
+    FOREIGN KEY (id_panier)
+                 *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    FOREIGN KEY (id_menu)
+                 *
+ERROR at line 4:
+ORA-00904: "ID_MENU": invalid identifier 
+
+
+
+*******************************************************************SWEET_WORLD*************************************************************************
+
+
+***************************** CREATION CHECK  *****************************
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** CHECK CREATION FOR SWEET_WORLD SCHEMA *****************************
+
+
+***************************** CREATION OF THE USER CHECK *****************************
+
+		CONSTRAINT password_chk  CHECK( LENGTH(password) >= 9 )
+		           *
+ERROR at line 3:
+ORA-02264: name already used by an existing constraint 
+
+
+
+***************************** CREATION OF THE RESTAURANT CHECK *****************************
+
+		CONSTRAINT phone_number CHECK(phone_number LIKE '6________')
+		           *
+ERROR at line 3:
+ORA-02264: name already used by an existing constraint 
+
+
+
+***************************** CREATION OF THE CUSTOMERS CHECK *****************************
+
+        phone_number like '6________'),
+        *
+ERROR at line 4:
+ORA-00904: "PHONE_NUMBER": invalid identifier 
+
+
+
+***************************** CREATION OF THE MENU CHECK *****************************
+
+        CONSTRAINT menu_quantity_chk CHECK(Menu_Qty > 0)
+                                           *
+ERROR at line 4:
+ORA-00904: "MENU_QTY": invalid identifier 
+
+
+
+***************************** CREATION OF THE NOTE CHECK *****************************
+
+
+Table altered.
+
+
+***************************** CREATION OF THE CONFIG CHECK *****************************
+
+		CONSTRAINT marge_chk CHECK(marge BETWEEN 0 AND 1)
+		           *
+ERROR at line 3:
+ORA-02293: cannot validate (FINDFOOD.MARGE_CHK) - check constraint violated 
+
+
+
+***************************** CREATION OF THE CHOIX CHECK *****************************
+
+
+Table altered.
+
+
+*******************************************************************SWEET_WORLD*************************************************************************
+
+
+***************************** POPULATE TABLE  *****************************
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** POPULATING SWEET_WORLD SCHEMA *****************************
+
+
+***************************** POPULATING USER TABLE *****************************
+
+insert into utilisateur(utilisateur_id,utilisateur_email,password)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.USER_ID_PK) violated 
+
+
+insert into utilisateur(utilisateur_id,utilisateur_email,password)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.USER_ID_PK) violated 
+
+
+insert into utilisateur(utilisateur_id,utilisateur_email,password)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.USER_ID_PK) violated 
+
+
+insert into utilisateur(utilisateur_id,utilisateur_email,password)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.USER_ID_PK) violated 
+
+
+insert into utilisateur(utilisateur_id,utilisateur_email,password)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.USER_ID_PK) violated 
+
+
+insert into utilisateur(utilisateur_id,utilisateur_email,password)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.USER_ID_PK) violated 
+
+
+insert into utilisateur(utilisateur_id,utilisateur_email,password)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.USER_ID_PK) violated 
+
+
+insert into utilisateur(utilisateur_id,utilisateur_email,password)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.USER_ID_PK) violated 
+
+
+insert into utilisateur(utilisateur_id,utilisateur_email,password)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.USER_ID_PK) violated 
+
+
+insert into utilisateur(utilisateur_id,utilisateur_email,password)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.USER_ID_PK) violated 
+
+
+insert into utilisateur(utilisateur_id,utilisateur_email,password)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.USER_ID_PK) violated 
+
+
+insert into utilisateur(utilisateur_id,utilisateur_email,password)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.USER_ID_PK) violated 
+
+
+insert into utilisateur(utilisateur_id,utilisateur_email,password)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.USER_ID_PK) violated 
+
+
+insert into utilisateur(utilisateur_id,utilisateur_email,password)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.USER_ID_PK) violated 
+
+
+insert into utilisateur(utilisateur_id,utilisateur_email,password)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.USER_ID_PK) violated 
+
+
+insert into utilisateur(utilisateur_id,utilisateur_email,password)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.USER_ID_PK) violated 
+
+
+
+***************************** POPULATING DISH TABLE *****************************
+
+INSERT INTO dish( id_dish,Name_dish ) VALUES (1,'euro')
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish ) VALUES (2,'boulette de porc')
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish ) VALUES (3,'la crepe')
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+INSERT INTO dish( id_dish,Name_dish )
+                          *
+ERROR at line 1:
+ORA-00904: "NAME_DISH": invalid identifier 
+
+
+
+***************************** POPULATING COMPLEMENT TABLE *****************************
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+( id_garnish,Name_garnish
+             *
+ERROR at line 2:
+ORA-00904: "NAME_GARNISH": invalid identifier 
+
+
+
+***************************** POPULATING SECULANT TABLE *****************************
+
+insert into seculant(seculant_id,seculant_name)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.SECUL_ID_PK) violated 
+
+
+insert into seculant(seculant_id,seculant_name)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.SECUL_ID_PK) violated 
+
+
+insert into seculant(seculant_id,seculant_name)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.SECUL_ID_PK) violated 
+
+
+insert into seculant(seculant_id,seculant_name)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.SECUL_ID_PK) violated 
+
+
+insert into seculant(seculant_id,seculant_name)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.SECUL_ID_PK) violated 
+
+
+insert into seculant(seculant_id,seculant_name)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.SECUL_ID_PK) violated 
+
+
+insert into seculant(seculant_id,seculant_name)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.SECUL_ID_PK) violated 
+
+
+insert into seculant(seculant_id,seculant_name)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.SECUL_ID_PK) violated 
+
+
+insert into seculant(seculant_id,seculant_name)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.SECUL_ID_PK) violated 
+
+
+insert into seculant(seculant_id,seculant_name)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.SECUL_ID_PK) violated 
+
+
+insert into seculant(seculant_id,seculant_name)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.SECUL_ID_PK) violated 
+
+
+insert into seculant(seculant_id,seculant_name)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.SECUL_ID_PK) violated 
+
+
+insert into seculant(seculant_id,seculant_name)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.SECUL_ID_PK) violated 
+
+
+insert into seculant(seculant_id,seculant_name)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.SECUL_ID_PK) violated 
+
+
+insert into seculant(seculant_id,seculant_name)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.SECUL_ID_PK) violated 
+
+
+insert into seculant(seculant_id,seculant_name)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.SECUL_ID_PK) violated 
+
+
+insert into seculant(seculant_id,seculant_name)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.SECUL_ID_PK) violated 
+
+
+
+***************************** POPULATING CONFIG TABLE *****************************
+
+INSERT INTO config(id_config,marge) VALUES (1,0.05)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.CON_ID_PK) violated 
+
+
+INSERT INTO config(id_config,marge) VALUES (2,0.1)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.CON_ID_PK) violated 
+
+
+INSERT INTO config(id_config,marge) VALUES (3,0.15)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.CON_ID_PK) violated 
+
+
+INSERT INTO config(id_config,marge) VALUES (4,0.2)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.CON_ID_PK) violated 
+
+
+INSERT INTO config(id_config,marge) VALUES (5,0.25)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.CON_ID_PK) violated 
+
+
+INSERT INTO config(id_config,marge) VALUES (6,0.3)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.CON_ID_PK) violated 
+
+
+INSERT INTO config(id_config,marge) VALUES (7,0.3)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.CON_ID_PK) violated 
+
+
+INSERT INTO config(id_config,marge) VALUES (8,0.3)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.CON_ID_PK) violated 
+
+
+INSERT INTO config(id_config,marge) VALUES (9,0.3)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.CON_ID_PK) violated 
+
+
+INSERT INTO config(id_config,marge) VALUES (10,0.3)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (FINDFOOD.CON_ID_PK) violated 
+
+
+
+***************************** POPULATING CONTROL_PANIER_MENU TABLE *****************************
+
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (1,1,4)
+                            *
+ERROR at line 1:
+ORA-00904: "ID_MENU": invalid identifier 
+
+
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (4,2,4)
+                            *
+ERROR at line 1:
+ORA-00904: "ID_MENU": invalid identifier 
+
+
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (2,3,3)
+                            *
+ERROR at line 1:
+ORA-00904: "ID_MENU": invalid identifier 
+
+
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (3,4,5)
+                            *
+ERROR at line 1:
+ORA-00904: "ID_MENU": invalid identifier 
+
+
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (1,5,5)
+                            *
+ERROR at line 1:
+ORA-00904: "ID_MENU": invalid identifier 
+
+
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (6,6,7)
+                            *
+ERROR at line 1:
+ORA-00904: "ID_MENU": invalid identifier 
+
+
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (1,7,2)
+                            *
+ERROR at line 1:
+ORA-00904: "ID_MENU": invalid identifier 
+
+
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (5,8,2)
+                            *
+ERROR at line 1:
+ORA-00904: "ID_MENU": invalid identifier 
+
+
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (9,9,4)
+                            *
+ERROR at line 1:
+ORA-00904: "ID_MENU": invalid identifier 
+
+
+
+***************************** POPULATING CUSTOMERS TABLE *****************************
+
+INSERT INTO customers(id_cust,first_name,last_name,Email,phone_number,Cust_address,Gender,Start_date,id_user)
+                                                                                                     *
+ERROR at line 1:
+ORA-00904: "ID_USER": invalid identifier 
+
+
+INSERT INTO customers(id_cust,first_name,last_name,Email,phone_number,Cust_address,Gender,Start_date,id_user)
+                                                                                                     *
+ERROR at line 1:
+ORA-00904: "ID_USER": invalid identifier 
+
+
+INSERT INTO customers(id_cust,first_name,last_name,Email,phone_number,Cust_address,Gender,Start_date,id_user)
+                                                                                                     *
+ERROR at line 1:
+ORA-00904: "ID_USER": invalid identifier 
+
+
+INSERT INTO customers(id_cust,first_name,last_name,Email,phone_number,Cust_address,Gender,Start_date,id_user)
+                                                                                                     *
+ERROR at line 1:
+ORA-00904: "ID_USER": invalid identifier 
+
+
+INSERT INTO customers(id_cust,first_name,last_name,Email,phone_number,Cust_address,Gender,Start_date,id_user)
+                                                                                                     *
+ERROR at line 1:
+ORA-00904: "ID_USER": invalid identifier 
+
+
+INSERT INTO customers(id_cust,first_name,last_name,Email,phone_number,Cust_address,Gender,Start_date,id_user)
+                                                                                                     *
+ERROR at line 1:
+ORA-00904: "ID_USER": invalid identifier 
+
+
+INSERT INTO customers(id_cust,first_name,last_name,Email,phone_number,Cust_address,Gender,Start_date,id_user)
+                                                                                                     *
+ERROR at line 1:
+ORA-00904: "ID_USER": invalid identifier 
+
+
+INSERT INTO customers(id_cust,first_name,last_name,Email,phone_number,Cust_address,Gender,Start_date,id_user)
+                                                                                                     *
+ERROR at line 1:
+ORA-00904: "ID_USER": invalid identifier 
+
+
+INSERT INTO customers(id_cust,first_name,last_name,Email,phone_number,Cust_address,Gender,Start_date,id_user)
+                                                                                                     *
+ERROR at line 1:
+ORA-00904: "ID_USER": invalid identifier 
+
+
+INSERT INTO customers(id_cust,first_name,last_name,Email,phone_number,Cust_address,Gender,Start_date,id_user)
+                                                                                                     *
+ERROR at line 1:
+ORA-00904: "ID_USER": invalid identifier 
+
+
+INSERT INTO customers(id_cust,first_name,last_name,Email,phone_number,Cust_address,Gender,Start_date,id_user)
+                                                                                                     *
+ERROR at line 1:
+ORA-00904: "ID_USER": invalid identifier 
+
+
+INSERT INTO customers(id_cust,first_name,last_name,Email,phone_number,Cust_address,Gender,Start_date,id_user)
+                                                                                                     *
+ERROR at line 1:
+ORA-00904: "ID_USER": invalid identifier 
+
+
+INSERT INTO customers(id_cust,first_name,last_name,Email,phone_number,Cust_address,Gender,Start_date,id_user)
+                                                                                                     *
+ERROR at line 1:
+ORA-00904: "ID_USER": invalid identifier 
+
+
+INSERT INTO customers(id_cust,first_name,last_name,Email,phone_number,Cust_address,Gender,Start_date,id_user)
+                                                                                                     *
+ERROR at line 1:
+ORA-00904: "ID_USER": invalid identifier 
+
+
+INSERT INTO customers(id_cust,first_name,last_name,Email,phone_number,Cust_address,Gender,Start_date,id_user)
+                                                                                                     *
+ERROR at line 1:
+ORA-00904: "ID_USER": invalid identifier 
+
+
+INSERT INTO customers(id_cust,first_name,last_name,Email,phone_number,Cust_address,Gender,Start_date,id_user)
+                                                                                                     *
+ERROR at line 1:
+ORA-00904: "ID_USER": invalid identifier 
+
+
+
+***************************** POPULATING RESTAURANT TABLE *****************************
+
+SP2-0310: unable to open file "Datas/Datas_restaurant.sql"
+
+***************************** POPULATING NOTE TABLE *****************************
+
+id_note,Valeur,id_cust,id_resto  ) VALUES (1,2,1,41)
+                       *
+ERROR at line 2:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+id_note,Valeur,id_cust,id_resto  ) VALUES (2,3,2,29)
+                       *
+ERROR at line 2:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+id_note,Valeur,id_cust,id_resto ) VALUES (3,2,3,37)
+                       *
+ERROR at line 2:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+id_note,Valeur,id_cust,id_resto  ) VALUES (4,5,4,5)
+                       *
+ERROR at line 2:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+id_note,Valeur,id_cust,id_resto  ) VALUES (5,4,5,45)
+                       *
+ERROR at line 2:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+id_note,Valeur,id_cust,id_resto  ) VALUES (6,2,6,27)
+                       *
+ERROR at line 2:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+id_note,Valeur,id_cust,id_resto  ) VALUES (7,4,7,20)
+                       *
+ERROR at line 2:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+id_note,Valeur,id_cust,id_resto) VALUES (8,3,8,20)
+                       *
+ERROR at line 2:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+id_note,Valeur,id_cust,id_resto  ) VALUES (9,2,9,34)
+                       *
+ERROR at line 2:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+id_note,Valeur,id_cust,id_resto
+                       *
+ERROR at line 2:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+id_note,Valeur,id_cust,id_resto
+                       *
+ERROR at line 2:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+id_note,Valeur,id_cust,id_resto
+                       *
+ERROR at line 2:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+id_note,Valeur,id_cust,id_resto
+                       *
+ERROR at line 2:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+id_note,Valeur,id_cust,id_resto
+                       *
+ERROR at line 2:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+id_note,Valeur,id_cust,id_resto
+                       *
+ERROR at line 2:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+id_note,Valeur,id_cust,id_resto
+                       *
+ERROR at line 2:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+
+***************************** POPULATING MENU TABLE *****************************
+
+INSERT INTO menu (id_menu,Menu_title,Menu_description,Menu_price ,Menu_Qty,Menu_date,id_dish ,id_seculant  ,id_garnish,id_resto ,id_config
+                                                                                                                       *
+ERROR at line 1:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+INSERT INTO menu (id_menu,Menu_title,Menu_description,Menu_price ,Menu_Qty,Menu_date,id_dish ,id_seculant  ,id_garnish,id_resto ,id_config
+                                                                                                                       *
+ERROR at line 1:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+  INSERT INTO menu (id_menu,Menu_title,Menu_description,Menu_price ,Menu_Qty,Menu_date,id_dish ,id_seculant  ,id_garnish,id_resto ,id_config
+                                                                                                                         *
+ERROR at line 1:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+    INSERT INTO menu (id_menu,Menu_title,Menu_description,Menu_price ,Menu_Qty,Menu_date,id_dish ,id_seculant  ,id_garnish,id_resto ,id_config
+                                                                                                                           *
+ERROR at line 1:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+    INSERT INTO menu (id_menu,Menu_title,Menu_description,Menu_price ,Menu_Qty,Menu_date,id_dish ,id_seculant  ,id_garnish,id_resto ,id_config
+                                                                                                                           *
+ERROR at line 1:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+    INSERT INTO menu (id_menu,Menu_title,Menu_description,Menu_price ,Menu_Qty,Menu_date,id_dish ,id_seculant  ,id_garnish,id_resto ,id_config
+                                                                                                                           *
+ERROR at line 1:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+    INSERT INTO menu (id_menu,Menu_title,Menu_description,Menu_price ,Menu_Qty,Menu_date,id_dish ,id_seculant  ,id_garnish,id_resto ,id_config
+                                                                                                                           *
+ERROR at line 1:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+    INSERT INTO menu (id_menu,Menu_title,Menu_description,Menu_price ,Menu_Qty,Menu_date,id_dish ,id_seculant  ,id_garnish,id_resto ,id_config
+                                                                                                                           *
+ERROR at line 1:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+    INSERT INTO menu (id_menu,Menu_title,Menu_description,Menu_price ,Menu_Qty,Menu_date,id_dish ,id_seculant  ,id_garnish,id_resto ,id_config
+                                                                                                                           *
+ERROR at line 1:
+ORA-00904: "ID_RESTO": invalid identifier 
+
+
+
+***************************** POPULATING PANIER TABLE *****************************
+
+insert into panier (id_panier,id_cust)
+                              *
+ERROR at line 1:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+insert into panier (id_panier,id_cust)
+                              *
+ERROR at line 1:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+insert into panier (id_panier,id_cust)
+                              *
+ERROR at line 1:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+insert into panier (id_panier,id_cust)
+                              *
+ERROR at line 1:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+insert into panier (id_panier,id_cust)
+                              *
+ERROR at line 1:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+insert into panier (id_panier,id_cust)
+                              *
+ERROR at line 1:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+insert into panier (id_panier,id_cust)
+                              *
+ERROR at line 1:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+insert into panier (id_panier,id_cust)
+                              *
+ERROR at line 1:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+insert into panier (id_panier,id_cust)
+                              *
+ERROR at line 1:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+insert into panier (id_panier,id_cust)
+                              *
+ERROR at line 1:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+insert into panier (id_panier,id_cust)
+                              *
+ERROR at line 1:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+insert into panier (id_panier,id_cust)
+                              *
+ERROR at line 1:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+insert into panier (id_panier,id_cust)
+                              *
+ERROR at line 1:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+insert into panier (id_panier,id_cust)
+                              *
+ERROR at line 1:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+insert into panier (id_panier,id_cust)
+                              *
+ERROR at line 1:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+insert into panier (id_panier,id_cust)
+                              *
+ERROR at line 1:
+ORA-00904: "ID_CUST": invalid identifier 
+
+
+
+***************************** POPULATING ORDERS TABLE *****************************
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+    id_panier   )
+    *
+ERROR at line 4:
+ORA-00904: "ID_PANIER": invalid identifier 
+
+
+
+*******************************************************************SWEET_WORLD*************************************************************************
+
+
+*******************************************************************JASON KAMSU*************************************************************************
+
+
+TABLE_NAME                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+--------------------------------------------------------------------------------------------------------------------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+USERS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+RESTAURANT                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+SECULANT                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+DISH                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+GARNISH                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+UTILISATEUR                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+NOTE                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+PANIER                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+CUSTOMERS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+RESTAURANTS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+CHOIX                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+ORDERS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+MENU                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+CONFIG                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+
+14 rows selected.
+
+
+*******************************************************************SWEET_WORLD*************************************************************************
+

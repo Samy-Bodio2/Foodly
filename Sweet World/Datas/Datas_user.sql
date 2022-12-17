@@ -14,7 +14,7 @@ INSERT INTO Users(id_user,username,password) VALUES (0013,'Resto_sim','12349segt
 INSERT INTO Users(id_user,username,password) VALUES (0014,'Resto_plaisirs','12389fdem');
 INSERT INTO Users(id_user,username,password) VALUES (0015,'Resto_ebene','12314deBD');
 INSERT INTO Users(id_user,username,password) VALUES (0016,'Resto_pied_eau','123lfj9vf');
-INSERT INTO Users(id_user,username,password) VALUES (0017,'Samy','1234@#jd9');
+INSERT INTO Users(id_user,username,password) VALUES (0017,'Samy','12342#jd9');
 INSERT INTO Users(id_user,username,password) VALUES (0018,'Aristide','123@fhh9e');
 INSERT INTO Users(id_user,username,password) VALUES (0019,'Rolande','123bg39ps');
 INSERT INTO Users(id_user,username,password) VALUES (0020,'Juliette','1222289de');

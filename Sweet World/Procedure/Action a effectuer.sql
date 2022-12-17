@@ -13,5 +13,6 @@ DECLARE
      WHEN 6 THEN 'Quitter'
      ELSE 'choix non correct'
      END;
-     DBMS_OUTPUT.put_line(que voulez vous faire : ||v_choix||);
+     DBMS_OUTPUT.put_line('que voulez vous faire : '||v_choix);
      END;
+     /

@@ -11,6 +11,6 @@ SET ECHO OFF
 
 CREATE TABLE ADMIN (
     id_admin int not null,
-    name_admin varchar(50) not null,
+    name_admin varchar(50) not null UNIQUE,
     pwd_admin varchar(20) not null
 );

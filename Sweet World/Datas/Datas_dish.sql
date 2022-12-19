@@ -2,7 +2,7 @@
 INSERT INTO Dish ( id_dish , Name_dish) VALUES  (1, 'Hamburger');
 INSERT INTO Dish ( id_dish , Name_dish ) VALUES (2, 'Cheese burger');
 INSERT INTO Dish ( id_dish , Name_dish ) VALUES (3, 'Double cheese burger');
-INSERT INTO Dish ( id_dish , Name_dish ) VALUES (4,' Triple cheese burger');
+INSERT INTO Dish ( id_dish , Name_dish ) VALUES (4, 'Triple cheese burger');
 INSERT INTO Dish ( id_dish , Name_dish ) VALUES (5,'Banana burger');
 INSERT INTO Dish ( id_dish , Name_dish ) VALUES (6,'Double steak banana burger');
 INSERT INTO Dish ( id_dish , Name_dish ) VALUES (7,'Big size burger');
@@ -65,36 +65,4 @@ INSERT INTO Dish ( id_dish , Name_dish ) VALUES (55,'Mitumba');
 INSERT INTO Dish ( id_dish , Name_dish ) VALUES (56,'Bekwam');
 INSERT INTO Dish ( id_dish , Name_dish ) VALUES (57,'Banane malaxé');
 
---*********BY annaellejosee13*********--
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+--*********BY annaellejosee13*********

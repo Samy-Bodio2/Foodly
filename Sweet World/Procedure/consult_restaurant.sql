@@ -7,8 +7,8 @@ r_Phone_number       restaurant.restaurant_number%TYPE;
 r_Resto_adresse      restaurant.restaurant_adresse%TYPE;
 r_Date_res_created   restaurant.restaurant_date%TYPE;
 r_id_user            restaurant.restaurant_id%TYPE;
-BEGIN
-SELECT
+BEGIN 
+SELECT 
     id_restaurant,
     Name_resto,
     Name_employees,

@@ -1,3 +1,4 @@
+SET SERVEROUTPUT ON;
 begin
   DBMS_OUTPUT.PUT_LINE('1:Consulter le menu du jour');
   DBMS_OUTPUT.PUT_LINE('2:Consulter les details du menu du jour');

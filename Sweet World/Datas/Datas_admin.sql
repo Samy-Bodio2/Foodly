@@ -1,0 +1,11 @@
+INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (1,'Samy Bodio','qwerty123');
+INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (2,'Silha Jason','123456789');
+INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (3,'Nguiakam Angele','123ktrd89');
+INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (4,'Kangue Loic','day@!6789');
+INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (5,'Awounang Stone','123@pryt9');
+INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (6,'Fotso Manuel','12345#?fr');
+INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (7,'Djouda Patric','12345$ju#');
+INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (8,'Tatsinkou Crispin','123kid@sd');
+INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (9,'Makolo Ekoka','123fhk@!@');
+INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (10,'Kenchoung Sadio','123456qsz');
+INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (11,'Motso ALix','1@#lmn9fd');

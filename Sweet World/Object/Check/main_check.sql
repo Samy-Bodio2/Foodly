@@ -6,6 +6,11 @@ Prompt
 Prompt***************************** CHECK CREATION FOR SWEET_WORLD SCHEMA *****************************
 Prompt
 
+Prompt
+Prompt***************************** CREATION OF THE ADMIN CHECK *****************************
+Prompt
+
+@Object/Check/check_admin
 
 Prompt
 Prompt***************************** CREATION OF THE USER CHECK *****************************

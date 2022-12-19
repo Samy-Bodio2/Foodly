@@ -26,8 +26,11 @@ specify log path as parameter 5:
 
 specify connect string as parameter 6:
 
+DROP USER swl CASCADE
+          *
+ERROR at line 1:
+ORA-01918: user 'SWL' does not exist
 
-User dropped.
 
 
 User created.

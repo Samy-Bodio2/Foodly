@@ -26,6 +26,6 @@ UPDATE Menu SET
     id_complement    = v_ id_complement ,
     id_resto         = v_id_resto,
     id_config        = v_id_config
-WHERE id_menu        =&id_menu;
+WHERE id_menu        =v_id_menu;
 END ;
 /

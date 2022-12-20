@@ -1,0 +1,9 @@
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (1,1,4);
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (4,2,4);
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (2,3,3);
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (3,4,5);
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (1,5,5);
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (6,6,7);
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (1,7,2);
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (5,8,2);
+INSERT INTO choix(id_panier,id_menu,Quantity) VALUES (9,9,4);

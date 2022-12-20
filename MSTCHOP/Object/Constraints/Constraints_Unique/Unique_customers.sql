@@ -1,6 +1,6 @@
 ALTER TABLE Customers
-ADD CONSTRAINT cust_unique UNIQUE (Email);
+ADD CONSTRAINT email_unique UNIQUE (Email);
 
 ALTER TABLE Customers
-ADD CONSTRAINT cust_unique UNIQUE (phone_number);
+ADD CONSTRAINT phone_unique UNIQUE (phone_number);
 

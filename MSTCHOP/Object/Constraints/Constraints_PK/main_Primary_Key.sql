@@ -75,11 +75,6 @@ Prompt
 
 @Object/Constraints/Constraints_PK/PK_config
 
-Prompt
-Prompt***************************** CONSTRAINT PRIMARY KEY OF THE MOT CLE TABLE *****************************
-Prompt
-
-@Object/Constraints/Constraints_PK/PK_motcle
 
 
 

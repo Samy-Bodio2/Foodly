@@ -78,9 +78,3 @@ Prompt***************************** CREATION OF THE CHOIX TABLE ****************
 Prompt
 
 @Object/Tables/Table_choix
-
-Prompt
-Prompt***************************** CREATION OF THE MOT CLE TABLE *****************************
-Prompt
-
-@Object/Tables/Table_MotCle

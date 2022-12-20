@@ -3,7 +3,7 @@ ALTER SESSION SET NLS_TERRITORY=America;
 ALTER session set NLS_DATE_FORMAT='DD/MM/YYYY'
 
 Prompt
-Prompt***************************** POPULATING SWEET_WORLD SCHEMA *****************************
+Prompt***************************** POPULATING FOOD SCHEMA *****************************
 Prompt
 
 Prompt
@@ -82,7 +82,7 @@ Prompt
 @Datas/Datas_orders
 
 Prompt
-Prompt *******************************************************************SWEET_WORLD*************************************************************************
+Prompt *******************************************************************FOOD*************************************************************************
 Prompt
 
 

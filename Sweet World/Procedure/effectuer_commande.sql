@@ -5,7 +5,7 @@ declare
         v_Menu_Qty Menu.Menu_Qty%type;
         v_menu_id Menu.id_menu%type;
         choice_qte Control_Panier_Menu.Quantity%type;
-        v_option char;
+        v_option varchar(50);
         choix char := '&choix';
 
 begin 
@@ -62,9 +62,9 @@ begin
         DBMS_OUTPUT.PUT_LINE ('1. Retour');
         DBMS_OUTPUT.PUT_LINE ('2. Quitter');
 
-        case v_option
-                when choix = '1' then action_respo
-                when choix = '2' then quitter
+        v_option := case choix
+                when '1' then action_respo
+                when '2' then quitter
         end ;
 
     else 
@@ -72,6 +72,4 @@ begin
     end if;
 
 end ;
-
-
-
+/

@@ -48,7 +48,7 @@ begin
         values
         (
                 id_order_seq.nextval,
-                to_char(sysdate,'dd/mm/yyyy'),&id_resto,&id_Panier
+                to_char(sysdate,'dd/mm/yyyy'),v_id_resto,v_Panier
         );
 
         v_Menu_Qty := v_Menu_Qty-choice_qte;

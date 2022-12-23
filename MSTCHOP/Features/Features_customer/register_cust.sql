@@ -1,5 +1,5 @@
 BEGIN
-sp_register (p_personid => &id,
+sp_register_customer (p_personid => &id,
              p_fullname => &name,   
              p_password => &pass,                        
              p_username => &username,
@@ -8,3 +8,5 @@ sp_register (p_personid => &id,
              p_cardno   => &cardno);
 END;
 /
+
+@Features/Features_customer/Menu_customer

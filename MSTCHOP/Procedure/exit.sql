@@ -1,10 +1,10 @@
-PROMPT**************************************************BIENVENUE SUR Nom de lapplication ****************************************************
+/*PROMPT**************************************************BIENVENUE SUR Nom de lapplication ****************************************************
 PROMPT
 PROMPT       *******************************************************************       
-PROMPT       |                                                                  |
+PROMPT      |                                                                  |
 PROMPT       |               1- Inscription                                     |
 PROMPT       |               2- Connexion                                       |   
-PROMPT       |               3- Quitter                                         |
+PROMPT      |               3- Quitter                                         |
 PROMPT       ********************************************************************
 
 accept selection PROMPT "choisissez une option : "
@@ -19,3 +19,5 @@ select  case '&selection'
 from dual;
 set term on
 @&v_script.
+*/
+exit

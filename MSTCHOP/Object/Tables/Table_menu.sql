@@ -9,7 +9,7 @@ CREATE TABLE Menu
     id_dish          INT          NOT NULL,
     id_seculant      INT,
     id_garnish       INT,
-    id_resto         INT          NOT NULL,
+    id_resto         INT,
     id_config        INT          NOT NULL
 );
 

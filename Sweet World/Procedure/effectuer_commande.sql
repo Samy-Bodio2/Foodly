@@ -9,7 +9,9 @@ declare
         v_option varchar(50);
         choix char := '&choix';
 
-begin 
+        procedure do_commande as
+
+        begin 
 
         select id_Panier
         into v_Panier
@@ -24,7 +26,7 @@ begin
         where u.username='&username'
         and u.password='&password';
 
-    if sql%found then
+        if sql%found then
 
         select id_resto
         into v_id_resto
@@ -67,9 +69,13 @@ begin
                 when '2' then 'quitter'
         end ;
 
-    else 
+        else 
         DBMS_OUTPUT.PUT_LINE('votre login et mot de passe sont faux... entrez les a nouveau : ');
-    end if;
+        end if;
 
-end ;
+    end ;
+
+    begin
+    do_commande;
+    end;
 /

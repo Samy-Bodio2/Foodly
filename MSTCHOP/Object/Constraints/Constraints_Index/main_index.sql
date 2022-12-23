@@ -3,7 +3,7 @@ ALTER SESSION SET NLS_TERRITORY=America;
 ALTER session set NLS_DATE_FORMAT='DD/MM/YYYY'
 
 Prompt
-Prompt***************************** INDEX CREATION FOR SWEET_WORLD SCHEMA *****************************
+Prompt***************************** INDEX CREATION FOR FOOD SCHEMA *****************************
 Prompt
 
 

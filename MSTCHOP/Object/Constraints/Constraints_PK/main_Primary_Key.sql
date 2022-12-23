@@ -3,7 +3,7 @@ ALTER SESSION SET NLS_TERRITORY=America;
 ALTER session set NLS_DATE_FORMAT='DD/MM/YYYY'
 
 Prompt
-Prompt***************************** CONSTRAINT CREATION FOR SWEET_WORLD SCHEMA *****************************
+Prompt***************************** CONSTRAINT CREATION FOR FOOD SCHEMA *****************************
 Prompt
 Prompt
 Prompt********************************************** PRIMARY KEY *******************************************

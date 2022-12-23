@@ -72,7 +72,7 @@ Prompt
 @Procedure/Case
 SET SERVEROUTPUT ON;
 /*Prompt
-Prompt *******************************************************************JASON KAMSU*************************************************************************
+Prompt ********************************************************************************************************************************************
 Prompt
 
 select table_name from user_tables;
@@ -91,7 +91,7 @@ SELECT * FROM NOTE;
 SELECT * FROM CONFIG;
 SELECT * FROM CHOIX;
 
--- BY JASON KAMSU
+-- BY ANGELE JASON
 --
 SPOOL OFF
 */

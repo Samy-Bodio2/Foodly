@@ -12,29 +12,29 @@ begin
     DBMS_OUTPUT.PUT_LINE('10:Quitter');
     case &number_selected
       when 1 then
+      @Procedure/consult_restaurant
+      when 2 then 
       @
-        when 2 then 
+      when 3 then
       @
-        when 3 then
-        @
-            when 4 then
-        @
-            when 5 then
-        @
-            when 6 then
-            @
-            when 7 then
-            @
-            when 8 then
-            @
-            when 9 then
-            @
-            when 10 then
-            @
-            else
-            DBMS_OUTPUT.PUT_LINE('Erreur de saisie');
-                end;
-                DBMS_OUTPUT.PUT_LINE('Que voulez vous faire :');
+      when 4 then
+      @
+      when 5 then
+      @
+      when 6 then
+      @
+      when 7 then
+      @
+      when 8 then
+      @
+      when 9 then
+      @
+      when 10 then
+      @
+      else
+      DBMS_OUTPUT.PUT_LINE('Erreur de saisie');
+    end;
+       DBMS_OUTPUT.PUT_LINE('Que voulez vous faire :');
                      
 end;
 /

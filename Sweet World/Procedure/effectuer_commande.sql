@@ -4,6 +4,7 @@ declare
         v_customer_id Panier.id_cust%type;
         v_Menu_Qty Menu.Menu_Qty%type;
         v_menu_id Menu.id_menu%type;
+        v_id_resto Restaurant.id_resto%type;
         choice_qte Control_Panier_Menu.Quantity%type;
         v_option varchar(50);
         choix char := '&choix';
@@ -20,8 +21,10 @@ begin
         from Customers c
         join Users u
         on c.id_user=u.id_user
-        where u.username=&username
-        and u.password=&password;
+        where u.username='&username'
+        and u.password='&password';
+
+    if sql%found then
 
         select id_resto
         into v_id_resto
@@ -38,9 +41,6 @@ begin
         from Control_Panier_Menu
         where id_menu = v_menu_id;
 
-    if id_cust%found 
-        then
-
         insert into Orders
         (
                 id_order,order_date,id_resto,id_Panier 
@@ -56,15 +56,15 @@ begin
         update Menu 
         set Menu_Qty = v_Menu_Qty; 
 
-        delete from choix
-        where id_Panier=v_id_Panier;
+        delete from Control_Panier_Menu
+        where id_Panier='&id_panier';
 
         DBMS_OUTPUT.PUT_LINE ('1. Retour');
         DBMS_OUTPUT.PUT_LINE ('2. Quitter');
 
         v_option := case choix
-                when '1' then action_respo
-                when '2' then quitter
+                when '1' then 'action_respo'
+                when '2' then 'quitter'
         end ;
 
     else 

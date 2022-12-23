@@ -6,8 +6,9 @@ declare
     v_id_resto Restaurant.id_resto%type;
     v_option varchar(50);
     choix char ;
+    procedure add_menu as
 
-begin
+  begin
 
     select id_resto
         into v_id_resto
@@ -63,5 +64,12 @@ begin
     DBMS_OUTPUT.PUT_LINE('votre login et votre mot de passe ne sont pas correctes. Entrez des informations justes');
   end if;
 
-end ;
+  exception
+  when no_data_found then
+  DBMS_OUTPUT.PUT_LINE('aucune valeur trouvée');
+
+  end ;
+begin
+add_menu;
+end;
 /

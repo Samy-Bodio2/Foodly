@@ -2,19 +2,19 @@ PROMPT**************************************************BIENVENUE SUR Nom de lap
 PROMPT
 PROMPT       *******************************************************************       
 PROMPT       |                                                                  |
-PROMPT       |               1- Inscription                                     |
-PROMPT       |               2- Connexion                                       |   
-PROMPT       |               3- Quitter                                         |
+PROMPT       |               1- Administrator                                   |
+PROMPT       |               2- Restaurant                                      |   
+PROMPT       |               3- Customer                                        |
 PROMPT       ********************************************************************
 
-accept selection PROMPT "choisissez une option : "
+accept selection PROMPT "En tant que : "
 set term off
 column script new_value v_script
 select  case '&selection'
-        when '1' then '@Procedure/Inscription'
-        when '2' then '@Features/Features_admin/register_admin'
-        when '3' then '@exit'
-        else 'Procedure/Case'
+        when '1' then '@Features/Features_admin/register_admin'
+        when '2' then '@Features/Features_admin/register_resto'
+        when '3' then '@Features/Features_admin/register_customer'
+        else 'Procedure/Inscription'
         end as script
 from dual;
 set term on

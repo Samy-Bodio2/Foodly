@@ -1,0 +1,3 @@
+CREATE OR REPLACE PROCEDURE search_menu
+DECLARE 
+resultat VARCHAR(30);

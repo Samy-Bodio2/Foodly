@@ -26,8 +26,11 @@ specify log path as parameter 5:
 
 specify connect string as parameter 6:
 
+DROP USER swl CASCADE
+          *
+ERROR at line 1:
+ORA-01918: user 'SWL' does not exist
 
-User dropped.
 
 
 User created.
@@ -579,6 +582,9 @@ Session altered.
 ***************************** POPULATING ADMIN TABLE *****************************
 
 
+Function created.
+
+
 1 row created.
 
 
@@ -613,6 +619,12 @@ Session altered.
 
 
 ***************************** POPULATING USER TABLE *****************************
+
+CREATE FUNCTION format1(VAR Users.password%TYPE)
+                *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
 
 
 1 row created.

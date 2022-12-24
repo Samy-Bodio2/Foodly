@@ -1309,8 +1309,6 @@ Session altered.
 
 TABLE_NAME
 --------------------------------------------------------------------------------------------------------------------------------
-ADMIN
-USERS
 RESTAURANT
 CUSTOMERS
 MENU
@@ -1322,6 +1320,8 @@ PANIER
 NOTE
 CONFIG
 CONTROL_PANIER_MENU
+ADMIN
+USERS
 
 13 rows selected.
 

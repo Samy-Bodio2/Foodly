@@ -5,7 +5,7 @@ declare
         v_Menu_Qty Menu.Menu_Qty%type;
         v_menu_id Menu.id_menu%type;
         v_id_resto Restaurant.id_resto%type;
-        choice_qte Control_Panier_Menu.Quantity%type;
+        choice_qte choix.Quantity%type;
         v_option varchar(50);
         choix char := '&choix';
 
@@ -40,7 +40,7 @@ declare
 
         select Quantity
         into choice_qte
-        from Control_Panier_Menu
+        from choix
         where id_menu = v_menu_id;
 
         insert into Orders
@@ -58,7 +58,7 @@ declare
         update Menu 
         set Menu_Qty = v_Menu_Qty; 
 
-        delete from Control_Panier_Menu
+        delete from choix
         where id_Panier='&id_panier';
 
         DBMS_OUTPUT.PUT_LINE ('1. Retour');

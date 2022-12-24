@@ -1,11 +1,11 @@
 /*PROMPT**************************************************BIENVENUE SUR Nom de lapplication ****************************************************
 PROMPT
-PROMPT       *******************************************************************       
+PROMPT      *******************************************************************       
 PROMPT      |                                                                  |
-PROMPT       |               1- Inscription                                     |
-PROMPT       |               2- Connexion                                       |   
+PROMPT      |               1- Inscription                                     |
+PROMPT      |               2- Connexion                                       |   
 PROMPT      |               3- Quitter                                         |
-PROMPT       ********************************************************************
+PROMPT      ********************************************************************
 
 accept selection PROMPT "choisissez une option : "
 set term off

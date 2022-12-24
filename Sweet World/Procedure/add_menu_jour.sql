@@ -2,7 +2,7 @@ declare
 
     v_dish_id Dish.id_dish%type;
     v_seculant_id Seculant.id_seculant%type;
-    v_id_complement Complement.id_complement%type;
+    v_id_garnish Garnish.id_garnish%type;
     v_id_resto Restaurant.id_resto%type;
     v_option varchar(50);
     choix char ;
@@ -30,24 +30,24 @@ declare
     from Seculant
     where Name_Seculant = '&seculant_name';
 
-    select id_complement
-    into v_id_complement
-    from Complement
-    where Name_complement = '&complement_name';
+    select id_garnish
+    into v_id_garnish
+    from Garnish
+    where Name_garnish = '&Name_garnish';
 
 
     insert into Menu 
     (
         id_menu, Menu_title, Menu_description,
         Menu_price, Menu_date, Menu_Qty, id_dish,
-        id_seculant, id_complement, id_resto, id_config
+        id_seculant, id_garnish, id_resto, id_config
     )
     values
     (
         id_menu_seq.nextval,'&titre','&description',
         &price, to_date(sysdate,'dd-mm-yy'),
         &quantite, v_dish_id, v_seculant_id,
-        v_id_complement, v_id_resto, 1
+        v_id_garnish, v_id_resto, 1
     );
 
     DBMS_OUTPUT.PUT_LINE('**********************************************'); 

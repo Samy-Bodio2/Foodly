@@ -65,13 +65,13 @@ Prompt
 
 @Datas/main_datas
 
---Prompt
---Prompt***************************** CREATE PROCEDURE  *****************************
---Prompt
+Prompt
+Prompt***************************** CREATE PROCEDURE  *****************************
+Prompt
 @Procedure/main_procedure
-@Procedure/Case
+--@Procedure/Case
 SET SERVEROUTPUT ON;
-/*Prompt
+Prompt
 Prompt ********************************************************************************************************************************************
 Prompt
 
@@ -94,4 +94,3 @@ SELECT * FROM CHOIX;
 -- BY ANGELE JASON
 --
 SPOOL OFF
-*/

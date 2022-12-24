@@ -8,3 +8,4 @@ sp_register (p_personid => &id,
              p_cardno   => &cardno);
 END;
 /
+@Features/Features_respo_resto/Menu_respo_resto_con

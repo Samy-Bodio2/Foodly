@@ -24,3 +24,5 @@ BEGIN
     consult_Menu_Jour;
 END;
 /
+
+-------------------samy bodio(c'est pas ma fonctionnalite dsl!)

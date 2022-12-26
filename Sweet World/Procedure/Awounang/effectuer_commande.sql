@@ -61,7 +61,7 @@ declare
         set Menu_Qty = v_Menu_Qty; 
 
         delete from choix
-        where id_Panier='&id_panier';
+        where id_Panier=v_Panier;
 
         DBMS_OUTPUT.PUT_LINE ('1. Retour');
         DBMS_OUTPUT.PUT_LINE ('2. Quitter');

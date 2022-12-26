@@ -7,7 +7,7 @@ declare
         v_Menu_Qty Menu.Menu_Qty%type;
         v_menu_id Menu.id_menu%type;
         v_id_resto Restaurant.id_resto%type;
-        choice_qte choix.Quantity%type;
+        choice_qte Control_Panier_Menu.Quantity%type;
         v_option varchar(50);
         choix char := '&choix';
 

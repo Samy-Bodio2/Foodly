@@ -35,6 +35,11 @@ declare
         from Restaurant
         where name_resto = '&name_resto';
 
+        select id_menu
+        into v_menu_id
+        from Menu
+        where Menu_title = '&menu';
+
         select Menu_Qty
         into v_Menu_Qty
         from Menu
@@ -42,7 +47,7 @@ declare
 
         select Quantity
         into choice_qte
-        from choix
+        from Control_Panier_Menu
         where id_menu = v_menu_id;
 
         insert into Orders

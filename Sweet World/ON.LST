@@ -26,11 +26,8 @@ specify log path as parameter 5:
 
 specify connect string as parameter 6:
 
-DROP USER swl CASCADE
-          *
-ERROR at line 1:
-ORA-01918: user 'SWL' does not exist
 
+User dropped.
 
 
 User created.
@@ -1321,6 +1318,8 @@ ORA-00955: name is already used by an existing object
 
 TABLE_NAME
 --------------------------------------------------------------------------------------------------------------------------------
+ADMIN
+USERS
 RESTAURANT
 CUSTOMERS
 MENU
@@ -1332,8 +1331,6 @@ PANIER
 NOTE
 CONFIG
 CONTROL_PANIER_MENU
-ADMIN
-USERS
 
 13 rows selected.
 

@@ -7,6 +7,12 @@ Prompt***************************** POPULATING FOOD SCHEMA *********************
 Prompt
 
 Prompt
+Prompt***************************** POPULATING ADMIN TABLE *****************************
+Prompt
+
+@Datas/Datas_admin
+
+Prompt
 Prompt***************************** POPULATING USER TABLE *****************************
 Prompt
 

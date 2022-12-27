@@ -1,3 +1,5 @@
+
+--Awounang
 set serveroutput on;
 declare
     v_id_panier Panier.id_panier%type;
@@ -20,7 +22,9 @@ begin
     where u.username='&userName'
     and u.password='&passwd';
 
-    insert into Control_Panier_Menu
+    IF sql%found THEN
+
+    insert into Choix
     (
        id_panier, id_menu, Quantity
     )
@@ -44,6 +48,14 @@ begin
         else DBMS_output.put_line('Vous devez faire un choix valide');
         end if;
     end if;
+
+    else 
+    DBMS_OUTPUT.PUT_LINE('votre login et votre mot de passe ne sont pas correctes. Entrez des informations justes');
+    end if;
+
+    exception
+    when no_data_found then
+    DBMS_OUTPUT.PUT_LINE('aucune valeur trouvée');
 
 end;
 /

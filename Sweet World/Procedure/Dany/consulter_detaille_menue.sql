@@ -1,4 +1,3 @@
-
 CREATE PROCEDURE consult_Detaille_Menu IS 
 V_Menu_title         Menu.Menu_title%TYPE;
 V_Descrition_Menu    Menu.Menu_description%TYPE;
@@ -10,6 +9,11 @@ V_name_seculant      Seculant.Name_Seculant%TYPE;
 V_palt_complement    complement.Name_complement%TYPE;
 V_name_Resro         restaurant.name_resto%TYPE;
 BEGIN 
+
+select Menu_title
+FROM Menu;
+DBMS_OUTPUT.PUT_LINE('veiller entrer le titre du menu donc vous souhetez consulter le detaille');
+--
 SELECT 
 Menu_title,
 Menu_description,
@@ -39,6 +43,7 @@ JOIN complement
 ON complement.id_complement = menu.id_complement
 JOIN restaurant
 ON restaurant.id_resto = Menu.id_resto;
+WHERE M.Menu_title = '&Menu_title'
 END;
 /
 BEGIN

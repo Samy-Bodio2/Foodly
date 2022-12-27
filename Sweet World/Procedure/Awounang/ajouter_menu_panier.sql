@@ -24,7 +24,7 @@ begin
 
     IF sql%found THEN
 
-    insert into Control_Panier_Menu
+    insert into Choix
     (
        id_panier, id_menu, Quantity
     )

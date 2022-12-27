@@ -8,6 +8,12 @@ Prompt
 
 
 Prompt
+Prompt***************************** CREATION OF THE ADMIN SEQUENCE *****************************
+Prompt
+
+@Object/Constraints/Constraints_Sequence/sequence_admin
+
+Prompt
 Prompt***************************** CREATION OF THE USER SEQUENCE *****************************
 Prompt
 

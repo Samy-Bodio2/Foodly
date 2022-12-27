@@ -10,6 +10,12 @@ Prompt********************************************** PRIMARY KEY ***************
 Prompt
 
 Prompt
+Prompt***************************** CONSTRAINT PRIMARY KEY OF THE ADMIN TABLE *****************************
+Prompt
+
+@Object/Constraints/Constraints_PK/PK_admin
+
+Prompt
 Prompt***************************** CONSTRAINT PRIMARY KEY OF THE USER TABLE *****************************
 Prompt
 

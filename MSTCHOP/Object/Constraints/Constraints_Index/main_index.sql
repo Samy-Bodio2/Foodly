@@ -8,6 +8,12 @@ Prompt
 
 
 Prompt
+Prompt***************************** CREATION OF THE ADMIN INDEX *****************************
+Prompt
+
+@Object/Constraints/Constraints_Index/index_admin
+
+Prompt
 Prompt***************************** CREATION OF THE USER INDEX *****************************
 Prompt
 

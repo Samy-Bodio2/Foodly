@@ -75,6 +75,7 @@ Prompt
 PROMPT
 PROMPT
 PROMPT
+--Interdiction de toucher ce design. Laisse le malformé imbecile!
 PROMPT	    ****      *********  *********    	 	*********   **********  **********  ***********       ****      ***      ***
 PROMPT     ******     **      ** **      **   	        **      **  **          ***         ***********      ******     ***      ***
 PROMPT    **    **    *********  *********     	        *********   **********  **********      ***         **    **    ***      ***

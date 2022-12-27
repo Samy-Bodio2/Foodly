@@ -1,29 +1,43 @@
-CREATE PROCEDURE consult_details_menu 
-r_id_menu            restaurant.restaurant_id%TYPE;
-r_Menu_title         restaurant.restaurant_title%TYPE;
-r_Menu_descrption    restaurant.restaurant_description%TYPE;
-r_Menu_price         restaurant.restaurant_price%TYPE;
-r_Menu_date          restaurant.restaurant_date%TYPE;
-r_Menu_Qty           restaurant.restaurant_quantity%TYPE;
-r_id_dish            restaurant.restaurant_id%TYPE;
-r_id_complement      restaurant.restaurant_id%TYPE;
-r_id_secilant        restaurant.restaurant_id%TYPE;
-r_Name_dish          restaurant.restaurant_name%TYPE;
-r_Name_complement    restaurant.restaurant_name%TYPE;
-r_Name_seculant      restaurant.restaurant_name%TYPE;
-IS 
-BEGIN
-SELECT
-    id_menu,           
-    Menu_title,         
-    Menu_descrption,   
-    Menu_price,        
-    Menu_date,         
-    Menu_Qty,           
-    id_dish,            
-    id_complement,     
-    id_secilant,       
-    Name_dish,          
-    Name_complement ,  
-    Name_seculant     
-FROM  Menu;
+
+CREATE PROCEDURE consult_Details_Menu IS 
+V_Menu_title         Menu.Menu_title%TYPE;
+V_Descrition_Menu    Menu.Menu_description%TYPE;
+V_menu_price         Menu.Menu_price%TYPE;
+v_Menu_date          Menu.Menu_date%TYPE;
+v_Menu_Qty           Menu.Menu_Qty%TYPE;
+V_name_dish          dish.Name_dish%TYPE;
+V_name_seculant      Seculant.Name_Seculant%TYPE;
+V_palt_complement    complement.Name_complement%TYPE;
+V_name_Resro         restaurant.name_resto%TYPE;
+BEGIN 
+SELECT 
+Menu_title,
+Menu_description,
+Menu_price,
+Menu_date,
+Menu_Qty,
+Name_dish,
+Name_Seculant
+Name_complement,
+name_resto
+INTO 
+V_Menu_title  ,       
+V_Descrition_Menu ,   
+V_menu_price   ,   
+v_Menu_date ,        
+v_Menu_Qty  ,        
+V_name_dish   ,       
+V_name_seculant ,    
+V_palt_complement ,  
+V_name_Resro 
+FROM Menu m
+JOIN Dish d
+ON d.id_dish = m.id_dish
+JOIN Seculant s 
+ON s.id_seculant = m.id_seculant
+JOIN complement c
+ON c.id_complement = m.id_complement
+JOIN restaurant r
+ON r.id_resto = m.id_resto;
+END;
+/

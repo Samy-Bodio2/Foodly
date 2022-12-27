@@ -617,11 +617,8 @@ Function created.
 
 ***************************** POPULATING USER TABLE *****************************
 
-CREATE FUNCTION format1(VAR Users.password%TYPE)
-                *
-ERROR at line 1:
-ORA-00955: name is already used by an existing object
 
+Function created.
 
 
 1 row created.
@@ -1174,6 +1171,24 @@ ORA-00955: name is already used by an existing object
 
 
 ***************************** POPULATING MENU TABLE *****************************
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
 
 
 1 row created.

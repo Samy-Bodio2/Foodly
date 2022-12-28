@@ -1,4 +1,4 @@
-/*PROMPT**************************************************BIENVENUE SUR Nom de lapplication ****************************************************
+PROMPT**************************************************BIENVENUE SUR Nom de lapplication ****************************************************
 PROMPT
 PROMPT      *******************************************************************       
 PROMPT      |                                                                  |
@@ -7,17 +7,15 @@ PROMPT      |               2- Connexion                                       |
 PROMPT      |               3- Quitter                                         |
 PROMPT      ********************************************************************
 
-accept selection PROMPT "choisissez une option : "
+accept selection PROMPT "Voulez-vous vraiment quitter ? (y/n) "
 set term off
 column script new_value v_script
 select  case '&selection'
-        when '1' then '@Procedure/Inscription'
-        when '2' then '@Features/Features_admin/register_admin'
+        when 'y' then exit
+        when 'n' then '@Procedure/Case'
         when '3' then '@exit'
         else 'Procedure/Case'
         end as script
 from dual;
 set term on
 @&v_script.
-*/
-exit

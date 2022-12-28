@@ -31,7 +31,7 @@ RETURN INT IS
     CURSOR prix IS
     SELECT Menu_price 
     from Menu M
-    join Control_Panier_Menu CPM
+    join Choix CPM
     on M.id_menu = CPM.id_menu
     join Panier P
     on P.id_panier = CPM.id_panier
@@ -39,7 +39,7 @@ RETURN INT IS
 
     CURSOR Quant IS
     SELECT Quantity
-    from Control_Panier_Menu
+    from Choix
     where id_panier = valt;
 
     entier1 int; 
@@ -62,16 +62,16 @@ valt int not null := id_panier_seq.currval;
 CURSOR CP IS
     SELECT Menu_title,Menu_Price
     from Menu M
-    join Control_Panier_Menu CPM
+    join Choix CPM
     on M.id_Menu = CPM.id_Menu
     join Panier P
     on P.id_panier = CPM.id_panier
     where CPM.id_panier =  valt;
 CURSOR CPM IS
-    SELECT * from Control_Panier_Menu where id_panier = valt;
+    SELECT * from Choix where id_panier = valt;
     name_menu VARCHAR(50);
     prix_menu INT;
-    control Control_Panier_Menu%ROWTYPE;
+    control Choix%ROWTYPE;
 BEGIN
     OPEN CPM;
     OPEN CP;
@@ -89,7 +89,7 @@ BEGIN
         INSERT INTO Panier(id_panier,id_cust)VALUES
     (id_panier_seq.nextval,
     id_customers_seq.currval);
-    INSERT INTO Control_Panier_Menu(id_panier,id_menu,Quantity) VALUES (id_panier_seq.currval,id_menu('&Menu_Title'),&Quantity);
+    INSERT INTO Choix(id_panier,id_menu,Quantity) VALUES (id_panier_seq.currval,id_menu('&Menu_Title'),&Quantity);
     AFFICHE;
 END;
 /

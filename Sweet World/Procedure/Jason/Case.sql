@@ -4,7 +4,7 @@ PROMPT      ***                                                                 
 PROMPT      ****                                          BIENVENUE SUR Nom de lapplication                                                                                                        ****
 PROMPT      *****                                                                                                                                                                                 *****
 PROMPT      ******                                       1- INSCRIPTION                                                                                                                          ******
-PROMPT      *******                                      2- CONNEXION                                                                                                                           *******           
+PROMPT      *******                                       2- CONNEXION                                                                                                                          *******           
 PROMPT      ******                                       3- QUITTER                                                                                                                              ******
 PROMPT      *****                                                                                                                                                                                 *****
 PROMPT      ****                                                                                                                                                                                   ****

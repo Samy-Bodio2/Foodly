@@ -27,3 +27,11 @@ CREATE OR REPLACE PROCEDURE sp_users(p_id_user IN INT,
    DBMS_OUTPUT.put_line(l_msg);
    END;
    /
+
+BEGIN
+sp_users (p_id_user => id_user_seq.NEXTVAL,
+             p_username => '&username',   
+             p_password => '&password'                      
+             );     
+END;
+/

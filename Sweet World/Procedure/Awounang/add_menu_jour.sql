@@ -17,8 +17,7 @@ declare
         from Restaurant r
         join Users u
         on r.id_user=u.id_user
-        where u.username='&username'
-        and u.password='&password';
+        where u.username='&username';
 
   IF sql%found THEN
 

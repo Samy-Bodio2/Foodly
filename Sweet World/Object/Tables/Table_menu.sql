@@ -8,8 +8,9 @@ CREATE TABLE Menu
     Menu_Qty         INT          NOT NULL,
     id_dish          INT          NOT NULL,
     id_seculant      INT,
-    id_garnish       INT,
-    id_resto         INT,
+    id_complement    INT,
+    id_resto         INT          NOT NULL,
     id_config        INT          NOT NULL
 );
 
+--***** BY KANGUE *****--

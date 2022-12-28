@@ -1,0 +1,1354 @@
+
+Session altered.
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** CREATION USER  *****************************
+
+
+Session altered.
+
+
+specify password for swl as parameter 1:
+
+specify default tablespeace for swl as parameter 2:
+
+specify temporary tablespace for swl as parameter 3:
+
+specify password for SYS as parameter 4:
+
+specify log path as parameter 5:
+
+specify connect string as parameter 6:
+
+
+User dropped.
+
+
+User created.
+
+ALTER USER SET DEFAUT TABLE
+
+User altered.
+
+ALTER USER GIVE A TEMPORARY TABLESSPACE
+
+User altered.
+
+GRAND ACESS CREATE VIEW, ALTER SESSION, CREATE SEQUENCE TO swl
+
+Grant succeeded.
+
+GRANT CREATE SESSION, CREATE VIEW, ALTER SESSION, CREATE SEQUENCE TO swl
+
+Grant succeeded.
+
+Connecté.
+
+Autorisation de privilèges (GRANT) acceptée.
+
+Connecté.
+
+***************************** CREATION SEQUENCE  *****************************
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** SEQUENCE CREATION FOR SWEET_WORLD SCHEMA *****************************
+
+
+***************************** CREATION OF THE ADMIN SEQUENCE *****************************
+
+
+Sequence created.
+
+
+***************************** CREATION OF THE USER SEQUENCE *****************************
+
+
+Sequence created.
+
+
+***************************** CREATION OF THE ORDERS SEQUENCE *****************************
+
+
+Sequence created.
+
+
+***************************** CREATION OF THE NOTE SEQUENCE *****************************
+
+
+Sequence created.
+
+
+***************************** CREATION OF THE CONFIG SEQUENCE *****************************
+
+
+Sequence created.
+
+
+***************************** CREATION OF THE PANIER SEQUENCE *****************************
+
+
+Sequence created.
+
+
+***************************** CREATION OF THE RESTAURANT SEQUENCE *****************************
+
+
+Sequence created.
+
+
+***************************** CREATION OF THE CUSTOMERS SEQUENCE *****************************
+
+
+Sequence created.
+
+
+***************************** CREATION OF THE MENU SEQUENCE *****************************
+
+
+Sequence created.
+
+
+***************************** CREATION OF THE DISH SEQUENCE *****************************
+
+
+Sequence created.
+
+
+***************************** CREATION OF THE COMPLEMENT SEQUENCE *****************************
+
+
+Sequence created.
+
+
+***************************** CREATION OF THE SECULANT SEQUENCE *****************************
+
+
+Sequence created.
+
+
+*******************************************************************SWEET_WORLD*************************************************************************
+
+
+***************************** CREATION TABLE  *****************************
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** TABLE CREATION FOR SWEET_WORLD SCHEMA *****************************
+
+
+***************************** CREATION OF THE USER TABLE *****************************
+
+
+Table created.
+
+
+***************************** CREATION OF THE USER TABLE *****************************
+
+
+Table created.
+
+
+***************************** CREATION OF THE RESTAURANT TABLE *****************************
+
+
+Table created.
+
+
+***************************** CREATION OF THE CUSTOMERS TABLE *****************************
+
+
+Table created.
+
+
+***************************** CREATION OF THE MENU TABLE *****************************
+
+
+Table created.
+
+
+***************************** CREATION OF THE DISH TABLE *****************************
+
+
+Table created.
+
+
+***************************** CREATION OF THE COMPLEMENT TABLE *****************************
+
+
+Table created.
+
+
+***************************** CREATION OF THE SECULANT TABLE *****************************
+
+
+Table created.
+
+
+***************************** CREATION OF THE ORDERS TABLE *****************************
+
+
+Table created.
+
+
+***************************** CREATION OF THE PANIER TABLE *****************************
+
+
+Table created.
+
+
+***************************** CREATION OF THE NOTE TABLE *****************************
+
+
+Table created.
+
+
+***************************** CREATION OF THE CONFIG TABLE *****************************
+
+
+Table created.
+
+
+***************************** CREATION OF THE CONTROL_PANIER_MENU TABLE *****************************
+
+
+Table created.
+
+
+*******************************************************************SWEET_WORLD*************************************************************************
+
+
+***************************** CREATION INDEX  *****************************
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** INDEX CREATION FOR SWEET_WORLD SCHEMA *****************************
+
+
+***************************** CREATION OF THE ADMIN INDEX *****************************
+
+
+Index created.
+
+
+***************************** CREATION OF THE USER INDEX *****************************
+
+
+Index created.
+
+
+***************************** CREATION OF THE RESTAURANT INDEX *****************************
+
+
+Index created.
+
+
+***************************** CREATION OF THE CUSTOMERS INDEX *****************************
+
+
+Index created.
+
+
+***************************** CREATION OF THE MENU INDEX *****************************
+
+
+Index created.
+
+
+***************************** CREATION OF THE DISH INDEX *****************************
+
+
+Index created.
+
+
+***************************** CREATION OF THE COMPLEMENT INDEX *****************************
+
+
+Index created.
+
+
+***************************** CREATION OF THE SECULANT INDEX *****************************
+
+
+Index created.
+
+
+***************************** CREATION OF THE ORDERS INDEX *****************************
+
+
+Index created.
+
+
+***************************** CREATION OF THE PANIER INDEX *****************************
+
+
+Index created.
+
+
+***************************** CREATION OF THE NOTE INDEX *****************************
+
+
+Index created.
+
+
+***************************** CREATION OF THE CONFIG INDEX *****************************
+
+
+Index created.
+
+
+***************************** CREATION OF THE CONTROL_PANIER_MENU INDEX *****************************
+
+
+Index created.
+
+
+*******************************************************************SWEET_WORLD*************************************************************************
+
+
+***************************** CREATION PRIMARY KEY  *****************************
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** CONSTRAINT CREATION FOR SWEET_WORLD SCHEMA *****************************
+
+
+********************************************** PRIMARY KEY *******************************************
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE ADMIN TABLE *****************************
+
+
+Table altered.
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE USER TABLE *****************************
+
+
+Table altered.
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE RESTAURANT TABLE *****************************
+
+
+Table altered.
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE CUSTOMERS TABLE *****************************
+
+
+Table altered.
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE MENU TABLE *****************************
+
+
+Table altered.
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE DISH TABLE *****************************
+
+
+Table altered.
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE COMPLEMENT TABLE *****************************
+
+
+Table altered.
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE SECULANT TABLE *****************************
+
+
+Table altered.
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE ORDERS TABLE *****************************
+
+
+Table altered.
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE PANIER TABLE *****************************
+
+
+Table altered.
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE NOTE TABLE *****************************
+
+
+Table altered.
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE CONFIG TABLE *****************************
+
+
+Table altered.
+
+
+***************************** CONSTRAINT PRIMARY KEY OF THE CONTROL_PANIER_MENU TABLE *****************************
+
+
+Table altered.
+
+
+*******************************************************************SWEET_WORLD*************************************************************************
+
+
+***************************** CREATION FOREIGN KEY  *****************************
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** CONSTRAINT CREATION FOR SWEET_WORLD SCHEMA *****************************
+
+
+*********************************************FOREIGN KEY**********************************************
+
+
+***************************** CONSTRAINT FOREIGN KEY OF THE Users TABLE *****************************
+
+
+Table altered.
+
+
+***************************** CONSTRAINT FOREIGN KEY OF THE CUSTOMERS TABLE *****************************
+
+
+Table altered.
+
+
+***************************** CONSTRAINT FOREIGN KEY OF THE MENU TABLE *****************************
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+***************************** CONSTRAINT FOREIGN KEY OF THE ORDERS TABLE *****************************
+
+
+Table altered.
+
+
+Table altered.
+
+
+***************************** CONSTRAINT  FOREIGN KEY OF THE RESTAURANT TABLE *****************************
+
+
+Table altered.
+
+
+***************************** CONSTRAINT FOREIGN KEY OF THE NOTE TABLE *****************************
+
+
+Table altered.
+
+
+Table altered.
+
+
+***************************** CONSTRAINT  FOREIGN KEY OF THE PANIER TABLE *****************************
+
+
+Table altered.
+
+
+*******************************************************************SWEET_WORLD*************************************************************************
+
+
+***************************** CREATION CHECK  *****************************
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** CHECK CREATION FOR SWEET_WORLD SCHEMA *****************************
+
+
+***************************** CREATION OF THE ADMIN CHECK *****************************
+
+
+Table altered.
+
+
+***************************** CREATION OF THE USER CHECK *****************************
+
+
+Table altered.
+
+
+***************************** CREATION OF THE RESTAURANT CHECK *****************************
+
+
+Table altered.
+
+
+***************************** CREATION OF THE CUSTOMERS CHECK *****************************
+
+
+Table altered.
+
+
+***************************** CREATION OF THE MENU CHECK *****************************
+
+
+Table altered.
+
+
+***************************** CREATION OF THE NOTE CHECK *****************************
+
+
+Table altered.
+
+
+***************************** CREATION OF THE CONFIG CHECK *****************************
+
+
+Table altered.
+
+
+***************************** CREATION OF THE CONTROL_PANIER_MENU CHECK *****************************
+
+
+Table altered.
+
+
+*******************************************************************SWEET_WORLD*************************************************************************
+
+
+***************************** POPULATE TABLE  *****************************
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** POPULATING SWEET_WORLD SCHEMA *****************************
+
+
+***************************** POPULATING ADMIN TABLE *****************************
+
+
+Function created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+***************************** POPULATING USER TABLE *****************************
+
+
+Function created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+***************************** POPULATING DISH TABLE *****************************
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+***************************** POPULATING COMPLEMENT TABLE *****************************
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+***************************** POPULATING SECULANT TABLE *****************************
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+***************************** POPULATING CONFIG TABLE *****************************
+
+
+1 row created.
+
+
+***************************** POPULATING CONTROL_PANIER_MENU TABLE *****************************
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+***************************** POPULATING CUSTOMERS TABLE *****************************
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+***************************** POPULATING RESTAURANT TABLE *****************************
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+***************************** POPULATING NOTE TABLE *****************************
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+***************************** POPULATING MENU TABLE *****************************
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+***************************** POPULATING PANIER TABLE *****************************
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+***************************** POPULATING ORDERS TABLE *****************************
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+
+
+****      *********  *********    	 	        *********   **********  **********  ***********       ****      ***      ***
+******     **      ** **      **   	            **      **  **          ***         ***********      ******     ***      ***
+**    **    *********  *********     	        *********   **********  **********      ***         **    **    ***      ***
+**********   **         **                      **   **     **********         ***      ***        **********   ***      ***
+**        **  **         **         	        **    **    **          **********      ***       **        **  ************
+**          ** **         **         	        **     **   **********  **********      ***      **          ** ************
+
+
+
+
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+ADMIN
+USERS
+RESTAURANT
+CUSTOMERS
+MENU
+DISH
+COMPLEMENT
+SECULANT
+ORDERS
+PANIER
+NOTE
+CONFIG
+CONTROL_PANIER_MENU
+
+13 rows selected.
+
+
+*******************************************************************APP_RESTAU*************************************************************************
+

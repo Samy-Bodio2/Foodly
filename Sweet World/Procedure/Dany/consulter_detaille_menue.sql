@@ -21,7 +21,7 @@ Menu_price,
 Menu_date,
 Menu_Qty,
 Name_dish,
-Name_Seculant
+Name_Seculant,
 Name_complement,
 name_resto
 INTO 

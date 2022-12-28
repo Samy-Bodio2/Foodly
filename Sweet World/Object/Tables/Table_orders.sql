@@ -5,5 +5,3 @@ CREATE TABLE Orders
     id_resto        INT      NOT NULL, 
     id_panier       INT      NOT NULL
 );
-
---***** BY FOTSO *****--

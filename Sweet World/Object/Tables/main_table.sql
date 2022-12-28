@@ -3,8 +3,9 @@ ALTER SESSION SET NLS_TERRITORY=America;
 ALTER session set NLS_DATE_FORMAT='DD/MM/YYYY'
 
 Prompt
-Prompt***************************** TABLE CREATION FOR SWEET_WORLD SCHEMA *****************************
+Prompt***************************** TABLE CREATION FOR FOOD SCHEMA *****************************
 Prompt
+
 
 Prompt
 Prompt***************************** CREATION OF THE ADMIN TABLE *****************************
@@ -43,10 +44,10 @@ Prompt
 @Object/Tables/Table_dish
 
 Prompt
-Prompt***************************** CREATION OF THE COMPLEMENT TABLE *****************************
+Prompt***************************** CREATION OF THE GARNISH TABLE *****************************
 Prompt
 
-@Object/Tables/Table_complement
+@Object/Tables/Table_garnish
 
 Prompt
 Prompt***************************** CREATION OF THE SECULANT TABLE *****************************
@@ -79,12 +80,7 @@ Prompt
 @Object/Tables/Table_config
 
 Prompt
-Prompt***************************** CREATION OF THE CONTROL_PANIER_MENU TABLE *****************************
+Prompt***************************** CREATION OF THE CHOIX TABLE *****************************
 Prompt
 
-@Object/Tables/Table_control_panier_menu
-
-Prompt
-Prompt *******************************************************************SWEET_WORLD*************************************************************************
-Prompt
-
+@Object/Tables/Table_choix

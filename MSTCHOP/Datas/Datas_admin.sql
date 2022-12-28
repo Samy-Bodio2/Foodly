@@ -1,19 +1,3 @@
-set serveroutput on;
-CREATE FUNCTION format1(VAR Users.password%TYPE)
-RETURN VARCHAR IS
-conk VARCHAR(20);
-entier INT;
-BEGIN
-entier := length(VAR);
-FOR i IN 1..entier LOOP
-
-    conk := concat(conk,'*');
-
-END LOOP;
-RETURN conk;
-END;
-/
-
 INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (1,'Samy Bodio',format1('qwerty123'));
 INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (2,'Silha Jason',format1('123456789'));
 INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (3,'Nguiakam Angele',format1('123ktrd89'));

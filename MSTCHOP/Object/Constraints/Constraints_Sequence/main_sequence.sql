@@ -80,8 +80,3 @@ Prompt
 @Object/Constraints/Constraints_Sequence/sequence_seculant
 
 
-
-Prompt
-Prompt *******************************************************************SWEET_WORLD*************************************************************************
-Prompt
-

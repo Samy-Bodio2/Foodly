@@ -60,6 +60,11 @@ Prompt
 @Object/Constraints/Constraints_Check/main_check
 
 Prompt
+Prompt***************************** CREATE FUNCTION  *****************************
+Prompt
+@Functions/Encrypt_password
+
+Prompt
 Prompt***************************** POPULATE TABLE  *****************************
 Prompt
 
@@ -69,16 +74,30 @@ Prompt
 Prompt***************************** CREATE PROCEDURE  *****************************
 Prompt
 @Procedure/main_procedure
---@Procedure/Case
+
+PROMPT
+PROMPT
+PROMPT
+PROMPT	       ****      *********  *********    	 	        *********   **********  **********  ***********       ****      ***      ***
+PROMPT        ******     **      ** **      **   	            **      **  **          ***         ***********      ******     ***      ***
+PROMPT       **    **    *********  *********     	        *********   **********  **********      ***         **    **    ***      ***
+PROMPT      **********   **         **                      **   **     **********         ***      ***        **********   ***      ***
+PROMPT     **        **  **         **         	        **    **    **          **********      ***       **        **  ************
+PROMPT    **          ** **         **         	        **     **   **********  **********      ***      **          ** ************
+PROMPT
+PROMPT
+PROMPT 
+PROMPT 
+PROMPT
+
+@Procedure/Case
 SET SERVEROUTPUT ON;
-Prompt
-Prompt ********************************************************************************************************************************************
-Prompt
+
 
 select table_name from user_tables;
 SET LINESIZE 6000
 SET PAGESIZE 1000
-SELECT * FROM USERS;
+/*SELECT * FROM USERS;
 SELECT * FROM RESTAURANT;
 SELECT * FROM CUSTOMERS;
 SELECT * FROM DISH;
@@ -89,7 +108,9 @@ SELECT * FROM ORDERS;
 SELECT * FROM PANIER;
 SELECT * FROM NOTE;
 SELECT * FROM CONFIG;
-SELECT * FROM CHOIX;
+SELECT * FROM CHOIX;*/
+
+
 
 -- BY ANGELE JASON
 --

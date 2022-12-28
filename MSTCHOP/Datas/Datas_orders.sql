@@ -1,49 +1,15 @@
-insert into orders( id_order,
-    order_date, 
-    id_resto , 
-    id_panier   ) 
-VALUES (1,
- TO_DATE('1/03/2022', 'DD/MM/YYYY'),
-1,
-10);
+INSERT INTO orders( id_order,order_date, id_resto ,id_panier) 
+VALUES (1,TO_DATE('1/03/2022', 'DD/MM/YYYY'),1,10);
+INSERT INTO orders(  id_order,order_date, id_resto , id_panier)  
+VALUES (2,TO_DATE('20/03/2022', 'DD/MM/YYYY'),2,9);
+INSERT INTO orders( id_order, order_date,id_resto ,id_panier)  
+VALUES (3, TO_DATE('20/06/2022', 'DD/MM/YYYY'), 3,8);
+INSERT INTO orders( id_order,order_date, id_resto ,id_panier)  
+VALUES (4, TO_DATE('20/05/2022', 'DD/MM/YYYY'),5,7);
+INSERT INTO orders( id_order, order_date, id_resto , id_panier   )  
+VALUES (5,TO_DATE('20/02/2022', 'DD/MM/YYYY'),9,6);
 
-insert into orders(  id_order,
-    order_date, 
-    id_resto , 
-    id_panier   )  
-VALUES (2,
-TO_DATE('20/03/2022', 'DD/MM/YYYY'),
-2,
-9);
-
-insert into orders( id_order,
-    order_date, 
-    id_resto , 
-    id_panier   )  
-VALUES (3,
-TO_DATE('20/06/2022', 'DD/MM/YYYY'),
-3,
-8);
-
-insert into orders( id_order,
-    order_date, 
-    id_resto , 
-    id_panier   )  
-VALUES (4,
-TO_DATE('20/05/2022', 'DD/MM/YYYY'),
-5,
-7);
-
-insert into orders( id_order,
-    order_date, 
-    id_resto , 
-    id_panier   )  
-VALUES (5,
-TO_DATE('20/02/2022', 'DD/MM/YYYY'),
-9,
-6);
-
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -52,7 +18,7 @@ TO_DATE('20/03/2022', 'DD/MM/YYYY'),
 7,
 5);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -61,7 +27,7 @@ TO_DATE('20/08/2022', 'DD/MM/YYYY'),
 7,
 4);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -70,7 +36,7 @@ TO_DATE('20/10/2022', 'DD/MM/YYYY'),
 8,
 3);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -79,7 +45,7 @@ TO_DATE('20/8/2022', 'DD/MM/YYYY'),
 9,
 2);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -88,7 +54,7 @@ TO_DATE('20/01/2022', 'DD/MM/YYYY'),
 10,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -97,7 +63,7 @@ TO_DATE('02/01/2022', 'DD/MM/YYYY'),
 5,
 3);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -106,7 +72,7 @@ TO_DATE('20/01/2022', 'DD/MM/YYYY'),
 8,
 2);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -115,7 +81,7 @@ TO_DATE('22/01/2022', 'DD/MM/YYYY'),
 9,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -124,7 +90,7 @@ TO_DATE('23/01/2022', 'DD/MM/YYYY'),
 7,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -133,7 +99,7 @@ TO_DATE('19/01/2022', 'DD/MM/YYYY'),
 6,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -142,7 +108,7 @@ TO_DATE('29/01/2022', 'DD/MM/YYYY'),
 3,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -151,7 +117,7 @@ TO_DATE('20/05/2022', 'DD/MM/YYYY'),
 2,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -160,7 +126,7 @@ TO_DATE('25/01/2022', 'DD/MM/YYYY'),
 8,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -169,7 +135,7 @@ TO_DATE('20/07/2022', 'DD/MM/YYYY'),
 7,
 2);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -178,7 +144,7 @@ TO_DATE('20/02/2022', 'DD/MM/YYYY'),
 6,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -187,7 +153,7 @@ TO_DATE('20/02/2022', 'DD/MM/YYYY'),
 5,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -196,7 +162,7 @@ TO_DATE('23/01/2022', 'DD/MM/YYYY'),
 3,
 2);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -205,7 +171,7 @@ TO_DATE('20/01/2022', 'DD/MM/YYYY'),
 6,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -214,7 +180,7 @@ TO_DATE('20/01/2022', 'DD/MM/YYYY'),
 7,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -223,7 +189,7 @@ TO_DATE('20/06/2022', 'DD/MM/YYYY'),
 9,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -232,7 +198,7 @@ TO_DATE('23/05/2022', 'DD/MM/YYYY'),
 10,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -241,7 +207,7 @@ TO_DATE('19/01/2022', 'DD/MM/YYYY'),
 9,
 3);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -250,7 +216,7 @@ TO_DATE('20/01/2021', 'DD/MM/YYYY'),
 3,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -259,7 +225,7 @@ TO_DATE('20/01/2022', 'DD/MM/YYYY'),
 2,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -268,7 +234,7 @@ TO_DATE('20/01/2022', 'DD/MM/YYYY'),
 10,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -277,7 +243,7 @@ TO_DATE('20/02/2022', 'DD/MM/YYYY'),
 5,
 3);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -286,7 +252,7 @@ TO_DATE('15/01/2022', 'DD/MM/YYYY'),
 10,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -295,7 +261,7 @@ TO_DATE('20/05/2022', 'DD/MM/YYYY'),
 8,
 3);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -304,7 +270,7 @@ TO_DATE('03/01/2022', 'DD/MM/YYYY'),
 9,
 3);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -313,7 +279,7 @@ TO_DATE('20/01/2021', 'DD/MM/YYYY'),
 2,
 3);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -322,7 +288,7 @@ TO_DATE('20/02/2022', 'DD/MM/YYYY'),
 8,
 4);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -331,7 +297,7 @@ TO_DATE('21/01/2022', 'DD/MM/YYYY'),
 10,
 2);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -340,7 +306,7 @@ TO_DATE('10/01/2022', 'DD/MM/YYYY'),
 9,
 3);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -349,7 +315,7 @@ TO_DATE('20/10/2022', 'DD/MM/YYYY'),
 6,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -358,7 +324,7 @@ TO_DATE('19/01/2022', 'DD/MM/YYYY'),
 10,
 2);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -367,7 +333,7 @@ TO_DATE('20/09/2021', 'DD/MM/YYYY'),
 6,
 3);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -376,7 +342,7 @@ TO_DATE('28/01/2022', 'DD/MM/YYYY'),
 5,
 2);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -385,7 +351,7 @@ TO_DATE('20/01/2022', 'DD/MM/YYYY'),
 3,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -394,7 +360,7 @@ TO_DATE('20/01/2022', 'DD/MM/YYYY'),
 3,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -403,7 +369,7 @@ TO_DATE('20/01/2022', 'DD/MM/YYYY'),
 10,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -412,7 +378,7 @@ TO_DATE('25/01/2022', 'DD/MM/YYYY'),
 2,
 3);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -421,7 +387,7 @@ TO_DATE('09/07/2022', 'DD/MM/YYYY'),
 10,
 2);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -430,7 +396,7 @@ TO_DATE('09/07/2022', 'DD/MM/YYYY'),
 10,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  
@@ -439,7 +405,7 @@ TO_DATE('21/06/2021', 'DD/MM/YYYY'),
 12,
 1);
 
-insert into orders( id_order,
+INSERT INTO orders( id_order,
     order_date, 
     id_resto , 
     id_panier   )  

@@ -1,4 +1,4 @@
-set serveroutput on;
+set SERVEROUTPUT on ;
 DECLARE
 CURSOR menu IS
 select Menu_title,Menu_price,Menu_Qty,R.Name_resto from Menu M
@@ -24,5 +24,3 @@ BEGIN
     consult_Menu_Jour;
 END;
 /
-
--------------------samy bodio(c'est pas ma fonctionnalite dsl!)

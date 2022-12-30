@@ -81,6 +81,30 @@ BEGIN
 END;
 /
 
+CREATE OR REPLACE PROCEDURE magie
+IS
+    valt INT := id_panier_seq.currval;
+    QuantityPanier  Control_Panier_Menu.Quantity%TYPE;
+    var_id_menu Menu.id_menu%TYPE;
+
+    CURSOR quantPanier IS
+    SELECT Quantity from Control_Panier_Menu
+    where id_panier = valt;
+
+    CURSOR menuId IS
+    SELECT id_menu from Control_Panier_Menu
+    where id_panier = valt;
+BEGIN
+    OPEN quantPanier;
+    OPEN menuId;
+    FETCH quantPanier INTO QuantityPanier;
+    FETCH menuId INTO var_id_menu;
+    UPDATE MENU 
+    SET Menu_Qty = Menu_Qty - QuantityPanier
+    WHERE id_menu = var_id_menu;
+END;
+/
+
 DECLARE
 BEGIN
     INSERT INTO Customers(id_cust,first_name,last_name,phone_number,Email,Datecd_cust,Cust_address,id_user)
@@ -91,5 +115,6 @@ BEGIN
     id_customers_seq.currval);
     INSERT INTO Control_Panier_Menu(id_panier,id_menu,Quantity) VALUES (id_panier_seq.currval,id_menu('&Menu_Title'),&Quantity);
     AFFICHE;
+    magie;
 END;
 /

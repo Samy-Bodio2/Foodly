@@ -25,8 +25,11 @@ specify log path as parameter 5:
 
 specify connect string as parameter 6:
 
+DROP USER FindSW CASCADE
+          *
+ERROR at line 1:
+ORA-01918: user 'FINDSW' does not exist 
 
-User dropped.
 
 
 User created.
@@ -36,8 +39,11 @@ ALTER USER SET DEFAUT TABLE
 User altered.
 
 ALTER USER GIVE A TEMPORARY TABLESSPACE
+ALTER USER FindFood TEMPORARY TABLESPACE temp
+           *
+ERROR at line 1:
+ORA-01918: user 'FINDFOOD' does not exist 
 
-User altered.
 
 GRAND ACESS CREATE VIEW, ALTER SESSION, CREATE SEQUENCE TO FindSW
 

@@ -15,7 +15,7 @@ JOIN Users U
 ON R.id_user = U.id_user
 JOIN Menu M
 ON M.id_resto = R.id_resto
-WHERE U.username ='&ENTER_YOUR_NAME';
+WHERE U.username ='&ENTER_YOUR_NAME' and U.password = format1('&Password');
 
 
 --------------------samy bodio

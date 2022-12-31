@@ -25,11 +25,8 @@ specify log path as parameter 5:
 
 specify connect string as parameter 6:
 
-DROP USER FindSW CASCADE
-          *
-ERROR at line 1:
-ORA-01918: user 'FINDSW' does not exist 
 
+User dropped.
 
 
 User created.
@@ -1663,8 +1660,8 @@ Procedure created.
 
 
 
-****      *********  *********    	 	        *********   **********  **********  ***********       ****      ***      ***
-******     **      ** **      **   	            **      **  **          ***         ***********      ******     ***      ***
+****      *********  *********    	        *********   **********  **********  ***********       ****      ***      ***
+******     **      ** **      **   	        **      **  **          ***         ***********      ******     ***      ***
 **    **    *********  *********     	        *********   **********  **********      ***         **    **    ***      ***
 **********   **         **                      **   **     **********         ***      ***        **********   ***      ***
 **        **  **         **         	        **    **    **          **********      ***       **        **  ************
@@ -1677,6 +1674,12 @@ Procedure created.
 
 TABLE_NAME
 --------------------------------------------------------------------------------------------------------------------------------
+SECULANT
+PANIER
+NOTE
+ORDERS
+CONFIG
+CHOIX
 ADMIN
 USERS
 RESTAURANT
@@ -1684,12 +1687,6 @@ CUSTOMERS
 MENU
 DISH
 GARNISH
-SECULANT
-ORDERS
-PANIER
-NOTE
-CONFIG
-CHOIX
 
 13 rows selected.
 

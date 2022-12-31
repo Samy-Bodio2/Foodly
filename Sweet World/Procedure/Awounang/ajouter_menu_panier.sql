@@ -6,6 +6,7 @@ declare
     v_id_cust Panier.id_cust%type;
     v_option char  := '&choix';
     choix1 char  := '&choix';
+    v_menu_id int;
 
 begin
 
@@ -23,14 +24,18 @@ begin
     and u.password='&passwd';
 
     IF sql%found THEN
+    
+    select id_Menu
+    into v_menu_id
+    from Menu where Menu_title = '&Menu_title';
 
-    insert into Choix
+    insert into Control_Panier_Menu
     (
        id_panier, id_menu, Quantity
     )
     values
     (
-         v_id_panier, &menu_id, '&quantite'
+         v_id_panier, v_menu_id, '&quantite'
     );
 
     DBMS_OUTPUT.PUT_LINE ('Voulez-vous passer votre commande ? (y/n)');

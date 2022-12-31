@@ -1,5 +1,5 @@
 
-CREATE PROCEDURE consult_Detaille_Menu IS 
+CREATE PROCEDURE consult_Detail_Menu IS 
 V_Menu_title         Menu.Menu_title%TYPE;
 V_Descrition_Menu    Menu.Menu_description%TYPE;
 V_menu_price         Menu.Menu_price%TYPE;

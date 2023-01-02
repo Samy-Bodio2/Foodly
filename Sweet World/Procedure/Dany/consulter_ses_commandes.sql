@@ -1,7 +1,7 @@
 
 --'''''''''''''''''''''''''''''''''''''''''''''''''''''' crating by kenchoung''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-CREATE PROCEDURE consult_ses_commande IS 
+/*CREATE PROCEDURE consult_ses_commande IS 
 V_nom_cmplet         Menu.Menu_title%TYPE;
 V_Nom_Client    customers.first_namee%TYPE;
 V_menu_prix         Menu.Menu_price%TYPE;
@@ -13,7 +13,7 @@ V_palt_complement    complement.Name_complement%TYPE;
 V_name_Resro         restaurant.name_resto%TYPE;
 V_name_client               ADMIN.name_admin%TYPE;
 BEGIN 
-DBMS_OUTPUT.PUT_LINE('Vueiller entrer votre nom et votre mot de passe: ');
+DBMS_OUTPUT.PUT_LINE('Vueiller entrer votre nom et votre mot de passe: ');*/
 SELECT 
 Menu_title,
 first_name||last_name,
@@ -25,6 +25,7 @@ Name_Seculant,
 Name_complement,
 order_date,
 name_resto
+/*
 INTO 
 V_Menu_title  ,       
 V_Nom_Client ,   
@@ -34,7 +35,7 @@ v_Menu_Qty  ,
 V_name_dish   ,       
 V_name_seculant ,    
 V_palt_complement ,  
-V_name_Resro 
+V_name_Resro */
 FROM Orders o
 JOIN panier p
 ON p.id_panier = o.id_panier
@@ -52,10 +53,12 @@ JOIN SECULANT s
 ON s.id_seculant = m.id_seculant 
 JOIN complement c 
 ON c.id_complement = m.id_complement
-WHERE username = '&username' AND password = '&password';    
+WHERE username = '&username' AND password = '&password';
+/*
 END;
+
 /
 BEGIN
 consult_ses_commande;
 END;
-/
+/*/

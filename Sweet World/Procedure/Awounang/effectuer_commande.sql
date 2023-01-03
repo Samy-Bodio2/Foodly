@@ -1,87 +1,64 @@
+set serveroutput on;
 
---Awounang
-declare
+create or replace function id_resto(nom varchar)
+return int IS
+cursor idResto is 
+select id_resto from restaurant where name_resto = nom;
+id int;
+begin 
+open idResto;
+fetch idResto into id;
+return id;
+end;
+/
 
-        v_Panier Panier.id_Panier%type;
-        v_customer_id Panier.id_cust%type;
-        v_Menu_Qty Menu.Menu_Qty%type;
-        v_menu_id Menu.id_menu%type;
-        v_id_resto Restaurant.id_resto%type;
-        choice_qte Control_Panier_Menu.Quantity%type;
-        v_option varchar(50);
-        choix char ;
+create or replace function id_user(nom1 varchar, nom2 varchar)
+return int is 
+cursor idUser is 
+select id_user from users 
+where username = nom1 and password = nom2;
+id int;
+begin 
+open idUser;
+fetch idUser into id;
+return id;
+end;
+/
 
-        procedure do_commande as
+create or replace function id_cust(nom1 varchar, nom2 varchar)
+return int is 
+cursor idCust is 
+select id_cust from customers where id_user = id_user(nom1, nom2);
+id int;
+begin 
+open idCust;
+fetch idCust into id;
+return id;
+end;
+/
 
-        begin 
+create or replace function id_panier(nom1 varchar, nom2 varchar)
+return int is 
+cursor idPanier is 
+select id_panier from panier where id_cust = id_cust(nom1, nom2);
+id int;
+begin 
+open idPanier;
+fetch idPanier into id;
+return id;
+end;
+/
 
-        select id_Panier
-        into v_Panier
-        from Panier
-        where id_cust=v_customer_id;
+declare 
+v_id_resto int :=id_resto('&restaurant');
+v_id_panier int :=id_panier('&username','&password');
+begin 
 
-        select id_cust
-        into v_customer_id
-        from Customers c
-        join Users u
-        on c.id_user=u.id_user
-        where u.username='&username'
-        and u.password='&password';
+insert into orders (id_order,order_date,id_resto,id_panier)
+values (id_order_seq.nextval, to_date(sysdate,'dd-mm-yyyy'), v_id_resto, v_id_panier);
+DBMS_OUTPUT.PUT_LINE ('commande effectuée!');
 
-        if sql%found then
+delete from choix where id_panier = v_id_panier;
 
-        select id_resto
-        into v_id_resto
-        from Restaurant
-        where name_resto = '&name_resto';
-
-        select Menu_Qty
-        into v_Menu_Qty
-        from Menu
-        where id_menu=v_menu_id;
-
-        select Quantity
-        into choice_qte
-        from choix
-        where id_menu = v_menu_id;
-
-        insert into Orders
-        (
-                id_order,order_date,id_resto,id_Panier 
-        )
-        values
-        (
-                id_order_seq.nextval,
-                to_char(sysdate,'dd/mm/yyyy'),v_id_resto,v_Panier
-        );
-
-        v_Menu_Qty := v_Menu_Qty-choice_qte;
-
-        update Menu 
-        set Menu_Qty = v_Menu_Qty; 
-
-        delete from Control_Panier_Menu
-        where id_Panier=v_Panier;
-
-        DBMS_OUTPUT.PUT_LINE ('1. Retour');
-        DBMS_OUTPUT.PUT_LINE ('2. Quitter');
-
-        v_option := case '&choix'
-                when '1' then 'action_respo'
-                when '2' then 'quitter'
-        end ;
-
-        else 
-        DBMS_OUTPUT.PUT_LINE('votre login et mot de passe sont faux... entrez les a nouveau : ');
-        end if;
-
-        exception
-        when no_data_found then
-        DBMS_OUTPUT.PUT_LINE('aucune valeur trouvée');
-
-    end ;
-
-    begin
-    do_commande;
-    end;
+end;
 /

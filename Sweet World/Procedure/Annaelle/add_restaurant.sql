@@ -2,7 +2,6 @@
 SET SERVEROUTPUT ON;
 
 CREATE OR REPLACE PROCEDURE Add_Restaurant
-(
   r_id_resto         IN	INT	,	
   r_Name_resto      IN	VARCHAR2(25),
   r_Name_employees  IN	VARCHAR2(25),
@@ -11,8 +10,7 @@ CREATE OR REPLACE PROCEDURE Add_Restaurant
   r_Resto_adress   IN VARCHAR2(25),
   r_Date_res_created IN DATE,
   r_id_user           IN INT
-                                            
-)
+                                        
    IS
         l_msg VARCHAR2(100);
     BEGIN
@@ -57,7 +55,7 @@ CREATE OR REPLACE PROCEDURE Add_Restaurant
          END;
           DBMS.OUTPUT.put_line(l_msg);
  END;
-
+/
 
 
 

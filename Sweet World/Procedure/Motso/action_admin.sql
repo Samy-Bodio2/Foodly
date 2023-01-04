@@ -24,13 +24,13 @@ begin
     v_option := case choix
         when '1' then ' @add_restaurant'
         when '2' then ' @consult_restaurant'
-        when '3' then  '@3'
-        when '4' then ' @4'
-        when '5' then  '@se deconnecter'
-        when '6' then ' @se deconnecter'
-        when '7' then ' @se deconnecter'
+        when '3' then  '@Procedure_edit_resto'
+        when '4' then " @recherche d'un restaurant"
+        when '5' then  '@add_menu_jour'
+        when '6' then ' @'
+        when '7' then ' @historique_commande'
         when '8' then  '@se deconnecter'
-        when '9' then  '@quitter'
+        when '9' then  '@exit'
         END;
         DBMS_OUTPUT.PUT_LINE (v_option);
 

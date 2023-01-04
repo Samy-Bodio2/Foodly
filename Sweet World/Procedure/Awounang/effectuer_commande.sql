@@ -72,6 +72,7 @@ begin
         --creation de la commande
         insert into orders (id_order,order_date,id_resto,id_panier)
         values (id_order_seq.nextval, to_date(sysdate,'dd-mm-yyyy'), v_id_resto, v_id_panier);
+        DBMS_OUTPUT.PUT_LINE();
         DBMS_OUTPUT.PUT_LINE ('commande effectuée!');
 
         --vidange du panier du client

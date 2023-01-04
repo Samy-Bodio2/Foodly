@@ -22,15 +22,15 @@ declare
 begin
 
     v_option := case choix
-        when '1' then ' @add_restaurant'
-        when '2' then ' @consult_restaurant'
-        when '3' then  '@Procedure_edit_resto'
-        when '4' then " @recherche d'un restaurant"
-        when '5' then  '@add_menu_jour'
+        when '1' then ' @Procedure/add_restaurant'
+        when '2' then ' @Procedure/consult_restaurant'
+        when '3' then  '@Procedure/Procedure_edit_resto'
+        when '4' then " @Procedure/recherche d'un restaurant"
+        when '5' then  '@Procedure/add_menu_jour'
         when '6' then ' @'
-        when '7' then ' @historique_commande'
-        when '8' then  '@se deconnecter'
-        when '9' then  '@exit'
+        when '7' then ' @Procedure/historique_commande'
+        when '8' then  '@Procedure/se deconnecter'
+        when '9' then  '@Procedure/exit'
         END;
         DBMS_OUTPUT.PUT_LINE (v_option);
 

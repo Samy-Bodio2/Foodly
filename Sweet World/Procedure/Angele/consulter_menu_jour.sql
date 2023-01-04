@@ -1,26 +1,28 @@
-set SERVEROUTPUT on ;
+SET SERVEROUTPUT ON;
 DECLARE
 CURSOR menu IS
-select Menu_title,Menu_price,Menu_Qty,R.Name_resto from Menu M
-JOIN Restaurant R
-on M.id_resto = R.id_resto;
-PROCEDURE consult_Menu_Jour AS
-V_menu_titre Menu%ROWTYPE;
-V_menu_price Menu%ROWTYPE;
-V_menu_qty Menu%ROWTYPE;
-V_resto_nom Restaurant%ROWTYPE; 
-BEGIN 
+SELECT menu_title,menu_price,menu_description,Menu_Qty,r.name_resto 
+from menu m,restaurant r
+PROCEDURE Menu_Jour as
+v.Menu_title menu.menu_title%ROWTYPE;
+v.Menu_price menu.menu_price%ROWTYPE;
+v.Menu_description menu.menu_description%ROWTYPE;
+v.Menu_Qty menu.Menu_Qty%ROWTYPE;
+v.name_resto menu.name_resto%ROWTYPE;
+BEGIN
 OPEN menu;
 LOOP
-FETCH menu into V_menu_titre.Menu_title,V_menu_price.Menu_price,V_menu_qty.Menu_Qty,V_resto_nom.Name_resto;
-    EXIT WHEN menu%NOTFOUND;
-    DBMS_OUTPUT.PUT_LINE('Nom du Menu: '||V_menu_titre.Menu_title||'  '||'Prix du Menu: '||V_menu_price.Menu_price
-    ||'FCFA'||'  '||'Quantite restante: '||V_menu_qty.Menu_Qty||'  '||'Restaurant: '||V_resto_nom.Name_resto);
-    DBMS_OUTPUT.PUT_LINE('---------------------------------------------------------------------------------------------------');
+FETCH menu INTO v.Menu_title,v.Menu_price,v.Menu_description,v.Menu_Qty,v.name_resto;
+EXIT WHEN menu%NOTFOUND;
+DBMS_OUTPUT.PUT_LINE('Nom Menu : 'v.Menu_title||' '||
+'Price Menu :  '||v.Menu_price||'FCFA'||' '||
+v.Menu_description||' '||
+'Quantity:  '||v.Menu_Qty||' '||
+'Restaurant Name : 'v.name_resto);
 END LOOP;
 CLOSE menu;
-END;
+END Menu_Jour;
 BEGIN
-    consult_Menu_Jour;
+Menu_Jour;
 END;
 /

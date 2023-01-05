@@ -5,4 +5,4 @@ sp_register_admin (p_id_user => id_user_seq.NEXTVAL,
              );
 END;
 /
-@Features/Features_customer/Menu_customer
+@Features/Features_admin/Menu_admin

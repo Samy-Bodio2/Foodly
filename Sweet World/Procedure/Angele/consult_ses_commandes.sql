@@ -1,3 +1,4 @@
+prompt *****detail commandes******
 select order_date,restaurant_name,menu_title,menu_qte,
 (select sum(menu_price*quantity) 
  from choix c

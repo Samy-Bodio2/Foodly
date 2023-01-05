@@ -62,7 +62,7 @@ Prompt
 Prompt
 Prompt***************************** CREATE FUNCTION  *****************************
 Prompt
-@Functions/Encrypt_password
+@Functions/main_functions
 
 Prompt
 Prompt***************************** POPULATE TABLE  *****************************
@@ -89,12 +89,11 @@ PROMPT
 PROMPT 
 PROMPT 
 PROMPT
-
---@Procedure/Case
 SET SERVEROUTPUT ON;
+@Procedure/Case
 
 
-select table_name from user_tables;
+--select table_name from user_tables;
 SET LINESIZE 6000
 SET PAGESIZE 1000
 /*SELECT * FROM USERS;

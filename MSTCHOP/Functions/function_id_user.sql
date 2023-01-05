@@ -9,3 +9,16 @@ FETCH iduse into entier;
 RETURN entier;
 END;
 /
+
+create or replace function id_user(nom1 varchar, nom2 varchar)
+return int is 
+cursor idUser is 
+select id_user from users 
+where username = nom1 and password = nom2;
+id int;
+begin 
+open idUser;
+fetch idUser into id;
+return id;
+end;
+/

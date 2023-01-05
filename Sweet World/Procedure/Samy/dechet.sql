@@ -40,3 +40,31 @@
     -- INSERT INTO Customers(id_cust,first_name,last_name,phone_number,Email,Datecd_cust,Cust_address,id_user)
     -- VALUES
     -- (id_customers_seq.nextval,'&first_name','&last_name',&phone_number,'&Email',SYSDATE,'&Cust_address',idutil('&Enter_Your_User_Name'));
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    CREATE OR REPLACE FUNCTION idpan(nom VARCHAR)
+    RETURN INT IS
+    CURSOR idpanier IS
+    SELECT P.id_panier from Panier P
+    join Customers C
+    on P.id_cust = C.id_cust 
+    join Users S
+    on S.id_user = C.id_user
+    where S.username = nom;
+    entier INT;
+    BEGIN
+    OPEN idpanier;
+    FETCH idpanier into entier;
+    RETURN entier;
+    END;
+    /

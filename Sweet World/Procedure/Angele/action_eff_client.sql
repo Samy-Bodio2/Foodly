@@ -19,7 +19,7 @@ prompt ¤¤¤¤¤¤¤¤¤
 prompt ¤¤¤¤¤¤¤¤¤¤
 prompt ***************************************************************************
 begin
-  DBMS_OUTPUT.PUT_LINE('1:Consulter le menu du jour');
+  /*DBMS_OUTPUT.PUT_LINE('1:Consulter le menu du jour');
   DBMS_OUTPUT.PUT_LINE('2:Consulter les details du menu du jour');
     DBMS_OUTPUT.PUT_LINE('3:Consulter les restaurants');
     DBMS_OUTPUT.PUT_LINE('4:Recherche un menu');
@@ -28,7 +28,7 @@ begin
     DBMS_OUTPUT.PUT_LINE('7:Consulter ses commandes');
     DBMS_OUTPUT.PUT_LINE('8:Noter un restaurant');
     DBMS_OUTPUT.PUT_LINE('9:Se deconnecter');
-    DBMS_OUTPUT.PUT_LINE('10:Quitter');
+    DBMS_OUTPUT.PUT_LINE('10:Quitter');*/
     case &number_selected
       when 1 then
       @Procedure/consult_resto
@@ -57,3 +57,4 @@ begin
                      
 end;
 /
+----ANGELE

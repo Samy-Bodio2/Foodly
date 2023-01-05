@@ -1,66 +1,73 @@
-
---Awounang
 set serveroutput on;
+
+ -- fonction pour récupérer l'id du user du client conserné
+create or replace function id_user(nom1 varchar, nom2 varchar)
+return int is 
+cursor idUser is 
+select id_user from users 
+where username = nom1 and password = nom2;
+id int;
+begin 
+open idUser;
+fetch idUser into id;
+return id;
+end;
+/
+
+-- function pour récupérer l'id du client
+create or replace function id_cust(nom1 varchar, nom2 varchar)
+return int is 
+cursor idCust is 
+select id_cust from customers where id_user = id_user(nom1, nom2);
+id int;
+begin 
+open idCust;
+fetch idCust into id;
+return id;
+end;
+/
+
+-- fonction pour récupérer l'id du panier du client
+create or replace function id_panier(nom1 varchar, nom2 varchar)
+return int is 
+cursor idPanier is 
+select id_panier from panier where id_cust = id_cust(nom1, nom2);
+id int;
+begin 
+open idPanier;
+fetch idPanier into id;
+return id;
+end;
+/
+
+-- foction pour récupérer l'id du restaurant
+create or replace function id_resto(nom varchar)
+return int IS
+cursor idResto is 
+select id_resto from restaurant where name_resto = nom;
+id int;
+begin 
+open idResto;
+fetch idResto into id;
+return id;
+end;
+/
+
 declare
-    v_id_panier Panier.id_panier%type;
-    v_id_cust Panier.id_cust%type;
-    v_option char  := '&choix';
-    choix1 char  := '&choix';
-    v_menu_id int;
+
+
+v_id_panier int :=id_panier('&username','&password');
+
+cursor idMenu is 
+select id_menu from menu where menu_title = '&menu' and id_resto = id_resto('&restaurant');
+idM int;
 
 begin
+open idMenu;
+fetch idMenu into idM;
 
-    select distinct id_panier
-    into v_id_panier
-    from Panier
-    where id_cust=v_id_cust;
-
-    select id_cust
-    into v_id_cust
-    from Customers c
-    join Users u
-    on c.id_user=u.id_user
-    where u.username='&userName'
-    and u.password='&passwd';
-
-    IF sql%found THEN
-    
-    select id_Menu
-    into v_menu_id
-    from Menu where Menu_title = '&Menu_title';
-
-    insert into Control_Panier_Menu
-    (
-       id_panier, id_menu, Quantity
-    )
-    values
-    (
-         v_id_panier, v_menu_id, '&quantite'
-    );
-
-    DBMS_OUTPUT.PUT_LINE ('Voulez-vous passer votre commande ? (y/n)');
-    if choix1 = 'y' 
-    then DBMS_output.put_line('Commande effectuée');
-    elsif choix1 = 'n'
-    then
-        DBMS_OUTPUT.PUT_LINE ('1. Ajouter un autre menu au panier');
-        DBMS_OUTPUT.PUT_LINE ('2. Retour');
-        DBMS_OUTPUT.PUT_LINE ('3. Quitter');
-    Else
-        if v_option = '1' then DBMS_output.put_line('Ajouter un autre menu au panier');
-        elsif v_option = '2' then DBMS_output.put_line('Retour');
-        elsif v_option = '3' then DBMS_output.put_line('Quitter');
-        else DBMS_output.put_line('Vous devez faire un choix valide');
-        end if;
-    end if;
-
-    else 
-    DBMS_OUTPUT.PUT_LINE('votre login et votre mot de passe ne sont pas correctes. Entrez des informations justes');
-    end if;
-
-    exception
-    when no_data_found then
-    DBMS_OUTPUT.PUT_LINE('aucune valeur trouvée');
+insert into choix(id_panier,id_menu,Quantity)
+values (v_id_panier, idM, &quantite);
 
 end;
 /

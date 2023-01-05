@@ -20,3 +20,23 @@
 -- &Numero_du_restaurant,
 -- '&Adresse_du_restaurant',
 -- TO_DATE('&Date', 'DD/MM/YYYY'),id_restau('&Enter_your_Username'));
+
+
+
+---------------------------------------addmenu
+
+-- CREATE OR REPLACE FUNCTION idutil(nom VARCHAR)
+-- RETURN INT IS
+-- CURSOR iduse IS
+-- SELECT id_user from Users where username = nom;
+-- entier INT;
+-- BEGIN
+-- OPEN iduse;
+-- FETCH iduse into entier;
+-- RETURN entier;
+-- END;
+-- /
+
+    -- INSERT INTO Customers(id_cust,first_name,last_name,phone_number,Email,Datecd_cust,Cust_address,id_user)
+    -- VALUES
+    -- (id_customers_seq.nextval,'&first_name','&last_name',&phone_number,'&Email',SYSDATE,'&Cust_address',idutil('&Enter_Your_User_Name'));

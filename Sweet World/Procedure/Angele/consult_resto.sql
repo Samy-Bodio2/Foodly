@@ -1,3 +1,4 @@
+prompt *****INFORMATIONS RESTAURENTS *******
 select 
      name_resto,        
       Description,      

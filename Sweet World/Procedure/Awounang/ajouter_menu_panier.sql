@@ -40,26 +40,13 @@ return id;
 end;
 /
 
--- foction pour récupérer l'id du restaurant
-create or replace function id_resto(nom varchar)
-return int IS
-cursor idResto is 
-select id_resto from restaurant where name_resto = nom;
-id int;
-begin 
-open idResto;
-fetch idResto into id;
-return id;
-end;
-/
-
 declare
 
 
 v_id_panier int :=id_panier('&username','&password');
 
 cursor idMenu is 
-select id_menu from menu where menu_title = '&menu' and id_resto = id_resto('&restaurant');
+select id_menu from menu where menu_title = '&menu';
 idM int;
 
 begin

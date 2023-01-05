@@ -1674,32 +1674,19 @@ Procedure created.
 
 TABLE_NAME
 --------------------------------------------------------------------------------------------------------------------------------
-<<<<<<< HEAD
-SECULANT
-PANIER
-NOTE
-ORDERS
-CONFIG
-CHOIX
 ADMIN
-=======
->>>>>>> 39d09ddf6439565f39bc4d745b1cc3d0ee12ef50
 USERS
+RESTAURANT
 CUSTOMERS
 MENU
-RESTAURANT
 DISH
 GARNISH
-<<<<<<< HEAD
-=======
 SECULANT
 ORDERS
 PANIER
 NOTE
 CONFIG
 CHOIX
-ADMIN
->>>>>>> 39d09ddf6439565f39bc4d745b1cc3d0ee12ef50
 
 13 rows selected.
 

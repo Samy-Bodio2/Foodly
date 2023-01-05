@@ -1,6 +1,6 @@
 SET SERVEROUTPUT ON;
 DECLARE
-CURSOR menu IS
+CURSOR menu IS 
 SELECT menu_title,menu_price,menu_description,Menu_Qty,r.name_resto 
 from menu m,restaurant r
 PROCEDURE Menu_Jour as

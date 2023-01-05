@@ -36,11 +36,8 @@ ALTER USER SET DEFAUT TABLE
 User altered.
 
 ALTER USER GIVE A TEMPORARY TABLESSPACE
-ALTER USER FindFood TEMPORARY TABLESPACE temp
-           *
-ERROR at line 1:
-ORA-01918: user 'FINDFOOD' does not exist 
 
+User altered.
 
 GRAND ACESS CREATE VIEW, ALTER SESSION, CREATE SEQUENCE TO FindSW
 
@@ -326,6 +323,12 @@ Session altered.
 ***************************** UNIQUE CREATION FOR FOOD SCHEMA *****************************
 
 
+***************************** CREATION OF THE ADMIN UNIQUE *****************************
+
+
+Table altered.
+
+
 ***************************** CREATION OF THE USER UNIQUE *****************************
 
 
@@ -542,6 +545,12 @@ Session altered.
 ***************************** CHECK CREATION FOR FOOD SCHEMA *****************************
 
 
+***************************** CREATION OF THE ADMIN CHECK *****************************
+
+
+Table altered.
+
+
 ***************************** CREATION OF THE USER CHECK *****************************
 
 
@@ -588,6 +597,84 @@ Table altered.
 
 
 ***************************** CREATE FUNCTION  *****************************
+
+
+Session altered.
+
+
+Session altered.
+
+
+***************************** FUNCTION FOOD SCHEMA *****************************
+
+
+***************************** FUNCTION  ENCRYPT_PASSWORD *****************************
+
+
+Function created.
+
+
+***************************** FUNCTION CALCUL *****************************
+
+
+Warning: Function created with compilation errors.
+
+
+***************************** FUNCTION CUSTOMERS *****************************
+
+
+Function created.
+
+
+Warning: Function created with compilation errors.
+
+
+***************************** FUNCTION ID GARNISH *****************************
+
+
+Function created.
+
+
+***************************** FUNCTION ID SECULANT *****************************
+
+
+Function created.
+
+
+***************************** FUNCTION ID DISH *****************************
+
+
+Function created.
+
+
+***************************** FUNCTION ID RESTAURANT *****************************
+
+
+Function created.
+
+
+***************************** FUNCTION ID MENU *****************************
+
+
+Function created.
+
+
+***************************** FUNCTION ID USER *****************************
+
+
+Function created.
+
+
+Function created.
+
+
+***************************** FUNCTION ID USER *****************************
+
+
+Function created.
+
+
+***************************** FUNCTION NAME RESTAU *****************************
 
 
 Function created.
@@ -1670,6 +1757,228 @@ Procedure created.
 
 
 
+
+******************************************************************************************************************************************
+**                                                                                                                                      **
+***                                                                                                                                    ***
+****                                          BIENVENUE SUR Nom de lapplication                                                       ****
+*****                                                                                                                                *****
+******                                       1- INSCRIPTION                                                                         ******
+*******                                      2- CONNEXION                                                                          *******
+******                                       3- QUITTER                                                                             ******
+*****                                                                                                                                *****
+****                                                                                                                                  ****
+***                                                                                                                                    ***
+**                                                                                                                                      **
+******************************************************************************************************************************************
+choisissez une option : 1
+
+SCRIPT
+----------------------
+@Procedure/Inscription
+
+1 row selected.
+
+******************************************************************************************************************************************
+**                                                                                                                                      **
+***                                                                                                                                    ***
+****                                                                                                                                  ****
+*****                                                                                                                                *****
+******                                       1- Administrator                                                                       ******
+*******                                      2- Restaurant                                                                         *******
+******                                       3- Customer                                                                            ******
+*****                                                                                                                                *****
+****                                                                                                                                  ****
+***                                                                                                                                    ***
+**                                                                                                                                      **
+******************************************************************************************************************************************
+En tant que : 2
+
+SCRIPT
+---------------------------------------------
+@Features/Features_respo_resto/register_resto
+
+1 row selected.
+
+Enter value for username: Jason
+Enter value for password: azertyuio
+User registered
+
+PL/SQL procedure successfully completed.
+
+Enter value for entrer_le_nom_du_restau: kfood
+Enter value for description: bon
+Enter value for email: jasonkamsu@gmail.com
+Enter value for numero: 693910055
+Enter value for adresse_du_restaurant: KOTTO
+Enter value for enter_your_username: Jason
+
+1 row created.
+
+
+  ID_RESTO NAME_RESTO                          DESCRIPTION                              EMAIL                          PHONE_NUMBER RESTO_ADDRESS                          ID_USER    ID_USER USERNAME        PASSWORD
+---------- ----------------------------------- ---------------------------------------- ------------------------------ ------------ ----------------------------------- ---------- ---------- --------------- -------------------------
+         1 Friends Food                                                                 tcttchop@gmail.com                658471235 1290.logpom.douala                          10         10 sanguoledoux    p@fkX066!}+$%2/-A0
+         2 5 Fourchettes                                                                loicfood@gmail.com                658471225 378291.bonamoussadi.douala                   3          3 angele          Ztfk42X09Y%2/-m!
+         3 Lynk                                                                         tchop@gmail.com                   658441235 1267.bonapriso.douala                        9          9 chiemowandji    Zta4p@fknuCSDa9Y66;>
+         4 LA PIZZERIA                                                                  jetchop@gmail.com                 650471235 2839.bonamoussadi.douala                     1          1 djoudapatric6   Ztfk42Da9Y92/-m!~=qR
+         5 Saga Africa                                                                  chictchop@gmail.com               658474235 5476.akwa.douala                             4          4 tedongmovaldez  Ztp@fkX0?-P)%2/-
+         6 L Italien-Piccola Venezia                                                    menetchop@gmail.com               658171235 3578.logpom.douala                           6          6 tankoleila      Zte89Y66v&%2/-m!~=
+         7 Traditional-food                                                             youwanttotchop@gmail.com          698471235 3876.akwa.douala                             2          2 stonetemfack    fk9Y663.v&/-m!~=
+         8 Le Socrate                                                                   foodtchop@gmail.com               658471935 21781.deido.douala                           7          7 JasonKamsu      ZtAte89Y663.%2A0
+         9 C-PIZZA                                                                      nyamnyamfood@gmail.com            678471235 23767.bonandjo.douala                        5          5 malonjubibiche  ZtAtX0Da9Y66!}%2/-
+        10 K MyChoice                                                                   tchopetyamo@gmail.com             658071235 28763.bonamoussadi.douala                    2          2 stonetemfack    fk9Y663.v&/-m!~=
+        11 Tchop et Yamo                                                                universdumanger@gmail.com         696951235 1872.makepe.douala                           8          8 Diagoudelano    p@fkX0%2/-
+        12 Hilton                                                                       likemum@gmail.com                 658071001 1892.logpom.douala                           9          9 chiemowandji    Zta4p@fknuCSDa9Y66;>
+        13 Restaurant SIM                                                               mesdelices@gmail.com              658071100 1287.deido.douala                            1          1 djoudapatric6   Ztfk42Da9Y92/-m!~=qR
+        14 Le plaisir du Gout Pizzeria                                                  saveursdecheznous@gmail.com       650991235 3287.makepe.douala                           2          2 stonetemfack    fk9Y663.v&/-m!~=
+        15 Ebene plus                                                                   hmmmlacreperie@gmail.com          650277235 2780.akwa.douala                             3          3 angele          Ztfk42X09Y%2/-m!
+        16 Pieds dans l eau                                                             foyerdumarin@gmail.com            655555235 28744.pk10.douala                            2          2 stonetemfack    fk9Y663.v&/-m!~=
+        17 sugar lounge                                                                 sugarlounge@gmail.com             651171235 26378.bonapriso.douala                       1          1 djoudapatric6   Ztfk42Da9Y92/-m!~=qR
+        18 stardust cafe                                                                stardustcafe@gmail.com            678071235 17834.logbessou.douala                       1          1 djoudapatric6   Ztfk42Da9Y92/-m!~=qR
+        19 friend food                                                                  friendfood@gmail.com              658070005 94863.logpom.douala                          2          2 stonetemfack    fk9Y663.v&/-m!~=
+        20 la marquise                                                                  lamarquise@gmail.com              657777235 32645.bonaberi.douala                        3          3 angele          Ztfk42X09Y%2/-m!
+        21 wanted lounge                                                                wantedlounge@gmail.com            650111235 20000.bonapriso.douala                       2          2 stonetemfack    fk9Y663.v&/-m!~=
+        22 saga africa                                                                  sagaafrica@gmail.com              659071235 26378.dogbong.douala                         2          2 stonetemfack    fk9Y663.v&/-m!~=
+        23 yamo feed                                                                    yamofeed@gmail.com                658111235 11078.bonamoussadi.douala                    3          3 angele          Ztfk42X09Y%2/-m!
+        24 happy to eat                                                                 happytoeat@gmail.com              658111135 26378.bonanjo.douala                         9          9 chiemowandji    Zta4p@fknuCSDa9Y66;>
+        25 reveil ton palet                                                             reveiltonpalet@gmail.com          670371235 11110.ndokoti.douala                         6          6 tankoleila      Zte89Y66v&%2/-m!~=
+        26 regale toi                                                                   regaletoi@gmail.com               650371235 26999.logbessou.douala                       4          4 tedongmovaldez  Ztp@fkX0?-P)%2/-
+        27 que c7 bon                                                                   quec7bon@gmail.com                658078895 22378.akwa-nord.douala                       5          5 malonjubibiche  ZtAtX0Da9Y66!}%2/-
+        28 un regal                                                                     unregal@gmail.com                 659331235 12345.bonapriso.douala                       6          6 tankoleila      Zte89Y66v&%2/-m!~=
+        29 foyer du regal                                                               foyerduregal@gmail.com            658111235 13680.deido.douala                           9          9 chiemowandji    Zta4p@fknuCSDa9Y66;>
+        30 want eat                                                                     wanteat@gmail.com                 650001235 39110.bonamoussadi.douala                    8          8 Diagoudelano    p@fkX0%2/-
+        31 meal                                                                         meal@gmail.com                    699971235 93610.bonamoussadi.douala                    6          6 tankoleila      Zte89Y66v&%2/-m!~=
+        32 best eatery                                                                  besteatery@gmail.com              659001235 11111.logpom.douala                          7          7 JasonKamsu      ZtAte89Y663.%2A0
+        33 new resto                                                                    newresto@gmail.com                673671235 40119.makepe.douala                          6          6 tankoleila      Zte89Y66v&%2/-m!~=
+        34 stomac satisfied                                                             stomacsatisfied@gmail.com         658071235 22222.logpom.douala                          5          5 malonjubibiche  ZtAtX0Da9Y66!}%2/-
+        35 plat du coin                                                                 platducoin@gmail.com              671771235 25601.bonamoussadi.douala                    5          5 malonjubibiche  ZtAtX0Da9Y66!}%2/-
+        36 vibe of eating                                                               vibeofeating@gmail.com            658729135 39777.makepe.douala                          2          2 stonetemfack    fk9Y663.v&/-m!~=
+        37 tchop                                                                        tchop@gmail.com                   659171237 20976.logbessou.douala                       5          5 malonjubibiche  ZtAtX0Da9Y66!}%2/-
+        38 eater, welcome                                                               eaterwelcome@gmail.com            658072375 88888.logbessou.douala                       2          2 stonetemfack    fk9Y663.v&/-m!~=
+        39 eat oneS feel                                                                eatonesfeel@gmail.com             670371235 93866.ndokoti.douala                         4          4 tedongmovaldez  Ztp@fkX0?-P)%2/-
+        40 tchop-tchop and tchop                                                        tchoptchopandtchop@gmail.com      671071235 20001.ndokoti.douala                         3          3 angele          Ztfk42X09Y%2/-m!
+        41 me and my food                                                               meandmyfood@gmail.com             670071235 97713.bonapriso.douala                       3          3 angele          Ztfk42X09Y%2/-m!
+        42 famine réglé                                                               famineregle@gmail.com             657571235 20578.makepe.douala                          2          2 stonetemfack    fk9Y663.v&/-m!~=
+        43 baguette du riz                                                              baguetteduriz@gmail.com           698371235 20008.akwa.douala                            2          2 stonetemfack    fk9Y663.v&/-m!~=
+        44 take your food                                                               takeyourfood@gmail.com            659073735 26124.bonamoussadi-sable.douala              2          2 stonetemfack    fk9Y663.v&/-m!~=
+        45 feed a way                                                                   feedaway@gmail.com                658027235 21178.bonaberi.douala                        1          1 djoudapatric6   Ztfk42Da9Y92/-m!~=qR
+        46 just feed                                                                    justfeed@gmail.com                679001235 26378.bobabome.douala                        2          2 stonetemfack    fk9Y663.v&/-m!~=
+        47 word of delight                                                              wordofdelight@gmail.com           678071235 34444.logpom.douala                          2          2 stonetemfack    fk9Y663.v&/-m!~=
+        48 pizza house                                                                  pizzahouse@gmail.com              658060235 22222.pk12.douala                            2          2 stonetemfack    fk9Y663.v&/-m!~=
+        49 well tchop                                                                   welltchop@gmail.com               658073035 20008.bonapriso.douala                       2          2 stonetemfack    fk9Y663.v&/-m!~=
+        50 eatHome                                                                      eathome@gmail.com                 699071235 26378.makepe.douala                          2          2 stonetemfack    fk9Y663.v&/-m!~=
+        51 kfood                               bon                                      jasonkamsu@gmail.com              693910055 KOTTO                                       32         32 Jason           ZtfkCS6692v&!}8.P)
+
+51 rows selected.
+
+*******************************************************************
+|                                                                  |
+|               1- Consulter le menu du jour                       |
+|               2- Consulter les details dun menu                  |
+|               3- Rechercher un menu                              |
+|               4- Ajouter un menu du jour                         |
+|               5- Se deconnecter                                  |
+|               6- Quitter                                         |
+********************************************************************
+Que voulez-vous faire ? : 1
+
+SCRIPT
+---------------------------------------------------
+@Features/Features_respo_resto/consult_menu
+
+1 row selected.
+
+
+Warning: Procedure created with compilation errors.
+
+*******************************************************************
+|                                                                  |
+|               1- Consulter le menu du jour                       |
+|               2- Consulter les details dun menu                  |
+|               3- Rechercher un menu                              |
+|               4- Ajouter un menu du jour                         |
+|               5- Se deconnecter                                  |
+|               6- Quitter                                         |
+********************************************************************
+Que voulez-vous faire ? : 2
+
+SCRIPT
+---------------------------------------------------
+@Features/Features_respo_resto/consult_detail_menu
+
+1 row selected.
+
+Enter value for menu_title: Ndole
+
+Procedure created.
+
+BEGIN
+*
+ERROR at line 1:
+ORA-01422: exact fetch returns more than requested number of rows
+ORA-06512: at "FINDSW.CONSULT_DETAILLER_MENU", line 13
+ORA-06512: at line 2
+
+
+*******************************************************************
+|                                                                  |
+|               1- Consulter le menu du jour                       |
+|               2- Consulter les details dun menu                  |
+|               3- Rechercher un menu                              |
+|               4- Ajouter un menu du jour                         |
+|               5- Se deconnecter                                  |
+|               6- Quitter                                         |
+********************************************************************
+Que voulez-vous faire ? : 3
+
+SCRIPT
+---------------------------------------------------
+@Features/Features_respo_resto/search_menu
+
+1 row selected.
+
+Enter value for menu: Ndole
+            SELECT Menu_title INTO v_menu FROM Menu WHERE Menu_title = mn;
+                                          *
+ERROR at line 9:
+ORA-06550: line 9, column 43:
+PL/SQL: ORA-00913: too many values
+ORA-06550: line 9, column 13:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 10, column 43:
+PLS-00357: Table,View Or Sequence reference 'MENU.ID_MENU' not allowed in this context
+ORA-06550: line 10, column 17:
+PL/SQL: Statement ignored
+
+
+*******************************************************************
+|                                                                  |
+|               1- Consulter le menu du jour                       |
+|               2- Consulter les details dun menu                  |
+|               3- Rechercher un menu                              |
+|               4- Ajouter un menu du jour                         |
+|               5- Se deconnecter                                  |
+|               6- Quitter                                         |
+********************************************************************
+Que voulez-vous faire ? : 4
+
+SCRIPT
+---------------------------------------------------
+@Features/Features_respo_resto/add_menu_j
+
+1 row selected.
+
+Enter value for menu_title: Ndole
+Enter value for menu_description: bon
+Enter value for price_of_menu: 12000
+Enter value for quantity_menu: 13
+Enter value for dish_name: Ndole
+Enter value for seculant_name: poisson
+Enter value for name_garnish: plantain
+Enter value for name_of_the_restaurant: kfood
+
+1 row created.
 
 
 TABLE_NAME

@@ -52,7 +52,7 @@ begin
       @Procedure/consult_resto
       else
       DBMS_OUTPUT.PUT_LINE('Erreur de saisie');
-    end;
+    end;ç
        DBMS_OUTPUT.PUT_LINE('Que voulez vous faire :');
                      
 end;

@@ -7,8 +7,8 @@ DECLARE
 
     PROCEDURE select_menu(mn IN VARCHAR) AS
         BEGIN
-            SELECT Menu_title INTO v_menu FROM Menu WHERE Menu_title = mn;
-                DBMS_OUTPUT.PUT_LINE(menu.id_menu ||'   '||menu.Menu_title);
+            SELECT * INTO v_menu FROM Menu WHERE Menu_title = mn;
+                DBMS_OUTPUT.PUT_LINE(v_menu.id_menu ||'   '||v_menu.Menu_title);
         END;
 
 BEGIN

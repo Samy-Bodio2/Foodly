@@ -5,15 +5,13 @@ PROMPT      ****                                          2- Consulter les detai
 PROMPT      *****                                         3- Consulter les restaurants                                                           *****
 PROMPT      ******                                        4- Rechercher un menu                                                                 ******
 PROMPT      *******                                       5- Rechercher un plat                                                                *******   
-PROMPT      ********                                      6- Ajouter un menu au panier                                                         ********
-PROMPT      *********                                     7- Effectuer une commande                                                          *********
-PROMPT      ********                                      8- Consulter des commandes                                                          ********
-PROMPT      *******                                       9- Noter un restaurant                                                               *******
+PROMPT      ********                                      6- Ajouter un menu au panier                                                        ********
+PROMPT      *******                                       7- Effectuer une commande                                                            *******
 PROMPT      ******                                        8- Consulter des commandes                                                            ******
-PROMPT      *****                                         9- Noter un restaurant                                                                 *****
+PROMPT      *****                                         9- Noter un restaurant                                                                 *****                                             
 PROMPT      ****                                          10- Se deconnecter                                                                      ****
 PROMPT      ***                                           11- Quitter                                                                              ***
-PROMPT      **                                                                                                                                      **                                                                                                    **
+PROMPT      **                                                                                                                                      **                                                                                  
 PROMPT      ******************************************************************************************************************************************
 
 accept selection PROMPT "Que voulez-vous faire ? : "

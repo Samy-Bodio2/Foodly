@@ -36,15 +36,17 @@ BEGIN
     END if;
 END;
 /
-
-create or replace function id_cust(nom1 varchar, nom2 varchar)
-return int is 
-cursor idCust is 
-select id_cust from customers where id_user = id_user(nom1, nom2);
-id int;
-begin 
-open idCust;
-fetch idCust into id;
-return id;
-end;
+CREATE OR REPLACE FUNCTION id_cust(Nom VARCHAR)
+RETURN INT IS
+CURSOR idcus IS
+SELECT id_cust from Customers C
+JOIN Users U
+ON U.id_user = C.id_user
+where  U.username = Nom;
+entier INT;
+BEGIN
+OPEN idcus;
+FETCH idcus into entier;
+RETURN entier;
+END;
 /

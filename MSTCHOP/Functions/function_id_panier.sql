@@ -1,11 +1,17 @@
-create or replace function id_panier(nom1 varchar, nom2 varchar)
-return int is 
-cursor idPanier is 
-select id_panier from panier where id_cust = id_cust(nom1, nom2);
-id int;
-begin 
-open idPanier;
-fetch idPanier into id;
-return id;
-end;
-/
+
+    CREATE OR REPLACE FUNCTION idpan(nom VARCHAR)
+    RETURN INT IS
+    CURSOR idpanier IS
+    SELECT P.id_panier from Panier P
+    join Customers C
+    on P.id_cust = C.id_cust 
+    join Users S
+    on S.id_user = C.id_user
+    where S.username = nom;
+    entier INT;
+    BEGIN
+    OPEN idpanier;
+    FETCH idpanier into entier;
+    RETURN entier;
+    END;
+    /

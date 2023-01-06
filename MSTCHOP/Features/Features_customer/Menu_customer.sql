@@ -1,17 +1,20 @@
-PROMPT       *******************************************************************       
-PROMPT       |                                                                  |
-PROMPT       |               1- Consulter le menu du jour                       |
-PROMPT       |               2- Consulter les details dun menu                  |   
-PROMPT       |               3- Consulter les restaurants                       |
-PROMPT       |               4- Rechercher un menu                              |
-PROMPT       |               5- Rechercher un plat                              |
-PROMPT       |               6- Ajouter un menu du jour                         |
-PROMPT       |               7- Effectuer une commande                          |
-PROMPT       |               8- Consulter des commandes                         |
-PROMPT       |               9- Noter un restaurant                             |
-PROMPT       |              10- Se deconnecter                                  |
-PROMPT       |              11- Quitter                                         |
-PROMPT       ********************************************************************
+PROMPT      ****************************************************************************************************************************************** 
+PROMPT      **                                                                                                                                      **
+PROMPT      ***                                           1- Consulter le menu du jour                                                             ***
+PROMPT      ****                                          2- Consulter les details dun menu                                                       ****
+PROMPT      *****                                         3- Consulter les restaurants                                                           *****
+PROMPT      ******                                        4- Rechercher un menu                                                                 ******
+PROMPT      *******                                       5- Rechercher un plat                                                                *******   
+PROMPT      ********                                      6- Ajouter un menu au panier                                                         ********
+PROMPT      *********                                     7- Effectuer une commande                                                          *********
+PROMPT      ********                                      8- Consulter des commandes                                                          ********
+PROMPT      *******                                       9- Noter un restaurant                                                               *******
+PROMPT      ******                                        8- Consulter des commandes                                                            ******
+PROMPT      *****                                         9- Noter un restaurant                                                                 *****
+PROMPT      ****                                          10- Se deconnecter                                                                      ****
+PROMPT      ***                                           11- Quitter                                                                              ***
+PROMPT      **                                                                                                                                      **                                                                                                    **
+PROMPT      ******************************************************************************************************************************************
 
 accept selection PROMPT "Que voulez-vous faire ? : "
 set term off

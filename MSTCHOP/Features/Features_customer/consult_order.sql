@@ -6,7 +6,7 @@ Menu_date,
 Menu_Qty,
 Name_dish,
 Name_Seculant,
-Name_complement,
+Name_garnish,
 order_date,
 name_resto
 FROM Orders o
@@ -24,8 +24,8 @@ JOIN dish d
 ON d.id_dish = m.id_dish 
 JOIN SECULANT s 
 ON s.id_seculant = m.id_seculant 
-JOIN complement c 
-ON c.id_complement = m.id_complement
+JOIN Garnish c 
+ON c.id_garnish = m.id_garnish
 WHERE username = '&username' AND password = '&password';
 
 @Features/Features_customer/Menu_customer

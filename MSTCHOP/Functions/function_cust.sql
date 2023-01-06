@@ -36,3 +36,15 @@ BEGIN
     END if;
 END;
 /
+
+create or replace function id_cust(nom1 varchar, nom2 varchar)
+return int is 
+cursor idCust is 
+select id_cust from customers where id_user = id_user(nom1, nom2);
+id int;
+begin 
+open idCust;
+fetch idCust into id;
+return id;
+end;
+/

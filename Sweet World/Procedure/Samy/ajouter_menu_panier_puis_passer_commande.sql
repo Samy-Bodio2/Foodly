@@ -11,18 +11,6 @@ RETURN entier;
 END;
 /
 
-CREATE OR REPLACE FUNCTION idutil(nom VARCHAR)
-RETURN INT IS
-CURSOR iduse IS
-SELECT id_user from Users where username = nom;
-entier INT;
-BEGIN
-OPEN iduse;
-FETCH iduse into entier;
-RETURN entier;
-END;
-/
-
 CREATE OR REPLACE FUNCTION CALCUL
 RETURN INT IS
     
@@ -168,12 +156,10 @@ BEGIN
     WHERE id_cust = varnomFonc;
 END;
 BEGIN
-    INSERT INTO Customers(id_cust,first_name,last_name,phone_number,Email,Datecd_cust,Cust_address,id_user)
-    VALUES
-    (id_customers_seq.nextval,'&first_name','&last_name',&phone_number,'&Email',SYSDATE,'&Cust_address',idutil('&Enter_Your_User_Name'));
-        INSERT INTO Panier(id_panier,id_cust)VALUES
+
+    INSERT INTO Panier(id_panier,id_cust)VALUES
     (id_panier_seq.nextval,
-    id_customers_seq.currval);
+    id_cust('&Enter_Your_User_Name'));
     INSERT INTO Control_Panier_Menu(id_panier,id_menu,Quantity) VALUES (id_panier_seq.currval,id_menu('&Menu_Title'),&Quantity);
     AFFICHE;
     magie;

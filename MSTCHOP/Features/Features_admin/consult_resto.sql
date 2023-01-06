@@ -6,7 +6,7 @@ BEGIN
 SELECT 
 name_resto,
 phone_number,
-resto_addresso
+resto_address
 INTO 
 V_nom_resto ,         
 V_phone_resto ,         

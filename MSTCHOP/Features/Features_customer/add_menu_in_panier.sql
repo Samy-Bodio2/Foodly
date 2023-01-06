@@ -1,24 +1,24 @@
-CREATE OR REPLACE PROCEDURE AFFICHE
+/*CREATE OR REPLACE PROCEDURE AFFICHE
 AS
 valt int not null := id_panier_seq.currval;
 CURSOR CP IS
     SELECT Menu_title,Menu_Price
     from Menu M
-    join Control_Panier_Menu CPM
-    on M.id_Menu = CPM.id_Menu
+    join Choix C
+    on M.id_Menu = C.id_Menu
     join Panier P
-    on P.id_panier = CPM.id_panier
-    where CPM.id_panier =  valt;
-CURSOR CPM IS
-    SELECT * from Control_Panier_Menu where id_panier = valt;
+    on P.id_panier = C.id_panier
+    where C.id_panier =  valt;
+CURSOR C IS
+    SELECT * from Choix where id_panier = valt;
     name_menu VARCHAR(50);
     prix_menu INT;
-    control Control_Panier_Menu%ROWTYPE;
+    control Choix%ROWTYPE;
 BEGIN
-    OPEN CPM;
+    OPEN C;
     OPEN CP;
     FETCH CP INTO name_menu,prix_menu;
-    FETCH CPM INTO control;
+    FETCH C INTO control;
     DBMS_OUTPUT.PUT_LINE('Nom du Menu:'||name_menu||'  '||'Quantite du Menu:'||control.Quantity||'  '||'Prix du Menu:'||prix_menu||'  '||'Prix total du Panier:'||CALCUL);
 END;
 /
@@ -26,15 +26,15 @@ END;
 CREATE OR REPLACE PROCEDURE magie
 IS
     valt INT := id_panier_seq.currval;
-    QuantityPanier  Control_Panier_Menu.Quantity%TYPE;
+    QuantityPanier  Choix.Quantity%TYPE;
     var_id_menu Menu.id_menu%TYPE;
 
     CURSOR quantPanier IS
-    SELECT Quantity from Control_Panier_Menu
+    SELECT Quantity from Choix
     where id_panier = valt;
 
     CURSOR menuId IS
-    SELECT id_menu from Control_Panier_Menu
+    SELECT id_menu from Choix
     where id_panier = valt;
 BEGIN
     OPEN quantPanier;
@@ -55,10 +55,29 @@ BEGIN
         INSERT INTO Panier(id_panier,id_cust)VALUES
     (id_panier_seq.nextval,
     id_customers_seq.currval);
-    INSERT INTO Control_Panier_Menu(id_panier,id_menu,Quantity) VALUES (id_panier_seq.currval,id_menu('&Menu_Title'),&Quantity);
+    INSERT INTO Choix(id_panier,id_menu,Quantity) VALUES (id_panier_seq.currval,id_menu('&Menu_Title'),&Quantity);
     AFFICHE;
     magie;
 END;
+/
+*/
+declare
+
+
+v_id_panier int :=id_panier('&username','&password');
+
+cursor idMenu is 
+select id_menu from menu where menu_title = '&menu';
+idM int;
+
+begin
+open idMenu;
+fetch idMenu into idM;
+
+insert into choix(id_panier,id_menu,Quantity)
+values (v_id_panier, idM, &quantite);
+
+end;
 /
 
 @Features/Features_customer/Menu_customer

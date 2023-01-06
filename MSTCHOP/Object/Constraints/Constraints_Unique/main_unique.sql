@@ -8,6 +8,12 @@ Prompt
 
 
 Prompt
+Prompt***************************** CREATION OF THE ADMIN UNIQUE *****************************
+Prompt
+
+@Object/Constraints/Constraints_Unique/Unique_admin
+
+Prompt
 Prompt***************************** CREATION OF THE USER UNIQUE *****************************
 Prompt
 

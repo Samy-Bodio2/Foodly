@@ -8,6 +8,12 @@ Prompt
 
 
 Prompt
+Prompt***************************** CREATION OF THE ADMIN CHECK *****************************
+Prompt
+
+@Object/Constraints/Constraints_Check/check_admin
+
+Prompt
 Prompt***************************** CREATION OF THE USER CHECK *****************************
 Prompt
 

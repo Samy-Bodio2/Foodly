@@ -63,6 +63,12 @@ Prompt
 @Functions/function_id_user
 
 Prompt
+Prompt***************************** FUNCTION ID USER *****************************
+Prompt
+
+@Functions/function_id_panier
+
+Prompt
 Prompt***************************** FUNCTION NAME RESTAU *****************************
 Prompt
 

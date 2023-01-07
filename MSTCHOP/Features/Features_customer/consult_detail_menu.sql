@@ -1,51 +1,36 @@
-CREATE OR REPLACE PROCEDURE consult_detailler_Menu IS 
-V_Menu_title         Menu.Menu_title%TYPE;
-V_Descrition_Menu    Menu.Menu_description%TYPE;
-V_menu_price         Menu.Menu_price%TYPE;
-v_Menu_date          Menu.Menu_date%TYPE;
-v_Menu_Qty           Menu.Menu_Qty%TYPE;
-V_name_dish          dish.Name_dish%TYPE;
-V_name_seculant      Seculant.Name_Seculant%TYPE;
-V_palt_garnish       garnish.Name_Garnish%TYPE;
-V_name_Resro         restaurant.name_resto%TYPE;
-V_Menu_title2         Menu.Menu_title%TYPE;
+DECLARE
+CURSOR menu IS
+select Menu_title,Menu_price,Menu_Qty,R.Name_resto,d.Name_dish,c.Name_garnish,s.Name_Seculant
+from Menu M
+JOIN Restaurant R
+on M.id_resto = R.id_resto
+JOIN dish d 
+ON d.id_dish = M.id_dish 
+JOIN SECULANT s 
+ON s.id_seculant = M.id_seculant 
+JOIN Garnish c 
+ON c.id_garnish = M.id_garnish;
+PROCEDURE consult_Menu_Jours AS
+V_menu_titre Menu%ROWTYPE;
+V_menu_price Menu%ROWTYPE;
+V_menu_qty Menu%ROWTYPE;
+V_resto_nom Restaurant%ROWTYPE; 
+v_Name_dish Dish%ROWTYPE;
+v_Name_garnish Garnish%ROWTYPE;
+v_Name_Seculant Seculant%ROWTYPE;  
 BEGIN 
-DBMS_OUTPUT.PUT_LINE('veiller entrer le titre du menu donc vous souhetez consulter le detaille :');
-SELECT 
-Menu_title,
-Menu_description,
-Menu_price,
-Menu_date,
-Menu_Qty,
-Name_dish,
-Name_Seculant,
-Name_garnish,
-name_resto
-INTO 
-V_Menu_title  ,       
-V_Descrition_Menu ,   
-V_menu_price   ,   
-v_Menu_date ,        
-v_Menu_Qty  ,        
-V_name_dish   ,       
-V_name_seculant ,    
-V_palt_garnish ,  
-V_name_Resro 
-FROM Menu M
-JOIN Dish
-ON dish.id_dish = M.id_dish
-JOIN Seculant S
-ON S.id_seculant = M.id_seculant
-JOIN Garnish C
-ON C.id_garnish = M.id_garnish
-JOIN restaurant R
-ON R.id_resto = M.id_resto
-WHERE M.Menu_title = '&Menu_title';
- DBMS_OUTPUT.PUT_LINE('Nom du Menu:'||V_Menu_title||'  '||'Description du Menue:'||V_Descrition_Menu||'  '||'Prix du Menu:'||V_menu_price ||'  '||'date du menu:'||v_Menu_date||' '||'Quantite du Menu:'||v_Menu_Qty ||' '||'Nom du plat :'||V_name_dish||' '||'Nom seculent:'||V_name_seculant||' '||'Nom garnish:'||V_palt_garnish||' '||'nom du restaurant:'||V_name_Resro);
+OPEN menu;
+LOOP
+FETCH menu into V_menu_titre.Menu_title,V_menu_price.Menu_price,V_menu_qty.Menu_Qty,V_resto_nom.Name_resto,v_Name_dish.Name_dish,v_Name_garnish.Name_garnish,v_Name_Seculant.Name_Seculant;
+    EXIT WHEN menu%NOTFOUND;
+    DBMS_OUTPUT.PUT_LINE('Nom du Menu: '||V_menu_titre.Menu_title||' | '||'Prix du Menu: '||V_menu_price.Menu_price
+    ||' | '||'Quantite restante: '||V_menu_qty.Menu_Qty||' | '||'Restaurant: '||V_resto_nom.Name_resto||' | '||'Plat: '||v_Name_dish.Name_dish
+    ||' | '||'Plat: '||v_Name_garnish.Name_garnish||' | '||'Plat: '||v_Name_Seculant.Name_Seculant);
+    DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------');
+END LOOP;
 END;
-/
 BEGIN
-consult_detailler_Menu;
+    consult_Menu_Jours;
 END;
 /
 

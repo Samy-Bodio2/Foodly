@@ -1,3 +1,4 @@
+set serveroutput on;
 DECLARE
     CURSOR c_cursor IS
     SELECT name_admin, pwd_admin FROM ADMIN WHERE name_admin = '&name_admin';

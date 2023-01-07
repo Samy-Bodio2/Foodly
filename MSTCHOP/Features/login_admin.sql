@@ -1,7 +1,5 @@
-SELECT username, password
-FROM Admin a 
-JOIN Users u
-ON(a.id_user = u.id_user)
-WHERE username = '&username' AND password = format1('&password');
+SELECT name_admin, pwd_admin
+FROM Admin 
+WHERE name_admin = '&username' AND pwd_admin = format1('&password');
 
 @Features/Features_admin/Menu_admin

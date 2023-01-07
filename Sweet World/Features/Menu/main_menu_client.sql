@@ -38,7 +38,7 @@ DBMS_OUTPUT.PUT_LINE('Voulez vous vous revenir au menu principal (y/n) ?');
 IF &retour = 'y' THEN
 @Features/Menu/main_menu.sql
 ELSIF &retour = 'n' THEN 
-DBMS_OUTPUT.PUT_LINE('Voulez vous vraiment nous quitter (y/n) ?');
+DBMS_OUTPUT.PUT_LINE('Voulez vous vraiment nous quitter(y/n) ?');
 IF &quit = 'y' THEN 
 DBMS_OUTPUT.PUT_LINE('Au revoir !');
 EXIT;

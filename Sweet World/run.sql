@@ -8,8 +8,10 @@ SET NUMWIDTH 10
 SET LINESIZE 3000
 SET TRIMSPOOL ON
 SET TAB OFF
-SET PAGESIZE 100
+SET PAGESIZE 1000
 SET ECHO OFF
+SET VERIFY OFF
+SPOOL ON 
 
 ALTER SESSION SET NLS_LANGUAGE=English;
 ALTER SESSION SET NLS_TERRITORY=America;
@@ -70,9 +72,20 @@ Prompt
 
 --@Procedure/main_procedure
 
-Prompt
-Prompt *******************************************************************JASON KAMSU*************************************************************************
-Prompt
+PROMPT
+PROMPT
+PROMPT
+PROMPT	    ****      *********  *********    	        *********   **********  **********  ***********       ****      ***      ***
+PROMPT      ******     **      ** **      **   	        **      **  **          ***         ***********      ******     ***      ***
+PROMPT      **    **    *********  *********     	        *********   **********  **********      ***         **    **    ***      ***
+PROMPT      **********   **         **                      **   **     **********         ***      ***        **********   ***      ***
+PROMPT      **        **  **         **         	        **    **    **          **********      ***       **        **  ************
+PROMPT      **          ** **         **         	        **     **   **********  **********      ***      **          ** ************
+PROMPT
+PROMPT
+PROMPT 
+PROMPT 
+PROMPT
 
 select table_name from user_tables;
 
@@ -92,5 +105,7 @@ select table_name from user_tables;
 -- BY JASON KAMSU
 --
 Prompt
-Prompt *******************************************************************SWEET_WORLD*************************************************************************
+Prompt *******************************************************************APP_RESTAU*************************************************************************
 Prompt
+ 
+SPOOL OFF

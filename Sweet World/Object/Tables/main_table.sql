@@ -11,6 +11,12 @@ Prompt
 Prompt***************************** CREATION OF THE USER TABLE *****************************
 Prompt
 
+@Object/Tables/Table_admin
+
+Prompt
+Prompt***************************** CREATION OF THE USER TABLE *****************************
+Prompt
+
 @Object/Tables/Table_user
 
 Prompt

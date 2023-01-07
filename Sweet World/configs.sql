@@ -6,13 +6,13 @@ SET PAGESIZE 1000
 ALTER SESSION set container=xepdb1;
 
 PROMPT 
-PROMPT specify password for sw as parameter 1:
-DEFINE pass     = sw
+PROMPT specify password for swl as parameter 1:
+DEFINE pass     = swl
 PROMPT 
-PROMPT specify default tablespeace for ob as parameter 2:
+PROMPT specify default tablespeace for swl as parameter 2:
 DEFINE tbs      = users
 PROMPT 
-PROMPT specify temporary tablespace for ob as parameter 3:
+PROMPT specify temporary tablespace for swl as parameter 3:
 DEFINE ttbs     = temp
 PROMPT 
 PROMPT specify password for SYS as parameter 4:

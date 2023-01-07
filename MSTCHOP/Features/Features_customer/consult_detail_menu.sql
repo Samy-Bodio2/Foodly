@@ -1,6 +1,6 @@
 SELECT r.Name_resto "Nom du restaurant",
        m.Menu_title "Nom du menu",
-       d.Name_dish||' '||com.Name_garnish||' '||s.Name_Seculant "Compo plat",
+       d.Name_dish||' '||g.Name_garnish||' '||s.Name_Seculant "Compo plat",
        m.Menu_price * co.marge + m.Menu_price "Prix total",
        Menu_qty "Quantite"
 FROM menu m

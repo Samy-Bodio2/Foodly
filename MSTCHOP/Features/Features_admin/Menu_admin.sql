@@ -2,15 +2,19 @@
 PROMPT      ****************************************************************************************************************************************** 
 PROMPT      **                                   MENU OF ACTIONS TO BE PERFORMED BY AN ADMINISTRATOR                                                **
 PROMPT      ***                                                                                                                                    ***
-PROMPT      ****                                         1- Ajouter un restaurant                                                                 ****
-PROMPT      *****                                        2- Consulter les restaurants                                                            *****
-PROMPT      ******                                       3- Editer un restaurant                                                                ******
-PROMPT      *******                                      4- Rechercher un restaurant                                                           *******
-PROMPT      ********                                     5- Ajouter un menu du jour                                                           ********           
-PROMPT      *******                                      6- Modifier un menu du jour                                                           *******
-PROMPT      ******                                       7- Historique des commandes                                                            ******
-PROMPT      *****                                        8- Se deconnecter                                                                       *****
-PROMPT      ****                                         9- Quitter                                                                               ****
+PROMPT      ****                                                                                                                                  ****
+PROMPT      *****                                         1- Ajouter un restaurant                                                               *****
+PROMPT      ******                                        2- Consulter les restaurants                                                          ******
+PROMPT      *******                                       3- Editer un restaurant                                                              *******
+PROMPT      ********                                      4- Rechercher un restaurant                                                         ********
+PROMPT      *********                                     5- Ajouter un menu du jour                                                         *********           
+PROMPT      **********                                    6- Modifier un menu du jour                                                       **********
+PROMPT      *********                                     7- Historique des commandes                                                        *********
+PROMPT      ********                                      8- Editer admin                                                                     ********
+PROMPT      *******                                       9- Supprimer restaurant                                                              *******
+PROMPT      ******                                        10- Supprimer menu                                                                    ******
+PROMPT      *****                                         11- Se deconnecter                                                                     *****
+PROMPT      ****                                          12-Quitter                                                                              ****
 PROMPT      ***                                                                                                                                    ***
 PROMPT      **                                                                                                                                      **
 PROMPT      ******************************************************************************************************************************************

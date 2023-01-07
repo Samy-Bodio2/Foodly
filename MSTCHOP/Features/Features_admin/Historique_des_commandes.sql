@@ -26,7 +26,6 @@ JOIN SECULANT s
 ON s.id_seculant = M.id_seculant 
 JOIN Garnish c 
 ON c.id_garnish = M.id_garnish;
-WHERE U.username ='&ENTER_YOUR_NAME' and U.password = format1('&Password');
 
 PROCEDURE historique AS
 v_resto_nom Restaurant%ROWTYPE; 
@@ -50,20 +49,20 @@ FETCH resto into v_resto_nom.name_resto,
                  v_dish.Name_Dish,
                  v_garnish.Name_garnish,
                  v_seculant.Name_seculant,
-                 v_quantity.Menu_Qty
+                 v_quantity.Menu_Qty,
                  v_order_date.order_date
                  ;
     EXIT WHEN histo%NOTFOUND;
     DBMS_OUTPUT.PUT_LINE('Nom du Restaurant: '||V_resto_nom.Name_resto||'  '||
-                         'Sa description: '||v_first_name.first_name||'  '||
-                         'Email: '||v_last_name.last_name,||'  '||
-                         'Phone Number: '||v_menu_titre.Menu_title||'  '||
-                         'Adresse: '||v_menu_prix.Menu_price,||'  '||
-                         'Adresse: '||v_menu_prix.Menu_price||'  '||
-                         'Adresse: '||v_menu_prix.Menu_price||'  '||
-                         'Adresse: '||v_menu_prix.Menu_price||'  '||
-                         'Adresse: '||v_menu_prix.Menu_price||'  '||
-
+                         'Nom: '||v_first_name.first_name||'  '||
+                         'Prenom: '||v_last_name.last_name,||'  '||
+                         'Titre du menu: '||v_menu_titre.Menu_title||'  '||
+                         'Prix du menu: '||v_menu_prix.Menu_price||'  '||
+                         'Nom du plat: '||v_dish.Name_Dish||'  '||
+                         'Nom du complement'||v_garnish.Name_garnish||'  '||
+                         'Nom du seculant '||v_seculant.Name_seculant||'  '||
+                         'Quantity '||v_quantity.Menu_Qty||'  '||
+                         'Date de commande '||v_order_date.order_date||'  '||
                          );
     DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------------------------------------------------------------------------------------');
 END LOOP;

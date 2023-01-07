@@ -1,14 +1,14 @@
 SELECT 
-Menu_title,
-first_name||last_name,
-Menu_price,
-Menu_date,
-Menu_Qty,
-Name_dish,
-Name_Seculant,
-Name_garnish,
-order_date,
-name_resto
+m.Menu_title,
+c.first_name||c.last_name,
+m.Menu_price,
+m.Menu_date,
+m.Menu_Qty,
+d.Name_dish,
+s.Name_Seculant,
+g.Name_garnish,
+m.order_date,
+r.name_resto
 FROM Orders o
 JOIN panier p
 ON p.id_panier = o.id_panier
@@ -26,6 +26,6 @@ JOIN SECULANT s
 ON s.id_seculant = m.id_seculant 
 JOIN Garnish c 
 ON c.id_garnish = m.id_garnish
-WHERE username = '&username' AND password = '&password';
+WHERE username = '&username' AND password = format1('&password');
 
 @Features/Features_customer/Menu_customer

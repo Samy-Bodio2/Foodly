@@ -1,3 +1,4 @@
 @Procedure/Procedure_admin/register_admin
 @Procedure/Procedure_customer/register_cust
+@Procedure/Procedure_customer/add_menu_in_panier
 @Procedure/Procedure_respo_resto/register_resto

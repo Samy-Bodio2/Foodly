@@ -10,16 +10,19 @@ V_palt_complement    complement.Name_complement%TYPE;
 V_name_Resro         restaurant.name_resto%TYPE;
 V_Menu_title2         Menu.Menu_title%TYPE;
 BEGIN 
+SELECT Menu_title
+INTO V_Menu_title2 
+FROM Menu;
 DBMS_OUTPUT.PUT_LINE('veiller entrer le titre du menu donc vous souhetez consulter le detaille :');
 SELECT 
 Menu_title,
 Menu_description,
 Menu_price,
- Menu_date,
+Menu_date,
 Menu_Qty,
 Name_dish,
 Name_Seculant,
-Name_garnish,
+Name_complement,
 name_resto
 INTO 
 V_Menu_title  ,       
@@ -36,8 +39,8 @@ JOIN Dish
 ON dish.id_dish = M.id_dish
 JOIN Seculant S
 ON S.id_seculant = M.id_seculant
-JOIN garnish C
-ON C.id_garnisht = M.id_complement
+JOIN complement C
+ON C.id_complement = M.id_complement
 JOIN restaurant R
 ON R.id_resto = M.id_resto
 WHERE M.Menu_title = '&Menu_title';

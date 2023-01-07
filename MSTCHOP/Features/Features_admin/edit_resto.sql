@@ -20,5 +20,7 @@ where id_resto = idrestaurant;
 end if;
 END;
 /
+ 
+ SELECT * FROM Restaurant;
 
 @Features/Features_admin/Menu_admin

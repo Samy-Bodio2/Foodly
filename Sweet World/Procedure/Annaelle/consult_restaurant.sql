@@ -1,8 +1,8 @@
-SELECT Name_resto,
-       Description,
-       Phone_number,
-       resto_address,
-       Date_res_created
+SELECT  name_resto ,  
+      Description,  
+      email ,         
+      phone_number,  
+      resto_address  
 From Restaurant;
 
 /*CREATE PROCEDURE consult_restaurant 

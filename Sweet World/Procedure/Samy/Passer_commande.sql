@@ -11,6 +11,23 @@ RETURN idrst;
 END;
 /
 
+    CREATE OR REPLACE FUNCTION idpan(nom VARCHAR)
+    RETURN INT IS
+    CURSOR idpanier IS
+    SELECT P.id_panier from Panier P
+    join Customers C
+    on P.id_cust = C.id_cust 
+    join Users S
+    on S.id_user = C.id_user
+    where S.username = nom;
+    entier INT;
+    BEGIN
+    OPEN idpanier;
+    FETCH idpanier into entier;
+    RETURN entier;
+    END;
+    /
+
 CREATE OR REPLACE FUNCTION custFonc(varNom VARCHAR)
 RETURN INT IS
     valt Users.id_user%TYPE;
@@ -57,13 +74,11 @@ AS
 BEGIN
     DELETE FROM Panier
     WHERE id_cust = varnomFonc;
-    DELETE FROM Customers
-    WHERE id_cust = varnomFonc;
 END;
 BEGIN
 insert into Orders(id_order,order_date,id_resto,id_panier)
 VALUES
-(id_order_seq.nextval,SYSDATE,nom_restaurant('&Nom_du_restaurant'),id_panier_seq.currval);
+(id_order_seq.nextval,SYSDATE,nom_restaurant('&Nom_du_restaurant'),idpan('&Enter_Your_User_Name'));
 operation;
 END;
 /

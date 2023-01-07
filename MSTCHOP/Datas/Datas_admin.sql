@@ -1,5 +1,5 @@
 INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (1,'Samy Bodio',format1('qwerty123'));
-INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (2,'Silha Jason',format1('123456789'));
+INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (2,'Silha Jason',format1('jasonjjk16'));
 INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (3,'Nguiakam Angele',format1('123ktrd89'));
 INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (4,'Kangue Loic',format1('day@!6789'));
 INSERT INTO ADMIN(id_admin,name_admin,pwd_admin) VALUES (5,'Awounang Stone',format1('123@pryt9'));

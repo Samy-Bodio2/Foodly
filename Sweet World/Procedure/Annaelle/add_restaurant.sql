@@ -1,8 +1,57 @@
 
+DECLARE
+r_id_user Users.id_user%type;
+  PROCEDURE add_restaurant 
+  AS
+  BEGIN
+   SELECT 
+      id_user 
+    INTO 
+       r_id_user
+    FROM 
+       Restaurant r
+    JOIN 
+       Users u
+    ON  
+       (r.id_user=u.id_user)
+    WHERE
+        username='&Enter_your_username'
+    AND 
+        password='&Enter_your_password'
+
+    INSERT INTO
+    (
+        id_resto,   
+      name_resto ,  
+      Description,  
+      email ,         
+      phone_number,  
+      resto_address,   
+      id_user            
+    )
+    VALUES
+    (
+      
+        id_resto_seq.nextval,'&name_resto',
+                             '&description', 
+                            '&email',
+                            '&phone_number',
+                            '&resto_address',
+                              r_id_user
+    )
+
+END;
+BEGIN
+add_restaurant;
+END;
+/
+
+
+
+/*
 SET SERVEROUTPUT ON;
 
 CREATE OR REPLACE PROCEDURE Add_Restaurant
-(
   r_id_resto         IN	INT	,	
   r_Name_resto      IN	VARCHAR2(25),
   r_Name_employees  IN	VARCHAR2(25),
@@ -11,8 +60,7 @@ CREATE OR REPLACE PROCEDURE Add_Restaurant
   r_Resto_adress   IN VARCHAR2(25),
   r_Date_res_created IN DATE,
   r_id_user           IN INT
-                                            
-)
+                                        
    IS
         l_msg VARCHAR2(100);
     BEGIN
@@ -57,7 +105,7 @@ CREATE OR REPLACE PROCEDURE Add_Restaurant
          END;
           DBMS.OUTPUT.put_line(l_msg);
  END;
-
+*/
 
 
 

@@ -1,5 +1,3 @@
-PROMPT**************************************************BIENVENUE SUR Nom de lapplication ****************************************************
-PROMPT
 PROMPT       *******************************************************************       
 PROMPT       |                                                                  |
 PROMPT       |               1- Consulter les details dun menu                  |   

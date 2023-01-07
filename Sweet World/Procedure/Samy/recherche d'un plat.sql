@@ -3,10 +3,23 @@ DECLARE
 result23 varchar(50);
 result varchar(50);
 plat Dish%ROWTYPE;
+rstNom Restaurant.Name_resto%TYPE;
 PROCEDURE select_dish(pl IN VARCHAR) AS
 BEGIN
-select * into plat from Dish where Name_dish = pl;
-DBMS_OUTPUT.PUT_LINE(plat.id_dish ||'   '||plat.Name_dish);
+
+select  id_dish,Name_dish
+into plat from Dish 
+where Name_dish = pl;
+
+select R.Name_resto
+into rstNom from Dish D
+JOIN Menu M
+ON M.id_dish = D.id_dish
+JOIN Restaurant R
+ON R.id_resto = M.id_resto
+where Name_dish = pl;
+
+DBMS_OUTPUT.PUT_LINE(plat.id_dish ||'   '||plat.Name_dish||'   '||rstNom);
 END;
 BEGIN
 result := lower('&Plat');
@@ -201,6 +214,3 @@ select_dish(result23);
 END IF;
 END;
 /
-
-
---------------------samy bodioS

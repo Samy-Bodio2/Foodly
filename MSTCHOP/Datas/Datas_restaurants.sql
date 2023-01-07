@@ -1,7 +1,7 @@
 INSERT INTO Restaurant (id_resto,name_resto,Description,email,phone_number,resto_address,id_user  
 )
 VALUES(1,
-'tcp tchop', 
+'Friends Food', 
  '',
   'tcttchop@gmail.com',
   658471235,
@@ -10,63 +10,63 @@ VALUES(1,
 
 INSERT INTO Restaurant (id_resto,name_resto,Description,email,phone_number,resto_address,id_user  
 )
-VALUES(2,'loic food','','loicfood@gmail.com',658471225,'378291.bonamoussadi.douala',3);
+VALUES(2,'5 Fourchettes','','loicfood@gmail.com',658471225,'378291.bonamoussadi.douala',3);
 
 INSERT INTO Restaurant (id_resto,name_resto,Description,email,phone_number,resto_address,id_user  
 )
-VALUES(3, 'tchopP','','tchop@gmail.com',658441235,'1267.bonapriso.douala',9);
+VALUES(3, 'Lynk','','tchop@gmail.com',658441235,'1267.bonapriso.douala',9);
 
 INSERT INTO Restaurant (id_resto,name_resto,Description,email,phone_number,resto_address,id_user  
 )
-VALUES(4, 'je tchop','','jetchop@gmail.com',650471235,'2839.bonamoussadi.douala',1);
+VALUES(4, 'LA PIZZERIA','','jetchop@gmail.com',650471235,'2839.bonamoussadi.douala',1);
 
 INSERT INTO Restaurant(id_resto,name_resto,Description,email,phone_number,resto_address,id_user  
 ) 
-VALUES(5, 'chic tchop', '','chictchop@gmail.com',658474235,'5476.akwa.douala',4);
+VALUES(5, 'Saga Africa', '','chictchop@gmail.com',658474235,'5476.akwa.douala',4);
 
 INSERT INTO Restaurant (id_resto,name_resto,Description,email,phone_number,resto_address,id_user  
 )
-VALUES(6,'mene tchop','','menetchop@gmail.com',658171235,'3578.logpom.douala',6);
+VALUES(6,'L Italien-Piccola Venezia','','menetchop@gmail.com',658171235,'3578.logpom.douala',6);
 
 INSERT INTO Restaurant (id_resto,name_resto,Description,email,phone_number,resto_address,id_user  
 )
-VALUES(7,'you want to tchop','','youwanttotchop@gmail.com',698471235,'3876.akwa.douala',2);
+VALUES(7,'Traditional-food','','youwanttotchop@gmail.com',698471235,'3876.akwa.douala',2);
 
 INSERT INTO Restaurant(id_resto,name_resto,Description,email,phone_number,resto_address,id_user  
 )
-VALUES(8,'foodtchop','','foodtchop@gmail.com',658471935,'21781.deido.douala',7);
+VALUES(8,'Le Socrate','','foodtchop@gmail.com',658471935,'21781.deido.douala',7);
 
 INSERT INTO Restaurant (id_resto,name_resto,Description,email,phone_number,resto_address,id_user  
 )
-VALUES(9,'nyamnyam food','','nyamnyamfood@gmail.com',678471235,'23767.bonandjo.douala',5 );
+VALUES(9,'C-PIZZA','','nyamnyamfood@gmail.com',678471235,'23767.bonandjo.douala',5 );
 
 INSERT INTO Restaurant(id_resto,name_resto,Description,email,phone_number,resto_address,id_user  
 )
-VALUES (10,'tchop et yamo','','tchopetyamo@gmail.com',658071235,'28763.bonamoussadi.douala',2);
+VALUES (10,'K MyChoice','','tchopetyamo@gmail.com',658071235,'28763.bonamoussadi.douala',2);
 
 INSERT INTO Restaurant(id_resto,name_resto,Description,email,phone_number,resto_address,id_user  
 )
-VALUES (11,'univers du manger','','universdumanger@gmail.com',696951235,'1872.makepe.douala',8);
+VALUES (11,'Tchop et Yamo','','universdumanger@gmail.com',696951235,'1872.makepe.douala',8);
 
 INSERT INTO Restaurant(id_resto,name_resto,Description,email,phone_number,resto_address,id_user  
 )
-VALUES (12,'like mum','','likemum@gmail.com',658071001,'1892.logpom.douala',9);
+VALUES (12,'Hilton','','likemum@gmail.com',658071001,'1892.logpom.douala',9);
 
 INSERT INTO Restaurant(id_resto,name_resto,Description,email,phone_number,resto_address,id_user  
 )
-VALUES (13,'mes delices','','mesdelices@gmail.com',658071100,'1287.deido.douala',1);
+VALUES (13,'Restaurant SIM','','mesdelices@gmail.com',658071100,'1287.deido.douala',1);
 
 INSERT INTO Restaurant(id_resto,name_resto,Description,email,phone_number,resto_address,id_user  
 )
-VALUES (14,'saveurs de chez nous','','saveursdecheznous@gmail.com',650991235,'3287.makepe.douala',2);
+VALUES (14,'Le plaisir du Gout Pizzeria','','saveursdecheznous@gmail.com',650991235,'3287.makepe.douala',2);
 
 INSERT INTO Restaurant(id_resto,name_resto,Description,email,phone_number,resto_address,id_user  
 )
-VALUES (15,'Hmmm, la creperie','','hmmmlacreperie@gmail.com',650277235,'2780.akwa.douala',3);
+VALUES (15,'Ebene plus','','hmmmlacreperie@gmail.com',650277235,'2780.akwa.douala',3);
 
 INSERT INTO Restaurant(id_resto,name_resto,Description,email,phone_number,resto_address,id_user  
 )
-VALUES (16,'le foyer du marin','','foyerdumarin@gmail.com',655555235,'28744.pk10.douala',2);
+VALUES (16,'Pieds dans l eau','','foyerdumarin@gmail.com',655555235,'28744.pk10.douala',2);
 
 INSERT INTO Restaurant(id_resto,name_resto,Description,email,phone_number,resto_address,id_user  
 )

@@ -31,7 +31,7 @@ WHEN 8 THEN
 WHEN 9 THEN
 DBMS_OUTPUT.PUT_LINE('Voulez vous vous deconnecter (y/n) ?');
 IF &quit = 'y' THEN
-@Features/Menu/login_client.sql
+@Sweet World/Features/Menu/logoff.sql
 END IF;
 WHEN 10 THEN
 DBMS_OUTPUT.PUT_LINE('Voulez vous vous revenir au menu principal (y/n) ?');

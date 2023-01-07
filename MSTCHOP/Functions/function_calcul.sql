@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION CALCUL
+    CREATE OR REPLACE FUNCTION CALCUL
 RETURN INT IS
     
     valt int not null := id_panier_seq.currval;
@@ -6,7 +6,7 @@ RETURN INT IS
     CURSOR prix IS
     SELECT Menu_price 
     from Menu M
-    join Control_Panier_Menu CPM
+    join Choix CPM
     on M.id_menu = CPM.id_menu
     join Panier P
     on P.id_panier = CPM.id_panier
@@ -14,7 +14,7 @@ RETURN INT IS
 
     CURSOR Quant IS
     SELECT Quantity
-    from Control_Panier_Menu
+    from Choix
     where id_panier = valt;
 
     entier1 int; 

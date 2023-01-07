@@ -42,10 +42,29 @@ v_order_date Orders%ROWTYPE;
 BEGIN 
 OPEN histo;
 LOOP
-FETCH resto into V_resto_nom.Name_resto,V_Description.Description,V_email.email,V_phone_number.phone_number,V_resto_address.resto_address;
+FETCH resto into v_resto_nom.name_resto,
+                 v_first_name.first_name,
+                 v_last_name.last_name,
+                 v_menu_titre.Menu_title,
+                 v_menu_prix.Menu_price,
+                 v_dish.Name_Dish,
+                 v_garnish.Name_garnish,
+                 v_seculant.Name_seculant,
+                 v_quantity.Menu_Qty
+                 v_order_date.order_date
+                 ;
     EXIT WHEN histo%NOTFOUND;
-    DBMS_OUTPUT.PUT_LINE('Nom du Restaurant: '||V_resto_nom.Name_resto||'  '||'Sa description: '||V_Description.Description
-    ||'  '||'Email: '||V_email.email||'  '||'Phone Number: '||V_phone_number.phone_number||'  '||'Adresse: '||V_resto_address.resto_address);
+    DBMS_OUTPUT.PUT_LINE('Nom du Restaurant: '||V_resto_nom.Name_resto||'  '||
+                         'Sa description: '||v_first_name.first_name||'  '||
+                         'Email: '||v_last_name.last_name,||'  '||
+                         'Phone Number: '||v_menu_titre.Menu_title||'  '||
+                         'Adresse: '||v_menu_prix.Menu_price,||'  '||
+                         'Adresse: '||v_menu_prix.Menu_price||'  '||
+                         'Adresse: '||v_menu_prix.Menu_price||'  '||
+                         'Adresse: '||v_menu_prix.Menu_price||'  '||
+                         'Adresse: '||v_menu_prix.Menu_price||'  '||
+
+                         );
     DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------------------------------------------------------------------------------------');
 END LOOP;
 END;

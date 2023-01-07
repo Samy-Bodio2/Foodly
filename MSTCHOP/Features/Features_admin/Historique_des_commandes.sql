@@ -1,16 +1,16 @@
 DECLARE
-CURSOR resto IS
+CURSOR histo IS
 SELECT 
-R.name_resto,
-O.order_date,
-R.phone_number,
-R.resto_address,
+R.name_resto ,
+co.first_name,
+co.last_name,
 M.Menu_title,
 M.Menu_price,
-M.Menu_date,
+d.Name_Dish,
+c.Name_garnish,
+s.Name_seculant,
 M.Menu_Qty,
-U.username,
-
+O.order_date
 FROM Orders O
 JOIN Restaurant R
 ON R.id_resto = O.id_resto
@@ -27,17 +27,23 @@ ON s.id_seculant = M.id_seculant
 JOIN Garnish c 
 ON c.id_garnish = M.id_garnish;
 WHERE U.username ='&ENTER_YOUR_NAME' and U.password = format1('&Password');
-PROCEDURE consulter_les_restaurants AS
-V_resto_nom Restaurant%ROWTYPE; 
-V_Description Restaurant%ROWTYPE;
-V_email Restaurant%ROWTYPE;
-V_phone_number Restaurant%ROWTYPE;
-V_resto_address  Restaurant%ROWTYPE; 
+
+PROCEDURE historique AS
+v_resto_nom Restaurant%ROWTYPE; 
+v_first_name Customers%ROWTYPE;
+v_last_name Customers%ROWTYPE;
+v_menu_titre Menu%ROWTYPE;
+v_menu_prix Menu%ROWTYPE;
+v_dish Dish%ROWTYPE;
+v_garnish Garnish%ROWTYPE;
+v_seculant Seculant%ROWTYPE;
+v_quantity Menu%ROWTYPE;
+v_order_date Orders%ROWTYPE; 
 BEGIN 
-OPEN resto;
+OPEN histo;
 LOOP
 FETCH resto into V_resto_nom.Name_resto,V_Description.Description,V_email.email,V_phone_number.phone_number,V_resto_address.resto_address;
-    EXIT WHEN resto%NOTFOUND;
+    EXIT WHEN histo%NOTFOUND;
     DBMS_OUTPUT.PUT_LINE('Nom du Restaurant: '||V_resto_nom.Name_resto||'  '||'Sa description: '||V_Description.Description
     ||'  '||'Email: '||V_email.email||'  '||'Phone Number: '||V_phone_number.phone_number||'  '||'Adresse: '||V_resto_address.resto_address);
     DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------------------------------------------------------------------------------------');
@@ -49,5 +55,3 @@ END;
 /
 
 @Features/Features_admin/Menu_admin
-
-

@@ -7,7 +7,7 @@ PROCEDURE select_restau(rst IN VARCHAR) AS
 BEGIN
     select * into restau from Restaurant where name_resto = rst;
     DBMS_OUTPUT.PUT_LINE(restau.name_resto||'  '||restau.Description||'  '||restau.phone_number||'  '||restau.resto_address);
-    DBMS_OUTPUT.PUT_LINE('---------------------------------------------------------------');
+    DBMS_OUTPUT.PUT_LINE('---------------------------------------------------------------------------------------------------');
 END;
 BEGIN
     result := lower('&Restaurant');

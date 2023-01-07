@@ -13,8 +13,8 @@ DBMS_OUTPUT.PUT_LINE('Entrez vous informations:');
     IF v_password = insert_password THEN
     DBMS_OUTPUT.PUT_LINE('Bonjour!! Vos donnees ont ete mise a jour');
         UPDATE Users SET
-        username = '&username',
-        password = '&password'
+        username = '&new_username',
+        password = '&new_password'
         WHERE username = v_username;
     ELSE
         DBMS_OUTPUT.PUT_LINE('Ce compte n existe pas');

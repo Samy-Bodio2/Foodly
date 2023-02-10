@@ -17,6 +17,7 @@ VALUES
 '&Adresse_du_restaurant'
 ,idutil('&Enter_your_Username'));
 
+
 SELECT * FROM Restaurant c JOIN Users u ON (c.id_user = u.id_user);
 
 @Features/Features_respo_resto/Menu_respo_resto_con

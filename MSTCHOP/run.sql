@@ -93,11 +93,11 @@ SET SERVEROUTPUT ON;
 @Procedure/Case
 
 
-select table_name from user_tables;
+/*select table_name from user_tables;
 SET LINESIZE 6000
 SET PAGESIZE 1000
 
-/*SELECT * FROM ADMIN;
+SELECT * FROM ADMIN;
 SELECT * FROM USERS;
 SELECT * FROM RESTAURANT;
 SELECT * FROM CUSTOMERS;

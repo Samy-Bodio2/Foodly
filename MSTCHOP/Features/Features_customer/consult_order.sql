@@ -1,21 +1,21 @@
-SELECT 
-m.Menu_title,
-c.first_name||c.last_name,
-m.Menu_price,
-m.Menu_date,
-m.Menu_Qty,
-d.Name_dish,
-s.Name_Seculant,
-g.Name_garnish,
-m.order_date,
-r.name_resto
+SELECT
+DISTINCT u.username "Nom de l'utilisateur", 
+m.Menu_title "Titre du menu",
+co.first_name||co.last_name "Nom complet ",
+m.Menu_price "Prix ",
+m.Menu_Qty "Quantite",
+d.Name_dish "Nom du plat",
+s.Name_Seculant "Nom sdu seculant",
+c.Name_garnish "Nom du complement ",
+o.order_date "Date de commande",
+r.name_resto "Nom du restaurant"
 FROM Orders o
 JOIN panier p
 ON p.id_panier = o.id_panier
-JOIN customers c 
-ON c.id_cust = p.id_cust
+JOIN customers co 
+ON co.id_cust = p.id_cust
 JOIN users u
-ON u.id_user = c.id_user
+ON u.id_user = co.id_user
 JOIN restaurant r 
 ON u.id_user = r.id_user
 JOIN Menu m

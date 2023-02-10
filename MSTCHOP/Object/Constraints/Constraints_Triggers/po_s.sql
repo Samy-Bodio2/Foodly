@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 CREATE OR REPLACE TRIGGER order_tg
 BEFORE INSERT ON orders
+=======
+CREATE OR REPLACE TRIGGER admin_tg
+BEFORE INSERT ON Admin
+>>>>>>> c36d098ac74b4b5ee9a1ffaaa77e87a37448e0a6
 FOR EACH ROW
 BEGIN
 :new.order_number := order_number_seq.nextval;

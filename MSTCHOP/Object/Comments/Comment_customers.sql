@@ -20,7 +20,7 @@ COMMENT ON COLUMN Customers.Datecd_cust
 IS 'Date creation of the customer account.'
 
 COMMENT ON COLUMN Customers.Cust_address  
-IS 'Addresse du client.'
+IS 'Customer address.'
 
 COMMENT ON COLUMN Customers.id_user 
 IS 'Foreign key of Customers table reference of Users table.'

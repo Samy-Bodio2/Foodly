@@ -1,5 +1,5 @@
 COMMENT ON TABLE customers
-IS 'Permet dajouter les utilisateurs.'
+IS 'Allows you to add users.'
 
 COMMENT ON COLUMN Customers.id_cust  
 IS 'Primary key of Customers table.'

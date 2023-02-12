@@ -5,7 +5,7 @@ COMMENT ON COLUMN Customers.id_cust
 IS 'Primary key of Customers table.'
 
 COMMENT ON COLUMN Customers.first_name  
-IS 'Nom du client.'
+IS 'Customer Name.'
 
 COMMENT ON COLUMN Customers.last_name 
 IS 'Prenom du client.'

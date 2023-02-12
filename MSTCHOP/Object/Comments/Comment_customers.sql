@@ -14,7 +14,7 @@ COMMENT ON COLUMN Customers.phone_number
 IS 'Customer number.'
 
 COMMENT ON COLUMN Customers.Email 
-IS 'Email du client.'
+IS 'Customer Email.'
 
 COMMENT ON COLUMN Customers.Datecd_cust  
 IS 'Date de creation du compte client.'

@@ -12,10 +12,10 @@ COMMENT ON COLUMN Menu.Menu_description
 IS 'Menu description.'
 
 COMMENT ON COLUMN Menu.Menu_price  
-IS 'Prix du menu.'
+IS 'Menu price.'
 
 COMMENT ON COLUMN Menu.Menu_date  
-IS 'Date creation du menu.'
+IS 'date creation of the menu.'
 
 COMMENT ON COLUMN Menu.Menu_Qty 
 IS 'Quantité du menu.'

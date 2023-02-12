@@ -6,10 +6,10 @@ COMMENT ON COLUMN Menu.id_menu
 IS 'Primary key of Menu table.'
 
 COMMENT ON COLUMN Menu.Menu_Title  
-IS 'Titre du menu.'
+IS 'Menu title.'
 
 COMMENT ON COLUMN Menu.Menu_description
-IS 'Description du menu.'
+IS 'Menu description.'
 
 COMMENT ON COLUMN Menu.Menu_price  
 IS 'Prix du menu.'

@@ -1,5 +1,5 @@
 COMMENT ON TABLE Menu
-IS 'Permet aux restaurants dajouter les menus'
+IS 'allows the restaurant to add menus'
 
 
 COMMENT ON COLUMN Menu.id_menu  

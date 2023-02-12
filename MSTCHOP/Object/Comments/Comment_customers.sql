@@ -11,7 +11,7 @@ COMMENT ON COLUMN Customers.last_name
 IS 'Customer Last Name.'
 
 COMMENT ON COLUMN Customers.phone_number 
-IS 'Numero du client.'
+IS 'Customer number.'
 
 COMMENT ON COLUMN Customers.Email 
 IS 'Email du client.'

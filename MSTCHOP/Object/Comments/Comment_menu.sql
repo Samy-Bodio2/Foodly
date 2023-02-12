@@ -18,7 +18,7 @@ COMMENT ON COLUMN Menu.Menu_date
 IS 'date creation of the menu.'
 
 COMMENT ON COLUMN Menu.Menu_Qty 
-IS 'Quantité du menu.'
+IS 'Menu quantity.'
 
 COMMENT ON COLUMN Menu.id_dish 
 IS 'Foreign key of Menu reference of Dish table.'

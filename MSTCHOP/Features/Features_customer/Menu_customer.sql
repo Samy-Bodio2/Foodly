@@ -8,13 +8,13 @@ PROMPT      *******                                         3- Consulter les res
 PROMPT      ********                                        4- Rechercher un menu                                                             ********
 PROMPT      *********                                       5- Rechercher un plat                                                            *********   
 PROMPT      **********                                      6- Ajouter un menu au panier                                                    **********
-PROMPT      *********                                       7- Effectuer une commande                                                        *********
-PROMPT      ********                                        8- Consulter des commandes                                                        ********
-PROMPT      *******                                         9- Noter un restaurant                                                             *******                                             
-PROMPT      ******                                          10- Se deconnecter                                                                  ******
-PROMPT      *****                                           11- Quitter                                                                          *****
-PROMPT      ****                                                                                                                                  ****
-PROMPT      ***                                                                                                                                    ***   
+PROMPT      *********                                       7- Consulter des commandes                                                       *********
+PROMPT      ********                                        8- Noter un restaurant                                                            ********                                             
+PROMPT      *******                                         9- Se deconnecter                                                                  *******
+PROMPT      ******                                         10- Quitter                                                                          ******
+PROMPT      *****                                                                                                                                *****
+PROMPT      ****                                                                                                                                  ****   
+PROMPT      ***                                                                                                                                    ***
 PROMPT      **                                                                                                                                      **                                                                                
 PROMPT      ******************************************************************************************************************************************
 
@@ -28,11 +28,10 @@ select  case '&selection'
         when '4' then '@Features/Features_customer/search_menu'
         when '5' then '@Features/Features_customer/search_dish'
         when '6' then '@Features/Features_customer/add_menu_in_panier'
-        when '7' then '@Features/Features_customer/create_orders'
-        when '8' then '@Features/Features_customer/consult_order'
-        when '9' then '@Features/Features_customer/note_resto'
-        when '10' then '@Features/Features_customer/se_deconnecter'
-        when '11' then '@Procedure/Case'
+        when '7' then '@Features/Features_customer/consult_order'
+        when '8' then '@Features/Features_customer/note_resto'
+        when '9' then '@Features/Features_customer/se_deconnecter'
+        when '10' then '@Procedure/Case'
         else '@Features/Features_customer/Menu_customer'
         end as script
 from dual;

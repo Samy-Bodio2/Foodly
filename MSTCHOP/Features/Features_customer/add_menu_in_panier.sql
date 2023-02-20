@@ -12,7 +12,7 @@ END;
 /
 
 SELECT * FROM menu;
-@Features/Features_customer/Menu_customer
+@Features/Features_customer/commander
 
 
 

@@ -1,40 +1,40 @@
 INSERT INTO  Note  (
-id_note,Valeur,id_cust,id_resto  ) VALUES (1,2,1,41);
+id_cust,id_resto,Valeur  ) VALUES (1,41,2);
 INSERT INTO  Note  (
-id_note,Valeur,id_cust,id_resto  ) VALUES (2,3,2,29);
+id_cust,id_resto,Valeur   ) VALUES (2,29, 3);
 INSERT INTO  Note  (
-id_note,Valeur,id_cust,id_resto ) VALUES (3,2,3,37);
+id_cust,id_resto,Valeur  ) VALUES (3,37,2);
 INSERT INTO  Note  (
-id_note,Valeur,id_cust,id_resto  ) VALUES (4,5,4,5);
+id_cust,id_resto,Valeur   ) VALUES (4,5,5);
 INSERT INTO  Note  (
-id_note,Valeur,id_cust,id_resto  ) VALUES (5,4,5,45);
+id_cust,id_resto,Valeur   ) VALUES (5,45,4);
 INSERT INTO  Note  (
-id_note,Valeur,id_cust,id_resto  ) VALUES (6,2,6,27);
+id_cust,id_resto,Valeur   ) VALUES (6,27,2);
 INSERT INTO  Note  (
-id_note,Valeur,id_cust,id_resto  ) VALUES (7,4,7,20);
+id_cust,id_resto,Valeur   ) VALUES (7,20,4);
 INSERT INTO  Note  (
-id_note,Valeur,id_cust,id_resto) VALUES (8,3,8,20);
+id_cust,id_resto,Valeur ) VALUES (8,20,3);
 INSERT INTO  Note (
-id_note,Valeur,id_cust,id_resto  ) VALUES (9,2,9,34);
+id_cust,id_resto,Valeur   ) VALUES (9,34,2);
 INSERT INTO Note (
-id_note,Valeur,id_cust,id_resto 
-  ) VALUES (10,4,10,26);
+id_cust,id_resto,Valeur  
+  ) VALUES (10,26,4);
 INSERT INTO Note (
-id_note,Valeur,id_cust,id_resto
-) VALUES (11,5,11,30);
+id_cust,id_resto,Valeur 
+) VALUES (11,30,5);
 INSERT INTO Note (
-id_note,Valeur,id_cust,id_resto
-) VALUES (12,2,12,17);
+id_cust,id_resto,Valeur 
+) VALUES (12,17,2);
 INSERT INTO Note (
-id_note,Valeur,id_cust,id_resto
-) VALUES (13,1,13,50);
+id_cust,id_resto,Valeur 
+) VALUES (13,50,1);
 INSERT INTO Note (
-id_note,Valeur,id_cust,id_resto
-) VALUES (14,4,14,34);
+id_cust,id_resto,Valeur 
+) VALUES (14,34,4);
 INSERT INTO Note (
-id_note,Valeur,id_cust,id_resto 
-) VALUES (15,2,15,15);
+id_cust,id_resto,Valeur  
+) VALUES (15,15,2);
 INSERT INTO Note (
-id_note,Valeur,id_cust,id_resto 
-) VALUES (16,4,16,23);
+id_cust,id_resto,Valeur  
+) VALUES (16,23,4);
 

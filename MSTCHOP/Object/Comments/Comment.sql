@@ -6,17 +6,11 @@ SET TAB OFF
 SET PAGESIZE 100
 SET ECHO OFF 
 
-<<<<<<< HEAD
+
 COMMENT ON TABLE regions 
 IS 'Regions table that contains region numbers and names. Contains 4 rows; references with the Countries table.'
 
 COMMENT ON COLUMN regions.region_id
-=======
-COMMENT ON TABLE Admin
-IS 'Regions table that contains region numbers and names. Contains 4 rows; references with the Countries table.'
-
-COMMENT ON COLUMN Admin.Name_admin 
->>>>>>> c36d098ac74b4b5ee9a1ffaaa77e87a37448e0a6
 IS 'Primary key of regions table.'
 
 COMMENT ON COLUMN regions.region_name

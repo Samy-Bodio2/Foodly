@@ -6,7 +6,6 @@ SET TAB OFF
 SET PAGESIZE 100
 SET ECHO OFF 
 
-
 COMMENT ON TABLE regions 
 IS 'Regions table that contains region numbers and names. Contains 4 rows; references with the Countries table.'
 

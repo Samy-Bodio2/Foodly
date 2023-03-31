@@ -90,7 +90,7 @@ PROMPT
 PROMPT 
 PROMPT
 SET SERVEROUTPUT ON;
-@Procedure/Case
+--@Procedure/Case
 
 
 /*select table_name from user_tables;

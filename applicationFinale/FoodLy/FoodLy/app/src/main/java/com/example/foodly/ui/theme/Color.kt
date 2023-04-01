@@ -64,3 +64,5 @@ val md_theme_dark_surfaceTintColor = Color(0xFFFFB3AE)
 
 
 val seed = Color(0xFFFF2434)
+val roseR = Color(255, 0, 72)
+val roseA = Color(0, 225, 255,255)

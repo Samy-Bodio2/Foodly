@@ -1,14 +1,11 @@
-package com.example.splash_samy.navigation
+package com.example.foodly.Splash.navigation
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.splash_samy.AnimatedSplashScreen
-import com.example.splash_samy.getStart
+import com.example.foodly.Splash.AnimatedSplashScreen
+import com.example.foodly.Splash.getStart
 
 @Composable
 fun SetupNavGraph(navController: NavHostController) {
@@ -19,7 +16,7 @@ fun SetupNavGraph(navController: NavHostController) {
             AnimatedSplashScreen(navController)
         }
         composable(route = Screen.Home.route){
-            getStart()
+            getStart(navController)
         }
     }
 }

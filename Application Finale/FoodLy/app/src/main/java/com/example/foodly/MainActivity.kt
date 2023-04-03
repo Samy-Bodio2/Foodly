@@ -11,7 +11,11 @@ import androidx.navigation.compose.rememberNavController
 import com.example.foodly.Splash.AnimatedSplashScreen
 import com.example.foodly.Splash.getStart
 import com.example.foodly.Splash.navigation.Screen
-import com.example.foodly.ui.theme.Material3ComposeTheme
+import com.example.foodly.ui.auth.LoginPage
+import com.example.foodly.ui.auth.RegisterPage
+import com.example.foodly.ui.auth.ResetPage
+import com.example.foodly.ui.theme.FoodlyTheme
+import com.example.log_reg.ui.home.HomeScreen
 
 
 class MainActivity : ComponentActivity() {
@@ -19,7 +23,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         setContent {
-            Material3ComposeTheme {
+            FoodlyTheme() {
                 LoginApplication()
             }
         }
@@ -35,6 +39,7 @@ class MainActivity : ComponentActivity() {
             composable("login_page", content = { LoginPage(navController = navController) })
             composable("register_page", content = { RegisterPage(navController = navController) })
             composable("reset_page", content = { ResetPage(navController = navController) })
+            composable("ROUTE_HOME", content = { HomeScreen(null, navController = navController)} )
         })
     }
 }

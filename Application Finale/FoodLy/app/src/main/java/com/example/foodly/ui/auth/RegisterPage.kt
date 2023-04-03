@@ -1,4 +1,4 @@
-package com.example.foodly
+package com.example.foodly.ui.auth
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.foodly.R
 
 @Composable
 fun RegisterPage(navController: NavController) {

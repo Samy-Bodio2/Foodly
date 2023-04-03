@@ -19,9 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.foodly.ui.theme.roseR
 import com.example.foodly.R
-import com.example.foodly.ui.theme.roseA
 
 
 @Composable
@@ -45,13 +43,13 @@ fun getStart(navController: NavController){
         Column(modifier = Modifier.fillMaxSize()
             , verticalArrangement = Arrangement.Bottom){
             Button(
-                colors = ButtonDefaults.buttonColors(backgroundColor = roseR),
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(10.dp)
                     .padding(bottom = 18.dp)
                     .clip(RoundedCornerShape(16.dp))
-                    .background(roseR)
+                    .background(Color.Red)
 
                 ,onClick = { navController.navigate(route = "login_page") }
             ) {

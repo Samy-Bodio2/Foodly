@@ -1,4 +1,4 @@
-package com.example.foodly
+package com.example.foodly.ui.auth
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height

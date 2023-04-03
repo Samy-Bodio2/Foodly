@@ -1,5 +1,6 @@
-package com.example.foodly
+package com.example.foodly.ui.auth
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -11,11 +12,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -23,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
@@ -34,9 +33,12 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.foodly.R
+import com.example.foodly.data.Resource
 
 @Composable
 fun LoginPage(navController: NavController) {
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -91,6 +93,7 @@ fun LoginPage(navController: NavController) {
 
                 Spacer(modifier = Modifier.padding(10.dp))
                 GradientButton(
+                    null,
                     gradientColors = gradientColor,
                     cornerRadius = cornerRadius,
                     nameButton = "Login",
@@ -136,18 +139,22 @@ fun LoginPage(navController: NavController) {
 }
 @Composable
 private fun GradientButton(
+    viewModel: AuthViewModel?,
     gradientColors: List<Color>,
     cornerRadius: Dp,
     nameButton: String,
     roundedCornerShape: RoundedCornerShape
 ) {
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var loginFlow  = viewModel?.loginFlow?.collectAsState()
 
     androidx.compose.material3.Button(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 32.dp, end = 32.dp),
         onClick = {
-            //your code
+            viewModel?.login(email, password)
         },
 
         contentPadding = PaddingValues(),
@@ -173,6 +180,27 @@ private fun GradientButton(
                 fontSize = 20.sp,
                 color = Color.White
             )
+        }
+
+        loginFlow?.value?.let{
+            when(it){
+                is Resource.Failure -> {
+                    val context = LocalContext.current
+                    Toast.makeText(context, it.exception.message, Toast.LENGTH_LONG).show()
+                }
+                Resource.Loading -> {
+                    CircularProgressIndicator()
+                }
+                is Resource.Success -> {
+                    LaunchedEffect(Unit){
+                        //navController.navigate(ROUTE_HOME){
+                         //   popUpTo(ROUTE_HOME){
+                           //     inclusive = true
+                            //}
+                        //}
+                    }
+                }
+            }
         }
     }
 }

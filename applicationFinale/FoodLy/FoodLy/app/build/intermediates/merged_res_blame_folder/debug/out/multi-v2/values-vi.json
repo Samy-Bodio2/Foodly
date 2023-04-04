@@ -1,0 +1,60 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.foodly.app-mergeDebugResources-3:/values-vi/values-vi.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\TATSINKOU\\.gradle\\caches\\transforms-3\\7ef487ecea7dfd82db4618f42482f89a\\transformed\\ui-1.3.0-beta03\\res\\values-vi\\values-vi.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,151,237,343,443,535,620,713,807,888,958,1028,1118,1209,1281",
+                        "endColumns": "95,85,105,99,91,84,92,93,80,69,69,89,90,71,65",
+                        "endOffsets": "146,232,338,438,530,615,708,802,883,953,1023,1113,1204,1276,1342"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,7,8,9,10,11,12,13,14,15,16,18",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,151,237,343,518,610,695,788,882,963,1033,1103,1193,1284,1457",
+                        "endColumns": "95,85,105,99,91,84,92,93,80,69,69,89,90,71,65",
+                        "endOffsets": "146,232,338,438,605,690,783,877,958,1028,1098,1188,1279,1351,1518"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\TATSINKOU\\.gradle\\caches\\transforms-3\\c2f72fe2755f2af06633b21853cdfb71\\transformed\\core-1.8.0\\res\\values-vi\\values-vi.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "17",
+                        "startColumns": "4",
+                        "startOffsets": "1356",
+                        "endColumns": "100",
+                        "endOffsets": "1452"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\TATSINKOU\\.gradle\\caches\\transforms-3\\62f09bad1d47f2ff6f7ebbeed2dec90a\\transformed\\material3-1.0.0-beta03\\res\\values-vi\\values-vi.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "74",
+                        "endOffsets": "125"
+                    },
+                    "to": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "443",
+                        "endColumns": "74",
+                        "endOffsets": "513"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,60 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.foodly.app-mergeDebugResources-3:/values-hy/values-hy.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\TATSINKOU\\.gradle\\caches\\transforms-3\\7ef487ecea7dfd82db4618f42482f89a\\transformed\\ui-1.3.0-beta03\\res\\values-hy\\values-hy.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,204,286,380,480,563,645,731,826,908,980,1051,1136,1224,1298,1367",
+                        "endColumns": "98,81,93,99,82,81,85,94,81,71,70,84,87,73,68,117",
+                        "endOffsets": "199,281,375,475,558,640,726,821,903,975,1046,1131,1219,1293,1362,1480"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,7,8,9,10,11,12,13,14,15,16,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,204,286,380,567,650,732,818,913,995,1067,1138,1223,1311,1486,1555",
+                        "endColumns": "98,81,93,99,82,81,85,94,81,71,70,84,87,73,68,117",
+                        "endOffsets": "199,281,375,475,645,727,813,908,990,1062,1133,1218,1306,1380,1550,1668"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\TATSINKOU\\.gradle\\caches\\transforms-3\\62f09bad1d47f2ff6f7ebbeed2dec90a\\transformed\\material3-1.0.0-beta03\\res\\values-hy\\values-hy.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "86",
+                        "endOffsets": "137"
+                    },
+                    "to": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "480",
+                        "endColumns": "86",
+                        "endOffsets": "562"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\TATSINKOU\\.gradle\\caches\\transforms-3\\c2f72fe2755f2af06633b21853cdfb71\\transformed\\core-1.8.0\\res\\values-hy\\values-hy.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "17",
+                        "startColumns": "4",
+                        "startOffsets": "1385",
+                        "endColumns": "100",
+                        "endOffsets": "1481"
+                    }
+                }
+            ]
+        }
+    ]
+}

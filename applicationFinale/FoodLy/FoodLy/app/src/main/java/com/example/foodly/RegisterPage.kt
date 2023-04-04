@@ -116,6 +116,8 @@ fun RegisterPage(navController: NavController) {
                     navController.navigate("login_page"){
                         popUpTo(navController.graph.startDestinationId)
                         launchSingleTop = true
+
+
                     }
 
                 }) {

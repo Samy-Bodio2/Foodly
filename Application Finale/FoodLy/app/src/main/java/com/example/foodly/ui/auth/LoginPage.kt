@@ -39,106 +39,116 @@ import com.example.foodly.data.Resource
 @Composable
 fun LoginPage(navController: NavController) {
 
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight()
-            .background(
-                color = Color.Transparent,
-            )
-    ) {
-
+    Surface {
+        Image(
+            painter = painterResource(id = R.drawable.getstartmg),
+            contentDescription = null,
+            contentScale = ContentScale.FillWidth,
+            modifier = Modifier
+                .fillMaxWidth(),
+        )
 
         Box(
             modifier = Modifier
-                .align(Alignment.BottomCenter),
+                .fillMaxWidth()
+                .fillMaxHeight()
+                .background(
+                    color = Color.Transparent,
+                )
         ) {
 
-            Image(
-                painter = painterResource(id = R.drawable.user_sign_in),
-                contentDescription = null,
-                contentScale = ContentScale.Fit,
+
+            Box(
                 modifier = Modifier
-                    .height(180.dp)
-                    .fillMaxWidth(),
-
-                )
-            Column(
-                modifier = Modifier.padding(16.dp)
-                    .fillMaxWidth()
-                    .verticalScroll(rememberScrollState())
-                ,
-
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .align(Alignment.BottomCenter),
             ) {
-                Spacer(modifier = Modifier.height(50.dp))
-                androidx.compose.material3.Text(
-                    text = "Sign In",
-                    textAlign = TextAlign.Center,
+
+                Image(
+                    painter = painterResource(id = R.drawable.user_sign_in),
+                    contentDescription = null,
+                    contentScale = ContentScale.Fit,
                     modifier = Modifier
-                        .padding(top = 130.dp)
+                        .height(180.dp)
                         .fillMaxWidth(),
-                    style = MaterialTheme.typography.headlineSmall,
-                    color = MaterialTheme.colorScheme.primary,
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                SimpleOutlinedTextFieldSample()
 
-                Spacer(modifier = Modifier.padding(3.dp))
-                SimpleOutlinedPasswordTextField()
+                    )
+                Column(
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .fillMaxWidth()
+                        .verticalScroll(rememberScrollState()),
 
-                val gradientColor = listOf(Color(0xFF484BF1), Color(0xFF673AB7))
-                val cornerRadius = 16.dp
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Spacer(modifier = Modifier.height(50.dp))
+                    androidx.compose.material3.Text(
+                        text = "Sign In",
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .padding(top = 130.dp)
+                            .fillMaxWidth(),
+                        style = MaterialTheme.typography.headlineSmall,
+                        color = MaterialTheme.colorScheme.primary,
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    SimpleOutlinedTextFieldSample()
+
+                    Spacer(modifier = Modifier.padding(3.dp))
+                    SimpleOutlinedPasswordTextField()
+
+                    val gradientColor = listOf(Color(0xFF484BF1), Color(0xFF673AB7))
+                    val cornerRadius = 16.dp
 
 
-                Spacer(modifier = Modifier.padding(10.dp))
-                GradientButton(
-                    null,
-                    gradientColors = gradientColor,
-                    cornerRadius = cornerRadius,
-                    nameButton = "Login",
-                    roundedCornerShape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp)
-                )
+                    Spacer(modifier = Modifier.padding(10.dp))
+                    GradientButton(navController,
+                        null,
+                        gradientColors = gradientColor,
+                        cornerRadius = cornerRadius,
+                        nameButton = "Login",
+                        roundedCornerShape = RoundedCornerShape(topStart = 30.dp, bottomEnd = 30.dp)
+                    )
 
-                Spacer(modifier = Modifier.padding(10.dp))
-                androidx.compose.material3.TextButton(onClick = {
+                    Spacer(modifier = Modifier.padding(10.dp))
+                    androidx.compose.material3.TextButton(onClick = {
 
-                    navController.navigate("register_page"){
-                        popUpTo(navController.graph.startDestinationId)
-                        launchSingleTop = true
+                        navController.navigate("register_page") {
+                            popUpTo(navController.graph.startDestinationId)
+                            launchSingleTop = true
+                        }
+
+                    }) {
+                        androidx.compose.material3.Text(
+                            text = "Create An Account",
+                            letterSpacing = 1.sp,
+                            style = MaterialTheme.typography.labelLarge
+                        )
                     }
 
-                }) {
-                    androidx.compose.material3.Text(
-                        text = "Create An Account",
-                        letterSpacing = 1.sp,
-                        style = MaterialTheme.typography.labelLarge
-                    )
-                }
 
+                    Spacer(modifier = Modifier.padding(5.dp))
+                    androidx.compose.material3.TextButton(onClick = {
 
-                Spacer(modifier = Modifier.padding(5.dp))
-                androidx.compose.material3.TextButton(onClick = {
+                        navController.navigate("reset_page") {
+                            popUpTo(navController.graph.startDestinationId)
+                            launchSingleTop = true
+                        }
 
-                    navController.navigate("reset_page"){
-                        popUpTo(navController.graph.startDestinationId)
-                        launchSingleTop = true
+                    }) {
+                        androidx.compose.material3.Text(
+                            text = "Reset Password",
+                            letterSpacing = 1.sp,
+                            style = MaterialTheme.typography.labelLarge,
+                        )
                     }
-
-                }) {
-                    androidx.compose.material3.Text(
-                        text = "Reset Password",
-                        letterSpacing = 1.sp,
-                        style = MaterialTheme.typography.labelLarge,
-                    )
+                    Spacer(modifier = Modifier.padding(20.dp))
                 }
-                Spacer(modifier = Modifier.padding(20.dp))
             }
         }
     }
 }
 @Composable
-private fun GradientButton(
+private fun GradientButton(navController: NavController,
     viewModel: AuthViewModel?,
     gradientColors: List<Color>,
     cornerRadius: Dp,
@@ -155,6 +165,10 @@ private fun GradientButton(
             .padding(start = 32.dp, end = 32.dp),
         onClick = {
             viewModel?.login(email, password)
+            navController.navigate("homescreen") {
+                popUpTo(navController.graph.startDestinationId)
+                launchSingleTop = true
+            }
         },
 
         contentPadding = PaddingValues(),

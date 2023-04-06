@@ -37,9 +37,9 @@ class MainActivity : ComponentActivity() {
             composable(route = Screen.Splash.route){ AnimatedSplashScreen(navController) }
             composable(route = Screen.Home.route){ getStart(navController = navController) }
             composable("login_page", content = { LoginPage(navController = navController) })
+            composable("homescreen", content = { HomeScreen(null, navController = navController)} )
             composable("register_page", content = { RegisterPage(navController = navController) })
             composable("reset_page", content = { ResetPage(navController = navController) })
-            composable("ROUTE_HOME", content = { HomeScreen(null, navController = navController)} )
         })
     }
 }

@@ -4,24 +4,15 @@
   "info": {
     "singularName": "menu",
     "pluralName": "menus",
-<<<<<<< HEAD
     "displayName": "menu",
     "description": ""
-=======
-    "displayName": "Menu"
->>>>>>> 4ccb2efe51daa7c3dfda1e39dcfe4ae0bc558f10
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-<<<<<<< HEAD
     "menu_title": {
-      "type": "string"
-    },
-=======
-    "title": {
       "type": "string"
     },
     "description": {
@@ -40,13 +31,11 @@
       "type": "media",
       "multiple": true
     },
->>>>>>> 4ccb2efe51daa7c3dfda1e39dcfe4ae0bc558f10
     "category": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::categorie.categorie",
       "inversedBy": "menus"
-<<<<<<< HEAD
     },
     "config": {
       "type": "relation",
@@ -82,8 +71,6 @@
       "relation": "manyToOne",
       "target": "api::restaurant.restaurant",
       "inversedBy": "menus"
-=======
->>>>>>> 4ccb2efe51daa7c3dfda1e39dcfe4ae0bc558f10
     }
   }
 }

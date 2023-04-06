@@ -13,7 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "username": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "menus": {
       "type": "relation",
@@ -26,6 +27,33 @@
       "relation": "oneToMany",
       "target": "api::note.note",
       "mappedBy": "restaurant"
+    },
+    "password": {
+      "type": "password",
+      "required": true
+    },
+    "name_resto": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone_number": {
+      "type": "biginteger",
+      "required": true
+    },
+    "resto_adress": {
+      "type": "richtext",
+      "required": true
+    },
+    "start_date": {
+      "type": "date"
     }
   }
 }

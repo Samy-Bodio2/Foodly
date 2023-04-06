@@ -12,6 +12,7 @@ import com.example.foodly.Splash.AnimatedSplashScreen
 import com.example.foodly.Splash.getStart
 import com.example.foodly.Splash.navigation.Screen
 import com.example.foodly.ui.auth.LoginPage
+import com.example.foodly.ui.auth.OtpVerifyScreen
 import com.example.foodly.ui.auth.RegisterPage
 import com.example.foodly.ui.auth.ResetPage
 import com.example.foodly.ui.theme.FoodlyTheme
@@ -40,6 +41,7 @@ class MainActivity : ComponentActivity() {
             composable("homescreen", content = { HomeScreen(null, navController = navController)} )
             composable("register_page", content = { RegisterPage(navController = navController) })
             composable("reset_page", content = { ResetPage(navController = navController) })
+            composable("otpVerify", content = { OtpVerifyScreen(navController = navController) })
         })
     }
 }

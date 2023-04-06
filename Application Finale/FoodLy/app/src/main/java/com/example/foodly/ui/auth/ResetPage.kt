@@ -92,12 +92,25 @@ fun ResetPage(navController: NavController) {
 
 
                 Spacer(modifier = Modifier.padding(10.dp))
-                GradientButtonReset(
-                    gradientColors = gradientColor,
-                    cornerRadius = cornerRadius,
-                    nameButton = "Submit",
-                    roundedCornerShape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp)
-                )
+                androidx.compose.material3.TextButton(onClick = {
+
+                    navController.navigate("otpVerify"){
+                        popUpTo(navController.graph.startDestinationId)
+                        launchSingleTop = true
+                    }
+                }) {
+                    androidx.compose.material3.Text(
+                        text = "Submit",
+                        letterSpacing = 1.sp,
+                        style = MaterialTheme.typography.labelLarge
+                    )
+                }
+//                GradientButtonReset(
+//                    gradientColors = gradientColor,
+//                    cornerRadius = cornerRadius,
+//                    nameButton = "Submit",
+//                    roundedCornerShape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp)
+//                )
                 Spacer(modifier = Modifier.padding(10.dp))
                 androidx.compose.material3.TextButton(onClick = {
 

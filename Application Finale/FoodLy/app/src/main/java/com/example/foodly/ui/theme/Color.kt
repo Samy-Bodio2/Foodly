@@ -6,6 +6,12 @@ val Purple200 = Color(0xFFBB86FC)
 val Purple500 = Color(0xFF6200EE)
 val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
+val colorWhite = Color(0xFFFFFFFF)
+val colorBlack = Color(0xFF000000)
+val colorGray= Color(0xFFFFEEEE)
+val colorRedLite = Color(0xFFFEA0A0)
+val colorPrimary = Color(0xFFFF7B7B)
+
 
 val md_theme_light_primary = Color(0xFF006492)
 val md_theme_light_onPrimary = Color(0xFFFFFFFF)

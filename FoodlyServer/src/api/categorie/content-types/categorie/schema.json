@@ -4,14 +4,22 @@
   "info": {
     "singularName": "categorie",
     "pluralName": "categories",
+<<<<<<< HEAD
     "displayName": "categorie"
+=======
+    "displayName": "Categorie"
+>>>>>>> 4ccb2efe51daa7c3dfda1e39dcfe4ae0bc558f10
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
+<<<<<<< HEAD
     "type": {
+=======
+    "nom": {
+>>>>>>> 4ccb2efe51daa7c3dfda1e39dcfe4ae0bc558f10
       "type": "string"
     },
     "menus": {

@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "configs",
+  "info": {
+    "singularName": "config",
+    "pluralName": "configs",
+    "displayName": "config"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "marge": {
+      "type": "biginteger"
+    },
+    "menus": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::menu.menu",
+      "mappedBy": "config"
+    }
+  }
+}

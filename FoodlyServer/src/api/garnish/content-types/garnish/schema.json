@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "garnishes",
+  "info": {
+    "singularName": "garnish",
+    "pluralName": "garnishes",
+    "displayName": "garnish"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name_garnish": {
+      "type": "string"
+    },
+    "menus": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::menu.menu",
+      "mappedBy": "garnish"
+    }
+  }
+}

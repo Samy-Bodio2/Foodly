@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "delivery_men",
+  "info": {
+    "singularName": "delivery-man",
+    "pluralName": "delivery-men",
+    "displayName": "delivery_man",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "delivery_man"
+    }
+  }
+}

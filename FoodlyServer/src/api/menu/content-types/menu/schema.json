@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "menus",
+  "info": {
+    "singularName": "menu",
+    "pluralName": "menus",
+    "displayName": "menu",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "menu_title": {
+      "type": "string"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::categorie.categorie",
+      "inversedBy": "menus"
+    },
+    "config": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::config.config",
+      "inversedBy": "menus"
+    },
+    "dish": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::dish.dish",
+      "inversedBy": "menus"
+    },
+    "garnish": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::garnish.garnish",
+      "inversedBy": "menus"
+    },
+    "seculant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::seculant.seculant"
+    },
+    "choixes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::choix.choix",
+      "mappedBy": "menu"
+    },
+    "restaurant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::restaurant.restaurant",
+      "inversedBy": "menus"
+    }
+  }
+}

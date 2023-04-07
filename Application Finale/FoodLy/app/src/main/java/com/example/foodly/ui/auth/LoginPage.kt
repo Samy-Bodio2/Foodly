@@ -40,13 +40,13 @@ import com.example.foodly.data.Resource
 fun LoginPage(navController: NavController) {
 
     Surface {
-        Image(
-            painter = painterResource(id = R.drawable.getstartmg),
-            contentDescription = null,
-            contentScale = ContentScale.FillWidth,
-            modifier = Modifier
-                .fillMaxWidth(),
-        )
+//        Image(
+//            painter = painterResource(id = R.drawable.getstartmg),
+//            contentDescription = null,
+//            contentScale = ContentScale.FillWidth,
+//            modifier = Modifier
+//                .fillMaxWidth(),
+//        )
 
         Box(
             modifier = Modifier

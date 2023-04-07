@@ -10,7 +10,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.foodly.Splash.AnimatedSplashScreen
 import com.example.foodly.Splash.PageViewScreen
-import com.example.foodly.Splash.getStart
 import com.example.foodly.Splash.navigation.Screen
 import com.example.foodly.ui.auth.LoginPage
 import com.example.foodly.ui.auth.OtpVerifyScreen
@@ -37,7 +36,9 @@ class MainActivity : ComponentActivity() {
 
         NavHost(navController = navController, startDestination = "Splash_screen", builder = {
             composable(route = Screen.Splash.route){ AnimatedSplashScreen(navController) }
-            composable(route = Screen.Home.route){ getStart(navController = navController) }
+            composable(route = Screen.PageScreen.route){     PageViewScreen(
+                navController
+            ) }
             composable("login_page", content = { LoginPage(navController = navController) })
             composable("homescreen", content = { HomeScreen(null, navController = navController)} )
             composable("register_page", content = { RegisterPage(navController = navController) })

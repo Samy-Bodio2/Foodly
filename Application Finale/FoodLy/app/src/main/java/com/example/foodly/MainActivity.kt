@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.foodly.Splash.AnimatedSplashScreen
+import com.example.foodly.Splash.PageViewScreen
 import com.example.foodly.Splash.getStart
 import com.example.foodly.Splash.navigation.Screen
 import com.example.foodly.ui.auth.LoginPage

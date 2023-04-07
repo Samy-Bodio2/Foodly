@@ -75,6 +75,12 @@ dependencies {
     implementation "androidx.compose.material:material:$compose_ui_version"
     implementation "androidx.compose.ui:ui:$compose_ui_version"
 
+    // dependances de navigation de PageViewScreen
+    implementation "com.google.accompanist:accompanist-navigation-animation:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-pager:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_version"
+
+
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-android-compiler:2.44"
 

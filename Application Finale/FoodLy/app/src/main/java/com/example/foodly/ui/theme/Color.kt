@@ -11,7 +11,9 @@ val colorBlack = Color(0xFF000000)
 val colorGray= Color(0xFFFFEEEE)
 val colorRedLite = Color(0xFFFEA0A0)
 val colorPrimary = Color(0xFFFF7B7B)
-
+val orange = Color(0xFFFC6011)
+val primaryFontColor = Color(0xFF4A4B4D)
+val secondaryFontColor = Color(0xFF7C7D7E)
 
 val md_theme_light_primary = Color(0xFF006492)
 val md_theme_light_onPrimary = Color(0xFFFFFFFF)

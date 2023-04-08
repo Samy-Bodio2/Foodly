@@ -102,7 +102,7 @@ val testList4 = listOf(
 )
 
 @Composable
-fun HomeScreen(navController: NavHostController) {
+fun HomeScreen(navController1: Nothing?, navController: NavHostController) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()

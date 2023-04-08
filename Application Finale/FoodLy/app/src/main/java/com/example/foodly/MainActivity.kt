@@ -15,8 +15,8 @@ import com.example.foodly.ui.auth.LoginPage
 import com.example.foodly.ui.auth.OtpVerifyScreen
 import com.example.foodly.ui.auth.RegisterPage
 import com.example.foodly.ui.auth.ResetPage
+import com.example.foodly.ui.home.HomeScreen
 import com.example.foodly.ui.theme.FoodlyTheme
-import com.example.log_reg.ui.home.HomeScreen
 
 
 class MainActivity : ComponentActivity() {

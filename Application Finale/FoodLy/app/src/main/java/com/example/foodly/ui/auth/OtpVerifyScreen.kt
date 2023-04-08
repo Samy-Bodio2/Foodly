@@ -32,7 +32,7 @@ fun OtpVerifyScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(if (isSystemInDarkTheme()) Color.Black else colorPrimary)
+            .background(if (isSystemInDarkTheme()) Color.Black else colorWhite)
             .verticalScroll(rememberScrollState())
     ) {
         Column(
@@ -46,7 +46,7 @@ fun OtpVerifyScreen(navController: NavController) {
                 modifier = Modifier
                     .size(100.dp)
                     .clip(shape = CircleShape)
-                    .background(colorRedLite)
+                    .background(colorWhite)
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.otp_icon),
@@ -58,7 +58,7 @@ fun OtpVerifyScreen(navController: NavController) {
 
             Text(
                 text = "Verification code",
-                color = colorWhite,
+                color = colorBlack,
                 style = MaterialTheme.typography.h6,
                 fontWeight = FontWeight.Bold
             )
@@ -66,7 +66,7 @@ fun OtpVerifyScreen(navController: NavController) {
                 text = "\n" +
                         "We sent you a verification code to your\n" +
                         "mobile number\n",
-                color = colorGray,
+                color = colorBlack,
                 style = MaterialTheme.typography.button,
             )
             Spacer(modifier = Modifier.height(10.dp))
@@ -99,7 +99,7 @@ fun OtpVerifyScreen(navController: NavController) {
                         launchSingleTop = true
                     }
                 },
-                colors = ButtonDefaults.buttonColors(backgroundColor = colorBlack),
+                colors = ButtonDefaults.buttonColors(backgroundColor = orange),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp)
@@ -108,7 +108,7 @@ fun OtpVerifyScreen(navController: NavController) {
             ) {
                 Text(
                     text = "Submit \uD83D\uDE0B",
-                    color = colorWhite,
+                    color = colorBlack,
                     style = MaterialTheme.typography.button,
                     modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
                 )
@@ -117,7 +117,7 @@ fun OtpVerifyScreen(navController: NavController) {
             TextButton(onClick = { }) {
                 Text(
                     text = "Resend Verification code",
-                    color = colorWhite,
+                    color = colorBlack,
                     fontSize = 14.sp,
                 )
             }
@@ -140,11 +140,12 @@ fun Field(
     OutlinedTextField(
         modifier = modifier
             .requiredWidth(60.dp)
+            .background(colorWhite)
             .border(
-                width = 2.dp, color = colorWhite,
+                width = 2.dp, color = colorBlack,
                 shape = RoundedCornerShape(8.dp)
             )
-            .background(colorRedLite),
+            ,
         singleLine = true,
         value = state.value,
         onValueChange = {

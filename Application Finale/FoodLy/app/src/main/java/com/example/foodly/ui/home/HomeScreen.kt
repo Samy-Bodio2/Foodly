@@ -1,4 +1,4 @@
-package com.example.log_reg.ui.home
+package com.example.foodly
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*

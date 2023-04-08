@@ -14,6 +14,8 @@ val colorPrimary = Color(0xFFFF7B7B)
 val orange = Color(0xFFFC6011)
 val primaryFontColor = Color(0xFF4A4B4D)
 val secondaryFontColor = Color(0xFF7C7D7E)
+val placeholderColor = Color(0xFFB6B7B7)
+val gray = Color(0xFFF2F2F2)
 
 val md_theme_light_primary = Color(0xFFFC6011)
 val md_theme_light_onPrimary = Color(0xFFFFFFFF)

@@ -105,12 +105,6 @@ fun ResetPage(navController: NavController) {
                         style = MaterialTheme.typography.labelLarge
                     )
                 }
-//                GradientButtonReset(
-//                    gradientColors = gradientColor,
-//                    cornerRadius = cornerRadius,
-//                    nameButton = "Submit",
-//                    roundedCornerShape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp)
-//                )
                 Spacer(modifier = Modifier.padding(10.dp))
                 androidx.compose.material3.TextButton(onClick = {
 
@@ -173,9 +167,6 @@ private fun GradientButtonReset(
     }
 }
 
-
-
-//email id
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun ResetEmailID() {
@@ -187,14 +178,14 @@ fun ResetEmailID() {
         onValueChange = { text = it },
         shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
         label = {
-            Text("Enter Registered Email",
-                color = MaterialTheme.colorScheme.primary,
+            Text("Enter Registered password",
+                color = MaterialTheme.colorScheme.scrim,
                 style = MaterialTheme.typography.labelMedium,
             ) },
-        placeholder = { Text(text = "Enter Registered Email") },
+        placeholder = { Text(text = "Enter Registered password") },
         keyboardOptions = KeyboardOptions(
             imeAction = ImeAction.Done,
-            keyboardType = KeyboardType.Email
+            keyboardType = KeyboardType.Password
         ),
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = MaterialTheme.colorScheme.primary,

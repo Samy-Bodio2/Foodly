@@ -100,7 +100,7 @@ fun RegisterPage(navController: NavController) {
                 RegisterPasswordConfirm()
 
 
-                val gradientColor = listOf(Color(0xFF484BF1), Color(0xFF673AB7))
+                val gradientColor = listOf(Color(0xFFF15C48), Color(0xFFF16356))
                 val cornerRadius = 16.dp
 
 
@@ -207,7 +207,7 @@ fun RegisterName() {
         shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
         label = {
             Text("Name",
-                color = MaterialTheme.colorScheme.primary,
+                color = MaterialTheme.colorScheme.scrim,
                 style = MaterialTheme.typography.labelMedium,
             ) },
         placeholder = { Text(text = "Name") },
@@ -241,7 +241,7 @@ fun RegisterPhone() {
         shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
         label = {
             Text("Phone",
-                color = MaterialTheme.colorScheme.primary,
+                color = MaterialTheme.colorScheme.scrim,
                 style = MaterialTheme.typography.labelMedium,
             ) },
         placeholder = { Text(text = "Phone") },
@@ -274,7 +274,7 @@ fun RegisterEmail() {
         shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
         label = {
             Text("Email Address",
-                color = MaterialTheme.colorScheme.primary,
+                color = MaterialTheme.colorScheme.scrim,
                 style = MaterialTheme.typography.labelMedium,
             ) },
         placeholder = { Text(text = "Email Address") },
@@ -307,7 +307,7 @@ fun RegisterPassword() {
         shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
         label = {
             Text("Enter Password",
-                color = MaterialTheme.colorScheme.primary,
+                color = MaterialTheme.colorScheme.scrim,
                 style = MaterialTheme.typography.labelMedium,
             ) },
         visualTransformation =
@@ -348,7 +348,7 @@ fun RegisterPasswordConfirm() {
         shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
         label = {
             Text("Confirm Password",
-                color = MaterialTheme.colorScheme.primary,
+                color = MaterialTheme.colorScheme.scrim,
                 style = MaterialTheme.typography.labelMedium,
             ) },
         visualTransformation =

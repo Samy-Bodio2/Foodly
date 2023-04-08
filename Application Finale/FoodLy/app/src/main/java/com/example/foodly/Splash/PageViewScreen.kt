@@ -85,7 +85,7 @@ fun PageViewScreen( navController: NavHostController){
                 Spacer(modifier = Modifier.height(20.dp))
 
                 BorderButton(modifier = Modifier.padding(horizontal = 34.dp), text = "Skip", color = secondaryFontColor) {
-                //    navigateToHomeScreen()
+                    navController.navigate("login_page")
                 }
                 Spacer(modifier = Modifier.height(20.dp))
             }

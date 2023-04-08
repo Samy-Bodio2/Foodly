@@ -64,7 +64,7 @@ fun LoginPage(navController: NavController) {
             ) {
 
                 Image(
-                    painter = painterResource(id = R.drawable.user_sign_in),
+                    painter = painterResource(id = R.drawable.user_reg),
                     contentDescription = null,
                     contentScale = ContentScale.Fit,
                     modifier = Modifier
@@ -96,7 +96,7 @@ fun LoginPage(navController: NavController) {
                     Spacer(modifier = Modifier.padding(3.dp))
                     SimpleOutlinedPasswordTextField()
 
-                    val gradientColor = listOf(Color(0xFF484BF1), Color(0xFF673AB7))
+                    val gradientColor = listOf(Color(0xFFF15C48), Color(0xFFF16356))
                     val cornerRadius = 16.dp
 
 
@@ -231,7 +231,7 @@ fun SimpleOutlinedTextFieldSample() {
         shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
         label = {
             Text("Name or Email Address",
-                color = MaterialTheme.colorScheme.primary,
+                color = MaterialTheme.colorScheme.scrim,
                 style = MaterialTheme.typography.labelMedium,
             ) },
         placeholder = { Text(text = "Name or Email Address") },
@@ -266,12 +266,11 @@ fun SimpleOutlinedPasswordTextField() {
         shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
         label = {
             Text("Enter Password",
-                color = MaterialTheme.colorScheme.primary,
+                color = MaterialTheme.colorScheme.scrim,
                 style = MaterialTheme.typography.labelMedium,
             ) },
         visualTransformation =
         if (passwordHidden) PasswordVisualTransformation() else VisualTransformation.None,
-        //  keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         keyboardOptions = KeyboardOptions(
             imeAction = ImeAction.Done,
             keyboardType = KeyboardType.Password

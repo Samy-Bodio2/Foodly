@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-package com.example.foodly
-=======
 package com.example.foodly.ui.home
->>>>>>> 80e8e78dde6777df13797b1d1cc0abbd9a21b1a1
+
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

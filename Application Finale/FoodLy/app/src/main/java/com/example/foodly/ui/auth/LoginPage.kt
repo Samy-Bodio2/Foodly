@@ -34,19 +34,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.foodly.R
-import com.example.foodly.data.Resource
 
 @Composable
 fun LoginPage(navController: NavController) {
 
     Surface {
-//        Image(
-//            painter = painterResource(id = R.drawable.getstartmg),
-//            contentDescription = null,
-//            contentScale = ContentScale.FillWidth,
-//            modifier = Modifier
-//                .fillMaxWidth(),
-//        )
 
         Box(
             modifier = Modifier
@@ -102,7 +94,6 @@ fun LoginPage(navController: NavController) {
 
                     Spacer(modifier = Modifier.padding(10.dp))
                     GradientButton(navController,
-                        null,
                         gradientColors = gradientColor,
                         cornerRadius = cornerRadius,
                         nameButton = "Login",
@@ -149,7 +140,6 @@ fun LoginPage(navController: NavController) {
 }
 @Composable
 private fun GradientButton(navController: NavController,
-    viewModel: AuthViewModel?,
     gradientColors: List<Color>,
     cornerRadius: Dp,
     nameButton: String,
@@ -157,14 +147,12 @@ private fun GradientButton(navController: NavController,
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-    var loginFlow  = viewModel?.loginFlow?.collectAsState()
 
     androidx.compose.material3.Button(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 32.dp, end = 32.dp),
         onClick = {
-            viewModel?.login(email, password)
             navController.navigate("homescreen") {
                 popUpTo(navController.graph.startDestinationId)
                 launchSingleTop = true
@@ -194,27 +182,6 @@ private fun GradientButton(navController: NavController,
                 fontSize = 20.sp,
                 color = Color.White
             )
-        }
-
-        loginFlow?.value?.let{
-            when(it){
-                is Resource.Failure -> {
-                    val context = LocalContext.current
-                    Toast.makeText(context, it.exception.message, Toast.LENGTH_LONG).show()
-                }
-                Resource.Loading -> {
-                    CircularProgressIndicator()
-                }
-                is Resource.Success -> {
-                    LaunchedEffect(Unit){
-                        //navController.navigate(ROUTE_HOME){
-                         //   popUpTo(ROUTE_HOME){
-                           //     inclusive = true
-                            //}
-                        //}
-                    }
-                }
-            }
         }
     }
 }

@@ -28,8 +28,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import com.example.foodly.Customers.Splash.navigation.Screen
 import com.example.foodly.R
-import com.example.foodly.Splash.navigation.Screen
 import kotlinx.coroutines.delay
 
 @Composable

@@ -1,6 +1,6 @@
-package com.example.foodly.splash_login
+package com.example.foodly.Customers.splash_login
 
-import com.example.foodly.Splash.navigation.Screen
+import com.example.foodly.Customers.Splash.navigation.Screen
 
 sealed class bigScreen(val route: String){
     object Splash: bigScreen(route = "Splash_screen")

@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.foodly.Customers.Splash.navigation.Screen
 import com.example.foodly.Splash.AnimatedSplashScreen
 import com.example.foodly.Splash.getStart
 

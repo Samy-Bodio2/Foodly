@@ -1,4 +1,4 @@
-package com.example.foodly.Splash.navigation
+package com.example.foodly.Customers.Splash.navigation
 
 sealed class Screen(val route: String){
     object Splash: Screen("Splash_screen")

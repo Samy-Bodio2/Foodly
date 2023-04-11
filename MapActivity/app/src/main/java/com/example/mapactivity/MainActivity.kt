@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.mapactivity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,16 +10,19 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.myapplication.ui.theme.MyApplicationTheme
-import com.example.myapplication.ui.theme.DesignMap
+import androidx.navigation.compose.rememberNavController
+import com.example.mapactivity.ui.theme.MapActivityTheme
+import com.example.mapactivity.ui.theme.NavGraph
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApplicationTheme {
+            MapActivityTheme {
                 // A surface container using the 'background' color from the theme
-                DesignMap()
+                val Nav = rememberNavController()
+                NavGraph(Nav)
+
             }
         }
     }
@@ -33,7 +36,7 @@ fun Greeting(name: String) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    MyApplicationTheme {
+    MapActivityTheme {
         Greeting("Android")
     }
 }

@@ -22,14 +22,15 @@
       "type": "biginteger"
     },
     "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "category": {
       "type": "relation",
@@ -55,11 +56,6 @@
       "target": "api::garnish.garnish",
       "inversedBy": "menus"
     },
-    "seculant": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::seculant.seculant"
-    },
     "choixes": {
       "type": "relation",
       "relation": "oneToMany",
@@ -71,6 +67,12 @@
       "relation": "manyToOne",
       "target": "api::restaurant.restaurant",
       "inversedBy": "menus"
+    },
+    "seculants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::seculant.seculant",
+      "mappedBy": "menu"
     }
   }
 }

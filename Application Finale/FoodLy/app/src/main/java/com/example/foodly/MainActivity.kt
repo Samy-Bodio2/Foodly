@@ -9,6 +9,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.foodly.Customers.Splash.navigation.Screen
+import com.example.foodly.Log.Email
+
+
 import com.example.foodly.Splash.AnimatedSplashScreen
 import com.example.foodly.Splash.PageViewScreen
 import com.example.foodly.ui.auth.LoginPage
@@ -43,6 +46,9 @@ class MainActivity : ComponentActivity() {
             composable("register_page", content = { RegisterPage(navController = navController) })
             composable("reset_page", content = { ResetPage(navController = navController) })
             composable("otpVerify", content = { OtpVerifyScreen(navController = navController) })
+
+
+            composable("email", content = { Email(navController = navController)})
         })
     }
 }

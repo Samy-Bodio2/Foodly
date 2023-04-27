@@ -43,6 +43,12 @@
     },
     "start_date": {
       "type": "datetime"
+    },
+    "notes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::note.note",
+      "mappedBy": "customer"
     }
   }
 }

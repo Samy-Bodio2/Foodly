@@ -49,6 +49,12 @@
       ],
       "type": "media",
       "multiple": true
+    },
+    "notes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::note.note",
+      "mappedBy": "restaurant"
     }
   }
 }

@@ -4,21 +4,27 @@
   "info": {
     "singularName": "dish",
     "pluralName": "dishes",
-    "displayName": "dish"
+    "displayName": "Dish",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "name_dish": {
+    "name": {
       "type": "string"
     },
-    "menus": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::menu.menu",
-      "mappedBy": "dish"
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

@@ -14,46 +14,41 @@
   "attributes": {
     "username": {
       "type": "string",
-      "required": true
-    },
-    "menus": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::menu.menu",
-      "mappedBy": "restaurant"
-    },
-    "notes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::note.note",
-      "mappedBy": "restaurant"
+      "required": true,
+      "unique": true
     },
     "password": {
       "type": "password",
-      "required": true
+      "required": true,
+      "maxLength": 8
     },
-    "name_resto": {
+    "name": {
       "type": "string",
-      "required": true
-    },
-    "description": {
-      "type": "text",
       "required": true
     },
     "email": {
       "type": "email",
       "required": true
     },
-    "phone_number": {
-      "type": "biginteger",
-      "required": true
+    "description": {
+      "type": "richtext"
     },
-    "resto_adress": {
-      "type": "richtext",
-      "required": true
+    "address": {
+      "type": "string"
     },
     "start_date": {
-      "type": "date"
+      "type": "datetime"
+    },
+    "phone_number": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }

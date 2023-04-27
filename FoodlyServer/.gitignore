@@ -53,7 +53,7 @@ $RECYCLE.BIN/
 *.so
 *.swo
 *.swp
-*.swn
+*.swncd
 *.swm
 *.out
 *.pid
@@ -65,6 +65,9 @@ $RECYCLE.BIN/
 
 .tmp
 *.log
+*.sql
+*.sqlite
+*.sqlite3
 
 
 ############################
@@ -75,6 +78,8 @@ $RECYCLE.BIN/
 ssl
 .idea
 nbproject
+public/uploads/*
+!public/uploads/.gitkeep
 
 ############################
 # Node.js
@@ -99,4 +104,9 @@ coverage
 # Strapi
 ############################
 
+license.txt
+exports
+*.cache
+dist
+build
 .strapi-updater.json

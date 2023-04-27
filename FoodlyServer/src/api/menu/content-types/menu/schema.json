@@ -4,75 +4,37 @@
   "info": {
     "singularName": "menu",
     "pluralName": "menus",
-    "displayName": "menu",
-    "description": ""
+    "displayName": "Menu"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "menu_title": {
+    "title": {
       "type": "string"
     },
     "description": {
-      "type": "richtext"
+      "type": "string",
+      "maxLength": 1000
     },
-    "prix": {
-      "type": "biginteger"
+    "price": {
+      "type": "float",
+      "min": 0
+    },
+    "date_created": {
+      "type": "datetime"
+    },
+    "quantity": {
+      "type": "integer",
+      "min": 0
     },
     "image": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::categorie.categorie",
-      "inversedBy": "menus"
-    },
-    "config": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::config.config",
-      "inversedBy": "menus"
-    },
-    "dish": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::dish.dish",
-      "inversedBy": "menus"
-    },
-    "garnish": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::garnish.garnish",
-      "inversedBy": "menus"
-    },
-    "choixes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::choix.choix",
-      "mappedBy": "menu"
-    },
-    "restaurant": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::restaurant.restaurant",
-      "inversedBy": "menus"
-    },
-    "seculants": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::seculant.seculant",
-      "mappedBy": "menu"
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }

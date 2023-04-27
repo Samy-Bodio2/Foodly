@@ -4,8 +4,7 @@
   "info": {
     "singularName": "payment",
     "pluralName": "payments",
-    "displayName": "payment",
-    "description": ""
+    "displayName": "Payment"
   },
   "options": {
     "draftAndPublish": true
@@ -14,12 +13,6 @@
   "attributes": {
     "type": {
       "type": "string"
-    },
-    "orders": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::order.order",
-      "mappedBy": "payment"
     }
   }
 }

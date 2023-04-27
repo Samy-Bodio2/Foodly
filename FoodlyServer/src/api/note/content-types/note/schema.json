@@ -4,7 +4,7 @@
   "info": {
     "singularName": "note",
     "pluralName": "notes",
-    "displayName": "note"
+    "displayName": "Note"
   },
   "options": {
     "draftAndPublish": true
@@ -13,22 +13,9 @@
   "attributes": {
     "value": {
       "type": "integer",
-      "max": 5,
+      "required": true,
       "min": 0,
-      "default": 0,
-      "required": true
-    },
-    "restaurant": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::restaurant.restaurant",
-      "inversedBy": "notes"
-    },
-    "customer": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::customer.customer",
-      "inversedBy": "notes"
+      "max": 5
     }
   }
 }

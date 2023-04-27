@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * categorie service
+ * category service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::categorie.categorie');
+module.exports = createCoreService('api::category.category');

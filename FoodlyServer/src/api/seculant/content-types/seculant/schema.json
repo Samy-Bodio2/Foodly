@@ -4,21 +4,25 @@
   "info": {
     "singularName": "seculant",
     "pluralName": "seculants",
-    "displayName": "seculant"
+    "displayName": "Seculant"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "name_seculant": {
+    "name": {
       "type": "string"
     },
-    "menu": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::menu.menu",
-      "inversedBy": "seculants"
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }

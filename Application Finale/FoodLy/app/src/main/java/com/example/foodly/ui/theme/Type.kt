@@ -1,6 +1,7 @@
 package com.example.foodly.ui.theme
 
 
+import android.graphics.fonts.Font
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -16,6 +17,7 @@ val jostFontFamily = FontFamily(
     Font(R.font.jost_medium, FontWeight.SemiBold),
     Font(R.font.jost_medium, FontWeight.Bold),
 )
+
 val metropolisFontFamily = FontFamily(
     Font(R.font.metropolis_regular, weight = FontWeight.Normal),
     Font(R.font.metropolis_medium, weight = FontWeight.Medium),
@@ -25,7 +27,6 @@ val metropolisFontFamily = FontFamily(
 )
 // Set of Material typography styles to start with
 val Typography = Typography(
-
     displayLarge = TextStyle(
         fontFamily = jostFontFamily,
         fontWeight = FontWeight.Light,

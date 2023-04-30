@@ -14,6 +14,7 @@ import com.example.foodly.Log.Email
 
 import com.example.foodly.Splash.AnimatedSplashScreen
 import com.example.foodly.Splash.PageViewScreen
+import com.example.foodly.screens.MealList
 import com.example.foodly.ui.auth.LoginPage
 import com.example.foodly.ui.auth.OtpVerifyScreen
 import com.example.foodly.ui.auth.RegisterPage
@@ -30,6 +31,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             FoodlyTheme() {
                 LoginApplication()
+
             }
         }
     }

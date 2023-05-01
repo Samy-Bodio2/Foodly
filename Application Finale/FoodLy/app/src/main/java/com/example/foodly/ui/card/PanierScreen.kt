@@ -3,7 +3,7 @@ package com.example.foodly.ui.card
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.R
+import com.example.foodly.R
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Notifications
@@ -18,7 +18,9 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.foodly.model.meals
 
 import com.example.foodly.ui.theme.TestAppTheme
@@ -83,7 +85,7 @@ fun VerticalDivider() {
     )
 }
 @Composable
-fun MealList() {
+fun MealList(navController: NavHostController) {
     Column {
         AppBar()
         Spacer(modifier = Modifier.weight(1f))

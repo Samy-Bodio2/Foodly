@@ -232,7 +232,7 @@ fun SectionHeader(sectionName: String, viewAll: () -> Unit) {
                 "View all",
                 style = TextStyle(
                     fontSize = 14.sp,
-                    color = orange,
+                    color = orange2,
                     fontFamily = metropolisFontFamily,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -276,12 +276,12 @@ fun PopularRestaurantItem(item: PopularRestaurant) {
             Icon(
                 painterResource(id = R.drawable.ic_star),
                 contentDescription = "rating",
-                tint = orange
+                tint = orange2
             )
             Text(
                 text = " $itemRate ",
                 style = TextStyle(
-                    color = orange,
+                    color = orange2,
                     fontSize = 13.sp,
                     fontFamily = metropolisFontFamily
                 )
@@ -300,7 +300,7 @@ fun PopularRestaurantItem(item: PopularRestaurant) {
                     .width(3.dp)
                     .height(3.dp)
                     .clip(CircleShape)
-                    .background(orange)
+                    .background(orange2)
             )
             Text(
                 text = "  ${item.foodKind} ",
@@ -371,7 +371,7 @@ fun MostPopularItem(item: PopularRestaurant, modifier: Modifier = Modifier) {
                     .width(3.dp)
                     .height(3.dp)
                     .clip(CircleShape)
-                    .background(orange)
+                    .background(orange2)
             )
             Text(
                 text = "  ${item.foodKind} ",
@@ -385,12 +385,12 @@ fun MostPopularItem(item: PopularRestaurant, modifier: Modifier = Modifier) {
             Icon(
                 painterResource(id = R.drawable.ic_star),
                 contentDescription = "rating",
-                tint = orange
+                tint = orange2
             )
             Text(
                 text = " $itemRate ",
                 style = TextStyle(
-                    color = orange,
+                    color = orange2,
                     fontSize = 13.sp,
                     fontFamily = metropolisFontFamily
                 )
@@ -447,12 +447,12 @@ fun RecentItem(item: PopularRestaurant) {
                 Icon(
                     painterResource(id = R.drawable.ic_star),
                     contentDescription = "rating",
-                    tint = orange
+                    tint = orange2
                 )
                 Text(
                     text = " $itemRate ",
                     style = TextStyle(
-                        color = orange,
+                        color = orange2,
                         fontSize = 13.sp,
                         fontFamily = metropolisFontFamily
                     )
@@ -482,7 +482,7 @@ fun SearchField() {
         value = value,
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = gray,
-            cursorColor = orange,
+            cursorColor = orange2,
             disabledLabelColor = gray,
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent

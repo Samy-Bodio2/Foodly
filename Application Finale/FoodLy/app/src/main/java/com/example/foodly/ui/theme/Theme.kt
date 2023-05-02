@@ -71,9 +71,9 @@ private val DarkColors = darkColorScheme(
     surfaceTint = md_theme_dark_surfaceTint,
 )
 private val LightColorPalette = lightColors(
-    primary = Orange,
-    primaryVariant = Orange,
-    secondary = Orange
+    primary = Orange1,
+    primaryVariant = Orange1,
+    secondary = Orange1
 )
 @Composable
 fun TestAppTheme(content: @Composable() () -> Unit) {

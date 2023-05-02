@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
-import com.example.foodly.ui.theme.orange
+import com.example.foodly.ui.theme.orange2
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.ui.graphics.Color
 import com.example.foodly.ui.theme.colorBlack
@@ -100,7 +100,7 @@ fun Email(navController: NavController) {
                     .fillMaxWidth(),
                 style = MaterialTheme.typography.headlineSmall,
                 //color = MaterialTheme.colorScheme.primary,
-                 color = orange
+                 color = orange2
             )
             Spacer(modifier = Modifier.height(8.dp))
             Spacer(modifier = Modifier.padding(3.dp))
@@ -159,14 +159,14 @@ fun Email(navController: NavController) {
                         modifier = Modifier
                             .fillMaxWidth(0.8f)
                             .height(50.dp),
-                      //colors = ButtonDefaults.buttonColors(backgroundColor = orange )
+                      //colors = ButtonDefaults.buttonColors(backgroundColor = orange2 )
                     ) {
                         Text(text = "Sign In", fontSize = 20.sp)
                     }
                     Spacer(modifier = Modifier.padding(20.dp))
                     Text(
                         text = "Create An Account",
-                        color = orange,
+                        color = orange2,
                         modifier = Modifier.clickable(onClick = {
                             navController.navigate("register_page"){
                                 popUpTo(navController.graph.startDestinationId)

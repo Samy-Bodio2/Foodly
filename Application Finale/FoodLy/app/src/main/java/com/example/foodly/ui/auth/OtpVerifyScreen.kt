@@ -99,7 +99,7 @@ fun OtpVerifyScreen(navController: NavController) {
                         launchSingleTop = true
                     }
                 },
-                colors = ButtonDefaults.buttonColors(backgroundColor = orange),
+                colors = ButtonDefaults.buttonColors(backgroundColor = orange2),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp)

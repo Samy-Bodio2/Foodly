@@ -16,6 +16,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import com.example.foodly.model.Meal
 import com.example.foodly.model.menu1
 import com.example.foodly.model.resto
@@ -70,8 +71,11 @@ fun MealCard(meal: Meal) {
     }
 }
 
+
 @Preview
 @Composable
 fun Preview1(){
-    DetailsMenu(menu1, resto)
+    //DetailsMenu(menu1, resto)
+    MealCard(meal = menu1)
+
 }

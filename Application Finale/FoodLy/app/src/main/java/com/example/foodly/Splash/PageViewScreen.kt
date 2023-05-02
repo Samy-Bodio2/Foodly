@@ -106,7 +106,7 @@ fun Indicator(count: Int, index: Int) {
                 modifier = Modifier
                     .size(8.dp)
                     .clip(CircleShape)
-                    .background(if (i == index) orange else Color.LightGray)
+                    .background(if (i == index) orange2 else Color.LightGray)
             )
             Spacer(modifier = Modifier.size(5.dp))
         }
@@ -126,7 +126,7 @@ fun FilledButton(
             .height(56.dp)
             .fillMaxWidth(),
         onClick = onClick,
-        colors = ButtonDefaults.buttonColors(backgroundColor = orange),
+        colors = ButtonDefaults.buttonColors(backgroundColor = orange2),
         shape = RoundedCornerShape(28.dp),
         elevation = null
     ) {
@@ -146,7 +146,7 @@ fun FilledButton(
 fun BorderButton(
     modifier: Modifier = Modifier,
     text: String,
-    color: Color = orange,
+    color: Color = orange2,
     fontSize: Int = 16,
     onClick: () -> Unit
 ) {

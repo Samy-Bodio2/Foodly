@@ -4,8 +4,7 @@
   "info": {
     "singularName": "delivery-man",
     "pluralName": "delivery-men",
-    "displayName": "delivery_man",
-    "description": ""
+    "displayName": "Delivery_man"
   },
   "options": {
     "draftAndPublish": true
@@ -15,11 +14,24 @@
     "name": {
       "type": "string"
     },
-    "orders": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::order.order",
-      "mappedBy": "delivery_man"
+    "email": {
+      "type": "email"
+    },
+    "phone_number": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "birthday_date": {
+      "type": "date"
+    },
+    "profileImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

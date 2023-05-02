@@ -4,8 +4,7 @@
   "info": {
     "singularName": "customer",
     "pluralName": "customers",
-    "displayName": "customer",
-    "description": ""
+    "displayName": "Customer"
   },
   "options": {
     "draftAndPublish": true
@@ -13,7 +12,37 @@
   "pluginOptions": {},
   "attributes": {
     "first_name": {
+      "type": "string",
+      "required": true
+    },
+    "last_name": {
       "type": "string"
+    },
+    "username": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "password": {
+      "type": "password",
+      "required": true,
+      "maxLength": 8
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone_number": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "start_date": {
+      "type": "datetime"
     },
     "notes": {
       "type": "relation",

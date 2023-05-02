@@ -4,7 +4,7 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "order",
+    "displayName": "Order",
     "description": ""
   },
   "options": {
@@ -15,26 +15,21 @@
     "order_date": {
       "type": "datetime"
     },
-    "payment": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::payment.payment",
-      "inversedBy": "orders"
-    },
-    "delivery_man": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::delivery-man.delivery-man",
-      "inversedBy": "orders"
-    },
     "panier": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::panier.panier",
       "inversedBy": "orders"
     },
-    "DeliverAdress": {
-      "type": "text"
+    "delivery_man": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::delivery-man.delivery-man"
+    },
+    "payment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::payment.payment"
     }
   }
 }

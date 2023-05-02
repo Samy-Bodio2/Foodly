@@ -4,8 +4,7 @@
   "info": {
     "singularName": "panier",
     "pluralName": "paniers",
-    "displayName": "panier",
-    "description": ""
+    "displayName": "Panier"
   },
   "options": {
     "draftAndPublish": true
@@ -17,16 +16,17 @@
       "relation": "oneToOne",
       "target": "api::customer.customer"
     },
+    "choixes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::choix.choix",
+      "mappedBy": "panier"
+    },
     "orders": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::order.order",
       "mappedBy": "panier"
-    },
-    "choix": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::choix.choix"
     }
   }
 }

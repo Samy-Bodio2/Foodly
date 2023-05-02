@@ -53,7 +53,7 @@ $RECYCLE.BIN/
 *.so
 *.swo
 *.swp
-*.swn
+*.swncd
 *.swm
 *.out
 *.pid
@@ -103,7 +103,6 @@ coverage
 ############################
 # Strapi
 ############################
-
 
 license.txt
 exports

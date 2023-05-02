@@ -1,6 +1,7 @@
 package com.example.foodly.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.lightColors
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
@@ -69,8 +70,19 @@ private val DarkColors = darkColorScheme(
     inversePrimary = md_theme_dark_inversePrimary,
     surfaceTint = md_theme_dark_surfaceTint,
 )
-
-
+private val LightColorPalette = lightColors(
+    primary = Orange1,
+    primaryVariant = Orange1,
+    secondary = Orange1
+)
+@Composable
+fun TestAppTheme(content: @Composable() () -> Unit) {
+    androidx.compose.material.MaterialTheme(
+        colors = LightColorPalette,
+        shapes = Shapes,
+        content = content
+    )
+}
 @Composable
 fun FoodlyTheme(
     useDarkTheme: Boolean = isSystemInDarkTheme(),

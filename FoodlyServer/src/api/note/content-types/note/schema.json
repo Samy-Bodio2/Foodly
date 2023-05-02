@@ -4,7 +4,8 @@
   "info": {
     "singularName": "note",
     "pluralName": "notes",
-    "displayName": "note"
+    "displayName": "Note",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,10 +14,9 @@
   "attributes": {
     "value": {
       "type": "integer",
-      "max": 5,
+      "required": true,
       "min": 0,
-      "default": 0,
-      "required": true
+      "max": 5
     },
     "restaurant": {
       "type": "relation",

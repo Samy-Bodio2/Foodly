@@ -50,7 +50,7 @@ fun Email(navController: NavController) {
     var passwordVisibility by remember { mutableStateOf(false) }
     val focusRequester = remember { FocusRequester() }
 
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomCenter) {
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -58,7 +58,8 @@ fun Email(navController: NavController) {
         ) {
             Image(
                 painter = image,
-                contentDescription = null
+                contentDescription = null,
+                modifier = Modifier.size(200.dp)
             )
         }
 

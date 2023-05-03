@@ -42,6 +42,10 @@ fun FoodOrderScreen(navController : NavHostController) {
     var list = listOf("Pizza", "Hamburger", "Salade")
     var selectedFood1 : List<String> = listOf("")
     var enabled by remember { mutableStateOf(false) }
+<<<<<<< HEAD
+=======
+    // var selectedCategory by remember { mutableStateOf(list) }
+>>>>>>> 56adc1fdbf819144bc148d5b61ab097bc1c964d4
     var selectedItem by remember { mutableStateOf("")}
     var textFiledSize by remember { mutableStateOf(Size.Zero)}
     val icon = if (expanded){
@@ -143,7 +147,7 @@ fun FoodOrderScreen(navController : NavHostController) {
 
         Row(modifier = Modifier.padding(horizontal = 16.dp)) {
             IconButton(onClick = { if (quantity > 0) quantity-- }) {
-                Icon(Icons.Default.Remove, contentDescription = "Ajouter")
+                Icon(Icons.Default.Delete, contentDescription = "Ajouter")
             }
             Text(text = quantity.toString(), fontSize = 16.sp, modifier = Modifier.width(32.dp))
             IconButton(onClick = { quantity++ }) {
@@ -180,7 +184,7 @@ fun Icon(
         elevation = elevation,
         modifier = Modifier
             .width(38.dp)
-            .height(38.dp)
+            .height(38.dp)//////////
     ) {
         Icon(painterResource(id = iconResouce), null)
     }

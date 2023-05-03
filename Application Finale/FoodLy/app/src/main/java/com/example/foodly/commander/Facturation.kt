@@ -32,7 +32,7 @@ fun facturation(navController : NavHostController){
     var valeur6 by remember { mutableStateOf("")}
     var textFiledSize by remember { mutableStateOf(Size.Zero)}
     var expanded by remember { mutableStateOf(false)}
-    var list = listOf("Credit Card","MoMo","Orange Money");
+    var list = listOf("Credit Cart","Mobile Payement");
     val icon = if (expanded){
         Icons.Filled.KeyboardArrowUp
     }else{
@@ -60,6 +60,7 @@ fun facturation(navController : NavHostController){
         modifier = Modifier
             .width(with(LocalDensity.current){textFiledSize.width.toDp()})) {
         list.forEach{mode ->                DropdownMenuItem(onClick = { valeur = mode
+            if(mode == list[1]) navController.navigate("momoOM")
             expanded = false}){
             Text(text = mode);
         }

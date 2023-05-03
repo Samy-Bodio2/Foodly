@@ -16,6 +16,7 @@ import com.example.foodly.Splash.AnimatedSplashScreen
 import com.example.foodly.Splash.PageViewScreen
 import com.example.foodly.commander.FoodOrderScreen
 import com.example.foodly.commander.facturation
+import com.example.foodly.commander.momoOM
 import com.example.foodly.screens.MealList
 import com.example.foodly.ui.auth.LoginPage
 import com.example.foodly.ui.auth.OtpVerifyScreen
@@ -34,7 +35,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             FoodlyTheme() {
                 LoginApplication()
-
             }
         }
     }
@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
     fun LoginApplication(){
         val navController = rememberNavController()
 
-        NavHost(navController = navController, startDestination = "factu", builder = {
+        NavHost(navController = navController, startDestination = Screen.Splash.route, builder = {
             composable(route = Screen.Splash.route){ AnimatedSplashScreen(navController) }
             composable(route = Screen.PageScreen.route){PageViewScreen(navController) }
             composable("login_page", content = { LoginPage(navController = navController) })
@@ -55,6 +55,7 @@ class MainActivity : ComponentActivity() {
             composable("passComm",content={FoodOrderScreen(navController = navController) })
             composable("email", content = { Email(navController = navController)})
             composable("factu", content = { facturation(navController = navController) })
+            composable("momoOM", content = { momoOM(navController = navController) })
         })
     }
 }

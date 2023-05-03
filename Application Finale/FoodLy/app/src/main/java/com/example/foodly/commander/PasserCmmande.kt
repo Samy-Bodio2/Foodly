@@ -42,10 +42,6 @@ fun FoodOrderScreen(navController : NavHostController) {
     var list = listOf("Pizza", "Hamburger", "Salade")
     var selectedFood1 : List<String> = listOf("")
     var enabled by remember { mutableStateOf(false) }
-<<<<<<< HEAD
-=======
-    // var selectedCategory by remember { mutableStateOf(list) }
->>>>>>> 56adc1fdbf819144bc148d5b61ab097bc1c964d4
     var selectedItem by remember { mutableStateOf("")}
     var textFiledSize by remember { mutableStateOf(Size.Zero)}
     val icon = if (expanded){
@@ -147,7 +143,7 @@ fun FoodOrderScreen(navController : NavHostController) {
 
         Row(modifier = Modifier.padding(horizontal = 16.dp)) {
             IconButton(onClick = { if (quantity > 0) quantity-- }) {
-                Icon(Icons.Default.Delete, contentDescription = "Ajouter")
+                Icon(Icons.Default.Remove, contentDescription = "enlever")
             }
             Text(text = quantity.toString(), fontSize = 16.sp, modifier = Modifier.width(32.dp))
             IconButton(onClick = { quantity++ }) {
@@ -158,7 +154,7 @@ fun FoodOrderScreen(navController : NavHostController) {
 
         // Bouton pour passer la commande
         Button(
-            onClick = { placeOrder(selectedItem, selectedFood, quantity) },
+            onClick = { navController.navigate("factu") },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp)
@@ -169,26 +165,26 @@ fun FoodOrderScreen(navController : NavHostController) {
 }
 // Fonction qui renvoie les aliments pour une catégorie donnée
 
-@Composable
-fun Icon(
-    @DrawableRes iconResouce: Int,
-    color: Color = White,
-    elevation: ButtonElevation? = ButtonDefaults.elevation(),
-    onClick: () -> Unit = {}
-) {
-    Button(
-        onClick = onClick,
-        contentPadding = PaddingValues(),
-//        shape = Shapes.small,
-        colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red, contentColor = color),
-        elevation = elevation,
-        modifier = Modifier
-            .width(38.dp)
-            .height(38.dp)//////////
-    ) {
-        Icon(painterResource(id = iconResouce), null)
-    }
-}
+//@Composable
+//fun Icon(
+//    @DrawableRes iconResouce: Int,
+//    color: Color = White,
+//    elevation: ButtonElevation? = ButtonDefaults.elevation(),
+//    onClick: () -> Unit = {}
+//) {
+//    Button(
+//        onClick = onClick,
+//        contentPadding = PaddingValues(),
+////        shape = Shapes.small,
+//        colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red, contentColor = color),
+//        elevation = elevation,
+//        modifier = Modifier
+//            .width(38.dp)
+//            .height(38.dp)//////////
+//    ) {
+//        Icon(painterResource(id = iconResouce), null)
+//    }
+//}
 
 // Fonction pour passer une commande
 fun placeOrder(category: String, food: String, quantity: Int) {

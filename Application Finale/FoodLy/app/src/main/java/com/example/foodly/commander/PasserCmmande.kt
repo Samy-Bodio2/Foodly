@@ -34,7 +34,6 @@ fun getFoods(category: String): List<String> {
 fun FoodOrderScreen(navController : NavHostController) {
     // Déclaration des variables pour les éléments de l'interface utilisateur
 
-//    var selectedIndex by remember { mutableStateOf(0) }
     var selectedFood by remember { mutableStateOf("") }
     var elem by remember { mutableStateOf("") }
     var quantity by remember { mutableStateOf(0) }
@@ -43,7 +42,6 @@ fun FoodOrderScreen(navController : NavHostController) {
     var list = listOf("Pizza", "Hamburger", "Salade")
     var selectedFood1 : List<String> = listOf("")
     var enabled by remember { mutableStateOf(false) }
-   // var selectedCategory by remember { mutableStateOf(list) }
     var selectedItem by remember { mutableStateOf("")}
     var textFiledSize by remember { mutableStateOf(Size.Zero)}
     val icon = if (expanded){
@@ -161,7 +159,7 @@ fun FoodOrderScreen(navController : NavHostController) {
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            Text(text = "Commander")
+            Text(text = "Facturation de la commande")
         }
     }
 }

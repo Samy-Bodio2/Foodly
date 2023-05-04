@@ -515,7 +515,6 @@ fun SearchField() {
             onSearch = {
                 /** do something*/
                 /** do something*/
-                /** do something*/
 
                 /** do something*/
 

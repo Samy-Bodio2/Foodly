@@ -3,6 +3,7 @@ package com.example.foodly.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -27,6 +28,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.foodly.R
 import com.example.foodly.model.MealKind
@@ -111,7 +113,7 @@ fun HomeScreen(navController1: Nothing?, navController: NavHostController) {
 
         //--> Top Section
         item {
-            TopBar("Djouda")
+            TopBar(navController,"Djouda")
             SearchField()
             Spacer(modifier = Modifier.size(18.dp))
             MealKinds(testList)
@@ -146,7 +148,7 @@ fun HomeScreen(navController1: Nothing?, navController: NavHostController) {
 }
 
 @Composable
-fun TopBar(userName: String) {
+fun TopBar(navController: NavController, userName: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -166,7 +168,14 @@ fun TopBar(userName: String) {
         Icon(
             painter = painterResource(id = R.drawable.ic_cart),
             contentDescription = null,
-            tint = primaryFontColor
+            tint = primaryFontColor,
+            modifier = Modifier
+                .clickable {
+                    navController.navigate("passComm") {
+                        popUpTo(navController.graph.startDestinationId)
+                        launchSingleTop = true
+                    }
+                }
         )
     }
 }

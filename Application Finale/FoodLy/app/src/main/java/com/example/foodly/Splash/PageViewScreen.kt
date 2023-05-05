@@ -78,7 +78,7 @@ fun PageViewScreen( navController: NavHostController){
                         if (index < list.size - 1) {
                             pagerState.animateScrollToPage(index + 1)
                         } else {
-                            navController.navigate("login_page")
+                            navController.navigate("name")
                         }
                     }
                 }

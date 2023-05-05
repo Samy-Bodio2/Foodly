@@ -143,7 +143,7 @@ fun FoodOrderScreen(navController : NavHostController) {
 
         Row(modifier = Modifier.padding(horizontal = 16.dp)) {
             IconButton(onClick = { if (quantity > 0) quantity-- }) {
-                Icon(Icons.Default.Remove, contentDescription = "enlever")
+                Icon(Icons.Default.Delete, contentDescription = "enlever")
             }
             Text(text = quantity.toString(), fontSize = 16.sp, modifier = Modifier.width(32.dp))
             IconButton(onClick = { quantity++ }) {

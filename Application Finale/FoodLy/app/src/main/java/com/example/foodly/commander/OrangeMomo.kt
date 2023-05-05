@@ -56,7 +56,7 @@ fun momoOM(navController : NavHostController){
         yellow
     }
     val padlock = if (!mutateImg){
-        R.drawable.padlock_white_32px
+        R.drawable.padlock_32px
     }else{
         R.drawable.padlock_32px
     }

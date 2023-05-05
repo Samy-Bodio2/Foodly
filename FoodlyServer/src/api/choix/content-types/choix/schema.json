@@ -15,6 +15,18 @@
     "quantity": {
       "type": "integer",
       "min": 0
+    },
+    "panier": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::panier.panier",
+      "inversedBy": "choixes"
+    },
+    "menu": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::menu.menu",
+      "inversedBy": "choixes"
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "menu",
     "pluralName": "menus",
-    "displayName": "Menu"
+    "displayName": "Menu",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -30,11 +31,48 @@
       "min": 0
     },
     "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "dishes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::dish.dish"
+    },
+    "seculants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::seculant.seculant"
+    },
+    "garnishes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::garnish.garnish"
+    },
+    "restaurants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::restaurant.restaurant"
+    },
+    "config": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::config.config"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    },
+    "choixes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::choix.choix",
+      "mappedBy": "menu"
     }
   }
 }

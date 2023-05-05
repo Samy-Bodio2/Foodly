@@ -3,6 +3,7 @@ package com.example.foodly.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -27,6 +28,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.foodly.R
 import com.example.foodly.model.MealKind
@@ -111,7 +113,7 @@ fun HomeScreen(navController1: Nothing?, navController: NavHostController) {
 
         //--> Top Section
         item {
-            TopBar("Djouda")
+            TopBar(navController,"Djouda")
             SearchField()
             Spacer(modifier = Modifier.size(18.dp))
             MealKinds(testList)
@@ -146,7 +148,7 @@ fun HomeScreen(navController1: Nothing?, navController: NavHostController) {
 }
 
 @Composable
-fun TopBar(userName: String) {
+fun TopBar(navController: NavController, userName: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -166,7 +168,14 @@ fun TopBar(userName: String) {
         Icon(
             painter = painterResource(id = R.drawable.ic_cart),
             contentDescription = null,
-            tint = primaryFontColor
+            tint = primaryFontColor,
+            modifier = Modifier
+                .clickable {
+                    navController.navigate("passComm") {
+                        popUpTo(navController.graph.startDestinationId)
+                        launchSingleTop = true
+                    }
+                }
         )
     }
 }
@@ -232,7 +241,7 @@ fun SectionHeader(sectionName: String, viewAll: () -> Unit) {
                 "View all",
                 style = TextStyle(
                     fontSize = 14.sp,
-                    color = orange,
+                    color = orange2,
                     fontFamily = metropolisFontFamily,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -276,12 +285,12 @@ fun PopularRestaurantItem(item: PopularRestaurant) {
             Icon(
                 painterResource(id = R.drawable.ic_star),
                 contentDescription = "rating",
-                tint = orange
+                tint = orange2
             )
             Text(
                 text = " $itemRate ",
                 style = TextStyle(
-                    color = orange,
+                    color = orange2,
                     fontSize = 13.sp,
                     fontFamily = metropolisFontFamily
                 )
@@ -300,7 +309,7 @@ fun PopularRestaurantItem(item: PopularRestaurant) {
                     .width(3.dp)
                     .height(3.dp)
                     .clip(CircleShape)
-                    .background(orange)
+                    .background(orange2)
             )
             Text(
                 text = "  ${item.foodKind} ",
@@ -371,7 +380,7 @@ fun MostPopularItem(item: PopularRestaurant, modifier: Modifier = Modifier) {
                     .width(3.dp)
                     .height(3.dp)
                     .clip(CircleShape)
-                    .background(orange)
+                    .background(orange2)
             )
             Text(
                 text = "  ${item.foodKind} ",
@@ -385,12 +394,12 @@ fun MostPopularItem(item: PopularRestaurant, modifier: Modifier = Modifier) {
             Icon(
                 painterResource(id = R.drawable.ic_star),
                 contentDescription = "rating",
-                tint = orange
+                tint = orange2
             )
             Text(
                 text = " $itemRate ",
                 style = TextStyle(
-                    color = orange,
+                    color = orange2,
                     fontSize = 13.sp,
                     fontFamily = metropolisFontFamily
                 )
@@ -447,12 +456,12 @@ fun RecentItem(item: PopularRestaurant) {
                 Icon(
                     painterResource(id = R.drawable.ic_star),
                     contentDescription = "rating",
-                    tint = orange
+                    tint = orange2
                 )
                 Text(
                     text = " $itemRate ",
                     style = TextStyle(
-                        color = orange,
+                        color = orange2,
                         fontSize = 13.sp,
                         fontFamily = metropolisFontFamily
                     )
@@ -482,7 +491,7 @@ fun SearchField() {
         value = value,
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = gray,
-            cursorColor = orange,
+            cursorColor = orange2,
             disabledLabelColor = gray,
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent
@@ -504,7 +513,6 @@ fun SearchField() {
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
         keyboardActions = KeyboardActions(
             onSearch = {
-                /** do something*/
                 /** do something*/
                 /** do something*/
 

@@ -29,16 +29,15 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
+import com.example.foodly.data.Resource
 
 @Composable
-fun LoginPage(navController: NavController) {
+fun LoginPage(viewModel: AuthViewModel?, navController: NavController) {
 
     Surface {
 
@@ -95,7 +94,8 @@ fun LoginPage(navController: NavController) {
 
 
                     Spacer(modifier = Modifier.padding(10.dp))
-                    GradientButton(navController,
+                    GradientButton(viewModel ,
+                        navController,
                         gradientColors = gradientColor,
                         cornerRadius = cornerRadius,
                         nameButton = "Login",
@@ -141,8 +141,11 @@ fun LoginPage(navController: NavController) {
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
-private fun GradientButton(navController: NavController,
+private fun GradientButton(
+    viewModel: AuthViewModel?,
+    navController: NavController,
     gradientColors: List<Color>,
     cornerRadius: Dp,
     nameButton: String,
@@ -151,15 +154,14 @@ private fun GradientButton(navController: NavController,
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
+    var loginFlow  = viewModel?.loginFlow?.collectAsState()
+
     androidx.compose.material3.Button(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 32.dp, end = 32.dp),
         onClick = {
-            navController.navigate("homescreen") {
-                popUpTo(navController.graph.startDestinationId)
-                launchSingleTop = true
-            }
+            viewModel?.login(email, password)
         },
 
         contentPadding = PaddingValues(),
@@ -185,6 +187,26 @@ private fun GradientButton(navController: NavController,
                 fontSize = 20.sp,
                 color = Color.White
             )
+        }
+    }
+
+    loginFlow?.value?.let{
+        when(it){
+            is Resource.Failure -> {
+                val context = LocalContext.current
+                Toast.makeText(context, it.exception.message, Toast.LENGTH_LONG).show()
+            }
+            Resource.Loading -> {
+                androidx.compose.material3.CircularProgressIndicator()
+            }
+            is Resource.Success -> {
+                LaunchedEffect(Unit){
+                    navController.navigate("homescreen") {
+                        popUpTo(navController.graph.startDestinationId)
+                        launchSingleTop = true
+                    }
+                }
+            }
         }
     }
 }

@@ -1,41 +1,34 @@
 {
   "project_info": {
-    "project_number": "170522245144",
-    "project_id": "foodly-af6d5",
-    "storage_bucket": "foodly-af6d5.appspot.com"
+    "project_number": "269974158215",
+    "firebase_url": "https://back-foodly-d6d11-default-rtdb.firebaseio.com",
+    "project_id": "back-foodly-d6d11",
+    "storage_bucket": "back-foodly-d6d11.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:170522245144:android:db2ec063719da2ac632b6d",
+        "mobilesdk_app_id": "1:269974158215:android:a7bd6a913cf5728d423122",
         "android_client_info": {
           "package_name": "com.example.foodly"
         }
       },
       "oauth_client": [
         {
-          "client_id": "170522245144-d6q742mm213r97ec0mpmn5esvkd2nsrf.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.foodly",
-            "certificate_hash": "c0951824594370eeddd80c0fc18a191e03ce9c2d"
-          }
-        },
-        {
-          "client_id": "170522245144-v9g2bi2utk982gskhh201o6u44lpbsjh.apps.googleusercontent.com",
+          "client_id": "269974158215-604jeb70hnhqn0posb62o603n69v7mob.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAPQFedvamckN0KN6kOhG3JqQphL7Uz2vo"
+          "current_key": "AIzaSyAA9TJCXZ8mHnDCchcG4YpowT4G8dAvrAI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "170522245144-v9g2bi2utk982gskhh201o6u44lpbsjh.apps.googleusercontent.com",
+              "client_id": "269974158215-604jeb70hnhqn0posb62o603n69v7mob.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -1,6 +1,6 @@
 package com.example.foodly.ui.home
 
-
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,6 +13,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -34,6 +36,9 @@ import com.example.foodly.R
 import com.example.foodly.model.MealKind
 import com.example.foodly.model.PopularRestaurant
 import com.example.foodly.ui.theme.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.vector.ImageVector
+
 
 val testList = listOf(
     MealKind("Burger", R.drawable.offers),
@@ -104,6 +109,7 @@ val testList4 = listOf(
     ),
 )
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeScreen(navController1: Nothing?, navController: NavHostController) {
     LazyColumn(
@@ -113,11 +119,12 @@ fun HomeScreen(navController1: Nothing?, navController: NavHostController) {
 
         //--> Top Section
         item {
-            TopBar(navController,"Djouda")
+            TopBar(navController,"Jason")
             SearchField()
             Spacer(modifier = Modifier.size(18.dp))
             MealKinds(testList)
             Spacer(modifier = Modifier.size(25.dp))
+
         }
 
         //--> PopularRestaurants Section
@@ -171,7 +178,7 @@ fun TopBar(navController: NavController, userName: String) {
             tint = primaryFontColor,
             modifier = Modifier
                 .clickable {
-                    navController.navigate("passComm") {
+                    navController.navigate("panierscreen") {
                         popUpTo(navController.graph.startDestinationId)
                         launchSingleTop = true
                     }

@@ -78,14 +78,14 @@ fun PageViewScreen( navController: NavHostController){
                         if (index < list.size - 1) {
                             pagerState.animateScrollToPage(index + 1)
                         } else {
-                            navController.navigate("name")
+                            navController.navigate("get_started")
                         }
                     }
                 }
                 Spacer(modifier = Modifier.height(20.dp))
 
                 BorderButton(modifier = Modifier.padding(horizontal = 34.dp), text = "Skip", color = secondaryFontColor) {
-                    navController.navigate("login_page")
+                    navController.navigate("get_started")
                 }
                 Spacer(modifier = Modifier.height(20.dp))
             }

@@ -89,9 +89,9 @@ fun MealList(navController: NavHostController) {
     Column {
         AppBar()
         Spacer(modifier = Modifier.weight(1f))
-        BottomButton(onClick = {
+        BottomButton( navController
             // action à effectuer lors du clic sur le bouton
-        })
+        )
     }
     var totalPrice by remember { mutableStateOf(0.0) }
 
@@ -135,14 +135,19 @@ fun MealList(navController: NavHostController) {
 
 }
 @Composable
-fun BottomButton(onClick: () -> Unit) {
+fun BottomButton(navController : NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(bottom = 16.dp)
     ) {
         Button(
-            onClick = onClick,
+            onClick = {
+                navController.navigate("login_page") {
+                    popUpTo(navController.graph.startDestinationId)
+                    launchSingleTop = true
+                }
+            },
             modifier = Modifier.align(Alignment.Center)
                 .padding(vertical = 8.dp)
                 .heightIn(min = 48.dp, max = 72.dp)
@@ -159,3 +164,4 @@ fun BottomButton(onClick: () -> Unit) {
         }
     }
 }
+

@@ -102,6 +102,7 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:2.44"
 
     implementation platform('com.google.firebase:firebase-bom:31.2.3')
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.6.0'
     implementation "com.google.firebase:firebase-auth-ktx"
     implementation "androidx.compose.material:material-icons-extended:$compose_ui_version"
 }

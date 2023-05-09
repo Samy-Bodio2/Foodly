@@ -1,24 +1,18 @@
 package com.example.foodly
 
-<<<<<<< HEAD
 import android.content.ContentValues.TAG
-=======
 
 import android.annotation.SuppressLint
->>>>>>> bc266d74112f5534f590f88a9da3ede7f3786aee
 import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-<<<<<<< HEAD
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Text
-=======
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
->>>>>>> bc266d74112f5534f590f88a9da3ede7f3786aee
 import androidx.compose.runtime.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -28,12 +22,9 @@ import com.example.foodly.Inscription.Email
 import com.example.foodly.Inscription.Name
 import com.example.foodly.Inscription.Password
 import com.example.foodly.Inscription.Phone_number
-<<<<<<< HEAD
 import com.example.foodly.Menu.action1
 
 
-=======
->>>>>>> bc266d74112f5534f590f88a9da3ede7f3786aee
 import com.example.foodly.Splash.AnimatedSplashScreen
 import com.example.foodly.Splash.PageViewScreen
 import com.example.foodly.Splash.getStart

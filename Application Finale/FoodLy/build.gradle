@@ -1,4 +1,4 @@
-buildscript {
+ buildscript {
     ext {
         compose_ui_version = '1.3.3'
         accompanist_version = '0.24.3-alpha'

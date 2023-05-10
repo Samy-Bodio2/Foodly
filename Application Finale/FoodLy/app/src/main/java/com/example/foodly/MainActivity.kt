@@ -54,6 +54,7 @@ class MainActivity : ComponentActivity() {
     fun LoginApplication(/*viewModel: AuthViewModel*/){
         val navController = rememberNavController()
 
+
         NavHost(navController = navController, startDestination = Screen.Splash.route, builder = {
             composable(route = Screen.Splash.route){ AnimatedSplashScreen(navController) }
             composable(route = Screen.PageScreen.route){PageViewScreen(navController) }

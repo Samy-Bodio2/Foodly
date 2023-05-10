@@ -11,20 +11,21 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
@@ -39,14 +40,17 @@ import androidx.navigation.NavController
 import com.example.foodly.R
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import androidx.compose.material.AlertDialog as AlertDialog1
 
-@OptIn(ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun RegisterPage(navController: NavController) {
     val keyboardController = LocalSoftwareKeyboardController.current
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     var passwordHidden by rememberSaveable { mutableStateOf(true) }
+    var showDialog by remember { mutableStateOf(false) }
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -72,7 +76,8 @@ fun RegisterPage(navController: NavController) {
 
                 )
             Column(
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier
+                    .padding(16.dp)
                     .fillMaxWidth()
                     .verticalScroll(rememberScrollState())
                 ,
@@ -172,14 +177,20 @@ fun RegisterPage(navController: NavController) {
                 val cornerRadius = 16.dp
 
 
+                fun isEmailValid(email: String): Boolean {
+                    val regex = Regex("^([\\w.-]+)@([a-zA-Z_-]+?)\\.([a-zA-Z]{2,})$")
+                    return regex.matches(email)
+                }
+
                 Spacer(modifier = Modifier.padding(10.dp))
                 androidx.compose.material3.Button(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 32.dp, end = 32.dp),
                     onClick = {
-                        createUser(email, password , navController)
+                        createUser(email, password, navController)
                     },
+
 
                     contentPadding = PaddingValues(),
                     colors = ButtonDefaults.buttonColors(
@@ -193,9 +204,9 @@ fun RegisterPage(navController: NavController) {
                             .fillMaxWidth()
                             .background(
                                 brush = Brush.horizontalGradient(colors = gradientColor),
-                                shape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp)
+                                shape = RoundedCornerShape(topStart = 30.dp, bottomEnd = 30.dp)
                             )
-                            .clip(RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp))
+                            .clip(RoundedCornerShape(topStart = 30.dp, bottomEnd = 30.dp))
                             .padding(horizontal = 16.dp, vertical = 8.dp),
                         contentAlignment = Alignment.Center
                     ) {
@@ -205,6 +216,21 @@ fun RegisterPage(navController: NavController) {
                             color = Color.White
                         )
                     }
+                }
+
+                if(showDialog){
+                    AlertDialog(
+                        onDismissRequest = { showDialog = false },
+                        title = { Text("Adresse e-mail invalide") },
+                        text = { Text("L'adresse e-mail saisie est invalide.") },
+                        confirmButton = {
+                            Button(
+                                onClick = { showDialog = false },
+                            ) {
+                                Text("OK")
+                            }
+                        }
+                    )
                 }
 
                 Spacer(modifier = Modifier.padding(10.dp))
@@ -263,11 +289,11 @@ private fun GradientButton(
 @Composable
 fun RegisterName() {
     val keyboardController = LocalSoftwareKeyboardController.current
-    var text by rememberSaveable { mutableStateOf("") }
+    var name by rememberSaveable { mutableStateOf("") }
 
     OutlinedTextField(
-        value = text,
-        onValueChange = { text = it },
+        value = name,
+        onValueChange = { name = it },
         shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
         label = {
             Text("Name",
@@ -297,11 +323,11 @@ fun RegisterName() {
 @Composable
 fun RegisterPhone() {
     val keyboardController = LocalSoftwareKeyboardController.current
-    var text by rememberSaveable { mutableStateOf("") }
+    var phoneNumber by rememberSaveable { mutableStateOf("") }
 
     OutlinedTextField(
-        value = text,
-        onValueChange = { text = it },
+        value = phoneNumber,
+        onValueChange = { phoneNumber = it },
         shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
         label = {
             Text("Phone",

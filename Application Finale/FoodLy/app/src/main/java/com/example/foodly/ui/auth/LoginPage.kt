@@ -2,6 +2,7 @@ package com.example.foodly.ui.auth
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -41,6 +42,7 @@ fun LoginPage(navController: NavController) {
     val keyboardController = LocalSoftwareKeyboardController.current
     var passwordHidden by rememberSaveable { mutableStateOf(true) }
     var showMessage by remember { mutableStateOf(false) }
+    var showError by remember { mutableStateOf(false) }
     val gradientColor = listOf(Color(0xFFF15C48), Color(0xFFF16356))
     val cornerRadius = 16.dp
 
@@ -152,7 +154,10 @@ fun LoginPage(navController: NavController) {
                                 keyboardController?.hide()
                             }
                         )
+
+
                     )
+
 
 
                     Spacer(modifier = Modifier.padding(10.dp))
@@ -161,26 +166,29 @@ fun LoginPage(navController: NavController) {
                             .fillMaxWidth()
                             .padding(start = 32.dp, end = 32.dp),
                         onClick = {
-                            try{
-                                val auth = Firebase.auth
-                                auth.signInWithEmailAndPassword(email, password)
-                                    .addOnCompleteListener { task ->
-                                        showMessage = if (task.isSuccessful){
-                                            Log.d(TAG, "signInWithEmail: success")
-                                            navController.navigate("homescreen"){
-                                                popUpTo(navController.graph.startDestinationId)
-                                                launchSingleTop = true
+                            if (email.isEmpty() || password.isEmpty()) {
+                                showError = true
+                            }else{
+                                try{
+                                    val auth = Firebase.auth
+                                    auth.signInWithEmailAndPassword(email, password)
+                                        .addOnCompleteListener { task ->
+                                            showMessage = if (task.isSuccessful){
+                                                Log.d(TAG, "signInWithEmail: success")
+                                                navController.navigate("homescreen"){
+                                                    popUpTo(navController.graph.startDestinationId)
+                                                    launchSingleTop = true
+                                                }
+                                                false
+                                            }else{
+                                                Log.w(TAG, "signInWithEmail:failure")
+                                                true
                                             }
-                                            false
-                                        }else{
-                                            Log.w(TAG, "signInWithEmail:failure")
-                                            true
                                         }
-                                    }
-                            }catch (e: Exception) {
-                                println("Erreur : $e.message")
+                                }catch (e: Exception) {
+                                    println("Erreur : $e.message")
+                                }
                             }
-
                         },
 
                         contentPadding = PaddingValues(),
@@ -225,6 +233,25 @@ fun LoginPage(navController: NavController) {
                             }
                         )
                     }
+                    if (showError) {
+                        BackHandler {
+                            showError = false
+                        }
+                        AlertDialog(
+                            onDismissRequest = { showError = false },
+                            title = { Text("Erreur") },
+                            text = { Text("Champ vide") },
+                            buttons = {
+                                Button(
+                                    onClick = { showError = false }
+                                ) {
+                                    Text("OK")
+                                }
+                            },
+                            backgroundColor = Color.White
+                        )
+                    }
+
                     GradientButton(
                         navController,
                         gradientColors = gradientColor,

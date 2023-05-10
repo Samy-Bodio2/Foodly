@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Foodly</string>
     <string name="email">email</string>
-    <string name="first_name">email</string>
-    <string name="lastname">email</string>
-    <string name="phone_number">email</string>
-    <string name="gender">email</string>
+    <string name="first_name">first_name</string>
+    <string name="lastname">last_name</string>
+    <string name="phone_number">phone_number</string>
+    <string name="gender">gender</string>
     <string name="password">password</string>
     <string name="login">login</string>
     <string name="dont_have_account">Do not have an account?\nClick here to sign up</string>

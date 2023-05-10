@@ -14,3 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "FoodLy"
 include ':app'
+include ':mapLib'

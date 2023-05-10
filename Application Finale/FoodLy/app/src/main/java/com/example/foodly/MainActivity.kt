@@ -1,11 +1,15 @@
 package com.example.foodly
 
+import android.content.ContentValues.TAG
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.Text
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -18,6 +22,9 @@ import com.example.foodly.Inscription.Email
 import com.example.foodly.Inscription.Name
 import com.example.foodly.Inscription.Password
 import com.example.foodly.Inscription.Phone_number
+import com.example.foodly.Menu.action1
+
+
 import com.example.foodly.Splash.AnimatedSplashScreen
 import com.example.foodly.Splash.PageViewScreen
 import com.example.foodly.Splash.getStart
@@ -28,7 +35,9 @@ import com.example.foodly.ui.auth.*
 import com.example.foodly.ui.home.HomeScreen
 import com.example.foodly.ui.theme.FoodlyTheme
 import com.example.foodly.ui.card.MealList
-
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : ComponentActivity() {
 
@@ -54,8 +63,12 @@ class MainActivity : ComponentActivity() {
     fun LoginApplication(/*viewModel: AuthViewModel*/){
         val navController = rememberNavController()
 
+<<<<<<< HEAD
 
         NavHost(navController = navController, startDestination = Screen.Splash.route, builder = {
+=======
+        NavHost(navController = navController, startDestination = "listMenu", builder = {
+>>>>>>> 4fb98b0efb051c7bb5d650f5a222d17d5cb72de8
             composable(route = Screen.Splash.route){ AnimatedSplashScreen(navController) }
             composable(route = Screen.PageScreen.route){PageViewScreen(navController) }
             composable("get_started", content = { getStart(navController = navController)})
@@ -72,6 +85,37 @@ class MainActivity : ComponentActivity() {
             composable("passComm",content={FoodOrderScreen(navController = navController) })
             composable("factu", content = { facturation(navController = navController) })
             composable("momoOM", content = { momoOM(navController = navController) })
+            composable("listMenu", content = { action1(navController = navController) })
         })
+    }
+    @Composable
+    fun firestate(){
+        val db = Firebase.firestore
+        val platsRef = db.collection("plat")
+        val platlist = mutableListOf<Plat>()
+        var i by remember { mutableStateOf(0)}
+        platsRef.addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                Log.w(TAG, "Listen failed.", e)
+                return@addSnapshotListener
+            }
+
+            for (document in snapshot?.documents ?: emptyList()) {
+                if (document.exists()) {
+                    // Obtenir les données du document
+                    val plat = document.toObject<Plat>()
+                    // Faire quelque chose avec les données du plat
+                    Log.d(TAG, plat.toString())
+                } else {
+                    Log.d(TAG, "Le document n'existe pas!")
+                }
+            }
+        }
+//        LazyColumn {
+//            items() { plat ->
+//                Text(plat.nom)
+//            }
+//        }
+
     }
 }

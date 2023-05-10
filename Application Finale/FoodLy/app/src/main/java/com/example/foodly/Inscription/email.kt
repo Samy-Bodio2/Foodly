@@ -1,4 +1,4 @@
-package com.example.foodly.Inscription
+/*package com.example.foodly.Inscription
 
 import android.util.Patterns
 import androidx.compose.foundation.Image
@@ -184,4 +184,4 @@ fun Email(navController: NavController){
 @Composable
 fun email() {
 
-}
+}*/

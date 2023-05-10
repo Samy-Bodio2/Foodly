@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodly.Customers.Splash.navigation.Screen
 import com.example.foodly.R
 import kotlinx.coroutines.delay
@@ -87,7 +88,9 @@ fun Splash(alpha: Float){
     }
 }
 
+@Preview(showBackground = true)
 @Composable
 fun SplashScreenPreview(){
     Splash(alpha = 1f)
 }
+

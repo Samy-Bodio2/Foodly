@@ -1,5 +1,6 @@
-package com.example.foodly.Inscription
+/*package com.example.foodly.Inscription
 
+/*import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -28,10 +29,34 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
-
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun Name(navController: NavController){
+    var first_name by rememberSaveable { mutableStateOf("") }
+    val keyboardController = LocalSoftwareKeyboardController.current
+    var last_name by rememberSaveable { mutableStateOf("") }
+    var username by rememberSaveable { mutableStateOf("") }
+    var isErrorDisplayed by remember { mutableStateOf(false) }
+    var gender by rememberSaveable { mutableStateOf("") }
+
+    val db = Firebase.firestore
+    val customerCollectionRef = db.collection("Customer")
+
+    fun SaveCustomer() {
+        // Créer un nouveau document avec le username renseigné
+        val newCustomer = hashMapOf(
+            "first_name" to first_name,
+            "last_name" to last_name,
+            "username" to username
+        )
+
+        // Ajouter le nouveau document à la collection "customer"
+        customerCollectionRef.add(newCustomer)
+    }
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -41,7 +66,7 @@ fun Name(navController: NavController){
             )
     ) {
         Image(
-            painter = painterResource(id = com.example.foodly.R.drawable.image1),
+            painter = painterResource(id = com.example.foodly.R.drawable.image6),
             contentDescription = null,
             contentScale = ContentScale.FillBounds,
             modifier = Modifier
@@ -78,7 +103,22 @@ fun Name(navController: NavController){
                     //color = MaterialTheme.colorScheme.primary,
                 )
                 Spacer(modifier = Modifier.height(6.dp))
-                Firstname()
+
+                OutlinedTextField(
+                    value = first_name,
+                    onValueChange = { first_name = it },
+                    shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
+                    label = {
+                        Text("First name",
+                            //color = MaterialTheme.colorScheme.scrim,
+                            //style = MaterialTheme.typography.labelMedium,
+                        ) },
+                    placeholder = { Text(text = "First name") },
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        imeAction = ImeAction.Next,
+                        keyboardType = KeyboardType.Text
+                    )
+                )
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(
                     text = "Enter your last name",
@@ -89,7 +129,22 @@ fun Name(navController: NavController){
                     style = MaterialTheme.typography.h6,
                 )
                 Spacer(modifier = Modifier.height(6.dp))
-                Lastname()
+
+                OutlinedTextField(
+                    value = last_name,
+                    onValueChange = { last_name = it },
+                    shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
+                    label = {
+                        Text("Last name",
+                            //color = MaterialTheme.colorScheme.scrim,
+                            //style = MaterialTheme.typography.labelMedium,
+                        ) },
+                    placeholder = { Text(text = "Last name") },
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        imeAction = ImeAction.Next,
+                        keyboardType = KeyboardType.Text
+                    )
+                )
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(
                     text = "Enter your user name",
@@ -100,141 +155,93 @@ fun Name(navController: NavController){
                     style = MaterialTheme.typography.h6,
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                Username()
+
+                OutlinedTextField(
+                    value = username,
+                    onValueChange = { username = it },
+                    shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
+                    label = {
+                        Text("Username",
+                            //color = MaterialTheme.colorScheme.scrim,
+                            //style = MaterialTheme.typography.labelMedium,
+                        ) },
+                    placeholder = { Text(text = "Username") },
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        imeAction = ImeAction.Next,
+                        keyboardType = KeyboardType.Text
+                    )
+                )
 
                 SexSelectionScreen()
 
                 val gradientColor = listOf(Color(0xFFF15C48), Color(0xFFF16356))
                 val cornerRadius = 16.dp
 
+                if (isErrorDisplayed) {
+                    BackHandler {
+                        isErrorDisplayed = false
+                    }
+                    AlertDialog(
+                        onDismissRequest = { isErrorDisplayed = false },
+                        title = { Text("Erreur") },
+                        text = { Text("Champ vide") },
+                        buttons = {
+                            Button(
+                                onClick = { isErrorDisplayed = false }
+                            ) {
+                                Text("OK")
+                            }
+                        },
+                        backgroundColor = Color.White
+                    )
+                }
 
                 Spacer(modifier = Modifier.padding(10.dp))
-                ButtonName(navController,
-                    gradientColors = gradientColor,
-                    cornerRadius = cornerRadius,
-                    nameButton = "Suivant",
-                    roundedCornerShape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp)
-                )
+                Button(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 32.dp, end = 32.dp),
+                    onClick = {
+                        if (first_name.isEmpty() || last_name.isEmpty() || username.isEmpty()) {
+                            isErrorDisplayed = true
+                        } else {
+                            SaveCustomer()
+                            navController.navigate("email") {
+                                popUpTo(navController.graph.startDestinationId)
+                                launchSingleTop = true
+                            }
+                        }
 
-                Spacer(modifier = Modifier.padding(10.dp))
+                    },
+
+                    contentPadding = PaddingValues(),
+                    colors = ButtonDefaults.buttonColors(
+                        Color.Transparent
+                    ),
+                    shape = RoundedCornerShape(cornerRadius)
+                ) {
+
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(
+                                brush = Brush.horizontalGradient(colors = gradientColor),
+                                shape = RoundedCornerShape(topStart = 30.dp, bottomEnd = 30.dp)
+                            )
+                            .clip(RoundedCornerShape(topStart = 30.dp, bottomEnd = 30.dp))
+                            .padding(horizontal = 16.dp, vertical = 8.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Suivant",
+                            fontSize = 20.sp,
+                            color = Color.White
+                        )
+                    }
+                }
             }
         }
     }
-}
-
-@Composable
-private fun ButtonName(navController: NavController,
-                       gradientColors: List<Color>,
-                       cornerRadius: Dp,
-                       nameButton: String,
-                       roundedCornerShape: RoundedCornerShape
-) {
-
-    Button(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 32.dp, end = 32.dp),
-        onClick = {
-            navController.navigate("email") {
-                popUpTo(navController.graph.startDestinationId)
-                launchSingleTop = true
-            }
-        },
-
-        contentPadding = PaddingValues(),
-        colors = ButtonDefaults.buttonColors(
-            Color.Transparent
-        ),
-        shape = RoundedCornerShape(cornerRadius)
-    ) {
-
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(
-                    brush = Brush.horizontalGradient(colors = gradientColors),
-                    shape = roundedCornerShape
-                )
-                .clip(roundedCornerShape)
-                .padding(horizontal = 16.dp, vertical = 8.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = nameButton,
-                fontSize = 20.sp,
-                color = Color.White
-            )
-        }
-    }
-}
-
-@OptIn(ExperimentalComposeUiApi::class)
-@Composable
-fun Firstname() {
-    val keyboardController = LocalSoftwareKeyboardController.current
-    var first_name by rememberSaveable { mutableStateOf("") }
-
-    OutlinedTextField(
-        value = first_name,
-        onValueChange = { first_name = it },
-        shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
-        label = {
-            Text("First name",
-                //color = MaterialTheme.colorScheme.scrim,
-                //style = MaterialTheme.typography.labelMedium,
-            ) },
-        placeholder = { Text(text = "First name") },
-        keyboardOptions = KeyboardOptions.Default.copy(
-            imeAction = ImeAction.Next,
-            keyboardType = KeyboardType.Text
-        )
-    )
-}
-
-@OptIn(ExperimentalComposeUiApi::class)
-@Composable
-fun Lastname() {
-    val keyboardController = LocalSoftwareKeyboardController.current
-    var last_name by rememberSaveable { mutableStateOf("") }
-
-    OutlinedTextField(
-        value = last_name,
-        onValueChange = { last_name = it },
-        shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
-        label = {
-            Text("Name",
-                //color = MaterialTheme.colorScheme.scrim,
-                //style = MaterialTheme.typography.labelMedium,
-            ) },
-        placeholder = { Text(text = "Name") },
-        keyboardOptions = KeyboardOptions.Default.copy(
-            imeAction = ImeAction.Next,
-            keyboardType = KeyboardType.Text
-        )
-    )
-}
-
-@OptIn(ExperimentalComposeUiApi::class)
-@Composable
-fun Username() {
-    val keyboardController = LocalSoftwareKeyboardController.current
-    var phoneNumber by rememberSaveable { mutableStateOf("") }
-
-    OutlinedTextField(
-        value = phoneNumber,
-        onValueChange = { phoneNumber = it },
-        shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
-        label = {
-            Text("Username",
-                //color = MaterialTheme.colorScheme.scrim,
-                //style = MaterialTheme.typography.labelMedium,
-            ) },
-        placeholder = { Text(text = "Username") },
-        keyboardOptions = KeyboardOptions.Default.copy(
-            imeAction = ImeAction.Next,
-            keyboardType = KeyboardType.Text
-        )
-    )
 }
 
 @Composable
@@ -298,4 +305,4 @@ fun RadioGroup(
             }
         }
     }
-}
+}*/

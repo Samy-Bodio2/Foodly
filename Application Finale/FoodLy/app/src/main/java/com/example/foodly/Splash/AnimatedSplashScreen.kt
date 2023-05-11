@@ -1,5 +1,6 @@
 package com.example.foodly.Splash
 
+import android.content.SharedPreferences
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
@@ -28,12 +29,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodly.Customers.Splash.navigation.Screen
 import com.example.foodly.R
 import kotlinx.coroutines.delay
 
+public var isLoggedIn = false
 @Composable
 fun AnimatedSplashScreen(navController: NavHostController){
+
     var startAnimation by remember{
         mutableStateOf(false)
     }
@@ -43,13 +47,18 @@ fun AnimatedSplashScreen(navController: NavHostController){
             durationMillis = 3000
         ))
 
-    LaunchedEffect(key1 = true){
-        startAnimation = true
-        delay(4000)
-        navController.popBackStack()
-        navController.navigate(Screen.PageScreen.route)
+    if (isLoggedIn) {
+        navController.navigate("homescreen")
+    } else {
+        LaunchedEffect(key1 = true){
+            startAnimation = true
+            delay(4000)
+            navController.popBackStack()
+            navController.navigate(Screen.PageScreen.route)
+        }
+        Splash(alpha = alphaAnim.value)
     }
-    Splash(alpha = alphaAnim.value)
+
 }
 
 @Composable
@@ -79,7 +88,9 @@ fun Splash(alpha: Float){
     }
 }
 
+@Preview(showBackground = true)
 @Composable
 fun SplashScreenPreview(){
     Splash(alpha = 1f)
 }
+

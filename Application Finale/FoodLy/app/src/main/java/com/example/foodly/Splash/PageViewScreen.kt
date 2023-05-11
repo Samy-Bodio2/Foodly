@@ -39,7 +39,7 @@ import kotlinx.coroutines.launch
 fun PageViewScreen( navController: NavHostController){
     val pagerState = rememberPagerState()
     val scope = rememberCoroutineScope()
-    val list = arrayOf(PageItem(image = R.drawable.ic_page_1, title = "Find Food You Love", subTitle = "Discover the best foods from over 1,000 restaurants and fast delivery to your doorstep"), PageItem(image = R.drawable.ic_page_2, title = "Fast Delivery", subTitle = "Fast food delivery to your home, office wherever you are"), PageItem(image = R.drawable.ic_page_3, title = "Live Tracking", subTitle = "Real time tracking of your food on the app once you placed the order"))
+    val list = arrayOf(PageItem(image = R.drawable.ic_page_1, title = "Find Food You Like", subTitle = "Discover the best foods from over 1,000 restaurants and fast delivery to your doorstep"), PageItem(image = R.drawable.ic_page_2, title = "Fast Delivery", subTitle = "Fast food delivery to your home, office wherever you are"), PageItem(image = R.drawable.ic_page_3, title = "Live Tracking", subTitle = "Real time tracking of your food on the app once you placed the order"))
     FoodlyTheme {
         HorizontalPager(
             count = list.size,

@@ -16,8 +16,9 @@ val yellow = Color(0xFFFFEE58)
 val primaryFontColor = Color(0xFF4A4B4D)
 val secondaryFontColor = Color(0xFF7C7D7E)
 val placeholderColor = Color(0xFFB6B7B7)
-val gray = Color(0xFFF2F2F2)
+val gray = Color(0xFF817F7F)
 val Orange1 = Color(0xFFF2994A)
+val white = Color(0xFFE9E9E9)
 
 val md_theme_light_primary = Color(0xFFFC6011)
 val md_theme_light_onPrimary = Color(0xFFFFFFFF)
@@ -79,3 +80,4 @@ val md_theme_dark_surfaceTint = Color(0xFF8BCEFF)
 
 
 val seed = Color(0xFF3B80AC)
+

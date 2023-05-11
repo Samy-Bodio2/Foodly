@@ -47,7 +47,7 @@ class MainActivity : ComponentActivity() {
     fun LoginApplication(){
         val navController = rememberNavController()
 
-        NavHost(navController = navController, startDestination = "mapF", builder = {
+        NavHost(navController = navController, startDestination = "homescreen", builder = {
             composable(route = Screen.Splash.route){ AnimatedSplashScreen(navController) }
             composable(route = Screen.PageScreen.route){PageViewScreen(navController) }
             /*composable("name", content = { Name(navController = navController) })

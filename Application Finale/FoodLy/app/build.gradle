@@ -104,6 +104,8 @@ dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:31.2.3')
     implementation "com.google.firebase:firebase-auth-ktx"
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-database-ktx:19.7.0'
     implementation "androidx.compose.material:material-icons-extended:$compose_ui_version"
 }
 

@@ -17,6 +17,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
+import com.example.foodly.R
 import com.example.foodly.model.Meal
 import com.example.foodly.model.menu1
 import com.example.foodly.model.resto
@@ -45,7 +46,7 @@ fun MealCard(meal: Meal) {
                 .padding(16.dp)
         ) {
             Image(
-                painter = painterResource(id = meal.image),
+                painter = painterResource(id = R.drawable.pommes),
                 contentDescription = meal.nom,
                 modifier = Modifier
                     .size(128.dp)

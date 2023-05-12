@@ -22,6 +22,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.foodly.MainActivity
 import com.example.foodly.ui.theme.orange2
 import com.example.maplib.MapsActivity
 

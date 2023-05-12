@@ -1,3 +1,3 @@
 package com.example.foodly.model
 
-data class MealKind(val name: String , val image: Int)
+data class  MealKind(val name: String , val image: Int)

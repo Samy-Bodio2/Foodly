@@ -109,7 +109,7 @@ val testList4 = listOf(
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun HomeScreenRestaurant(navController1: Nothing?, navController: NavHostController) {
+fun HomeScreen(navController1: Nothing?, navController: NavHostController) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()

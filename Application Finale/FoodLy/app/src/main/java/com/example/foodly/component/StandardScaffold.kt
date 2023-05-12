@@ -12,7 +12,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.foodly.Customers.Splash.navigation.Screen
 import com.example.foodly.model.BottomNavItem
-import com.example.foodly.ui.theme.colorRedDark
 import com.example.foodly.ui.theme.colorWhite
 import com.example.foodly.ui.theme.orange2
 

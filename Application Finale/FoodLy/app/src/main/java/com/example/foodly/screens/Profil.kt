@@ -15,14 +15,12 @@ import androidx.compose.ui.unit.dp
 import com.example.foodly.R
 import com.example.foodly.viewModels.ProfilViewModel
 import androidx.compose.runtime.getValue
-import androidx.lifecycle.observe
-import androidx.compose.runtime.livedata.observeAsState
 
 
 @Composable
 fun ProfileScreen(profilViewModel: ProfilViewModel) {
     // Observateur pour les modifications des données de l'utilisateur
-    val user by profilViewModel.userLiveData.observeAsState()
+   // val user by profilViewModel.userLiveData.observeAsState()
 
     Column(
         modifier = Modifier
@@ -55,6 +53,7 @@ fun ProfileScreen(profilViewModel: ProfilViewModel) {
                 modifier = Modifier
                     .padding(16.dp)
             ) {
+                /*
                 Text(
                     text = "Nom: ${user.username}",
                     style = MaterialTheme.typography.h6
@@ -79,7 +78,7 @@ fun ProfileScreen(profilViewModel: ProfilViewModel) {
 //                    text = "Préférences alimentaires: ${user.foodPreferences}",
 //                    style = MaterialTheme.typography.body1
 //                )
-            }
+            */}
         }
 
 

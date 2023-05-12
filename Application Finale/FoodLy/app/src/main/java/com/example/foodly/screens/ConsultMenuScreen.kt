@@ -1,4 +1,4 @@
-package com.example.foodly.screens
+                                                                                                                                                                                                            package com.example.foodly.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*

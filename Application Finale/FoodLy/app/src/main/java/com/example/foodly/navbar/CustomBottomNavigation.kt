@@ -28,14 +28,14 @@ fun CustomBottomNavigation(navController: NavController,
 ) {
 
 
-    val items= listOf(
-        Screen.Homes,
-        Screen.Favorites,
-        Screen.Search,
-        Screen.Profile,
-        Screen.Settings
+    //val items= listOf(
+      //  Screen.Homes,
+      //  Screen.Favorites,
+      //  Screen.Search,
+      //  Screen.Profile,
+      //  Screen.Settings
 
-    )
+    //)
 
     val navShape= RoundedCornerShape(topStart = 24.dp,topEnd = 24.dp)
 
@@ -51,29 +51,29 @@ fun CustomBottomNavigation(navController: NavController,
     ) {
 
 
-        items.forEach {
+        //items.forEach {
 
-            val isSelected=it.route==selectedRoute
+          //  val isSelected=it.route==selectedRoute
 
-            val color=if (isSelected)
-                MaterialTheme.colors.primary
-            else
-                MaterialTheme.colors.onSurface.copy(alpha=0.7f)
+            //val color=if (isSelected)
+              //  MaterialTheme.colors.primary
+            //else
+                //MaterialTheme.colors.onSurface.copy(alpha=0.7f)
 
-            IconButton(onClick = {
-                if(!isSelected)
-                    onItemSelected(it)
-            }) {
-                it.icon?.let { it1 ->
-                    Icon(
-                        imageVector = it1,
-                        contentDescription = null,
-                        tint=color
-                    )
-                }
-            }
+            //IconButton(onClick = {
+              //  if(!isSelected)
+            //        onItemSelected(it)
+           // }) {
+             //   it.icon?.let { it1 ->
+               //     Icon(
+                 //       imageVector = it1,
+                   //     contentDescription = null,
+                     //   tint=color
+                   // )
+               // }
+           // }
 
-        }
+        //}
 
 
     }

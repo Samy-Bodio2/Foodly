@@ -51,7 +51,7 @@ fun getStart(navController: NavController){
                     .clip(RoundedCornerShape(16.dp))
                     .background(Color.Red)
 
-                ,onClick = { navController.navigate(route = "name") }
+                ,onClick = { navController.navigate(route = "register_page") }
             ) {
                 Text("Get Started", color = Color.White, fontSize = 24.sp)
             }

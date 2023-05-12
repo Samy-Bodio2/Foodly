@@ -30,9 +30,9 @@ import com.example.foodly.component.TopAppBarMyOrders
 import com.example.foodly.data.MyOrdersDataDummy
 import com.example.foodly.model.MyOrders
 import com.example.foodly.ui.theme.colorBlack
-import com.example.foodly.ui.theme.colorRedDark
 import com.example.foodly.ui.theme.colorRedLite
 import com.example.foodly.ui.theme.colorWhite
+import com.example.foodly.ui.theme.orange2
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -158,7 +158,7 @@ fun OrderCalculateData() {
                 )
                 Text(
                     text = "$20.15",
-                    color = colorRedDark,
+                    color = orange2,
                     style = MaterialTheme.typography.h6,
                     fontWeight = FontWeight.Bold
                 )
@@ -243,7 +243,7 @@ fun MyOrdersListItem(myOrders: MyOrders) {
             Text(
                 text = "${myOrders.price}",
                 style = MaterialTheme.typography.h6,
-                color = colorRedDark,
+                color = orange2,
                 fontWeight = FontWeight.Bold
             )
 
@@ -275,7 +275,7 @@ fun MyOrdersListItem(myOrders: MyOrders) {
                         Icon(
                             imageVector = Icons.Default.Minimize,
                             contentDescription = "",
-                            tint = colorRedDark,
+                            tint = orange2,
                             modifier = Modifier.size(20.dp, 20.dp)
                         )
                     }

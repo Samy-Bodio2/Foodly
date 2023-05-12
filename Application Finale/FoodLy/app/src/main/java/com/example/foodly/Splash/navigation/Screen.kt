@@ -1,23 +1,21 @@
 package com.example.foodly.Customers.Splash.navigation
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.*
-import androidx.compose.ui.graphics.vector.ImageVector
-import com.example.foodly.R
+sealed class Screen(val route: String){
+    object Splash: Screen("Splash_screen")
+    object PageScreen: Screen("page_view_screen")
+    object Home: Screen("home_screen")
 
-sealed class Screen(
-    val route: String,
-    val title: Int?,
-    val icon: ImageVector?
-){
-    object Splash: Screen("Splash_screen",null,null)
-    object PageScreen: Screen("page_view_screen",null,null)
-    object Home: Screen("home_screen",null,null)
-
-    object Homes:Screen("home", R.string.home, Icons.Rounded.Home)
-    object Favorites:Screen("favorites",R.string.favorites, Icons.Rounded.Favorite)
-    object Profile:Screen("profile",R.string.profile, Icons.Rounded.Person)
-    object Settings:Screen("settings",R.string.settings, Icons.Rounded.Settings)
-
-    object Search:Screen("search",R.string.search, Icons.Rounded.Search)
+    object WelcomeScreen : Screen("welcome_screen")
+    object LoginScreen : Screen("login_screen")
+    object CreateAccountScreen : Screen("create_account_screen")
+    object OtpVerifyScreen : Screen("otp_verify_screen")
+    object ForgotPasswordScreen : Screen("forgot_password_screen")
+    object HomeScreen : Screen("home_screen")
+    object FavoriteScreen : Screen("favorite_screen")
+    object SearchScreen : Screen("search_screen")
+    object OrderScreen : Screen("order_screen")
+    object TrackOrderScreen : Screen("track_order_screen")
+    object SavesScreen : Screen("saves_screen")
+    object ProfileScreen : Screen("profile_screen")
+    object HomeScreenRestaurant : Screen("homescreen")
 }

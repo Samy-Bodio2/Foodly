@@ -1,6 +1,6 @@
-package com.example.foodly.Inscription
+/*package com.example.foodly.Inscription
 
-import androidx.activity.compose.BackHandler
+/*import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -31,7 +31,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -306,4 +305,4 @@ fun RadioGroup(
             }
         }
     }
-}
+}*/

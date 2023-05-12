@@ -1,4 +1,4 @@
-package com.example.foodly.Inscription
+/*package com.example.foodly.Inscription
 
 import android.content.ContentValues.TAG
 import org.mindrot.jbcrypt.BCrypt
@@ -254,3 +254,4 @@ fun Password(navController: NavController){
         }
     }
 }
+*/

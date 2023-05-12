@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodly.ui.theme.white
 
 @Composable
@@ -165,6 +166,13 @@ fun action1(navController: NavHostController){
         bottomBar = { BottomApp() },
         content = { Contenu() },
         drawerContent = { draw() })
+}
+
+@Preview
+@Composable
+fun fonc(){
+    val navController = rememberNavController()
+    action1(navController)
 }
 
 @Composable

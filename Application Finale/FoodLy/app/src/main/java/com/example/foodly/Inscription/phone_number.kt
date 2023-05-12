@@ -1,5 +1,5 @@
-package com.example.foodly.Inscription
-
+/*package com.example.foodly.Inscription
+/*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.R
@@ -176,4 +176,4 @@ fun Phone_number(navController: NavController){
             }
         }
     }
-}
+}*/

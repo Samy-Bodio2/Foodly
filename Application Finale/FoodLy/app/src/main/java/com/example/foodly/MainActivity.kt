@@ -22,6 +22,7 @@ import com.example.foodly.commander.DesignMap
 import com.example.foodly.commander.FoodOrderScreen
 import com.example.foodly.commander.facturation
 import com.example.foodly.commander.momoOM
+import com.example.foodly.screens.Destinations
 import com.example.foodly.ui.auth.LoginPage
 import com.example.foodly.ui.auth.OtpVerifyScreen
 import com.example.foodly.ui.auth.RegisterPage
@@ -56,6 +57,8 @@ class MainActivity : ComponentActivity() {
             composable("password", content = { Password(navController = navController) })*/
             //composable("login_page", content = { LoginPage(null, navController = navController) })
             composable("homescreen", content = { HomeScreen(null, navController = navController)} )
+            composable(Destinations.Home){ HomeScreene(navController=navController)}
+            composable(Destinations.Detail){ DetailScreen(navController=navController)}
             composable("register_page", content = { RegisterPage(navController = navController) })
             composable("reset_page", content = { ResetPage(navController = navController) })
             composable("otpVerify", content = { OtpVerifyScreen(navController = navController) })

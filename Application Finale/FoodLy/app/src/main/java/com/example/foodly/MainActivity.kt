@@ -18,10 +18,7 @@ import com.example.foodly.Inscription.Phone_number*/
 
 import com.example.foodly.Splash.AnimatedSplashScreen
 import com.example.foodly.Splash.PageViewScreen
-import com.example.foodly.commander.DesignMap
-import com.example.foodly.commander.FoodOrderScreen
-import com.example.foodly.commander.facturation
-import com.example.foodly.commander.momoOM
+import com.example.foodly.commander.*
 import com.example.foodly.ui.auth.LoginPage
 import com.example.foodly.ui.auth.OtpVerifyScreen
 import com.example.foodly.ui.auth.RegisterPage
@@ -47,7 +44,7 @@ class MainActivity : ComponentActivity() {
     fun LoginApplication(){
         val navController = rememberNavController()
 
-        NavHost(navController = navController, startDestination = "mapF", builder = {
+        NavHost(navController = navController, startDestination = "track", builder = {
             composable(route = Screen.Splash.route){ AnimatedSplashScreen(navController) }
             composable(route = Screen.PageScreen.route){PageViewScreen(navController) }
             /*composable("name", content = { Name(navController = navController) })
@@ -64,6 +61,7 @@ class MainActivity : ComponentActivity() {
             composable("factu", content = { facturation(navController = navController) })
             composable("momoOM", content = { momoOM(navController = navController) })
             composable("mapF", content = { DesignMap(context = this@MainActivity, navController = navController) })
+            composable("track", content = { Interface(navController = navController) })
         })
     }
 }

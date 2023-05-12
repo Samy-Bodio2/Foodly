@@ -143,7 +143,7 @@ fun BottomButton(navController : NavHostController) {
     ) {
         Button(
             onClick = {
-                navController.navigate("login_page") {
+                navController.navigate("passComm") {
                     popUpTo(navController.graph.startDestinationId)
                     launchSingleTop = true
                 }

@@ -23,6 +23,8 @@ import com.example.foodly.commander.FoodOrderScreen
 import com.example.foodly.commander.facturation
 import com.example.foodly.commander.momoOM
 import com.example.foodly.screens.Destinations
+import com.example.foodly.screens.DetailScreen
+import com.example.foodly.screens.HomeScreene
 import com.example.foodly.ui.auth.LoginPage
 import com.example.foodly.ui.auth.OtpVerifyScreen
 import com.example.foodly.ui.auth.RegisterPage

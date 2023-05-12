@@ -13,7 +13,7 @@ sealed class Screen(
 ){
 
 
-    object Home:Screen("home", R.string.home, Icons.Rounded.Home)
+    object Home:Screen("homes", R.string.home, Icons.Rounded.Home)
     object Favorites:Screen("favorites",R.string.favorites, Icons.Rounded.Favorite)
     object Profile:Screen("profile",R.string.profile, Icons.Rounded.Person)
     object Settings:Screen("settings",R.string.settings, Icons.Rounded.Settings)

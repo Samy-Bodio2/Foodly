@@ -36,6 +36,9 @@ import com.example.foodly.model.MealKind
 import com.example.foodly.model.PopularRestaurant
 import com.example.foodly.ui.theme.*
 import androidx.compose.runtime.Composable
+import com.example.foodly.model.Customer
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 val testList = listOf(
@@ -117,7 +120,7 @@ fun HomeScreen(navController1: Nothing?, navController: NavHostController) {
 
         //--> Top Section
         item {
-            TopBar(navController,"Jason")
+            TopBar(navController)
             SearchField()
             Spacer(modifier = Modifier.size(18.dp))
             MealKinds(testList)
@@ -153,7 +156,21 @@ fun HomeScreen(navController1: Nothing?, navController: NavHostController) {
 }
 
 @Composable
-fun TopBar(navController: NavController, userName: String) {
+fun TopBar(navController: NavController) {
+    val user = FirebaseAuth.getInstance().currentUser
+    var username by remember { mutableStateOf("") }
+
+    LaunchedEffect(user?.uid) {
+        val docRef = FirebaseFirestore.getInstance()
+            .collection("Customer")
+            .document(user?.uid ?: "")
+        docRef.get().addOnSuccessListener { documentSnapshot ->
+            if (documentSnapshot.exists()) {
+                val userData = documentSnapshot.toObject(Customer::class.java)
+                username = userData?.username ?: ""
+            }
+        }
+    }
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -162,7 +179,7 @@ fun TopBar(navController: NavController, userName: String) {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            text = "Hello $userName!",
+            text = "Hello $username!",
             style = TextStyle(
                 color = primaryFontColor,
                 fontSize = 20.sp,

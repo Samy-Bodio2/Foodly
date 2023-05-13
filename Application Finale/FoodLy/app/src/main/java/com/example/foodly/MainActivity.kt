@@ -28,9 +28,9 @@ import com.example.foodly.ui.auth.OtpVerifyScreen
 import com.example.foodly.ui.auth.RegisterPage
 import com.example.foodly.ui.auth.ResetPage
 import com.example.foodly.ui.bottom.*
-import com.example.foodly.ui.home.HomeScreen
 import com.example.foodly.ui.theme.FoodlyTheme
 import com.example.foodly.ui.card.MealList
+
 
 
 
@@ -94,6 +94,7 @@ class MainActivity : ComponentActivity() {
                         content = { FoodOrderScreen(navController = navController) })
                     composable("factu", content = { facturation(navController = navController) })
                     composable("momoOM", content = { momoOM(navController = navController) })
+                    composable("OrderConfir", content = { OrderConfirmationScreen(navController = navController) })
                     composable("track", content = { Interface(navController = navController) })
 
 

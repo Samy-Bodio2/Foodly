@@ -140,7 +140,14 @@ fun OrderConfirmationScreen(navController : NavHostController) {
 
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                 Button(
-                    onClick = { /* Action pour retourner à la page d'accueil */ },
+                    onClick =  {
+
+                        navController.navigate("track") {
+                            popUpTo(navController.graph.startDestinationId)
+                            launchSingleTop = true
+                        }
+
+                    } ,
                     shape = RoundedCornerShape(16.dp),
                     border = BorderStroke(width = 2.dp, color = White),
                     modifier = Modifier
@@ -160,9 +167,14 @@ fun OrderConfirmationScreen(navController : NavHostController) {
                 Spacer(modifier = Modifier.width(16.dp))
 
                 Button(
-                    onClick = { navController.navigate("register_page") {
-                        popUpTo(navController.graph.startDestinationId)
-                        launchSingleTop = true },
+                    onClick =  {
+
+                        navController.navigate("homescreen") {
+                            popUpTo(navController.graph.startDestinationId)
+                            launchSingleTop = true
+                        }
+
+                    } ,
                     shape = RoundedCornerShape(16.dp),
                     border = BorderStroke(width = 2.dp, color = orange2),
                     modifier = Modifier

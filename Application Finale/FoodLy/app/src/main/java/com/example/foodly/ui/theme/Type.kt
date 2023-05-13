@@ -6,6 +6,7 @@ import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.foodly.R
@@ -16,6 +17,14 @@ val jostFontFamily = FontFamily(
     Font(R.font.jost_book, FontWeight.Medium),
     Font(R.font.jost_medium, FontWeight.SemiBold),
     Font(R.font.jost_medium, FontWeight.Bold),
+)
+
+val fonts = FontFamily(
+    fonts = listOf(
+        Font(R.font.popins_regular,style = FontStyle.Normal),
+        Font(R.font.poppins_medium,style = FontStyle.Normal, weight = FontWeight.Medium),
+        Font(R.font.poppins_semibold,style = FontStyle.Normal, weight = FontWeight.SemiBold)
+    )
 )
 
 val metropolisFontFamily = FontFamily(

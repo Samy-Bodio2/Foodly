@@ -64,7 +64,7 @@ class MainActivity : ComponentActivity() {
         ) {
             NavHost(
                 navController = navController,
-                startDestination = "mapF",
+                startDestination = "homescreen",
                 builder = {
                     composable(route = Screen.Splash.route) { AnimatedSplashScreen(navController) }
                     composable(route = Screen.PageScreen.route) { PageViewScreen(navController) }
@@ -95,14 +95,7 @@ class MainActivity : ComponentActivity() {
                     composable("factu", content = { facturation(navController = navController) })
                     composable("momoOM", content = { momoOM(navController = navController) })
                     composable("track", content = { Interface(navController = navController) })
-                    composable(
-                        "mapF",
-                        content = {
-                            DesignMap(
-                                context = this@MainActivity,
-                                navController = navController
-                            )
-                        })
+                    composable("mapF", content = { DesignMap(context = this@MainActivity, navController = navController)})
                     composable(
                         route = Screen.LoginScreen.route
                     ) {

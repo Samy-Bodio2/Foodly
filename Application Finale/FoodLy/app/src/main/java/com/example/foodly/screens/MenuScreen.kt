@@ -720,9 +720,15 @@ fun PopularItem(popularData: PopularData, navController: NavController) {
                     .padding(end = 13.dp)
                     .clip(RoundedCornerShape(18.dp))
                     .clickable {
+<<<<<<< HEAD
                        // navController.currentBackStackEntry?.arguments = Bundle().apply {
                        //     putParcelable(Destination.DetailArgs.foodData, popularData)
                        // }
+=======
+//                        navController.currentBackStackEntry?.arguments = Bundle().apply {
+//                            putParcelable(Destination.DetailArgs.foodData, popularData)
+//                        }
+>>>>>>> 30f76aac9c6da49c5667c92e27f61b0835b7abc6
                         navController.navigate(Destination.Detail)
                     }
                     .background(

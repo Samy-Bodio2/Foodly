@@ -54,7 +54,7 @@ fun Pan3(cartItems: List<CartItem>) {
             contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
         ) {
             items(cartItems) { cartItem ->
-                CartItemRow(cartItem = cartItem)
+                CartItemRow(cartItem = cartItem)    
             }
         }
         Divider(modifier = Modifier.fillMaxWidth())

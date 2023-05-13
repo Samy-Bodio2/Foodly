@@ -19,7 +19,7 @@ import androidx.navigation.NavController
 import com.example.foodly.R
 import com.example.foodly.data.CategoriesRepository
 import com.example.foodly.model.Categories
-import com.example.foodly.ui.card.FoodlyTheme
+import com.example.foodly.ui.theme.FoodlyTheme
 
 @Composable
 fun CategoryTabs(
@@ -167,22 +167,6 @@ private fun CategoryTabSelectedDarkPreview() {
                 image = ""
             ),
             selected = true,
-            onClick = {}
-        )
-    }
-}
-
-@Preview("CategoryTab • NotSelected • Dark")
-@Composable
-private fun CategoryTabNotSelectedDarkPreview() {
-    FoodlyTheme() {
-        CategoryTab(
-            category = Categories(
-                id = 0,
-                name = "Burgers",
-                image = ""
-            ),
-            selected = false,
             onClick = {}
         )
     }

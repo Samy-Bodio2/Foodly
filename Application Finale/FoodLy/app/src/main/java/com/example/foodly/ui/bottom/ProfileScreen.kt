@@ -1,59 +1,119 @@
 package com.example.foodly.ui.bottom
 
-import android.content.res.Configuration
-import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+
+import android.annotation.SuppressLint
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Button
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
-import com.example.foodly.ui.theme.colorBlack
-import com.example.foodly.ui.theme.colorWhite
+import androidx.compose.ui.unit.dp
+import com.example.foodly.ProfileFile.User
+import com.example.foodly.R
 
+import java.util.*
+
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+@Preview
 @Composable
-fun ProfileScreen(navController: NavController) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(if (isSystemInDarkTheme()) Color.Black else colorWhite)
-            .verticalScroll(rememberScrollState())
+fun ProfileScreen() {
+
+    val user = remember { mutableStateOf(User(name = "Angele", email = "angele@example.com")) }
+    val isEditing = remember { mutableStateOf(false) }
+    Scaffold(
+        topBar = { TopAppBar(title = { Text("Profile") }) },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = { isEditing.value = !isEditing.value },
+                content = {
+                    Icon(
+                        if (isEditing.value) Icons.Filled.Done else Icons.Filled.Edit,
+                        contentDescription = ""
+                    )
+                }
+            )
+        },
+        bottomBar = {
+            if (isEditing.value) {
+                Button(
+                    onClick = { isEditing.value = false },
+                    modifier = Modifier.padding(32.dp)
+                ) {
+                    Text(text = "Save")
+                }
+            } else {
+                null
+            }
+        }
     ) {
         Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.fillMaxSize().padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Image(
+                painter = painterResource(id = R.drawable.baseline_face_24),
+                contentDescription = "User profile picture",
+                modifier = Modifier
+                    .size(128.dp)
+                    .clip(CircleShape)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 48.dp, end = 48.dp),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                if (isEditing.value) {
+                    OutlinedTextField(
+                        value = user.value.name,
+                        onValueChange = { user.value = user.value.copy(name = it) },
+                        label = { Text("Name") }
+                    )
+                } else {
+                    Text(text = user.value.name, style = MaterialTheme.typography.h5)
+                }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            if (isEditing.value) {
+                OutlinedTextField(
+                    value = user.value.email,
+                    onValueChange = { user.value = user.value.copy(email = it) },
+                    label = { Text("Email") },
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        keyboardType = KeyboardType.Email
+                    )
+                )
+            } else {
+                Text(text = user.value.email, style = MaterialTheme.typography.subtitle1)
+            }
+            Spacer(modifier = Modifier.height(16.dp))
             Text(
-                text = "Profile",
-                style = MaterialTheme.typography.h6,
-                color = colorBlack
+                text = "Joined on January 1st, 2021",
+                style = MaterialTheme.typography.body2,
+                color = Color.Gray
             )
         }
-
     }
-
-}
-
-@Composable
-@Preview
-fun ProfileScreenPreview() {
-    ProfileScreen(navController = NavController(LocalContext.current))
-}
-
-
-@Composable
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-fun ProfileScreenDarkPreview() {
-    ProfileScreen(navController = NavController(LocalContext.current))
 }

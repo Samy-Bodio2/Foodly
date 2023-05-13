@@ -1,167 +1,233 @@
 package com.example.foodly.ui.card
 
+
+import android.annotation.SuppressLint
+import android.content.res.Configuration
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import com.example.foodly.R
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.FavoriteBorder
-import androidx.compose.material.icons.outlined.Notifications
-import androidx.compose.material.icons.rounded.Search
-import androidx.compose.runtime.*
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Minimize
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.foodly.model.meals
+import com.example.foodly.component.TopAppBarMyOrders
+import com.example.foodly.data.MyOrdersDataDummy
+import com.example.foodly.model.MyOrders
+import com.example.foodly.ui.theme.colorBlack
+import com.example.foodly.ui.theme.colorRedLite
+import com.example.foodly.ui.theme.colorWhite
+import com.example.foodly.ui.theme.orange2
 
-import com.example.foodly.ui.theme.TestAppTheme
-
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
+fun PanierScreen(navController: NavHostController) {
+    Scaffold(topBar = {
+        TopAppBarMyOrders()
+    },
+        backgroundColor = if (isSystemInDarkTheme()) Color.Black else colorWhite,
+        content = {
+            PanierMainContent()
+        })
 
-fun FoodlyTheme (content: @Composable () -> Unit) {
-    TestAppTheme {
-        Surface(color = MaterialTheme.colors.background) {
-            content()
-        }
-    }
 }
 
 @Composable
-fun AppBar() {
-    Row(
-        Modifier
-            .padding(16.dp)
-            .height(48.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceAround
-    ) {
-        TextField(
-            value = "",
-            onValueChange = {},
-            label = { Text(text = "Search Food,", fontSize = 12.sp) },
-            singleLine = true,
-            leadingIcon = { Icon(imageVector = Icons.Rounded.Search, contentDescription = "Search") },
-            colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = Color.White,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
-            ),
-            shape = RoundedCornerShape(8.dp),
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxHeight()
-        )
-        Spacer(modifier = Modifier.width(8.dp))
-        IconButton(onClick = { }) {
-            Icon(imageVector = Icons.Outlined.FavoriteBorder, contentDescription = "", tint = Color.White)
-        }
-        IconButton(onClick = {}) {
-            Icon(imageVector = Icons.Outlined.Notifications, contentDescription = "", tint = Color.White)
-        }
-    }
-}
-
-
-
-
-
-
-@Composable
-fun VerticalDivider() {
-    Divider(
-        color = Color(0xFFF1F1F1),
-        modifier = Modifier
-            .width(5.dp)
-            .height(32.dp)
-    )
-}
-@Composable
-fun MealList(navController: NavHostController) {
+fun PanierMainContent() {
     Column {
-        AppBar()
-        Spacer(modifier = Modifier.weight(1f))
-        BottomButton( navController
-            // action à effectuer lors du clic sur le bouton
-        )
+        PanierList()
+        OrderCalculateData()
     }
-    var totalPrice by remember { mutableStateOf(0.0) }
+}
 
-    Column(modifier = Modifier.padding(16.dp)) {
-        VerticalDivider()
-        meals.forEach { meal ->
+@Composable
+fun OrderCalculateData() {
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Column(
+            modifier = Modifier.padding(
+                start = 20.dp,
+                end = 20.dp,
+                top = 20.dp,
+                bottom = 20.dp
+            ),
+            verticalArrangement = Arrangement.spacedBy(20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Button(
+                onClick = {
+
+                },
+                colors = ButtonDefaults.buttonColors(backgroundColor = colorRedLite),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+                    .align(Alignment.CenterHorizontally),
+                shape = RoundedCornerShape(24.dp)
+            ) {
+                Text(
+                    text = "Order \uD83E\uDD11",
+                    color = colorWhite,
+                    style = MaterialTheme.typography.button,
+                    modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+                )
+            }
+        }
+
+    }
+}
+
+@Composable
+fun PanierList() {
+    val myOrdersTitle = remember { MyOrdersDataDummy.myOrdersList }
+    LazyColumn(verticalArrangement = Arrangement.spacedBy(20.dp)) {
+        items(
+            items = myOrdersTitle,
+            itemContent = {
+                MyOrdersListItem(myOrders = it)
+            })
+    }
+
+}
+
+@Composable
+fun MyOrdersListItem(myOrders: MyOrders) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .padding(12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Image(
+            painter = painterResource(id = myOrders.ordersImageId),
+            contentDescription = "",
+            modifier = Modifier
+                .width(82.dp)
+                .height(82.dp)
+
+        )
+        Column(
+            modifier = Modifier
+                .wrapContentHeight()
+                .weight(0.9f)
+                .padding(horizontal = 10.dp),
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.Start
+        ) {
+            Text(
+                text = myOrders.name,
+                style = MaterialTheme.typography.h6,
+                color = colorBlack,
+                fontWeight = FontWeight.Bold
+            )
+            Text(
+                text = "${myOrders.price}",
+                style = MaterialTheme.typography.h6,
+                color = orange2,
+                fontWeight = FontWeight.Bold
+            )
+
+        }
+        val counter = remember { mutableStateOf(1) }
+        Box(
+            modifier = Modifier
+                .width(110.dp)
+                .height(40.dp)
+                .clip(shape = CircleShape)
+                .background(orange2)
+        ) {
             Row(
-                modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp),
+                verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Image(
-                    painter = painterResource(R.drawable.getstartmg),
-                    contentDescription = meal.name,
-                    modifier = Modifier.size(50.dp)
-                )
-                Column(modifier = Modifier.padding(start = 8.dp)) {
-                    Text(text = meal.name)
-                    Text(text = "$${meal.price}")
+
+                Box(
+                    modifier = Modifier
+                        .clip(shape = CircleShape)
+                        .background(colorWhite)
+                        .size(32.dp, 32.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    IconButton(onClick = { counter.value-- }) {
+                        Icon(
+                            imageVector = Icons.Default.Minimize,
+                            contentDescription = "",
+                            tint = orange2,
+                            modifier = Modifier.size(20.dp, 20.dp)
+                        )
+                    }
                 }
-                Row(modifier = Modifier.padding(end = 8.dp)) {
-                    Button(onClick = { meal.quantity-- }) {
-                        Text("-")
+
+                Text(
+                    text = "${counter.value}",
+                    color = colorBlack,
+                    style = MaterialTheme.typography.button,
+                    fontWeight = FontWeight.Bold
+                )
+
+                Box(
+                    modifier = Modifier
+                        .clip(shape = CircleShape)
+                        .background(Color.Red)
+                        .size(32.dp, 32.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    IconButton(onClick = {
+                        counter.value++
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.Add,
+                            contentDescription = "",
+                            tint = colorWhite,
+                            modifier = Modifier.size(20.dp, 20.dp)
+                        )
                     }
-                    TextField(
-                        value = meal.quantity.toString(),
-                        onValueChange = {
-                            meal.quantity = it.toIntOrNull() ?: meal.quantity
-                            totalPrice = meals.sumOf { m -> m.price * m.quantity }
-                        },
-                        modifier = Modifier.width(50.dp)
-                    )
-                    Button(onClick = { meal.quantity++ }) {
-                        Text("+")
-                    }
-                    totalPrice += meal.price * meal.quantity
                 }
             }
         }
-        Text(text = "Total: $${totalPrice}",modifier = Modifier.padding(top = 16.dp))
+
     }
 
+    HorizontalDivider()
 }
+
 @Composable
-fun BottomButton(navController : NavHostController) {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(bottom = 16.dp)
-    ) {
-        Button(
-            onClick = {
-                navController.navigate("passComm") {
-                    popUpTo(navController.graph.startDestinationId)
-                    launchSingleTop = true
-                }
-            },
-            modifier = Modifier.align(Alignment.Center)
-                .padding(vertical = 8.dp)
-                .heightIn(min = 48.dp, max = 72.dp)
-                .padding(horizontal = 16.dp)
-                .background(MaterialTheme.colors.primaryVariant)
-                .clip(RoundedCornerShape(24.dp))
-                .shadow(elevation = 4.dp, shape = RoundedCornerShape(24.dp))
-        ) {
-            Text(
-                text = "Commander",
-                color = MaterialTheme.colors.onPrimary,
-                fontSize = 18.sp
-            )
-        }
-    }
+fun HorizontalDivider() {
+    Divider(
+        color = orange2, thickness = 1.dp,
+        modifier = Modifier.padding(start = 20.dp, end = 20.dp)
+    )
+
 }
 
+@Composable
+@Preview
+fun OrderScreenPreview() {
+    PanierScreen(navController = NavHostController(LocalContext.current))
+}
+
+
+@Composable
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+fun OrderScreenDarkPreview() {
+    PanierScreen(navController = NavHostController(LocalContext.current))
+}

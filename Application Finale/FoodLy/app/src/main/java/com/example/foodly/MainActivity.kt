@@ -28,10 +28,9 @@ import com.example.foodly.ui.auth.OtpVerifyScreen
 import com.example.foodly.ui.auth.RegisterPage
 import com.example.foodly.ui.auth.ResetPage
 import com.example.foodly.ui.bottom.*
+import com.example.foodly.ui.card.PanierScreen
 import com.example.foodly.ui.home.HomeScreen
 import com.example.foodly.ui.theme.FoodlyTheme
-import com.example.foodly.ui.card.MealList
-
 
 
 class MainActivity : ComponentActivity() {
@@ -62,11 +61,7 @@ class MainActivity : ComponentActivity() {
         ) {
             NavHost(
                 navController = navController,
-<<<<<<< HEAD
                 startDestination = Screen.Splash.route,
-=======
-                startDestination = "homescreen",
->>>>>>> ac01811331e744bb803524c7bb25f6af58645ed9
                 builder = {
                     composable(route = Screen.Splash.route) { AnimatedSplashScreen(navController) }
                     composable(route = Screen.PageScreen.route) { PageViewScreen(navController) }
@@ -91,32 +86,13 @@ class MainActivity : ComponentActivity() {
                         "otpVerify",
                         content = { OtpVerifyScreen(navController = navController) })
                     composable(
-                        "panierscreen",
-                        content = { MealList(navController = navController) })
-                    composable(
                         "passComm",
                         content = { FoodOrderScreen(navController = navController) })
                     composable("factu", content = { facturation(navController = navController) })
                     composable("momoOM", content = { momoOM(navController = navController) })
                     composable("track", content = { Interface(navController = navController) })
-<<<<<<< HEAD
-                    composable(
-                        "mapF",
-                        content = {
-                            DesignMap(
-                                context = this@MainActivity,
-                                navController = navController
-                            )
-                        })
-=======
                     composable("mapF", content = { DesignMap(context = this@MainActivity, navController = navController)})
-                    composable(
-                        route = Screen.LoginScreen.route
-                    ) {
-                        LoginScreen(navController)
-                    }
->>>>>>> ac01811331e744bb803524c7bb25f6af58645ed9
-
+                    composable("panier", content = { PanierScreen(navController = navController)})
                     composable(
                         route = Screen.HomeScreen.route
                     ) {
@@ -141,7 +117,7 @@ class MainActivity : ComponentActivity() {
                     composable(
                         route = Screen.ProfileScreen.route
                     ) {
-                        ProfileScreen(navController)
+                        ProfileScreen()
                     }
                 })
         }

@@ -311,7 +311,7 @@ fun MyOrdersListItem(myOrders: MyOrders) {
 
     }
 
-    HorizontalDivider()
+    com.example.foodly.ui.card.HorizontalDivider()
 }
 
 @Composable

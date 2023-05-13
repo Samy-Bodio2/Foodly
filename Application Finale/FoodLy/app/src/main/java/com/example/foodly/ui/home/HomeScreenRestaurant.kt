@@ -193,7 +193,7 @@ fun TopBar(navController: NavController) {
             tint = primaryFontColor,
             modifier = Modifier
                 .clickable {
-                    navController.navigate("panierscreen") {
+                    navController.navigate("panier") {
                         popUpTo(navController.graph.startDestinationId)
                         launchSingleTop = true
                     }

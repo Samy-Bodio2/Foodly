@@ -64,7 +64,7 @@ class MainActivity : ComponentActivity() {
         ) {
             NavHost(
                 navController = navController,
-                startDestination = "mapF",
+                startDestination = Screen.Splash.route,
                 builder = {
                     composable(route = Screen.Splash.route) { AnimatedSplashScreen(navController) }
                     composable(route = Screen.PageScreen.route) { PageViewScreen(navController) }
@@ -103,11 +103,6 @@ class MainActivity : ComponentActivity() {
                                 navController = navController
                             )
                         })
-                    composable(
-                        route = Screen.LoginScreen.route
-                    ) {
-                        LoginScreen(navController)
-                    }
 
                     composable(
                         route = Screen.HomeScreen.route

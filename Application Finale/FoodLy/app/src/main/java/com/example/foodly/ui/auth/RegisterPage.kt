@@ -2,14 +2,13 @@ package com.example.foodly.ui.auth
 
 import android.content.ContentValues
 import android.util.Log
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import android.util.Patterns
+import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
@@ -21,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Red
@@ -37,9 +37,14 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.foodly.Customers.Splash.navigation.Screen
 import com.example.foodly.R
+import com.example.foodly.ui.theme.colorBlack
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import org.mindrot.jbcrypt.BCrypt
+import java.util.*
 import androidx.compose.material.AlertDialog as AlertDialog1
 
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
@@ -50,6 +55,38 @@ fun RegisterPage(navController: NavController) {
     var password by rememberSaveable { mutableStateOf("") }
     var passwordHidden by rememberSaveable { mutableStateOf(true) }
     var showDialog by remember { mutableStateOf(false) }
+    var username by rememberSaveable { mutableStateOf("") }
+    var conpassword by rememberSaveable { mutableStateOf("") }
+    var passwordHidde by rememberSaveable { mutableStateOf(true) }
+    var phoneNumber by rememberSaveable { mutableStateOf("") }
+    val gradientColor = listOf(Color(0xFFF15C48), Color(0xFFF16356))
+    val cornerRadius = 16.dp
+    var showDialogUsername by remember { mutableStateOf(false) }
+    var showDialogEmail by remember { mutableStateOf(false) }
+    var showDialogPhoneNumber by remember { mutableStateOf(false) }
+    var showDialogPassWord by remember { mutableStateOf(false) }
+
+
+
+
+    val db = Firebase.firestore
+    val start_date = Date()
+    val customerCollectionRef = db.collection("Customer")
+    val passwordHash = BCrypt.hashpw(password, BCrypt.gensalt(12))
+
+    fun SaveCustomer() {
+        // Créer un nouveau document avec le username renseigné
+        val newCustomer = hashMapOf(
+            "username" to username,
+            "email" to email,
+            "phone_number" to phoneNumber,
+            "password" to passwordHash,
+            "start_date" to start_date
+        )
+
+        // Ajouter le nouveau document à la collection "customer"
+        customerCollectionRef.add(newCustomer)
+    }
 
     Box(
         modifier = Modifier
@@ -99,13 +136,96 @@ fun RegisterPage(navController: NavController) {
                     color = MaterialTheme.colorScheme.primary,
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                RegisterName()
+
+                OutlinedTextField(
+                    value = username,
+                    onValueChange = { username = it },
+                    shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
+                    label = {
+                        Text("Name",
+                            color = MaterialTheme.colorScheme.scrim,
+                            style = MaterialTheme.typography.labelMedium,
+                        ) },
+                    placeholder = { Text(text = "Name") },
+                    keyboardOptions = KeyboardOptions(
+                        imeAction = ImeAction.Next,
+                        keyboardType = KeyboardType.Text
+                    ),
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        focusedBorderColor = MaterialTheme.colorScheme.primary,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.primary),
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(0.8f),
+                    keyboardActions = KeyboardActions(
+                        onDone = {
+                            keyboardController?.hide()
+                        }
+                    )
+
+                )
 
                 Spacer(modifier = Modifier.padding(3.dp))
-                RegisterPhone()
+
+                OutlinedTextField(
+                    value = phoneNumber,
+                    onValueChange = { phoneNumber = it },
+                    shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
+                    leadingIcon = {
+                        Row(
+                            modifier = Modifier.wrapContentWidth(),
+                            verticalAlignment = Alignment.CenterVertically,
+                            content = {
+                                Image(
+                                    painter = painterResource(id = R.drawable.cameroon),
+                                    contentDescription = "",
+                                    modifier = Modifier
+                                        .size(24.dp, 24.dp)
+                                        .padding(start = 10.dp)
+                                )
+                                Text(
+                                    text = "+237",
+                                    color = colorBlack,
+                                    modifier = Modifier.padding(start = 10.dp)
+                                )
+                                Canvas(
+                                    modifier = Modifier
+                                        .height(24.dp)
+                                        .padding(start = 10.dp)
+                                ) {
+                                    drawLine(
+                                        color = Color.Gray,
+                                        start = Offset(0f, 0f),
+                                        end = Offset(0f, size.height),
+                                        strokeWidth = 2.0F
+                                    )
+                                }
+                            }
+                        )
+                    },
+                    label = {
+                        Text("Phone",
+                            color = MaterialTheme.colorScheme.scrim,
+                            style = MaterialTheme.typography.labelMedium,
+                        ) },
+                    placeholder = { Text(text = "Phone") },
+                    keyboardOptions = KeyboardOptions(
+                        imeAction = ImeAction.Next,
+                        keyboardType = KeyboardType.Phone
+                    ),
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        focusedBorderColor = MaterialTheme.colorScheme.primary,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.primary),
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(0.8f),
+                    keyboardActions = KeyboardActions(
+                        onDone = {
+                            keyboardController?.hide()
+                        }
+                    )
+                )
 
                 Spacer(modifier = Modifier.padding(3.dp))
-                //RegisterEmail()
+
                 OutlinedTextField(
                     value = email,
                     onValueChange = { email = it },
@@ -134,7 +254,7 @@ fun RegisterPage(navController: NavController) {
 
 
                 Spacer(modifier = Modifier.padding(3.dp))
-                //RegisterPassword()
+
                 OutlinedTextField(
                     value = password,
                     onValueChange = { password = it },
@@ -170,17 +290,41 @@ fun RegisterPage(navController: NavController) {
                 )
 
                 Spacer(modifier = Modifier.padding(3.dp))
-                RegisterPasswordConfirm()
 
+                OutlinedTextField(
+                    value = conpassword,
+                    onValueChange = { conpassword = it },
+                    shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
+                    label = {
+                        Text("Confirm Password",
+                            color = MaterialTheme.colorScheme.scrim,
+                            style = MaterialTheme.typography.labelMedium,
+                        ) },
+                    visualTransformation =
+                    if (passwordHidde) PasswordVisualTransformation() else VisualTransformation.None,
+                    keyboardOptions = KeyboardOptions(
+                        imeAction = ImeAction.Done,
+                        keyboardType = KeyboardType.Password
+                    ),
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        focusedBorderColor = MaterialTheme.colorScheme.primary,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.primary),
+                    trailingIcon = {
+                        IconButton(onClick = { passwordHidde = !passwordHidde }) {
+                            val visibilityIcon =
+                                if (passwordHidde) Visibility else VisibilityOff
+                            val description = if (passwordHidde) "Show password" else "Hide password"
+                            Icon(imageVector = visibilityIcon, contentDescription = description)
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth(0.8f),
+                    keyboardActions = KeyboardActions(
+                        onDone = {
+                            keyboardController?.hide()
+                        }
+                    )
+                )
 
-                val gradientColor = listOf(Color(0xFFF15C48), Color(0xFFF16356))
-                val cornerRadius = 16.dp
-
-
-                fun isEmailValid(email: String): Boolean {
-                    val regex = Regex("^([\\w.-]+)@([a-zA-Z_-]+?)\\.([a-zA-Z]{2,})$")
-                    return regex.matches(email)
-                }
 
                 Spacer(modifier = Modifier.padding(10.dp))
                 androidx.compose.material3.Button(
@@ -188,7 +332,10 @@ fun RegisterPage(navController: NavController) {
                         .fillMaxWidth()
                         .padding(start = 32.dp, end = 32.dp),
                     onClick = {
-                        createUser(email, password, navController)
+
+                            SaveCustomer()
+                            createUser(email, password, navController)
+
                     },
 
 
@@ -233,6 +380,67 @@ fun RegisterPage(navController: NavController) {
                     )
                 }
 
+                if (showDialogUsername) {
+                    BackHandler {
+                        showDialogUsername = false
+                    }
+                    androidx.compose.material.AlertDialog(
+                        onDismissRequest = { showDialogUsername = false },
+                        title = { Text("Erreur") },
+                        text = { Text("Champ vide") },
+                        buttons = {
+                            Button(
+                                onClick = { showDialogUsername = false }
+                            ) {
+                                Text("OK")
+                            }
+                        },
+                        backgroundColor = Color.White
+                    )
+                }
+
+                if (showDialogEmail) {
+                    androidx.compose.material.AlertDialog(
+                        onDismissRequest = { showDialogEmail = false },
+                        title = { Text("Erreur") },
+                        text = { Text("L'email n'est pas valide") },
+                        confirmButton = {
+                            Button(onClick = { showDialogEmail = false }) {
+                                Text("OK")
+                            }
+                        }
+                    )
+                }
+
+                if (showDialogPhoneNumber) {
+                    androidx.compose.material.AlertDialog(
+                        onDismissRequest = { showDialogPhoneNumber = false },
+                        title = { Text("Invalid Phone Number") },
+                        text = { Text("Please enter a valid phone number starting with 6 and having 9 digits.") },
+                        confirmButton = {
+                            Button(onClick = { showDialogPhoneNumber = false }) {
+                                Text("OK")
+                            }
+                        }
+                    )
+                }
+
+                if (showDialogPassWord) {
+                    androidx.compose.material.AlertDialog(
+                        onDismissRequest = { showDialogPassWord = false },
+                        title = { Text("Erreur") },
+                        text = { Text("Les mots de passe ne correspondent pas ou sont vides.") },
+                        confirmButton = {
+                            Button(
+                                onClick = { showDialogPassWord = false }
+                            ) {
+                                Text("OK")
+                            }
+                        }
+                    )
+                }
+
+
                 Spacer(modifier = Modifier.padding(10.dp))
 
                 androidx.compose.material3.TextButton(onClick = {
@@ -274,138 +482,6 @@ fun RegisterPage(navController: NavController) {
     }
 }
 
-@Composable
-private fun GradientButton(
-    gradientColors: List<Color>,
-    cornerRadius: Dp,
-    nameButton: String,
-    roundedCornerShape: RoundedCornerShape
-) {
-
-
-}
-
-@OptIn(ExperimentalComposeUiApi::class)
-@Composable
-fun RegisterName() {
-    val keyboardController = LocalSoftwareKeyboardController.current
-    var name by rememberSaveable { mutableStateOf("") }
-
-    OutlinedTextField(
-        value = name,
-        onValueChange = { name = it },
-        shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
-        label = {
-            Text("Name",
-                color = MaterialTheme.colorScheme.scrim,
-                style = MaterialTheme.typography.labelMedium,
-            ) },
-        placeholder = { Text(text = "Name") },
-        keyboardOptions = KeyboardOptions(
-            imeAction = ImeAction.Next,
-            keyboardType = KeyboardType.Text
-        ),
-        colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = MaterialTheme.colorScheme.primary,
-            unfocusedBorderColor = MaterialTheme.colorScheme.primary),
-        singleLine = true,
-        modifier = Modifier.fillMaxWidth(0.8f),
-        keyboardActions = KeyboardActions(
-            onDone = {
-                keyboardController?.hide()
-            }
-        )
-
-    )
-}
-
-@OptIn(ExperimentalComposeUiApi::class)
-@Composable
-fun RegisterPhone() {
-    val keyboardController = LocalSoftwareKeyboardController.current
-    var phoneNumber by rememberSaveable { mutableStateOf("") }
-
-    OutlinedTextField(
-        value = phoneNumber,
-        onValueChange = { phoneNumber = it },
-        shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
-        label = {
-            Text("Phone",
-                color = MaterialTheme.colorScheme.scrim,
-                style = MaterialTheme.typography.labelMedium,
-            ) },
-        placeholder = { Text(text = "Phone") },
-        keyboardOptions = KeyboardOptions(
-            imeAction = ImeAction.Next,
-            keyboardType = KeyboardType.Phone
-        ),
-        colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = MaterialTheme.colorScheme.primary,
-            unfocusedBorderColor = MaterialTheme.colorScheme.primary),
-        singleLine = true,
-        modifier = Modifier.fillMaxWidth(0.8f),
-        keyboardActions = KeyboardActions(
-            onDone = {
-                keyboardController?.hide()
-            }
-        )
-    )
-}
-
-@OptIn(ExperimentalComposeUiApi::class)
-@Composable
-fun RegisterEmail() {
-
-
-
-}
-
-@OptIn(ExperimentalComposeUiApi::class)
-@Composable
-fun RegisterPassword() {
-
-}
-
-@OptIn(ExperimentalComposeUiApi::class)
-@Composable
-fun RegisterPasswordConfirm() {
-    val keyboardController = LocalSoftwareKeyboardController.current
-    var password by rememberSaveable { mutableStateOf("") }
-    var passwordHidden by rememberSaveable { mutableStateOf(true) }
-    OutlinedTextField(
-        value = password,
-        onValueChange = { password = it },
-        shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
-        label = {
-            Text("Confirm Password",
-                color = MaterialTheme.colorScheme.scrim,
-                style = MaterialTheme.typography.labelMedium,
-            ) },
-        visualTransformation =
-        if (passwordHidden) PasswordVisualTransformation() else VisualTransformation.None,
-        keyboardOptions = KeyboardOptions(
-            imeAction = ImeAction.Done,
-            keyboardType = KeyboardType.Password
-        ),
-        colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = MaterialTheme.colorScheme.primary,
-            unfocusedBorderColor = MaterialTheme.colorScheme.primary),
-        trailingIcon = {
-            IconButton(onClick = { passwordHidden = !passwordHidden }) {
-                val visibilityIcon =
-                    if (passwordHidden) Visibility else VisibilityOff
-                val description = if (passwordHidden) "Show password" else "Hide password"
-                Icon(imageVector = visibilityIcon, contentDescription = description)
-            }
-        },
-        modifier = Modifier.fillMaxWidth(0.8f),
-        keyboardActions = KeyboardActions(
-            onDone = {
-                keyboardController?.hide()
-            }
-        )
-    )
-}
 
 fun createUser(
     email: String,
@@ -421,10 +497,10 @@ fun createUser(
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d(ContentValues.TAG, "createUserWithEmail:success")
-                       navController.navigate("homescreen"){
-                           popUpTo(navController.graph.startDestinationId)
-                           launchSingleTop = true
-                       } // naviguer vers la page de connexion
+                    navController.navigate(Screen.HomeScreen.route){
+                        popUpTo(navController.graph.startDestinationId)
+                        launchSingleTop = true
+                    } // naviguer vers la page de connexion
 
 
                 } else {

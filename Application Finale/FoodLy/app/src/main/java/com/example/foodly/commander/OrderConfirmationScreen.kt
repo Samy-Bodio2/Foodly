@@ -65,7 +65,7 @@ fun OrderConfirmationScreen(navController : NavHostController) {
                     Spacer(modifier = Modifier.height(9.dp))
 
                     Text(
-                        "Thai Planet",
+                        "Douala Planet",
                         style = MaterialTheme.typography.h6,
                         fontWeight = FontWeight.Bold
                     )

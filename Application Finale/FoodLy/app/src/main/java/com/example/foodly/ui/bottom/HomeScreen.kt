@@ -1,5 +1,6 @@
 package com.example.foodly.ui.bottom
 
+import android.annotation.SuppressLint
 import android.content.res.Configuration
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -8,9 +9,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.FilterList
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.KeyboardArrowRight
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -30,9 +29,58 @@ import androidx.navigation.NavController
 import com.example.foodly.R
 import com.example.foodly.component.TopAppBarHome
 import com.example.foodly.ui.theme.*
+import kotlinx.coroutines.launch
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(navController: NavController) {
+    FoodlyTheme {
+        val scaffoldState = rememberScaffoldState()
+        val scope = rememberCoroutineScope()
+        Scaffold(
+            scaffoldState = scaffoldState,
+            topBar = {
+                AppBar(
+                    onNavigationIconClick = {
+                        scope.launch {
+                            scaffoldState.drawerState.open()
+                        }
+                    }
+                )
+            },
+            drawerGesturesEnabled = scaffoldState.drawerState.isOpen,
+            drawerContent = {
+                DrawerHeader()
+                DrawerBody(
+                    items = listOf(
+                        MenuItem(
+                            id = "home",
+                            title = "Home",
+                            contentDescription = "Go to home screen",
+                            icon = Icons.Default.Home
+                        ),
+                        MenuItem(
+                            id = "settings",
+                            title = "Settings",
+                            contentDescription = "Go to settings screen",
+                            icon = Icons.Default.Settings
+                        ),
+                        MenuItem(
+                            id = "help",
+                            title = "Help",
+                            contentDescription = "Get help",
+                            icon = Icons.Default.Info
+                        ),
+                    ),
+                    onItemClick = {
+                        println("Clicked on ${it.title}")
+                    }
+                )
+            }
+        ) {
+
+        }
+    }
     Box(
         modifier = Modifier
             .fillMaxSize()

@@ -62,11 +62,7 @@ class MainActivity : ComponentActivity() {
         ) {
             NavHost(
                 navController = navController,
-<<<<<<< HEAD
                 startDestination = Screen.Splash.route,
-=======
-                startDestination = "homescreen",
->>>>>>> ac01811331e744bb803524c7bb25f6af58645ed9
                 builder = {
                     composable(route = Screen.Splash.route) { AnimatedSplashScreen(navController) }
                     composable(route = Screen.PageScreen.route) { PageViewScreen(navController) }
@@ -99,23 +95,10 @@ class MainActivity : ComponentActivity() {
                     composable("factu", content = { facturation(navController = navController) })
                     composable("momoOM", content = { momoOM(navController = navController) })
                     composable("track", content = { Interface(navController = navController) })
-<<<<<<< HEAD
-                    composable(
-                        "mapF",
-                        content = {
-                            DesignMap(
-                                context = this@MainActivity,
-                                navController = navController
-                            )
-                        })
-=======
+
+
                     composable("mapF", content = { DesignMap(context = this@MainActivity, navController = navController)})
-                    composable(
-                        route = Screen.LoginScreen.route
-                    ) {
-                        LoginScreen(navController)
-                    }
->>>>>>> ac01811331e744bb803524c7bb25f6af58645ed9
+
 
                     composable(
                         route = Screen.HomeScreen.route

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "747773595038",
+    "firebase_url": "https://backfoodly-default-rtdb.firebaseio.com",
     "project_id": "backfoodly",
     "storage_bucket": "backfoodly.appspot.com"
   },

@@ -14,6 +14,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.foodly.navigation.NavGraph
 import com.example.foodly.screens.Profile.ProfileScreen
+import com.example.foodly.screens.Profile.SwitchButton
 import com.example.foodly.ui.theme.FoodlyTheme
 
 class MainActivity : ComponentActivity() {

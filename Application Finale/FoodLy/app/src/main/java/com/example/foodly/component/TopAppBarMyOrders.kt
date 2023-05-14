@@ -9,17 +9,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.foodly.ui.theme.colorBlack
 
 @Composable
-fun TopAppBarMyOrders() {
+fun TopAppBarMyOrders(navController: NavController) {
 
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        IconButton(onClick = { }) {
+        IconButton(onClick = {
+            navController.navigate("homescreen") {
+                popUpTo(navController.graph.startDestinationId)
+                launchSingleTop = true
+            }
+        }) {
             Icon(
                 imageVector = Icons.Outlined.ArrowBack,
                 contentDescription = "",
@@ -37,9 +43,4 @@ fun TopAppBarMyOrders() {
     }
 }
 
-@Composable
-@Preview
-fun TopAppBarMyOrdersPreview() {
-    TopAppBarMyOrders()
-}
 

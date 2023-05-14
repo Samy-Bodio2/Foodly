@@ -103,7 +103,7 @@ fun HomeScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(30.dp))
             //Title()
             Spacer(modifier = Modifier.height(20.dp))
-            Content()
+            Content(navController)
         }
 
     }
@@ -126,11 +126,11 @@ fun Title() {
 }
 
 @Composable
-fun Content() {
+fun Content(navController: NavController) {
     Column() {
         Header()
         Spacer(modifier = Modifier.height(16.dp))
-        CategorySection()
+        CategorySection(navController)
         Spacer(modifier = Modifier.height(20.dp))
         PopularSection()
         Spacer(modifier = Modifier.height(20.dp))
@@ -204,7 +204,7 @@ fun Header() {
 }
 
 @Composable
-fun CategorySection() {
+fun CategorySection(navController: NavController) {
     Column() {
         val itemList = listOf("Burgers", "Pizza", "Healthy")
         val categoryImagesList = listOf<Int>(
@@ -228,7 +228,13 @@ fun CategorySection() {
             ) {
                 Text(
                     text = "See all",
-                    color = orange2
+                    color = orange2,
+                    modifier = Modifier.clickable{
+                        navController.navigate("homeScreenes") {
+                            popUpTo(navController.graph.startDestinationId)
+                            launchSingleTop = true
+                        }
+                    }
                 )
                 Icon(
                     imageVector = Icons.Outlined.KeyboardArrowRight,

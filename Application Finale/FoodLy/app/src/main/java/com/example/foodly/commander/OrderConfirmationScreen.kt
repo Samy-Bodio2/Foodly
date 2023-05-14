@@ -119,9 +119,9 @@ fun OrderConfirmationScreen(navController : NavHostController) {
                             fontWeight = FontWeight.Bold,
                             color = Color.Black
                         )
-                        Spacer(modifier = Modifier.width(113.dp))
+                        Spacer(modifier = Modifier.width(90.dp))
                         Text(
-                            "FCFA 70.00",
+                            "FCFA 15000",
                             style = MaterialTheme.typography.h6,
                             fontWeight = FontWeight.Bold,
                             color = orange2
@@ -159,7 +159,7 @@ fun OrderConfirmationScreen(navController : NavHostController) {
                     Text(
                         text = "Track your order",
                         style = MaterialTheme.typography.button,
-                        color = orange2,
+                        color = Color.White,
                         modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
                     )
                 }
@@ -176,7 +176,7 @@ fun OrderConfirmationScreen(navController : NavHostController) {
 
                     } ,
                     shape = RoundedCornerShape(16.dp),
-                    border = BorderStroke(width = 2.dp, color = orange2),
+                    border = BorderStroke(width = 2.dp, color = White),
                     modifier = Modifier
                         .weight(1f)
                         .padding(start = 8.dp)

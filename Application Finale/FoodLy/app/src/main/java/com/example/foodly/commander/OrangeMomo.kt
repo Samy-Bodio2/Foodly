@@ -43,7 +43,7 @@ fun momoOM(navController : NavHostController){
     val payIcon = if (!mutateImg){
         R.drawable.my_orange_96px
     }else{
-        R.drawable.mtnfaux_96px
+        R.drawable.mtn
     }
     val colorText = if (!mutateImg){
         Color.White
@@ -143,7 +143,7 @@ fun momoOM(navController : NavHostController){
         Spacer(modifier = Modifier.size(15.dp))
         Button(modifier = Modifier
             .height(40.dp)
-            .fillMaxWidth(), onClick = {},colors = ButtonDefaults.buttonColors(
+            .fillMaxWidth(), onClick = {navController.navigate("OrderConfir")},colors = ButtonDefaults.buttonColors(
             backgroundColor = colorIcon
         )){
             Icon(painterResource(id = padlock),

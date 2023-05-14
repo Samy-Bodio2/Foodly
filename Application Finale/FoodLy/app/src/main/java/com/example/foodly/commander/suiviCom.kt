@@ -42,12 +42,17 @@ fun Interface(navController: NavHostController){
         backgroundColor = Color.Transparent,
        /* topBar = { leHaut(modifier = Modifier.background(Color.Transparent))},*/
     content = { contenue() },
-    bottomBar = { leBas() })
+    bottomBar = { leBas(navController) })
 }
 
 @Composable
-fun leBas() {
-    Button(onClick = {}, colors = ButtonDefaults.buttonColors(orange2), modifier = Modifier
+fun leBas(navController: NavHostController) {
+    Button(onClick = {
+        navController.navigate("homescreen") {
+            popUpTo(navController.graph.startDestinationId)
+            launchSingleTop = true
+        }
+    }, colors = ButtonDefaults.buttonColors(orange2), modifier = Modifier
         .width(500.dp)
         .height(80.dp)
         .padding(vertical = 20.dp, horizontal = 40.dp)) {
@@ -133,7 +138,7 @@ fun contenue() {
 
     Box(modifier = Modifier
         .fillMaxSize() ){
-        Image(painter = painterResource(id = R.drawable.track_food_back), contentDescription = "",contentScale = ContentScale.FillBounds)
+        Image(painter = painterResource(id = R.drawable.track_food_back), contentDescription = "",contentScale = ContentScale.Crop)
         Column(){
 
             Column(horizontalAlignment = Alignment.Start, modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp)){

@@ -18,7 +18,7 @@ import androidx.compose.runtime.getValue
 
 
 @Composable
-fun ProfileScreen(profilViewModel: ProfilViewModel) {
+fun ProfileScreen() {
     // Observateur pour les modifications des données de l'utilisateur
    // val user by profilViewModel.userLiveData.observeAsState()
 

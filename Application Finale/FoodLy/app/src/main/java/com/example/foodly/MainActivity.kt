@@ -28,11 +28,8 @@ import com.example.foodly.ui.auth.OtpVerifyScreen
 import com.example.foodly.ui.auth.RegisterPage
 import com.example.foodly.ui.auth.ResetPage
 import com.example.foodly.ui.bottom.*
-<<<<<<< HEAD
 import com.example.foodly.ui.card.PanierScreen
 import com.example.foodly.ui.home.HomeScreen
-=======
->>>>>>> 30f76aac9c6da49c5667c92e27f61b0835b7abc6
 import com.example.foodly.ui.theme.FoodlyTheme
 
 
@@ -93,19 +90,13 @@ class MainActivity : ComponentActivity() {
                         "passComm",
                         content = { FoodOrderScreen(navController = navController) })
                     composable("factu", content = { facturation(navController = navController) })
+                    composable("homeScreenes", content = { HomeScreenes(navController = navController) })
+
                     composable("momoOM", content = { momoOM(navController = navController) })
                     composable("OrderConfir", content = { OrderConfirmationScreen(navController = navController) })
                     composable("track", content = { Interface(navController = navController) })
-<<<<<<< HEAD
                     composable("mapF", content = { DesignMap(context = this@MainActivity, navController = navController)})
                     composable("panier", content = { PanierScreen(navController = navController)})
-=======
-
-
-                    composable("mapF", content = { DesignMap(context = this@MainActivity, navController = navController)})
-
-
->>>>>>> 30f76aac9c6da49c5667c92e27f61b0835b7abc6
                     composable(
                         route = Screen.HomeScreen.route
                     ) {
@@ -130,7 +121,7 @@ class MainActivity : ComponentActivity() {
                     composable(
                         route = Screen.ProfileScreen.route
                     ) {
-                        ProfileScreen()
+                        ProfileScreen(navController)
                     }
                 })
         }

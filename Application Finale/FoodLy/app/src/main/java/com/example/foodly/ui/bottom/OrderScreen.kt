@@ -38,7 +38,7 @@ import com.example.foodly.ui.theme.orange2
 @Composable
 fun OrderScreen(navController: NavHostController) {
     Scaffold(topBar = {
-        TopAppBarMyOrders()
+        TopAppBarMyOrders(navController)
     },
         backgroundColor = if (isSystemInDarkTheme()) Color.Black else colorWhite,
         content = {
@@ -72,7 +72,7 @@ fun OrderCalculateData() {
                 onClick = {
 
                 },
-                colors = ButtonDefaults.buttonColors(backgroundColor = colorRedLite),
+                colors = ButtonDefaults.buttonColors(backgroundColor = orange2),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp)
@@ -100,7 +100,7 @@ fun OrderCalculateData() {
                     style = MaterialTheme.typography.button
                 )
                 Text(
-                    text = "$14.95",
+                    text = "12000 FCFA",
                     color = colorBlack,
                     style = MaterialTheme.typography.button,
                     fontWeight = FontWeight.Bold
@@ -119,7 +119,7 @@ fun OrderCalculateData() {
                     style = MaterialTheme.typography.button
                 )
                 Text(
-                    text = "$2.25",
+                    text = "1000 FCFA",
                     color = colorBlack,
                     style = MaterialTheme.typography.button,
                     fontWeight = FontWeight.Bold
@@ -138,7 +138,7 @@ fun OrderCalculateData() {
                     style = MaterialTheme.typography.button
                 )
                 Text(
-                    text = "$2.95",
+                    text = "500 FCFA",
                     color = colorBlack,
                     style = MaterialTheme.typography.button,
                     fontWeight = FontWeight.Bold
@@ -157,7 +157,7 @@ fun OrderCalculateData() {
                     style = MaterialTheme.typography.button
                 )
                 Text(
-                    text = "$20.15",
+                    text = "13500 FCFA",
                     color = orange2,
                     style = MaterialTheme.typography.h6,
                     fontWeight = FontWeight.Bold

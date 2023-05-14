@@ -6,15 +6,9 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Button
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Edit
@@ -29,15 +23,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.foodly.ProfileFile.User
 import com.example.foodly.R
+import com.example.foodly.ui.theme.colorWhite
+import com.example.foodly.ui.theme.orange2
 
 import java.util.*
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
-@Preview
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(navController : NavController) {
 
     val user = remember { mutableStateOf(User(name = "Angele", email = "angele@example.com")) }
     val isEditing = remember { mutableStateOf(false) }
@@ -58,7 +54,7 @@ fun ProfileScreen() {
             if (isEditing.value) {
                 Button(
                     onClick = { isEditing.value = false },
-                    modifier = Modifier.padding(32.dp)
+                    modifier = Modifier.padding(32.dp).height(8.dp)
                 ) {
                     Text(text = "Save")
                 }
@@ -109,11 +105,56 @@ fun ProfileScreen() {
                 Text(text = user.value.email, style = MaterialTheme.typography.subtitle1)
             }
             Spacer(modifier = Modifier.height(16.dp))
+            val date = Date()
             Text(
-                text = "Joined on January 1st, 2021",
+                text = "$date",
                 style = MaterialTheme.typography.body2,
                 color = Color.Gray
             )
+            Spacer(modifier = Modifier.height(16.dp))
+            Button(
+                onClick = {
+                    navController.navigate("mapF") {
+                        popUpTo(navController.graph.startDestinationId)
+                        launchSingleTop = true
+                    }
+                },
+                colors = ButtonDefaults.buttonColors(backgroundColor = orange2),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+                    .align(Alignment.CenterHorizontally),
+                shape = RoundedCornerShape(24.dp)
+            ) {
+                Text(
+                    text = "Localisation",
+                    color = colorWhite,
+                    style = MaterialTheme.typography.button,
+                    modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+                )
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            Button(
+                onClick = {
+                    navController.navigate("login_page") {
+                        popUpTo(navController.graph.startDestinationId)
+                        launchSingleTop = true
+                    }
+                },
+                colors = ButtonDefaults.buttonColors(backgroundColor = orange2),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+                    .align(Alignment.CenterHorizontally),
+                shape = RoundedCornerShape(24.dp)
+            ) {
+                Text(
+                    text = "Log out",
+                    color = colorWhite,
+                    style = MaterialTheme.typography.button,
+                    modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+                )
+            }
         }
     }
 }

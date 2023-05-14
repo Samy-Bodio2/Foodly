@@ -9,7 +9,7 @@ object MyOrdersDataDummy {
         1,
         R.drawable.burger,
         "Chicken Burger",
-        4.25
+        2000
     )
 
     val myOrdersList = listOf(
@@ -18,13 +18,20 @@ object MyOrdersDataDummy {
             id = 2,
             ordersImageId = R.drawable.burger2,
             name = "Beef Burger",
-            price = 3.45
+            price = 2500
         ),
         myOrders.copy(
             id = 3,
             ordersImageId = R.drawable.pizza,
             name = "Chicken Pizza",
-            price = 6.25
+            price = 9000
+        ),
+        myOrders.copy(
+            id = 3,
+            ordersImageId = R.drawable.okok,
+            name = "Plat d'Okok",
+            price = 2500
         )
+
     )
 }

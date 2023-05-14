@@ -77,7 +77,7 @@ fun ProfileScreen() {
             ) {
                 Icon(Icons.Outlined.CalendarMonth, null)
                 Text(text = "My Favorite Restaurants", fontSize = 24.sp)
-                Spacer(modifier = Modifier.width(width = 48.dp))
+                Spacer(modifier = Modifier.width(width = 55.dp))
                 Icon(Icons.Outlined.ChevronRight, null)
             }
 
@@ -90,7 +90,7 @@ fun ProfileScreen() {
             ) {
                 Icon(Icons.Outlined.AccountBalanceWallet, null)
                 Text(text = "Payment Methods", fontSize = 24.sp)
-                Spacer(modifier = Modifier.width(width =  110.dp))
+                Spacer(modifier = Modifier.width(width =  118.dp))
                 Icon(Icons.Outlined.ChevronRight, null)
             }
         }
@@ -106,7 +106,7 @@ fun ProfileScreen() {
             ) {
                 Icon(Icons.Outlined.PersonOutline, null)
                 Text(text = "Profile", fontSize = 24.sp)
-                Spacer(modifier = Modifier.width(width =  234.dp))
+                Spacer(modifier = Modifier.width(width =  242.dp))
                 Icon(Icons.Outlined.ChevronRight, null)
             }
 
@@ -119,7 +119,7 @@ fun ProfileScreen() {
             ) {
                 Icon(Icons.Outlined.LocationOn, null)
                 Text(text = "Address", fontSize = 24.sp)
-                Spacer(modifier = Modifier.width(width =  220.dp))
+                Spacer(modifier = Modifier.width(width =  224.dp))
                 Icon(Icons.Outlined.ChevronRight, null)
             }
 
@@ -132,7 +132,7 @@ fun ProfileScreen() {
             ) {
                 Icon(Icons.Outlined.NotificationsNone, null)
                 Text(text = "Notifications", fontSize = 24.sp)
-                Spacer(modifier = Modifier.width(width =  160.dp))
+                Spacer(modifier = Modifier.width(width =  176.dp))
                 Icon(Icons.Outlined.ChevronRight, null)
             }
 
@@ -145,7 +145,7 @@ fun ProfileScreen() {
             ) {
                 Icon(Icons.Outlined.GppGood, null)
                 Text(text = "Security", fontSize = 24.sp)
-                Spacer(modifier = Modifier.width(width =  234.dp))
+                Spacer(modifier = Modifier.width(width =  226.dp))
                 Icon(Icons.Outlined.ChevronRight, null)
             }
 
@@ -171,7 +171,7 @@ fun ProfileScreen() {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(text = "English (US)", fontSize = 24.sp)
-                    Spacer(modifier = Modifier.width(width =  8.dp))
+                    Spacer(modifier = Modifier.width(width = 16.dp))
                     Icon(Icons.Outlined.ChevronRight, null)
                 }
             }
@@ -185,6 +185,7 @@ fun ProfileScreen() {
             ) {
                 Icon(Icons.Outlined.RemoveRedEye, null)
                 Text(text = "Dark mode", fontSize = 24.sp)
+                Spacer(modifier = Modifier.width(width = 180.dp))
                 SwitchButton()
             }
 

@@ -38,25 +38,25 @@ import com.example.foodly.ui.theme.orange2
 @Composable
 fun PanierScreen(navController: NavHostController) {
     Scaffold(topBar = {
-        TopAppBarMyOrders()
+        TopAppBarMyOrders(navController)
     },
         backgroundColor = if (isSystemInDarkTheme()) Color.Black else colorWhite,
         content = {
-            PanierMainContent()
+            PanierMainContent(navController)
         })
 
 }
 
 @Composable
-fun PanierMainContent() {
+fun PanierMainContent(navController: NavHostController) {
     Column {
         PanierList()
-        OrderCalculateData()
+        OrderCalculateData(navController )
     }
 }
 
 @Composable
-fun OrderCalculateData() {
+fun OrderCalculateData(navController: NavHostController) {
     Column(modifier = Modifier.fillMaxWidth()) {
         Column(
             modifier = Modifier.padding(
@@ -70,7 +70,10 @@ fun OrderCalculateData() {
         ) {
             Button(
                 onClick = {
-
+                    navController.navigate("momoOM") {
+                        popUpTo(navController.graph.startDestinationId)
+                        launchSingleTop = true
+                    }
                 },
                 colors = ButtonDefaults.buttonColors(backgroundColor = colorRedLite),
                 modifier = Modifier

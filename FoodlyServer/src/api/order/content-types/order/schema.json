@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "order_date": {
+      "type": "datetime"
+    },
+    "panier": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::panier.panier",
+      "inversedBy": "orders"
+    },
+    "delivery_man": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::delivery-man.delivery-man"
+    },
+    "payment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::payment.payment"
+    }
+  }
+}

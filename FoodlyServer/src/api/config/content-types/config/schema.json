@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "configs",
+  "info": {
+    "singularName": "config",
+    "pluralName": "configs",
+    "displayName": "Config"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "marge": {
+      "type": "integer",
+      "min": 0
+    }
+  }
+}

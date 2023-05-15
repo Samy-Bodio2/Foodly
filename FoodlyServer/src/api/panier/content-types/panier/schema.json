@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "paniers",
+  "info": {
+    "singularName": "panier",
+    "pluralName": "paniers",
+    "displayName": "Panier"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "customer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::customer.customer"
+    },
+    "choixes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::choix.choix",
+      "mappedBy": "panier"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "panier"
+    }
+  }
+}

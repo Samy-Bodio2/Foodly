@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "delivery_men",
+  "info": {
+    "singularName": "delivery-man",
+    "pluralName": "delivery-men",
+    "displayName": "Delivery_man"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone_number": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "birthday_date": {
+      "type": "date"
+    },
+    "profileImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

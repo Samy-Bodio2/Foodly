@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "seculants",
+  "info": {
+    "singularName": "seculant",
+    "pluralName": "seculants",
+    "displayName": "Seculant"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

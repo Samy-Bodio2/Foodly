@@ -2,6 +2,7 @@ package com.example.foodly.screens.Home_ActionMenu
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -98,37 +99,29 @@ fun CategoryCard(
                 .width(100.dp)
                 .height(100.dp)
                 .padding(bottom = 4.dp)
+                .clickable {
+                    ({
+                        /* navigation vers CategoryItem */
+                    })
+                }
         ) {
             Image(
                 painter = painterResource(id = iconResource),
                 contentDescription = null,
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier
+                    .padding(16.dp)
             )
         }
 
-//            MyTextContainer(text = title)
         Text(text = title,
-            modifier = Modifier.width(100.dp).padding(horizontal = 6.dp),
+            modifier = Modifier
+                .width(100.dp)
+                .padding(horizontal = 6.dp),
             fontSize = 14.sp,
             softWrap = false,
             textAlign = TextAlign.Center,
             overflow = TextOverflow.Ellipsis,
             fontWeight = FontWeight.Medium)
-    }
-}
-
-@Composable
-fun MyTextContainer(text: String) {
-    BoxWithConstraints {
-        Text(
-            text = text,
-            textAlign = TextAlign.Center,
-            softWrap = false,
-            overflow = TextOverflow.Ellipsis,
-            modifier = Modifier
-                .widthIn(max = maxWidth)
-                .padding(horizontal = 10.dp)
-        )
     }
 }
 

@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.foodly.R
 import com.example.foodly.model.PageItem
+import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.*
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
@@ -92,14 +93,14 @@ fun PageViewScreen( navController: NavHostController){
                         if (index < list.size - 1) {
                             pagerState.animateScrollToPage(index + 1)
                         } else {
-                            navController.navigate("get_started")
+                            navController.navigate(Screen.Lets_You_In.route)
                         }
                     }
                 }
                 Spacer(modifier = Modifier.height(20.dp))
 
-                BorderButton(modifier = Modifier.padding(horizontal = 34.dp), text = "Skip", color = secondaryFontColor) {
-                    navController.navigate("get_started")
+                BorderButton(modifier = Modifier.padding(horizontal = 34.dp), text = "Skip", color = LightGreen) {
+                    navController.navigate(Screen.Lets_You_In.route)
                 }
                 Spacer(modifier = Modifier.height(20.dp))
             }

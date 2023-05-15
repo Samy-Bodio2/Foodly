@@ -16,6 +16,7 @@ import com.example.foodly.navigation.NavGraph
 import com.example.foodly.screens.Onboarding_SignUp_SignIn.Let_You_In
 import com.example.foodly.screens.Profile.ProfileScreen
 import com.example.foodly.screens.Profile.SwitchButton
+import com.example.foodly.screens.Profile.TopBar
 import com.example.foodly.ui.theme.FoodlyTheme
 
 class MainActivity : ComponentActivity() {
@@ -28,8 +29,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    val navController = rememberNavController()
-                    NavGraph(navController)
+                    //val navController = rememberNavController()
+                    //NavGraph(navController)
+                    TopBar()
                 }
             }
         }

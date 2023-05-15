@@ -29,12 +29,33 @@ import com.example.foodly.model.mealList
 fun CategoryItem() {
     Scaffold(
         topBar = {
-            TopBar()
+            AppBarCat("Hamburger", onNavigateUp = { /* Navigation de retour */ })
         }
     ) {it
 
         MealListe(mealList)
     }
+}
+
+@Composable
+fun AppBarCat(title: String, onNavigateUp: () -> Unit) {
+    Column(modifier = Modifier.height(100.dp)){
+        TopAppBar(
+            title = {
+                Text(text = title)
+            },
+            backgroundColor = Color.White,
+            contentColor = Color.Black,
+            navigationIcon = {
+                IconButton(onClick = onNavigateUp) {
+                    Icon(Icons.Filled.ArrowBack, contentDescription = "Bouton retour")
+                }
+            },
+            elevation = 0.dp
+        )
+        SortButton()
+    }
+
 }
 
 @Composable

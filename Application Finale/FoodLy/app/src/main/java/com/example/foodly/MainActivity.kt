@@ -13,7 +13,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.foodly.navigation.NavGraph
+<<<<<<< HEAD
 import com.example.foodly.screens.Onboarding_SignUp_SignIn.Let_You_In
+=======
+import com.example.foodly.screens.Profile.ProfileScreen
+import com.example.foodly.screens.Profile.SwitchButton
+>>>>>>> 83fef8a45b7d8c35dd114dd1364185e5b5247449
 import com.example.foodly.ui.theme.FoodlyTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,9 +31,15 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+<<<<<<< HEAD
                     val navController = rememberNavController()
                     //NavGraph(navController)
                     Let_You_In()
+=======
+                    //val navController = rememberNavController()
+                    //NavGraph(navController)
+                    ProfileScreen()
+>>>>>>> 83fef8a45b7d8c35dd114dd1364185e5b5247449
                 }
             }
         }

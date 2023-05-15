@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.foodly.navigation.NavGraph
+import com.example.foodly.screens.Onboarding_SignUp_SignIn.Let_You_In
 import com.example.foodly.ui.theme.FoodlyTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,7 +27,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     val navController = rememberNavController()
-                    NavGraph(navController)
+                    //NavGraph(navController)
+                    Let_You_In()
                 }
             }
         }

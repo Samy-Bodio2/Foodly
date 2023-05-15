@@ -209,11 +209,8 @@ Table created.
 
 ***************************** CREATION OF THE NOTE TABLE *****************************
 
-    Valeur   INT         NOT NULL
-    *
-ERROR at line 5:
-ORA-00907: missing right parenthesis
 
+Table created.
 
 
 ***************************** CREATION OF THE CONFIG TABLE *****************************
@@ -505,17 +502,11 @@ Table altered.
 
 ***************************** CONSTRAINT FOREIGN KEY OF THE NOTE TABLE *****************************
 
-ALTER TABLE Note
-*
-ERROR at line 1:
-ORA-00942: table or view does not exist
+
+Table altered.
 
 
-ALTER TABLE Note
-*
-ERROR at line 1:
-ORA-00942: table or view does not exist
-
+Table altered.
 
 
 ***************************** CONSTRAINT  FOREIGN KEY OF THE PANIER TABLE *****************************
@@ -577,11 +568,8 @@ Table altered.
 
 ***************************** CREATION OF THE NOTE CHECK *****************************
 
-ALTER TABLE Note
-*
-ERROR at line 1:
-ORA-00942: table or view does not exist
 
+Table altered.
 
 
 ***************************** CREATION OF THE CONFIG CHECK *****************************
@@ -1402,101 +1390,53 @@ Session altered.
 
 ***************************** POPULATING NOTE TABLE *****************************
 
-INSERT INTO  Note  (
-             *
-ERROR at line 1:
-ORA-00942: table or view does not exist
+
+1 row created.
 
 
-INSERT INTO  Note  (
-             *
-ERROR at line 1:
-ORA-00942: table or view does not exist
+1 row created.
 
 
-INSERT INTO  Note  (
-             *
-ERROR at line 1:
-ORA-00942: table or view does not exist
+1 row created.
 
 
-INSERT INTO  Note  (
-             *
-ERROR at line 1:
-ORA-00942: table or view does not exist
+1 row created.
 
 
-INSERT INTO  Note  (
-             *
-ERROR at line 1:
-ORA-00942: table or view does not exist
+1 row created.
 
 
-INSERT INTO  Note  (
-             *
-ERROR at line 1:
-ORA-00942: table or view does not exist
+1 row created.
 
 
-INSERT INTO  Note  (
-             *
-ERROR at line 1:
-ORA-00942: table or view does not exist
+1 row created.
 
 
-INSERT INTO  Note  (
-             *
-ERROR at line 1:
-ORA-00942: table or view does not exist
+1 row created.
 
 
-INSERT INTO  Note (
-             *
-ERROR at line 1:
-ORA-00942: table or view does not exist
+1 row created.
 
 
-INSERT INTO Note (
-            *
-ERROR at line 1:
-ORA-00942: table or view does not exist
+1 row created.
 
 
-INSERT INTO Note (
-            *
-ERROR at line 1:
-ORA-00942: table or view does not exist
+1 row created.
 
 
-INSERT INTO Note (
-            *
-ERROR at line 1:
-ORA-00942: table or view does not exist
+1 row created.
 
 
-INSERT INTO Note (
-            *
-ERROR at line 1:
-ORA-00942: table or view does not exist
+1 row created.
 
 
-INSERT INTO Note (
-            *
-ERROR at line 1:
-ORA-00942: table or view does not exist
+1 row created.
 
 
-INSERT INTO Note (
-            *
-ERROR at line 1:
-ORA-00942: table or view does not exist
+1 row created.
 
 
-INSERT INTO Note (
-            *
-ERROR at line 1:
-ORA-00942: table or view does not exist
-
+1 row created.
 
 
 ***************************** POPULATING MENU TABLE *****************************

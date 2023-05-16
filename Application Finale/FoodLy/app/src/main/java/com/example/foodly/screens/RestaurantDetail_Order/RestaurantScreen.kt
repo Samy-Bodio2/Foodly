@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.example.foodly.screens.RestaurantDetail_Order
 
 import androidx.compose.foundation.Image
@@ -681,5 +680,3 @@ fun SplashScreenPreview(){
     //TopBar()
     DetailsScreen()
 }
-=======
->>>>>>> b4200b71cb4bacb0d90215e42d8ad6e94ce533e0

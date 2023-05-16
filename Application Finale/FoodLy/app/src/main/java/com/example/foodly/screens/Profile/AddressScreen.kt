@@ -205,6 +205,28 @@ fun AdresseScreen() {
 
                         }
                     }
+                    Spacer(modifier = Modifier.size(size = 20.dp))
+                    Icon(
+                        Icons.Rounded.Edit,
+                        contentDescription = "pencil",
+                        tint = LightGreen,
+                        modifier = Modifier
+                            .size(48.dp)
+                    )
+                }
+                Spacer(modifier = Modifier.size(size = 12.dp))
+
+            }
+            Box(
+                modifier = Modifier
+                    .padding(horizontal = 10.dp ,vertical= 30.dp
+                    )
+                    .background(Color.White)
+                    .border(
+                        BorderStroke(2.dp, Color.White),
+                        RoundedCornerShape(50.dp)
+                    )
+            )
 
 @Preview
 @Composable

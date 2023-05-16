@@ -95,6 +95,23 @@ fun AdresseScreen() {
                                     )
                                 }
                             }
+                            androidx.compose.material.Text(
+                                text = "Times Square,Douala,27",
+                                fontSize = 18.sp
+                            )
+
+                        }
+                        Spacer(modifier = Modifier.size(size = 20.dp))
+                        Icon(
+                            Icons.Rounded.Edit,
+                            contentDescription = "pencil",
+                            tint = LightGreen,
+                            modifier = Modifier
+                                .size(48.dp)
+                        )
+                    }
+
+                }
 
 @Preview
 @Composable

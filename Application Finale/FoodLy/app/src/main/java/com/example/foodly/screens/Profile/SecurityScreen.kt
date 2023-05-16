@@ -34,8 +34,26 @@ fun SecurityScreen() {
                 }
             )
         },
+        content = {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 16.dp)
+            ) {
+                Spacer(modifier = Modifier.size(size = 80.dp))
 
-@Preview
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    androidx.compose.material.Text(text = "Remember me", fontSize = 24.sp)
+                    SwitchButton()
+                }
+
+
+                @Preview
 @Composable
 fun PreviewSecurity(){
     SecurityScreen()

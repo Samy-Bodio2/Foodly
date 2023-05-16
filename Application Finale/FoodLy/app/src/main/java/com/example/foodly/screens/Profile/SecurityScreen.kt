@@ -19,7 +19,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.foodly.ui.theme.LightGreen
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
 
+fun SecurityScreen() {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Security",fontWeight = FontWeight.Bold) },
+                navigationIcon = {
+                    IconButton(onClick = { /* Handle back button click */ }) {
+                        Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                    }
+                }
+            )
+        },
 
 @Preview
 @Composable

@@ -76,6 +76,25 @@ fun AdresseScreen() {
                             modifier = Modifier
                                 .size(48.dp)
                         )
+                        Spacer(modifier = Modifier.size(size = 20.dp))
+                        Column() {
+                            Row() {
+                                androidx.compose.material.Text(
+                                    text = "Home",
+                                    fontSize = 24.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Spacer(modifier = Modifier.size(size = 12.dp))
+                                androidx.compose.material.Button(
+                                    onClick = { /*TODO*/ },
+                                    colors = ButtonDefaults.buttonColors(backgroundColor = LightGreen2),
+                                ) {
+                                    androidx.compose.material.Text(
+                                        text = "Default",
+                                        color = Color.White
+                                    )
+                                }
+                            }
 
 @Preview
 @Composable

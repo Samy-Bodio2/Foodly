@@ -181,6 +181,30 @@ fun AdresseScreen() {
                         modifier = Modifier.fillMaxWidth()
                     )
                     {
+                        Icon(
+                            Icons.Rounded.LocationOn,
+                            contentDescription = "position",
+                            tint = LightGreen,
+                            modifier = Modifier
+                                .size(48.dp)
+                        )
+                        Spacer(modifier = Modifier.size(size = 20.dp))
+                        Column() {
+                            Row() {
+                                androidx.compose.material.Text(
+                                    text = "My Appartment",
+                                    fontSize = 24.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+
+                            }
+                            androidx.compose.material.Text(
+                                text = "21833 Logbessou,8327",
+                                fontSize = 18.sp
+                            )
+
+                        }
+                    }
 
 @Preview
 @Composable

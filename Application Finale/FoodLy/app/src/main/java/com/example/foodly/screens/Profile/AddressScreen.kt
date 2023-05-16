@@ -251,6 +251,24 @@ fun AdresseScreen() {
                             )
 
                         }
+                        androidx.compose.material.Text(
+                            text = "6993 Bonamoussadi 23",
+                            fontSize = 18.sp
+                        )
+
+                    }
+                    Spacer(modifier = Modifier.size(size = 20.dp))
+                    Icon(
+                        Icons.Rounded.Edit,
+                        contentDescription = "pencil",
+                        tint = LightGreen,
+                        modifier = Modifier
+                            .size(48.dp)
+                    )
+                }
+                Spacer(modifier = Modifier.size(size = 12.dp))
+
+            }
 
 @Preview
 @Composable

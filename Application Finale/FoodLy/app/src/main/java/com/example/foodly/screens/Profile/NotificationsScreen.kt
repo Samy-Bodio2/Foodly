@@ -48,9 +48,29 @@ fun NotificationScreen() {
                 }
 
                 Spacer(modifier = Modifier.size(size = 12.dp))
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    androidx.compose.material.Text(text = "Sound", fontSize = 24.sp)
+                    SwitchButton()
+                }
+                Spacer(modifier = Modifier.size(size = 12.dp))
+
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    androidx.compose.material.Text(text = "Vibrate", fontSize = 24.sp)
+                    SwitchButton()
+                }
+                Spacer(modifier = Modifier.size(size = 12.dp))
 
 
-@Preview
+
+                @Preview
 @Composable
 fun PreviewNotification(){
     NotificationScreen()

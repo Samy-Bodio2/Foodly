@@ -202,12 +202,12 @@ fun CategorySection(){
         )
         CategoryButton(
             text = "Pizza",
-            icon = painterResource(id = R.drawable.pizza),
+            icon = painterResource(id = R.drawable.pizzas),
             backgroundColor = Color(0xffFFFBF3)
         )
         CategoryButton(
             text = "Hamburger",
-            icon = painterResource(id = R.drawable.burger),
+            icon = painterResource(id = R.drawable.burgers),
             backgroundColor = Color(0xffF6E6E9)
         )
     }
@@ -407,7 +407,7 @@ fun MenuList() {
     ){
         item {
             MenuItem(
-                imagePainter = painterResource(id = R.drawable.pizza),
+                imagePainter = painterResource(id = R.drawable.pizzas),
                 title = "Pizza Hut",
                 subtitle = "1.6 km | 4.6 (2.3k)",
                 price = "$1.50",

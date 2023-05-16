@@ -107,6 +107,27 @@ fun NotificationScreen() {
                     androidx.compose.material.Text(text = "Cashback", fontSize = 24.sp)
                     SwitchButton()
                 }
+                Spacer(modifier = Modifier.size(size = 12.dp))
+
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    androidx.compose.material.Text(text = "App Updates", fontSize = 24.sp)
+                    SwitchButton()
+                }
+
+                Spacer(modifier = Modifier.size(size = 12.dp))
+
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    androidx.compose.material.Text(text = "New service Available", fontSize = 24.sp)
+                    SwitchButton()
+                }
 
 
                 @Preview

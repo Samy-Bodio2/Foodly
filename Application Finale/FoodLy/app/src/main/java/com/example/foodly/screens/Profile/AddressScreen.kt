@@ -43,6 +43,25 @@ fun AdresseScreen() {
                     }
                 }
             )
+        },
+
+        content = {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 16.dp,
+                        vertical= 70.dp)
+            ){
+                Box(
+                    modifier = Modifier
+
+                        .background(Color.White)
+                        .border(
+                            BorderStroke(2.dp, Color.White),
+                            RoundedCornerShape(50.dp)
+                        )
+                )
 
 @Preview
 @Composable

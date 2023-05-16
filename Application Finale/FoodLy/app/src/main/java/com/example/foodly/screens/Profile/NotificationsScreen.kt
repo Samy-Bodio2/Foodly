@@ -67,7 +67,25 @@ fun NotificationScreen() {
                     SwitchButton()
                 }
                 Spacer(modifier = Modifier.size(size = 12.dp))
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    androidx.compose.material.Text(text = "Special offers", fontSize = 24.sp)
+                    SwitchButton()
+                }
 
+                Spacer(modifier = Modifier.size(size = 12.dp))
+
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    androidx.compose.material.Text(text = "Promo & Discount", fontSize = 24.sp)
+                    SwitchButton()
+                }
 
 
                 @Preview

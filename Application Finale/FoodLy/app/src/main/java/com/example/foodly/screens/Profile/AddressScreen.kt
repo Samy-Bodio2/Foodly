@@ -269,6 +269,30 @@ fun AdresseScreen() {
                 Spacer(modifier = Modifier.size(size = 12.dp))
 
             }
+            Box(
+                modifier = Modifier
+                    .padding(horizontal = 10.dp ,vertical= 10.dp
+                    )
+                    .background(Color.White)
+                    .border(
+                        BorderStroke(2.dp, Color.White),
+                        RoundedCornerShape(50.dp)
+                    )
+            )
+            {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                {
+                    Icon(
+                        Icons.Rounded.LocationOn,
+                        contentDescription = "position",
+                        tint = LightGreen,
+                        modifier = Modifier
+                            .size(48.dp)
+                    )
 
 @Preview
 @Composable

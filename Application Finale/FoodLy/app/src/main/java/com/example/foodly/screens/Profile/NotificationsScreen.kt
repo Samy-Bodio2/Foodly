@@ -30,7 +30,24 @@ fun NotificationScreen() {
                 }
             )
         },
+        content = {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 16.dp)
+            ) {
+                Spacer(modifier = Modifier.size(size = 80.dp))
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    androidx.compose.material.Text(text = "General Notification", fontSize = 24.sp)
+                    SwitchButton()
+                }
 
+                Spacer(modifier = Modifier.size(size = 12.dp))
 
 
 @Preview

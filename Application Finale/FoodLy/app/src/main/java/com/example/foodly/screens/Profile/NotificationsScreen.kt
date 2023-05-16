@@ -15,6 +15,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+
+fun NotificationScreen() {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Notification",fontWeight = FontWeight.Bold) },
+                navigationIcon = {
+                    IconButton(onClick = { /* Handle back button click */ }) {
+                        Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                    }
+                }
+            )
+        },
 
 
 

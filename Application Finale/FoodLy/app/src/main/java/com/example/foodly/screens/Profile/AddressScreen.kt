@@ -227,6 +227,30 @@ fun AdresseScreen() {
                         RoundedCornerShape(50.dp)
                     )
             )
+            {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                {
+                    Icon(
+                        Icons.Rounded.LocationOn,
+                        contentDescription = "position",
+                        tint = LightGreen,
+                        modifier = Modifier
+                            .size(48.dp)
+                    )
+                    Spacer(modifier = Modifier.size(size = 20.dp))
+                    Column() {
+                        Row() {
+                            androidx.compose.material.Text(
+                                text = "Parrent's House",
+                                fontSize = 24.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+
+                        }
 
 @Preview
 @Composable

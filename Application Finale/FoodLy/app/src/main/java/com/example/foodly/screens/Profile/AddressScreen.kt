@@ -136,6 +136,31 @@ fun AdresseScreen() {
                             modifier = Modifier
                                 .size(48.dp)
                         )
+                        Spacer(modifier = Modifier.size(size = 20.dp))
+                        Column() {
+                            Row() {
+                                androidx.compose.material.Text(
+                                    text = "My Office",
+                                    fontSize = 24.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+
+                            }
+                            androidx.compose.material.Text(
+                                text = "5259 Blue Bill Park,4627",
+                                fontSize = 18.sp
+                            )
+
+                        }
+                        Spacer(modifier = Modifier.size(size = 20.dp))
+                        Icon(
+                            Icons.Rounded.Edit,
+                            contentDescription = "pencil",
+                            tint = LightGreen,
+                            modifier = Modifier
+                                .size(48.dp)
+                        )
+                    }
 
 @Preview
 @Composable

@@ -51,9 +51,56 @@ fun SecurityScreen() {
                     androidx.compose.material.Text(text = "Remember me", fontSize = 24.sp)
                     SwitchButton()
                 }
+                Spacer(modifier = Modifier.size(size = 12.dp))
+
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    androidx.compose.material.Text(text = "Face ID", fontSize = 24.sp)
+                    SwitchButton()
+                }
+                Spacer(modifier = Modifier.size(size = 12.dp))
+
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    androidx.compose.material.Text(text = "Biometric ID", fontSize = 24.sp)
+                    SwitchButton()
+                }
+                Spacer(modifier = Modifier.size(size = 12.dp))
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    androidx.compose.material.Text(text = "Google authenticator", fontSize = 24.sp)
+                    Icon(Icons.Outlined.ChevronRight, null)
+                }
+
+                Spacer(modifier = Modifier.size(size = 30.dp))
+
+                RoundedButton(
+                    label = "Change PIN",
+                    backgroundColor = LightGreen
+                )
+                Spacer(modifier = Modifier.size(size = 10.dp))
+
+                RoundedButton(
+                    label = "Change Password",
+                    backgroundColor = LightGreen
+                )
+            }
+        }
+    )
+}
 
 
-                @Preview
+
+@Preview
 @Composable
 fun PreviewSecurity(){
     SecurityScreen()

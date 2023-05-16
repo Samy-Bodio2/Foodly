@@ -32,7 +32,17 @@ import com.example.foodly.ui.theme.colorWhite
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-
+fun AdresseScreen() {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Adress",fontWeight = FontWeight.Bold) },
+                navigationIcon = {
+                    IconButton(onClick = { /* Handle back button click */ }) {
+                        Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                    }
+                }
+            )
 
 @Preview
 @Composable

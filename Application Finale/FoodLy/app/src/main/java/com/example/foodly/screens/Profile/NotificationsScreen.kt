@@ -145,7 +145,7 @@ fun NotificationScreen() {
 }
 
 
-                @Preview
+@Preview
 @Composable
 fun PreviewNotification(){
     NotificationScreen()

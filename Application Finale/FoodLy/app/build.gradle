@@ -64,7 +64,6 @@ dependencies {
     implementation 'androidx.compose.material:material:1.4.3'
     implementation 'androidx.compose.material3:material3:1.2.0-alpha01'
     implementation 'androidx.core:core-ktx:+'
-<<<<<<< HEAD
 
 
 //
@@ -83,9 +82,7 @@ dependencies {
 //
 
 
-=======
     implementation 'androidx.core:core-ktx:+'
->>>>>>> b4200b71cb4bacb0d90215e42d8ad6e94ce533e0
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
@@ -128,6 +125,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11'
+    implementation project(':mapLib')
 
 }
 

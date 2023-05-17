@@ -35,6 +35,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import com.example.foodly.R
+import com.example.foodly.ui.theme.LightGreen2
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -134,7 +135,7 @@ fun EWalletScreen(navController: NavHostController) {
                     .fillMaxWidth()
                     .height(180.dp)
                     .background(
-                        color = green,
+                        color = LightGreen2,
                         shape = RoundedCornerShape(20.dp)
                     )
                     .padding(horizontal = 16.dp, vertical = 16.dp)
@@ -231,13 +232,13 @@ fun EWalletScreen(navController: NavHostController) {
                 ) {
                     Text(
                         text = "See All",
-                        color = Green
+                        color = LightGreen2
                     )
                     Icon(
                         imageVector = Icons.Outlined.KeyboardArrowRight,
                         contentDescription = "Localized description",
                         modifier = Modifier.padding(end = 8.dp),
-                        tint = Green
+                        tint = LightGreen2
                     )
                 }
             }

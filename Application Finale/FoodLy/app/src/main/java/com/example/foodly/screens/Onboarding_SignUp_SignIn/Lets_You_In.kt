@@ -15,12 +15,13 @@ import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.foodly.R
 import com.example.foodly.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Let_You_In() {
+fun Let_You_In(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -63,7 +64,7 @@ fun Let_You_In() {
                     Divider(modifier = Modifier.weight(1f))
                 }
                 Spacer(modifier = Modifier.height(16.dp))
-                RoundedButton(label = "Sign in with email", backgroundColor = Color.Green)
+                RoundedButton(label = "Sign in with email", backgroundColor = LightGreen)
                 Row{
                     Text(
                         text = "Don't have an account?",
@@ -71,7 +72,7 @@ fun Let_You_In() {
                         modifier = Modifier.padding(top = 16.dp)
                     )
                     TextButton(onClick = { /* Handle sign up button click */ }) {
-                        Text(text = "Sign up", color = Color.Green)
+                        Text(text = "Sign up", color = LightGreen)
                     }
                 }
             }

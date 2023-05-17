@@ -1,6 +1,6 @@
 package com.example.foodly.screens.Profile
 
-import android.icu.text.ListFormatter.Width
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

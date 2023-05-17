@@ -6,12 +6,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
-import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -37,7 +35,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
 import com.example.foodly.ui.theme.md_theme_dark_onSecondaryContainer
-import com.example.foodly.ui.theme.md_theme_dark_outline
 import com.example.foodly.ui.theme.metropolisFontFamily
 import com.example.foodly.ui.theme.primaryFontColor
 
@@ -55,7 +52,6 @@ fun profil(navController: NavController) {
                 color = Color.Transparent,
             )
     ) {
-
 
         Box(
             modifier = Modifier
@@ -85,7 +81,7 @@ fun profil(navController: NavController) {
                 ,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                val gradientColors = listOf(Color(0xFF0FDD61), Color(0xFF0FDD61))
+
                 EditImage()
                 Spacer(modifier = Modifier.height(60.dp))
 
@@ -101,7 +97,7 @@ fun profil(navController: NavController) {
                 RegisterPhone()
                 Gender()
 
-                val gradientColor = listOf(Color(0xFF0FDD61), Color(0xFF0FDD61))
+                val gradientColor = listOf(Color(0xFF30A235), Color(0xFF30A235))
                 val cornerRadius = 2.dp
 
                 Spacer(modifier = Modifier.padding(10.dp))
@@ -267,7 +263,7 @@ fun EditImage(){
             .padding(top = 140.dp, start = 70.dp)
             .width(30.dp)
             .height(30.dp)
-            .background(Color(0xFF0FDD61))
+            .background(Color(0xFF30A235))
             .clip(RoundedCornerShape(20.dp)),
         Alignment.Center
 
@@ -290,7 +286,7 @@ fun BorderIcon(editImage: Unit ) {
             modifier = Modifier
                 .width(30.dp)
                 .height(30.dp)
-                .background(Color(0xFF0FDD61))
+                .background(Color(0xFF30A235))
 
         ) {
 

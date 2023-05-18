@@ -1,5 +1,6 @@
 package com.example.foodly.screens.e_wallet
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -45,14 +46,14 @@ val testList = listOf(
     PopularRestaurant(
         name = "Big Garden Salad",
         date = currentTime,
-        argent = "$21,20",
+        argent = "FCFA2120",
         order = "Orders",
         coverImage = R.drawable.ekwang
     ),
     PopularRestaurant(
         name = "Top Up E-Wallet",
         date = currentTime,
-        argent = "$41,23",
+        argent = "FCFA4123",
         order = "Top Up",
         coverImage = R.drawable.ekwang
 
@@ -60,31 +61,30 @@ val testList = listOf(
     PopularRestaurant(
         name = "Vegetable Salad",
         date = currentTime,
-        argent = "$28,00",
+        argent = "FCFA2800",
         order = "Orders",
         coverImage = R.drawable.ekwang
     ),
     PopularRestaurant(
         name = "Vegetable Salad",
         date = currentTime,
-        argent = "$28,00",
+        argent = "FCFA2800",
         order = "Orders",
         coverImage = R.drawable.ekwang
     ),
     PopularRestaurant(
         name = "Top Up E-Wallet",
         date = currentTime,
-        argent = "$41,23",
+        argent = "FCFA4123",
         order = "Top Up",
         coverImage = R.drawable.ekwang
 
     ),
 )
 
-
-@Suppress("UnusedMaterialScaffoldPaddingParameter")
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun EWalletScreen(navController: NavHostController) {
+fun EWalletScreen() {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -95,7 +95,7 @@ fun EWalletScreen(navController: NavHostController) {
                             painterResource(id = R.drawable.heavy_dollar_sign_48px),
                             contentDescription = "E-Wallet Icon",
                             modifier = Modifier.size(32.dp),
-                            tint = Green
+                            tint = LightGreen2
                         )
                         Text(
                             text = "E-Wallet",
@@ -179,8 +179,8 @@ fun EWalletScreen(navController: NavHostController) {
                     }
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
-                            text = "$9,379",
-                            fontSize = 40.sp,
+                            text = "FCFA9379",
+                            fontSize = 25.sp,
                             fontWeight = FontWeight.Bold
                         )
                         Spacer(modifier = Modifier.width(60.dp))
@@ -224,10 +224,10 @@ fun EWalletScreen(navController: NavHostController) {
                 Spacer(modifier = Modifier.width(110.dp))
                 TextButton(
                     onClick = {
-                        navController.navigate("TransactionHistoryScreen") {
-                            popUpTo(navController.graph.startDestinationId)
-                            launchSingleTop = true
-                        }
+//                        navController.navigate("MyTopAppBar") {
+//                        popUpTo(navController.graph.startDestinationId)
+//                        launchSingleTop = true
+//                    }
                     }
                 ) {
                     Text(
@@ -308,4 +308,5 @@ fun PopularRestaurantList(testList: List<PopularRestaurant>) {
         }
     }
 }
+
 

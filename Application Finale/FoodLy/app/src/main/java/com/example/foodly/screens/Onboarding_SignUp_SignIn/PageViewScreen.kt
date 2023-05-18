@@ -41,18 +41,18 @@ fun PageViewScreen( navController: NavHostController){
     val scope = rememberCoroutineScope()
     val list = arrayOf(
         PageItem(
-            image = R.drawable.ic_page_1,
-            title = "Find Food You Like",
+            image = R.drawable.foodscreen,
+            title = "Order For Food",
             subTitle = "Discover the best foods from over 1,000 restaurants and fast delivery to your doorstep"
         ),
         PageItem(
-            image = R.drawable.ic_page_2,
-            title = "Fast Delivery",
+            image = R.drawable.payementscreen,
+            title = "Easy Payement",
             subTitle = "Fast food delivery to your home, office wherever you are"
         ), PageItem(
-            image = R.drawable.ic_page_3,
-            title = "Live Tracking",
-            subTitle = "Real time tracking of your food on the app once you placed the order"
+            image = R.drawable.deliveryman,
+            title = "Fast Delivery",
+            subTitle = "Fast food delivery to your home, office wherever you are"
         )
     )
     FoodlyTheme {

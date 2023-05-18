@@ -1,201 +1,361 @@
 package com.example.foodly.screens.Onboarding_SignUp_SignIn
 
-import android.content.res.Configuration
+import android.content.ContentValues.TAG
+import android.util.Log
+import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.background
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.input.*
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.*
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.foodly.R
+import com.example.foodly.component.Visibility
+import com.example.foodly.component.VisibilityOff
 import com.example.foodly.navigation.Screen
-import com.example.foodly.ui.theme.colorBlack
-import com.example.foodly.ui.theme.colorPrimary
-import com.example.foodly.ui.theme.colorRedLite
-import com.example.foodly.ui.theme.colorWhite
+import com.example.foodly.ui.theme.*
+import com.example.foodly.ui.theme.LightGreen
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
+
+
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun LoginScreen(navController: NavController) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(if (isSystemInDarkTheme()) Color.Black else colorPrimary)
-            .verticalScroll(rememberScrollState())
-    ) {
-        Column(
+    var email by rememberSaveable { mutableStateOf("") }
+    var password by rememberSaveable { mutableStateOf("") }
+    val keyboardController = LocalSoftwareKeyboardController.current
+    var passwordHidden by rememberSaveable { mutableStateOf(true) }
+    var showMessage by remember { mutableStateOf(false) }
+    var showError by remember { mutableStateOf(false) }
+    val gradientColor = listOf(LightGreen, Color.Black )
+    val cornerRadius = 16.dp
+
+    Surface {
+
+        Box(
             modifier = Modifier
-                .fillMaxSize()
-                .align(Alignment.BottomCenter)
-                .padding(20.dp),
-            verticalArrangement = Arrangement.Center
+                .fillMaxWidth()
+                .fillMaxHeight()
+                .background(
+                    color = Color.Transparent,
+                )
         ) {
-            var userephonenumber by remember { mutableStateOf("") }
-            val maxChar = 10
-            TextField(
-                singleLine = true,
-                value = userephonenumber,
-                leadingIcon = {
-                    Row(
-                        modifier = Modifier.wrapContentWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
-                        content = {
-                            Image(
-                                painter = painterResource(id = R.drawable.indianflag),
-                                contentDescription = "",
-                                modifier = Modifier
-                                    .size(24.dp, 24.dp)
-                                    .padding(start = 10.dp)
+
+
+            Box(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter),
+            ) {
+
+                Image(
+                    painter = painterResource(id = R.drawable.signin),
+                    contentDescription = null,
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier
+                        .height(180.dp)
+                        .fillMaxWidth(),
+
+                    )
+                Column(
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .fillMaxWidth()
+                        .verticalScroll(rememberScrollState()),
+
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Spacer(modifier = Modifier.height(50.dp))
+                    androidx.compose.material3.Text(
+                        text = "Sign In",
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .padding(top = 130.dp)
+                            .fillMaxWidth(),
+                        style = MaterialTheme.typography.headlineSmall,
+                        color = LightGreen
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    //SimpleOutlinedTextFieldSample()
+                    OutlinedTextField(
+                        value = email,
+                        onValueChange = { email = it },
+                        shape = RoundedCornerShape(20.dp),
+                        label = {
+                            Text("Email Address",
+                                color = MaterialTheme.colorScheme.scrim,
+                                style = MaterialTheme.typography.labelMedium,
+                            ) },
+                        placeholder = { Text(text = "Email Address") },
+                        leadingIcon = { Icon(Icons.Filled.Email, contentDescription = "Password") },
+                        keyboardOptions = KeyboardOptions(
+                            imeAction = ImeAction.Next,
+                            keyboardType = KeyboardType.Email
+                        ),
+                        colors = TextFieldDefaults.outlinedTextFieldColors(
+                            focusedBorderColor = LightGreen,
+                            unfocusedBorderColor = LightGreen),
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(0.8f),
+                        keyboardActions = KeyboardActions(
+                            onDone = {
+                                keyboardController?.hide()
+                            }
+                        )
+                    )
+
+                    Spacer(modifier = Modifier.padding(3.dp))
+                    //SimpleOutlinedPasswordTextField()
+                    OutlinedTextField(
+                        value = password,
+                        onValueChange = { password = it },
+                        shape = RoundedCornerShape(20.dp),
+                        leadingIcon = { Icon(Icons.Filled.Lock, contentDescription = "Password") },
+                        label = {
+                            Text("Enter Password",
+                                color = MaterialTheme.colorScheme.scrim,
+                                style = MaterialTheme.typography.labelMedium,
+                            ) },
+                        visualTransformation =
+                        if (passwordHidden) PasswordVisualTransformation() else VisualTransformation.None,
+                        keyboardOptions = KeyboardOptions(
+                            imeAction = ImeAction.Next,
+                            keyboardType = KeyboardType.Password
+                        ),
+                        colors = TextFieldDefaults.outlinedTextFieldColors(
+                            focusedBorderColor = LightGreen,
+                            unfocusedBorderColor = LightGreen),
+                        trailingIcon = {
+                            IconButton(onClick = { passwordHidden = !passwordHidden }) {
+                                val visibilityIcon =
+                                    if (passwordHidden) Visibility else VisibilityOff
+                                val description = if (passwordHidden) "Show password" else "Hide password"
+                                Icon(imageVector = visibilityIcon, contentDescription = description)
+                            }
+                        },
+                        modifier = Modifier.fillMaxWidth(0.8f),
+                        keyboardActions = KeyboardActions(
+                            onDone = {
+                                keyboardController?.hide()
+                            }
+                        )
+                    )
+
+
+                    Spacer(modifier = Modifier.padding(10.dp))
+                    Button(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 32.dp, end = 32.dp),
+                        onClick = {
+                            if (email.isEmpty() || password.isEmpty()) {
+                                showError = true
+                            }else{
+                                try{
+                                    val auth = Firebase.auth
+                                    auth.signInWithEmailAndPassword(email, password)
+                                        .addOnCompleteListener { task ->
+                                            showMessage = if (task.isSuccessful){
+                                                Log.d(TAG, "signInWithEmail: success")
+                                                navController.navigate("homescreen"){
+                                                    popUpTo(navController.graph.startDestinationId)
+                                                    launchSingleTop = true
+                                                }
+                                                false
+                                            }else{
+                                                Log.w(TAG, "signInWithEmail:failure")
+                                                true
+                                            }
+                                        }
+                                }catch (e: Exception) {
+                                    println("Erreur : $e.message")
+                                }
+                            }
+                        },
+
+                        contentPadding = PaddingValues(),
+                        colors = ButtonDefaults.buttonColors(
+                            backgroundColor = Color.Transparent
+                        ),
+                        shape = RoundedCornerShape(cornerRadius)
+                    ) {
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .background(
+                                    brush = Brush.horizontalGradient(colors = gradientColor),
+                                    shape = RoundedCornerShape(topStart = 30.dp, bottomEnd = 30.dp)
+                                )
+                                .clip(RoundedCornerShape(topStart = 30.dp, bottomEnd = 30.dp))
+                                .padding(horizontal = 16.dp, vertical = 8.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            androidx.compose.material3.Text(
+                                text = "Login",
+                                fontSize = 20.sp,
+                                color = Color.White
                             )
+                        }
+                    }
+
+                    if (showMessage) {
+                        AlertDialog(
+                            onDismissRequest = { showMessage = false },
+                            title = { Text("Authentification invalide") },
+                            text = {
+                                Text("Email ou mot de passe incorrect")
+                            },
+                            confirmButton = {
+                                androidx.compose.material3.Button(
+                                    onClick = { showMessage = false }
+                                ) {
+                                    Text("OK")
+                                }
+                            }
+                        )
+                    }
+                    if (showError) {
+                        BackHandler {
+                            showError = false
+                        }
+                        AlertDialog(
+                            onDismissRequest = { showError = false },
+                            title = { Text("Erreur") },
+                            text = { Text("Champ vide") },
+                            buttons = {
+                                Button(
+                                    onClick = { showError = false }
+                                ) {
+                                    Text("OK")
+                                }
+                            },
+                            backgroundColor = Color.White
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Column(
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            androidx.compose.material3.Divider(modifier = Modifier.weight(1f))
+                            androidx.compose.material3.Text(
+                                text = "or continue with",
+                                color = Color.Gray,
+                                modifier = Modifier.padding(horizontal = 8.dp)
+                            )
+                            androidx.compose.material3.Divider(modifier = Modifier.weight(1f))
+                        }
+
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        SocialMediaSignInButtons()
+                        Spacer(modifier = Modifier.width(10.dp))
+                        Row(
+                            horizontalArrangement = Arrangement.Center,
+                            modifier = Modifier.padding(top = 16.dp).fillMaxWidth()
+                        ){
+
                             Text(
-                                text = "+91",
-                                color = colorBlack,
-                                modifier = Modifier.padding(start = 10.dp)
+                                text = "Forgot password ?",
+                                fontSize = 14.sp,
                             )
-                            Canvas(
-                                modifier = Modifier
-                                    .height(24.dp)
-                                    .padding(start = 10.dp)
-                            ) {
-                                drawLine(
-                                    color = Color.Gray,
-                                    start = Offset(0f, 0f),
-                                    end = Offset(0f, size.height),
-                                    strokeWidth = 2.0F
+                            Spacer(modifier = Modifier.width(10.dp))
+                            TextButton(onClick = { Screen.LoginScreen.route }) {
+                                Text(
+                                    text = "Reset password",
+                                    color = LightGreen,
+                                    fontSize = 14.sp,
                                 )
                             }
                         }
-                    )
-                },
-                colors = TextFieldDefaults.textFieldColors(
-                    backgroundColor = colorWhite,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    disabledIndicatorColor = Color.Transparent
-                ),
-                modifier = Modifier
-                    .fillMaxWidth(),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
-                label = {
-                    Text(
-                        text = "Your Phone Number",
-                        modifier = Modifier.padding(start = 10.dp)
-                    )
-                },
-                shape = RoundedCornerShape(24.dp),
-                onValueChange = {
-                    if (it.length <= maxChar) userephonenumber = it
-                }
-            )
-
-            Spacer(modifier = Modifier.height(10.dp))
-            var userpassword by remember { mutableStateOf("") }
-
-            TextField(value = userpassword,
-                leadingIcon = {
-                    Row(
-                        modifier = Modifier.wrapContentWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
-                        content = {
-                            Icon(
-                                imageVector = Icons.Default.Lock,
-                                contentDescription = "",
-                                tint = Color.Gray
-                            )
-
-                        }
-                    )
-                },
-                colors = TextFieldDefaults.textFieldColors(
-                    backgroundColor = colorWhite,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    disabledIndicatorColor = Color.Transparent
-                ),
-                modifier = Modifier.fillMaxWidth(),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                label = { Text(text = "Password") },
-                shape = RoundedCornerShape(24.dp),
-                onValueChange = {
-                    userpassword = it
-                })
-            Spacer(modifier = Modifier.height(30.dp))
-
-            Button(
-                onClick = {
-                    navController.popBackStack()
-                    navController.navigate(Screen.HomeScreen.route)
-                },
-                colors = ButtonDefaults.buttonColors(backgroundColor = colorBlack),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp)
-                    .align(Alignment.CenterHorizontally),
-                shape = RoundedCornerShape(24.dp)
-            ) {
-                Text(
-                    text = "Login to account \uD83D\uDE0B",
-                    color = colorWhite,
-                    style = MaterialTheme.typography.button,
-                    modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
-                )
-            }
-            Spacer(modifier = Modifier.height(10.dp))
-
-            Button(
-                onClick = {
-                    navController.navigate(Screen.RegisterScreen.route)
-                },
-                colors = ButtonDefaults.buttonColors(backgroundColor = colorRedLite),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp)
-                    .align(Alignment.CenterHorizontally),
-                shape = RoundedCornerShape(24.dp)
-            ) {
-                Text(
-                    text = "Create new account",
-                    color = colorWhite,
-                    style = MaterialTheme.typography.button,
-                    modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
-                )
-            }
-
-            Spacer(modifier = Modifier.height(40.dp))
-
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                TextButton(onClick = { }) {
-                    Text(
-                        text = "Forgot Password ?",
-                        color = colorWhite,
-                        style = MaterialTheme.typography.button,
-                    )
+                    }
                 }
             }
-
         }
-
     }
-
 }
 
 @Composable
-@Preview
-fun LoginScreenPreview() {
-    LoginScreen(navController = NavController(LocalContext.current))
+fun SocialMediaSignInButtons() {
+    val gradientColor = listOf(LightGreen, Color.Black )
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 20.dp)
+            .padding(horizontal = 20.dp),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Button(
+            onClick = {},
+            colors = ButtonDefaults.buttonColors(
+                Color.White,
+            ),
+            elevation = ButtonDefaults.elevation(defaultElevation = 0.dp),
+            modifier = Modifier.clip(shape = Shapes.large).border(1.dp, LightGreen, RoundedCornerShape(10.dp)),
+            contentPadding = PaddingValues(horizontal = 26.dp, vertical = 10.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_google),
+                    contentDescription = "",
+                    modifier = Modifier.size(20.dp),
+                    tint = Color.Unspecified
+                )
+                Spacer(modifier = Modifier.width(10.dp))
+                Text(
+                    text = "Google",
+                )
+            }
+        }
+
+        Button(
+            onClick = {},
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.White,
+            ),
+            elevation = ButtonDefaults.elevation(defaultElevation = 0.dp),
+            modifier = Modifier.clip(shape = Shapes.large).border(1.dp, LightGreen, RoundedCornerShape(10.dp)),
+            contentPadding = PaddingValues(horizontal = 26.dp, vertical = 10.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_facebook),
+                    contentDescription = "",
+                    modifier = Modifier.size(20.dp),
+                    tint = Color.Unspecified
+                )
+                Spacer(modifier = Modifier.width(10.dp))
+                Text(
+                    text = "Facebook",
+                )
+            }
+        }
+    }
 }

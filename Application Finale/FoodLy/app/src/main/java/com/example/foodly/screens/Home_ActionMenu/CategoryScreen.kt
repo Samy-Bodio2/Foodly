@@ -17,11 +17,21 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodly.model.categories
 import com.example.foodly.ui.theme.Shapes
 
-
-// la topAppBar
+@Composable
+fun CategoryScreen(navController: NavController) {
+    Scaffold(
+        topBar = {
+            MyAppBar(title = "More Category", onNavigateUp = { /* Navigation de retour */ })
+        }
+    ) {it
+        CategoryList()
+    }
+}
 @Composable
 fun MyAppBar(title: String, onNavigateUp: () -> Unit) {
     TopAppBar(
@@ -37,17 +47,6 @@ fun MyAppBar(title: String, onNavigateUp: () -> Unit) {
         },
         elevation = 0.dp
     )
-}
-
-@Composable
-fun MoreCategoryScreen() {
-    Scaffold(
-        topBar = {
-            MyAppBar(title = "More Category", onNavigateUp = { /* Navigation de retour */ })
-        }
-    ) {it
-        CategoryList()
-    }
 }
 
 @Composable
@@ -108,7 +107,9 @@ fun CategoryCard(
 
 //            MyTextContainer(text = title)
         Text(text = title,
-            modifier = Modifier.width(100.dp).padding(horizontal = 6.dp),
+            modifier = Modifier
+                .width(100.dp)
+                .padding(horizontal = 6.dp),
             fontSize = 14.sp,
             softWrap = false,
             textAlign = TextAlign.Center,
@@ -136,5 +137,6 @@ fun MyTextContainer(text: String) {
 @Preview(heightDp = 1400)
 @Composable
 fun MoreCategoryPreview(){
-    MoreCategoryScreen()
+    val navController = rememberNavController()
+    CategoryScreen(navController)
 }

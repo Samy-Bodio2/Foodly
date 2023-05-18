@@ -35,13 +35,13 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-<<<<<<< HEAD
+
                     //val navController = rememberNavController()
                     //NavGraph(navController)
                     TopBar()
-=======
+
                     LoginApplication()
->>>>>>> 697a27a6b273141d30f87f0c536bda70496b35e1
+
                 }
             }
         }

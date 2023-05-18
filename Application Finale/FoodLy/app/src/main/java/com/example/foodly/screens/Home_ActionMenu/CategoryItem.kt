@@ -20,13 +20,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
 import com.example.foodly.model.Meal
 import com.example.foodly.model.mealList
 
 
 @Composable
-fun CategoryItem() {
+fun CategoryItem(navController: NavController) {
     Scaffold(
         topBar = {
             AppBarCat("Hamburger", onNavigateUp = { /* Navigation de retour */ })
@@ -276,6 +278,7 @@ fun MealCart(meal: Meal) {
 @Preview
 @Composable
 fun previewCategoryItem(){
-    CategoryItem()
+    val navController = rememberNavController()
+    CategoryItem(navController)
 }
 

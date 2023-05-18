@@ -16,7 +16,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
+import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -41,7 +43,7 @@ fun Let_You_In(navController: NavController) {
                     .padding(horizontal = 16.dp)
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.email_log),
+                    painter = painterResource(id = R.drawable.welcome),
                     contentDescription = null,
                     modifier = Modifier.size(200.dp)
                 )
@@ -64,14 +66,24 @@ fun Let_You_In(navController: NavController) {
                     Divider(modifier = Modifier.weight(1f))
                 }
                 Spacer(modifier = Modifier.height(16.dp))
-                RoundedButton(label = "Sign in with email", backgroundColor = LightGreen)
+
+                Button(
+                    onClick = {
+                        navController.navigate(Screen.LoginScreen.route)
+                    },
+                    shape = RoundedCornerShape(50),
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(LightGreen)
+                ) {
+                    Text(text = "Sign in with email", color = Color.White)
+                }
                 Row{
                     Text(
                         text = "Don't have an account?",
                         fontSize = 14.sp,
                         modifier = Modifier.padding(top = 16.dp)
                     )
-                    TextButton(onClick = { /* Handle sign up button click */ }) {
+                    TextButton(onClick = { Screen.RegisterScreen.route }) {
                         Text(text = "Sign up", color = LightGreen)
                     }
                 }
@@ -82,8 +94,9 @@ fun Let_You_In(navController: NavController) {
 
 @Composable
 fun SocialButton(iconId: Int, label: String) {
+    val navController = rememberNavController()
     OutlinedButton(
-        onClick = { /* Handle social button click */ },
+        onClick = {  },
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp),
@@ -98,17 +111,5 @@ fun SocialButton(iconId: Int, label: String) {
             modifier = Modifier.size(24.dp)
         )
         Text(text = label, modifier = Modifier.padding(start = 8.dp))
-    }
-}
-
-@Composable
-fun RoundedButton(label: String, backgroundColor: Color) {
-    Button(
-        onClick = { /* Handle email sign in button click */ },
-        shape = RoundedCornerShape(50),
-        modifier = Modifier.fillMaxWidth(),
-        colors = ButtonDefaults.buttonColors(backgroundColor)
-    ) {
-        Text(text = label, color = Color.White)
     }
 }

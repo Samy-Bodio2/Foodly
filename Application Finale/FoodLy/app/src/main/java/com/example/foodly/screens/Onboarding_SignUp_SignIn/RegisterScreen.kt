@@ -1,6 +1,7 @@
 package com.example.foodly.screens.Onboarding_SignUp_SignIn
 
 import android.content.ContentValues
+import android.hardware.lights.Light
 import android.util.Log
 import android.util.Patterns
 import androidx.activity.compose.BackHandler
@@ -10,6 +11,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Password
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -23,35 +29,36 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Red
+import androidx.compose.ui.graphics.Color.Companion.Black
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.rememberImagePainter
 import com.example.foodly.R
 import com.example.foodly.component.Visibility
 import com.example.foodly.component.VisibilityOff
 import com.example.foodly.navigation.Screen
+import com.example.foodly.ui.theme.LightGreen
 import com.example.foodly.ui.theme.colorBlack
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import org.mindrot.jbcrypt.BCrypt
 import java.util.*
-import androidx.compose.material.AlertDialog as AlertDialog1
 
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
 @Composable
-fun RegisterPage(navController: NavController) {
+fun RegisterScreen(navController: NavController) {
     val keyboardController = LocalSoftwareKeyboardController.current
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
@@ -61,7 +68,7 @@ fun RegisterPage(navController: NavController) {
     var conpassword by rememberSaveable { mutableStateOf("") }
     var passwordHidde by rememberSaveable { mutableStateOf(true) }
     var phoneNumber by rememberSaveable { mutableStateOf("") }
-    val gradientColor = listOf(Color(0xFFF15C48), Color(0xFFF16356))
+    val gradientColor = listOf(LightGreen, Black)
     val cornerRadius = 16.dp
     var showDialogUsername by remember { mutableStateOf(false) }
     var showDialogEmail by remember { mutableStateOf(false) }
@@ -105,7 +112,7 @@ fun RegisterPage(navController: NavController) {
         ) {
 
             Image(
-                painter = painterResource(id = R.drawable.user_reg),
+                painter = painterResource(id = R.drawable.signup),
                 contentDescription = null,
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
@@ -134,14 +141,14 @@ fun RegisterPage(navController: NavController) {
                         .padding(top = 130.dp)
                         .fillMaxWidth(),
                     style = MaterialTheme.typography.headlineSmall,
-                    color = MaterialTheme.colorScheme.primary,
+                    color = LightGreen,
                 )
                 Spacer(modifier = Modifier.height(8.dp))
 
                 OutlinedTextField(
                     value = username,
                     onValueChange = { username = it },
-                    shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
+                    shape = RoundedCornerShape(20.dp),
                     label = {
                         Text("Name",
                             color = MaterialTheme.colorScheme.scrim,
@@ -152,9 +159,10 @@ fun RegisterPage(navController: NavController) {
                         imeAction = ImeAction.Next,
                         keyboardType = KeyboardType.Text
                     ),
+                    leadingIcon = { Icon(Icons.Filled.Person, contentDescription = "Password") },
                     colors = TextFieldDefaults.outlinedTextFieldColors(
-                        focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        unfocusedBorderColor = MaterialTheme.colorScheme.primary),
+                        focusedBorderColor = LightGreen,
+                        unfocusedBorderColor = LightGreen),
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(0.8f),
                     keyboardActions = KeyboardActions(
@@ -170,7 +178,7 @@ fun RegisterPage(navController: NavController) {
                 OutlinedTextField(
                     value = phoneNumber,
                     onValueChange = { phoneNumber = it },
-                    shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
+                    shape = RoundedCornerShape(20.dp),
                     leadingIcon = {
                         Row(
                             modifier = Modifier.wrapContentWidth(),
@@ -214,8 +222,8 @@ fun RegisterPage(navController: NavController) {
                         keyboardType = KeyboardType.Phone
                     ),
                     colors = TextFieldDefaults.outlinedTextFieldColors(
-                        focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        unfocusedBorderColor = MaterialTheme.colorScheme.primary),
+                        focusedBorderColor = LightGreen,
+                        unfocusedBorderColor = LightGreen),
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(0.8f),
                     keyboardActions = KeyboardActions(
@@ -230,20 +238,21 @@ fun RegisterPage(navController: NavController) {
                 OutlinedTextField(
                     value = email,
                     onValueChange = { email = it },
-                    shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
+                    shape = RoundedCornerShape(20.dp),
                     label = {
                         Text("Email Address",
                             color = MaterialTheme.colorScheme.scrim,
                             style = MaterialTheme.typography.labelMedium,
                         ) },
                     placeholder = { Text(text = "Email Address") },
+                    leadingIcon = { Icon(Icons.Filled.Email, contentDescription = "Password") },
                     keyboardOptions = KeyboardOptions(
                         imeAction = ImeAction.Next,
                         keyboardType = KeyboardType.Email
                     ),
                     colors = TextFieldDefaults.outlinedTextFieldColors(
-                        focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        unfocusedBorderColor = MaterialTheme.colorScheme.primary),
+                        focusedBorderColor = LightGreen,
+                        unfocusedBorderColor = LightGreen),
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(0.8f),
                     keyboardActions = KeyboardActions(
@@ -259,7 +268,8 @@ fun RegisterPage(navController: NavController) {
                 OutlinedTextField(
                     value = password,
                     onValueChange = { password = it },
-                    shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
+                    shape = RoundedCornerShape(20.dp),
+                    leadingIcon = { Icon(Icons.Filled.Lock, contentDescription = "Password") },
                     label = {
                         Text("Enter Password",
                             color = MaterialTheme.colorScheme.scrim,
@@ -272,8 +282,8 @@ fun RegisterPage(navController: NavController) {
                         keyboardType = KeyboardType.Password
                     ),
                     colors = TextFieldDefaults.outlinedTextFieldColors(
-                        focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        unfocusedBorderColor = MaterialTheme.colorScheme.primary),
+                        focusedBorderColor = LightGreen,
+                        unfocusedBorderColor = LightGreen),
                     trailingIcon = {
                         IconButton(onClick = { passwordHidden = !passwordHidden }) {
                             val visibilityIcon =
@@ -295,7 +305,8 @@ fun RegisterPage(navController: NavController) {
                 OutlinedTextField(
                     value = conpassword,
                     onValueChange = { conpassword = it },
-                    shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
+                    shape = RoundedCornerShape(20.dp),
+                    leadingIcon = { Icon(Icons.Filled.Password, contentDescription = "Password") },
                     label = {
                         Text("Confirm Password",
                             color = MaterialTheme.colorScheme.scrim,
@@ -308,8 +319,8 @@ fun RegisterPage(navController: NavController) {
                         keyboardType = KeyboardType.Password
                     ),
                     colors = TextFieldDefaults.outlinedTextFieldColors(
-                        focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        unfocusedBorderColor = MaterialTheme.colorScheme.primary),
+                        focusedBorderColor = LightGreen,
+                        unfocusedBorderColor = LightGreen),
                     trailingIcon = {
                         IconButton(onClick = { passwordHidde = !passwordHidde }) {
                             val visibilityIcon =
@@ -448,44 +459,19 @@ fun RegisterPage(navController: NavController) {
                         }
                     )
                 }
-
-
-                Spacer(modifier = Modifier.padding(10.dp))
-
-                androidx.compose.material3.TextButton(onClick = {
-                    navController.navigate("login_page"){
-                        popUpTo(navController.graph.startDestinationId)
-                        launchSingleTop = true
-
-
-                    }
-
-                }) {
+                Row{
                     androidx.compose.material3.Text(
-                        text = "Sign In",
-                        letterSpacing = 1.sp,
-                        style = MaterialTheme.typography.labelLarge
+                        text = "Don't have an account?",
+                        fontSize = 14.sp,
+                        modifier = Modifier.padding(top = 16.dp)
                     )
-                }
-
-
-                Spacer(modifier = Modifier.padding(5.dp))
-                androidx.compose.material3.TextButton(onClick = {
-
-                    navController.navigate("reset_page"){
-                        popUpTo(navController.graph.startDestinationId)
-                        launchSingleTop = true
+                    androidx.compose.material3.TextButton(onClick = { navController.navigate(Screen.LoginScreen.route) }) {
+                        androidx.compose.material3.Text(
+                            text = "Sign in",
+                            color = LightGreen
+                        )
                     }
-
-
-                }) {
-                    androidx.compose.material3.Text(
-                        text = "Reset Password",
-                        letterSpacing = 1.sp,
-                        style = MaterialTheme.typography.labelLarge,
-                    )
                 }
-                Spacer(modifier = Modifier.padding(20.dp))
             }
         }
     }
@@ -497,7 +483,7 @@ fun createUser(
     password: String,
     navController: NavController
 
-) {
+){
     println("L'email est $email, et le mot de passe est $password")
 
     val auth = Firebase.auth
@@ -506,7 +492,7 @@ fun createUser(
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d(ContentValues.TAG, "createUserWithEmail:success")
-                    navController.navigate(Screen.HomeScreen.route) {
+                    navController.navigate(Screen.HomeScreen.route){
                         popUpTo(navController.graph.startDestinationId)
                         launchSingleTop = true
                     } // naviguer vers la page de connexion

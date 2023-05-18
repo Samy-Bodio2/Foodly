@@ -61,6 +61,8 @@ dependencies {
     implementation 'androidx.activity:activity-compose:1.7.1'
     implementation 'androidx.compose.material:material:1.4.3'
     implementation 'androidx.compose.material3:material3:1.2.0-alpha01'
+<<<<<<< HEAD
+=======
     implementation 'androidx.core:core-ktx:+'
 
 
@@ -81,6 +83,7 @@ dependencies {
 
 
     implementation 'androidx.core:core-ktx:+'
+>>>>>>> 6c236502539f32078ded7a733def96f8de05ed91
 
 
     implementation 'androidx.core:core-ktx:+'

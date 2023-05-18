@@ -6,10 +6,12 @@ import com.example.foodly.R
 data class Meal (
     val nom :String,
     val description: String,
-    val prix: Int,
-    val note : Float,
+    val note: Int,
+    val prix : Float,
     @DrawableRes val image: Int
 )
+
+
 
 
 var mealList = listOf(
@@ -62,3 +64,5 @@ var mealList = listOf(
         R.drawable.burger2
     )
 )
+
+

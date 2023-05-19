@@ -33,6 +33,8 @@ fun HomeScreen(navController: NavController){
 }
 
 @Composable
+// fonction d'entete qui va contenir la photo de l'utilisateur connecter ainsi que les boutons de notifications
+// et d'ajout au panier
 fun AppBar(){
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -84,6 +86,7 @@ fun Content(){
 }
 
 @Composable
+// fonction est utiliser pour afficher la barre de recherche
 fun Header(){
     Row(
         Modifier
@@ -117,6 +120,7 @@ fun Header(){
 }
 
 @Composable
+// cette fonction est pour afficher le box de la promotion de nous menu
 fun PromotionSection(){
     Column(Modifier.padding(horizontal = 16.dp)) {
         Row(
@@ -148,6 +152,9 @@ fun PromotionSection(){
 }
 
 @Composable
+// cette fonction nous permet de declarer toute les variables qui seront prises pour afficher le resultat du
+//boxs publicitaire tout en modifiant les polices d'ecriture, l'alignement et la facon donc les elements
+//seront disposer
 fun PromotionItem(
     title: String = "",
     subtitle: String = "",
@@ -186,6 +193,7 @@ fun PromotionItem(
 }
 
 @Composable
+//cette fonction permet d'avoir un apercu des produits que nous avons dans nos restaurants
 fun CategorySection(){
     Row(
         Modifier.fillMaxWidth(),
@@ -241,6 +249,7 @@ fun CategorySection(){
 }
 
 @Composable
+// cette fonction permet de styler les elements present dans notre box categorie
 fun CategoryButton(
     text: String = "",
     icon: Painter,
@@ -286,6 +295,8 @@ fun DiscountSection(){
 }
 
 @Composable
+// cette fonction permet d'afficher les differents repas que nous proposons ainsi que leurs prix,leurs notes,
+//le nombreux de personnes aimant ce plat ainsi que la distance vous separant du restaurant qui le propose
 fun DiscountSectionItems(){
     LazyRow(
         contentPadding = PaddingValues(horizontal = 16.dp),
@@ -321,6 +332,7 @@ fun DiscountSectionItems(){
 }
 
 @Composable
+//le style et la forme des boxs
 fun DiscountSectionItem(
     title: String = "",
     headers: String ="",
@@ -375,6 +387,8 @@ fun Recommended(){
 }
 
 @Composable
+//cette fonction permet de creer une barre de menu navigable qui va permettre de consulter au clic les differents
+//produits recommander
 fun ChipSection(chips: List<String>){
     var selectedChipIndex by remember{
         mutableStateOf(0)
@@ -400,6 +414,8 @@ fun ChipSection(chips: List<String>){
 }
 
 @Composable
+// cette fonction va permetre de recuperer les informations de menu preenregistrer et les afficher dans les
+// MenuItem ou box qui seront creer au prealable
 fun MenuList() {
     LazyRow(
         Modifier.height(90.dp),

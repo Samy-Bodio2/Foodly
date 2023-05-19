@@ -1,4 +1,4 @@
-<<<<<<< HEAD:Application Finale/FoodLy/app/src/main/java/com/example/foodly/screens/Profile/PayementMethods.kt
+
 //package com.example.foodly.screens.Profile
 //
 //import androidx.compose.foundation.layout.Box
@@ -357,8 +357,7 @@
 //
 //
 //
-=======
-package com.example.foodly.screens.Profile
+
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -729,4 +728,4 @@ fun BoxWithRes(
 
 
 
->>>>>>> 8be749a931a23e75bbbafd8cb3934f407829249c:Application Finale/FoodLy/app/src/main/java/com/example/foodly/screens/Profile/PayementMethodsProfile.kt
+

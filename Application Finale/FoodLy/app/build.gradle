@@ -60,7 +60,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1"
     implementation 'androidx.activity:activity-compose:1.7.1'
     implementation 'androidx.compose.material:material:1.4.3'
+    implementation 'androidx.constraintlayout:constraintlayout-compose:1.0.1'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'androidx.compose.material3:material3:1.2.0-alpha01'
+
 
     implementation 'androidx.core:core-ktx:+'
 
@@ -108,6 +111,8 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
 
+    implementation "androidx.compose.ui:ui:$compose_ui_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_ui_version"
 
     implementation "com.google.accompanist:accompanist-navigation-animation:$accompanist_version"
     implementation "com.google.accompanist:accompanist-pager:$accompanist_version"
@@ -121,7 +126,6 @@ dependencies {
 
     implementation "androidx.compose.animation:animation:1.4.3"
 
-    implementation "androidx.compose.material:material-icons-extended:$compose_ui_version"
 
     //Coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
@@ -130,6 +134,17 @@ dependencies {
 
     implementation("org.mindrot:jbcrypt:0.4")
 
+<<<<<<< HEAD
+=======
+
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:31.3.0')
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+    //implementation 'com.google.firebase:firebase-database:20.0.4'
+
+
+>>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4
     //Dagger - Hilt
     implementation "com.google.dagger:hilt-android:2.45"
     kapt "com.google.dagger:hilt-android-compiler:2.45"

@@ -1,8 +1,5 @@
 package com.example.foodly.screens.Onboarding_SignUp_SignIn
 
-import android.content.ContentValues
-import android.hardware.lights.Light
-import android.util.Log
 import android.util.Patterns
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.*
@@ -50,9 +47,9 @@ import com.example.foodly.component.VisibilityOff
 import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.LightGreen
 import com.example.foodly.ui.theme.colorBlack
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+//import com.google.firebase.auth.ktx.auth
+//import com.google.firebase.firestore.ktx.firestore
+//import com.google.firebase.ktx.Firebase
 import org.mindrot.jbcrypt.BCrypt
 import java.util.*
 
@@ -77,9 +74,9 @@ fun RegisterScreen(navController: NavController) {
 
 
 
-    val db = Firebase.firestore
+    /*val db = Firebase.firestore
     val start_date = Date()
-    val customerCollectionRef = db.collection("Customer")
+    val customerCollectionRef = db.collection("Customers")
     val passwordHash = BCrypt.hashpw(password, BCrypt.gensalt(12))
 
     fun SaveCustomer() {
@@ -95,7 +92,7 @@ fun RegisterScreen(navController: NavController) {
         // Ajouter le nouveau document à la collection "customer"
         customerCollectionRef.add(newCustomer)
     }
-
+*/
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -353,8 +350,8 @@ fun RegisterScreen(navController: NavController) {
                         }else if(password.isEmpty() || conpassword.isEmpty() || password != conpassword || password.length >= 8 || conpassword.length >= 8){
                             showDialogPassWord = true
                         }else {
-                            SaveCustomer()
-                            createUser(email, password, navController)
+                           // SaveCustomer()
+                            //createUser(email, password, navController)
                         }
                     },
 
@@ -477,7 +474,7 @@ fun RegisterScreen(navController: NavController) {
     }
 }
 
-
+/*
 fun createUser(
     email: String,
     password: String,
@@ -505,4 +502,4 @@ fun createUser(
     } catch (e: Exception) {
         println("Erreur : $e.message")
     }
-}
+}*/

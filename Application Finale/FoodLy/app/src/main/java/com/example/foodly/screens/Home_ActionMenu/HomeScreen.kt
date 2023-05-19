@@ -6,7 +6,10 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+<<<<<<< HEAD
 import androidx.compose.foundation.lazy.items
+=======
+>>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -29,11 +32,15 @@ import coil.compose.rememberImagePainter
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.foodly.R
+<<<<<<< HEAD
 import com.example.foodly.read
+=======
+>>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4
 import com.google.firebase.firestore.FirebaseFirestore
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
+<<<<<<< HEAD
 fun HomeScreen(navController: NavController) {
     Scaffold(
         topBar = {
@@ -57,6 +64,28 @@ fun HomeScreen(navController: NavController) {
         }
     )
 }
+=======
+fun HomeScreen(navController: NavController){
+//    Box(){
+//
+//
+//                AppBar()
+//                Content()
+//                //DiscountSection()
+//
+//        }
+    Scaffold(
+        topBar = {AppBar()},
+        content = {
+Box(Modifier.verticalScroll(rememberScrollState())){Content()}
+
+
+        }
+    )
+    }
+
+
+>>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4
 
 //    Scaffold(
 //        topBar = {AppBar()},
@@ -71,6 +100,8 @@ fun HomeScreen(navController: NavController) {
 
 
 @Composable
+// fonction d'entete qui va contenir la photo de l'utilisateur connecter ainsi que les boutons de notifications
+// et d'ajout au panier
 fun AppBar(){
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -146,6 +177,7 @@ fun lazyItems(){
     }
 }
 @Composable
+// fonction est utiliser pour afficher la barre de recherche
 fun Header(){
     Row(
         Modifier
@@ -179,6 +211,7 @@ fun Header(){
 }
 
 @Composable
+// cette fonction est pour afficher le box de la promotion de nous menu
 fun PromotionSection(){
     Column(Modifier.padding(horizontal = 16.dp)) {
         Row(
@@ -210,6 +243,9 @@ fun PromotionSection(){
 }
 
 @Composable
+// cette fonction nous permet de declarer toute les variables qui seront prises pour afficher le resultat du
+//boxs publicitaire tout en modifiant les polices d'ecriture, l'alignement et la facon donc les elements
+//seront disposer
 fun PromotionItem(
     title: String = "",
     subtitle: String = "",
@@ -248,6 +284,7 @@ fun PromotionItem(
 }
 
 @Composable
+//cette fonction permet d'avoir un apercu des produits que nous avons dans nos restaurants
 fun CategorySection(){
     Row(
         Modifier.fillMaxWidth(),
@@ -303,6 +340,7 @@ fun CategorySection(){
 }
 
 @Composable
+// cette fonction permet de styler les elements present dans notre box categorie
 fun CategoryButton(
     text: String = "",
     icon: Painter,
@@ -330,6 +368,7 @@ fun CategoryButton(
 
 @Composable
 fun DiscountSection(){
+<<<<<<< HEAD
     val MenuItemss by remember { mutableStateOf(read()) }
 
 
@@ -346,11 +385,126 @@ fun DiscountSection(){
                         Text(text = "See All", color = Color.Green)
                     }
                 }
+=======
+    val context = LocalContext.current
+    var MenuItemss = mutableStateListOf<MenuItem?>()
+    var db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    LaunchedEffect(Unit) {
+        db.collection("Menu").get()
+            .addOnSuccessListener { queryDocumentSnapshots ->
+                if (!queryDocumentSnapshots.isEmpty) {
+                    val list = queryDocumentSnapshots.documents
+                    for (d in list) {
+                        val c: MenuItem? = d.toObject(MenuItem::class.java)
+                        MenuItemss.add(c)
+                        Toast.makeText(
+                            context,
+                            "reussi",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+
+                } else {
+                    Toast.makeText(
+                        context,
+                        "No need  found create one",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+            }.addOnFailureListener {
+                Toast.makeText(
+                    context,
+                    "fail to get the data",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+    }
+/*    LazyColumn(Modifier.fillMaxSize()){
+        itemsIndexed(*/MenuItemss.forEachIndexed{
+                index, item ->
+
+//                MenuItemss[index]?.name?.let {
+//                    Text(
+//                        text = it,
+//                        Modifier.width(100.dp)
+//                            .border(1.dp, Color.LightGray, RoundedCornerShape(20.dp))
+//                            .clip(RoundedCornerShape(20.dp)).padding(10.dp),
+//                        textAlign = TextAlign.Center
+//                    )
+//                }
+
+//                MenuItemss[index]?.let {
+//                    DiscountSectionItems(it.Image,it.name,it.restaurant_name,it.price)
+//
+//                }
+                    Column {
+                        Row(
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Text(text = "Discount Guaranteed", style = MaterialTheme.typography.h6)
+                            TextButton(onClick = {}) {
+                                Text(text = "See All", color = Color.Green)
+                            }
+                        }
+                        MenuItemss[index]?.let {
+                            DiscountSectionItems(it.Image,it.name,it.restaurant_name,it.price)
+                        }
+                    }
+
+
+
+        }
+    }
+
+    /*
+                MenuItemss[index]?.let {
+                    Text(text = it.name,
+                        Modifier
+                            .width(100.dp)
+                            .border(1.dp, Color.LightGray, RoundedCornerShape(20.dp))
+                            .clip(RoundedCornerShape(20.dp))
+                            .padding(10.dp)
+                        , textAlign = TextAlign.Center)
+                }
+                MenuItemss[index]?.Image?.let {
+                    MyImage(url = it)
+                }*/
+
+
+data class MenuItem(
+    val Confirmed: Boolean,
+    val Image: String,
+    val date: String,
+    val name: String,
+    val price: Double,
+    val quantity : Double,
+    val restaurant_name : String
+){
+    constructor() : this(false,"","", "",0.0,0.0,"")
+}
+
+@Composable
+<<<<<<< HEAD
+fun DiscountSectionItems(url: String,titre:String,restauName:String="",price: Double=0.0){
+    val imagePainter: Painter = rememberImagePainter(url)
+=======
+// cette fonction permet d'afficher les differents repas que nous proposons ainsi que leurs prix,leurs notes,
+//le nombreux de personnes aimant ce plat ainsi que la distance vous separant du restaurant qui le propose
+fun DiscountSectionItems(){
+>>>>>>> 54d9f8e05d16c767646ee7286fef1fcb5e9adc80
+>>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4
     LazyRow(
         contentPadding = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         item {
+<<<<<<< HEAD
         MenuItemss.forEachIndexed { index, item ->
             MenuItemss[index]?.let {
                 DiscountSectionItems(it.Image, it.name, it.restaurant_name, it.price)
@@ -367,6 +521,16 @@ fun DiscountSection(){
 
 
         }
+=======
+            DiscountSectionItem(
+                imagePainter = imagePainter,
+                title = titre,
+                headers = restauName,
+                price = price.toString()
+
+            )
+        }
+>>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4
     }
 
     /*
@@ -410,6 +574,7 @@ fun DiscountSectionItems(url: String,titre:String,restauName:String="",price: Do
 }
 
 @Composable
+//le style et la forme des boxs
 fun DiscountSectionItem(
     title: String = "",
     headers: String ="",
@@ -464,6 +629,8 @@ fun Recommended(){
 }
 
 @Composable
+//cette fonction permet de creer une barre de menu navigable qui va permettre de consulter au clic les differents
+//produits recommander
 fun ChipSection(chips: List<String>){
     var selectedChipIndex by remember{
         mutableStateOf(0)
@@ -489,9 +656,16 @@ fun ChipSection(chips: List<String>){
 }
 
 @Composable
+<<<<<<< HEAD
 fun MenuList(url: String,titre:String,restauName:String,price: Double) {
     val imagePainter: Painter = rememberImagePainter(url)
     Row(
+=======
+// cette fonction va permetre de recuperer les informations de menu preenregistrer et les afficher dans les
+// MenuItem ou box qui seront creer au prealable
+fun MenuList() {
+    LazyRow(
+>>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4
         Modifier.height(90.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ){

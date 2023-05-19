@@ -8,6 +8,7 @@ sealed class Screen(val route: String){
     object HomeScreen: Screen("home_screen")
     object OrderScreen: Screen("order_screen")
     object EWalletScreen: Screen("e_wallet")
+    object OtpVerifyScreen: Screen("otp_verify")
     object ProfileScreen: Screen("profile_screen")
     object RegisterScreen: Screen("register")
     object LoginScreen: Screen("login")
@@ -30,4 +31,5 @@ sealed class Screen(val route: String){
     object RestaurantDetailScreen: Screen("restaurant_detail_screen")
     object RestaurantScreen: Screen("restaurant_screen")
     object SearchingDriver: Screen("searching_driver")
+    object TransactionHistoryScreen: Screen("transaction_history")
 }

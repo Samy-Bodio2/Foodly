@@ -1,5 +1,6 @@
 package com.example.foodly.screens.Profile
 
+import RoundedButton
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.SwitchDefaults
@@ -96,18 +97,6 @@ fun SecurityScreen() {
             }
         }
     )
-}
-
-@Composable
-fun RoundedButton(label: String, backgroundColor: Color) {
-    Button(
-        onClick = { /* Handle email sign in button click */ },
-        shape = RoundedCornerShape(50),
-        modifier = Modifier.fillMaxWidth(),
-        colors = ButtonDefaults.buttonColors(backgroundColor)
-    ) {
-        Text(text = label, color = Color.White)
-    }
 }
 
 

@@ -22,11 +22,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
+import com.example.foodly.navigation.Screen
 
 
 @Composable
-fun DetailsScreen(){
+fun RestaurantScreen(navController: NavController){
     Box(
         Modifier.verticalScroll(rememberScrollState())
     ){
@@ -411,7 +414,9 @@ fun MenuItem(
                     .fillMaxHeight(),
                 verticalArrangement = Arrangement.SpaceEvenly
             ) {
-                Button(onClick = { /*TODO*/ }, colors = ButtonDefaults.buttonColors(Color.Green), modifier = Modifier.width(55.dp).height(26.dp)) {
+                Button(onClick = { /*TODO*/ }, colors = ButtonDefaults.buttonColors(Color.Green), modifier = Modifier
+                    .width(55.dp)
+                    .height(26.dp)) {
                     Text(text = "New", fontSize = 10.sp,)
                 }
                 Text(text = title, color = Color.Black)
@@ -593,7 +598,9 @@ fun DrinkItem(
                     .fillMaxHeight(),
                 verticalArrangement = Arrangement.SpaceEvenly
             ) {
-                Button(onClick = { /*TODO*/ }, colors = ButtonDefaults.buttonColors(Color.Green), modifier = Modifier.width(60.dp).height(30.dp)) {
+                Button(onClick = { /*TODO*/ }, colors = ButtonDefaults.buttonColors(Color.Green), modifier = Modifier
+                    .width(60.dp)
+                    .height(30.dp)) {
                     Text(text = "Promo", fontSize = 10.sp,)
                 }
                 Text(text = title, color = Color.Black)
@@ -677,6 +684,7 @@ fun DefaultPreview() {
 @Preview(showBackground = true)
 @Composable
 fun SplashScreenPreview(){
+    val navController = rememberNavController()
     //TopBar()
-    DetailsScreen()
+    RestaurantScreen(navController)
 }

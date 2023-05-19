@@ -1,8 +1,12 @@
 package com.example.foodly.screens.Home_ActionMenu
 
+import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -14,23 +18,39 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberImagePainter
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.foodly.R
+import com.google.firebase.firestore.FirebaseFirestore
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(navController: NavController){
-    Box(Modifier.verticalScroll(rememberScrollState())){
-        Column {
-            AppBar()
-            Content()
+//    Box(){
+//
+//
+//                AppBar()
+//                Content()
+//                //DiscountSection()
+//
+//        }
+    Scaffold(
+        topBar = {AppBar()},
+        content = {
+Box(Modifier.verticalScroll(rememberScrollState())){Content()}
+
+
         }
+    )
     }
-}
+
+
 
 @Composable
 fun AppBar(){
@@ -268,53 +288,123 @@ fun CategoryButton(
 
 @Composable
 fun DiscountSection(){
-    Column {
-        Row(
-            Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(text = "Discount Guaranteed", style = MaterialTheme.typography.h6)
-            TextButton(onClick = {}) {
-                Text(text = "See All", color = Color.Green)
+    val context = LocalContext.current
+    var MenuItemss = mutableStateListOf<MenuItem?>()
+    var db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    LaunchedEffect(Unit) {
+        db.collection("Menu").get()
+            .addOnSuccessListener { queryDocumentSnapshots ->
+                if (!queryDocumentSnapshots.isEmpty) {
+                    val list = queryDocumentSnapshots.documents
+                    for (d in list) {
+                        val c: MenuItem? = d.toObject(MenuItem::class.java)
+                        MenuItemss.add(c)
+                        Toast.makeText(
+                            context,
+                            "reussi",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+
+                } else {
+                    Toast.makeText(
+                        context,
+                        "No need  found create one",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+            }.addOnFailureListener {
+                Toast.makeText(
+                    context,
+                    "fail to get the data",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-        }
-        DiscountSectionItems()
     }
+/*    LazyColumn(Modifier.fillMaxSize()){
+        itemsIndexed(*/MenuItemss.forEachIndexed{
+                index, item ->
+
+//                MenuItemss[index]?.name?.let {
+//                    Text(
+//                        text = it,
+//                        Modifier.width(100.dp)
+//                            .border(1.dp, Color.LightGray, RoundedCornerShape(20.dp))
+//                            .clip(RoundedCornerShape(20.dp)).padding(10.dp),
+//                        textAlign = TextAlign.Center
+//                    )
+//                }
+
+//                MenuItemss[index]?.let {
+//                    DiscountSectionItems(it.Image,it.name,it.restaurant_name,it.price)
+//
+//                }
+                    Column {
+                        Row(
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Text(text = "Discount Guaranteed", style = MaterialTheme.typography.h6)
+                            TextButton(onClick = {}) {
+                                Text(text = "See All", color = Color.Green)
+                            }
+                        }
+                        MenuItemss[index]?.let {
+                            DiscountSectionItems(it.Image,it.name,it.restaurant_name,it.price)
+                        }
+                    }
+
+
+
+        }
+    }
+
+    /*
+                MenuItemss[index]?.let {
+                    Text(text = it.name,
+                        Modifier
+                            .width(100.dp)
+                            .border(1.dp, Color.LightGray, RoundedCornerShape(20.dp))
+                            .clip(RoundedCornerShape(20.dp))
+                            .padding(10.dp)
+                        , textAlign = TextAlign.Center)
+                }
+                MenuItemss[index]?.Image?.let {
+                    MyImage(url = it)
+                }*/
+
+
+data class MenuItem(
+    val Confirmed: Boolean,
+    val Image: String,
+    val date: String,
+    val name: String,
+    val price: Double,
+    val quantity : Double,
+    val restaurant_name : String
+){
+    constructor() : this(false,"","", "",0.0,0.0,"")
 }
 
 @Composable
-fun DiscountSectionItems(){
+fun DiscountSectionItems(url: String,titre:String,restauName:String="",price: Double=0.0){
+    val imagePainter: Painter = rememberImagePainter(url)
     LazyRow(
         contentPadding = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         item {
             DiscountSectionItem(
-                imagePainter = painterResource(id = R.drawable.kontcha),
-                title = "Kontcha",
-                headers = "1.5km | 4,8 (1.2k) ",
-                price = "6.00"
+                imagePainter = imagePainter,
+                title = titre,
+                headers = restauName,
+                price = price.toString()
 
-            )
-        }
-        item {
-            DiscountSectionItem(
-                imagePainter = painterResource(id = R.drawable.ekwang),
-                title = "Ekwang",
-                headers = "1.7km| 4,7 (900) ",
-                price = "5.64"
-
-            )
-        }
-        item {
-            DiscountSectionItem(
-                imagePainter = painterResource(id = R.drawable.mbongo),
-                title = "Mbongo Poisson",
-                headers = "1.9km | 4,4 (1.1k) ",
-                price = "4.76"
             )
         }
     }

@@ -1,9 +1,5 @@
 package com.example.foodly.screens.Profile
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6c236502539f32078ded7a733def96f8de05ed91
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

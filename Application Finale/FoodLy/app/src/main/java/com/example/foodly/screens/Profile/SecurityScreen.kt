@@ -98,18 +98,6 @@ fun SecurityScreen() {
     )
 }
 
-@Composable
-fun RoundedButton(label: String, backgroundColor: Color) {
-    Button(
-        onClick = { /* Handle email sign in button click */ },
-        shape = RoundedCornerShape(50),
-        modifier = Modifier.fillMaxWidth(),
-        colors = ButtonDefaults.buttonColors(backgroundColor)
-    ) {
-        Text(text = label, color = Color.White)
-    }
-}
-
 
 
 @Preview

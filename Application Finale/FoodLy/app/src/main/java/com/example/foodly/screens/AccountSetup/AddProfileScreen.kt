@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
+import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.md_theme_dark_onSecondaryContainer
 import com.example.foodly.ui.theme.md_theme_dark_outline
 import com.example.foodly.ui.theme.metropolisFontFamily
@@ -43,7 +44,7 @@ import com.example.foodly.ui.theme.primaryFontColor
 
 
 @Composable
-fun profil(navController: NavController) {
+fun AddProfileScreen(navController: NavController) {
     TopBar()
     Spacer(modifier = Modifier.padding(0.dp))
 
@@ -438,6 +439,6 @@ fun getGender(category: String): List<String> {
 @Composable
 fun Preview2ss() {
     val navController = rememberNavController()
-    profil(navController)
+    AddProfileScreen(navController)
 }
 

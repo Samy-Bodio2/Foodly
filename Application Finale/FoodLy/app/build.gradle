@@ -61,49 +61,21 @@ dependencies {
     implementation 'androidx.activity:activity-compose:1.7.1'
     implementation 'androidx.compose.material:material:1.4.3'
     implementation 'androidx.compose.material3:material3:1.2.0-alpha01'
-<<<<<<< HEAD
-=======
-    implementation 'androidx.core:core-ktx:+'
 
-
-//
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
-    implementation 'androidx.activity:activity-compose:1.3.1'
     implementation "androidx.compose.ui:ui:$compose_ui_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_ui_version"
-    implementation 'androidx.compose.material:material:1.2.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
-//
 
 
-    implementation 'androidx.core:core-ktx:+'
->>>>>>> 6c236502539f32078ded7a733def96f8de05ed91
 
 
-    implementation 'androidx.core:core-ktx:+'
-    implementation 'com.google.firebase:firebase-database:20.0.4'
-    implementation 'com.google.firebase:firebase-auth:21.0.3'
-    implementation 'com.google.firebase:firebase-database-ktx:20.2.1'
 
 
-    implementation "androidx.compose.ui:ui:$compose_ui_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_ui_version"
-
-    implementation "androidx.compose.ui:ui:$compose_ui_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_ui_version"
-
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
-    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
 
 
     implementation "com.google.accompanist:accompanist-navigation-animation:$accompanist_version"
@@ -118,7 +90,6 @@ dependencies {
 
     implementation "androidx.compose.animation:animation:1.4.3"
 
-    implementation "androidx.compose.material:material-icons-extended:$compose_ui_version"
 
     //Coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
@@ -131,6 +102,8 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:31.3.0')
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.firebase:firebase-firestore-ktx'
+    implementation 'com.google.firebase:firebase-database:20.0.4'
+    implementation 'com.google.firebase:firebase-database-ktx:20.2.1'
 
     //Dagger - Hilt
     implementation "com.google.dagger:hilt-android:2.45"

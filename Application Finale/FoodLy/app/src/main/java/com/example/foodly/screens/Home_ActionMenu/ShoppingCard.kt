@@ -30,10 +30,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
 import com.example.foodly.model.Meal
 import com.example.foodly.model.cartList
 import com.example.foodly.model.mealList
+import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.FoodlyTheme
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
@@ -41,7 +44,7 @@ import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 //@Composable
 @Composable
-fun BasketScreen() {
+fun ShoppingCard(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppbar()
@@ -168,6 +171,7 @@ fun Contenu(meals: List<Meal>) {
 @Composable
 fun DefaultPreview() {
     FoodlyTheme {
-        BasketScreen()
+        val navController = rememberNavController()
+        ShoppingCard(navController)
     }
 }

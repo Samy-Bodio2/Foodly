@@ -11,6 +11,9 @@ import com.example.foodly.screens.Home_ActionMenu.HomeScreen
 import com.example.foodly.screens.Home_ActionMenu.ShoppingCard
 import com.example.foodly.screens.Onboarding_SignUp_SignIn.*
 import com.example.foodly.screens.Orders.CancelOrder
+import com.example.foodly.screens.Orders.OrderScreen
+import com.example.foodly.screens.Profile.ProfileScreen
+import com.example.foodly.screens.RestaurantDetail_Order.RestaurantScreen
 import com.example.foodly.screens.e_wallet.EWalletScreen
 import com.example.foodly.screens.e_wallet.TransactionHistoryScreen
 
@@ -48,12 +51,16 @@ fun NavGraph(navController: NavHostController) {
         composable(route = Screen.HomeScreen.route){
             HomeScreen(navController)
         }
+        composable(route = Screen.OrderScreen.route){
+            OrderScreen(navController)
+        }
         composable(route = Screen.CategoryItem.route){
             CategoryItem(navController)
         }
         composable(route = Screen.CategoryScreen.route){
             CategoryScreen(navController)
         }
+
         composable(route = Screen.EWalletScreen.route){
             EWalletScreen()
         }
@@ -68,7 +75,10 @@ fun NavGraph(navController: NavHostController) {
             CancelOrder(navController)
         }
         composable(route = Screen.RestaurantScreen.route){
-            RegisterScreen(navController)
+            RestaurantScreen(navController)
+        }
+        composable(route = Screen.ProfileScreen.route){
+            ProfileScreen()
         }
     }
 }

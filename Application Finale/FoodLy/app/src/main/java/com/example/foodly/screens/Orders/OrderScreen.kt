@@ -21,11 +21,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
 import com.example.foodly.model.Meals
 import com.example.foodly.model.mealLists
 import com.example.foodly.model.mealLists3
 import com.example.foodly.model.mealListsT3
+import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.LightGreen
 
 import com.example.foodly.ui.theme.md_theme_light_inverseSurface
@@ -33,7 +36,7 @@ import com.example.foodly.ui.theme.md_theme_light_inverseSurface
 
 
 @Composable
-fun CategoryItem() {
+fun OrderScreen(navController: NavController) {
     Scaffold(
         topBar = {
             AppBarCat()
@@ -509,5 +512,6 @@ fun MealCart3(meal: Meals) {
 @Preview
 @Composable
 fun  OrderScreens(){
-    CategoryItem()
+    val navController = rememberNavController()
+    OrderScreen(navController)
 }

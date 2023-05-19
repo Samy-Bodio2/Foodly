@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
 import com.example.foodly.navigation.Screen
@@ -106,7 +107,8 @@ fun AddProfileScreen(navController: NavController) {
                     gradientColors = gradientColor,
                     cornerRadius = cornerRadius,
                     nameButton = "Continue",
-                    roundedCornerShape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp , topEnd = 30.dp, bottomStart = 30.dp)
+                    roundedCornerShape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp , topEnd = 30.dp, bottomStart = 30.dp),
+                    navController
                 )
 
                 Spacer(modifier = Modifier.padding(10.dp))
@@ -132,7 +134,8 @@ private fun GradientButton(
     gradientColors: List<Color>,
     cornerRadius: Dp,
     nameButton: String,
-    roundedCornerShape: RoundedCornerShape
+    roundedCornerShape: RoundedCornerShape,
+    navController: NavController
 ) {
 
     androidx.compose.material3.Button(
@@ -141,7 +144,7 @@ private fun GradientButton(
             .fillMaxWidth()
             .padding(start = 32.dp, end = 32.dp),
         onClick = {
-
+            navController.navigate(Screen.HomeScreen.route)
         },
 
         contentPadding = PaddingValues(),

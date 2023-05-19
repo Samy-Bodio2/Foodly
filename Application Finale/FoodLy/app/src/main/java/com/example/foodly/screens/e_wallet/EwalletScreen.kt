@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,6 +25,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.KeyboardArrowRight
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color.Companion.Black
@@ -34,10 +34,12 @@ import androidx.compose.ui.graphics.Color.Companion.Green
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import com.example.foodly.R
 import com.example.foodly.component.AddPaymentCard
+import com.example.foodly.component.PaymentCard
 import com.example.foodly.ui.theme.LightGreen2
 import java.text.SimpleDateFormat
 import java.util.*
@@ -88,6 +90,10 @@ val testList = listOf(
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun EWalletScreen() {
+    var nameText by remember { mutableStateOf(TextFieldValue()) }
+    var cardNumber by remember { mutableStateOf(TextFieldValue()) }
+    var expiryNumber by remember { mutableStateOf(TextFieldValue()) }
+    var cvcNumber by remember { mutableStateOf(TextFieldValue()) }
     Scaffold(
         topBar = {
             TopAppBar(
@@ -133,6 +139,13 @@ fun EWalletScreen() {
                 .padding(horizontal = 16.dp)
         ) {
             Spacer(modifier = Modifier.height(60.dp))
+            PaymentCard(
+                nameText,
+                cardNumber,
+                expiryNumber,
+                cvcNumber
+            )
+            /*
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -144,7 +157,7 @@ fun EWalletScreen() {
                     .padding(horizontal = 16.dp, vertical = 16.dp)
             ) {
                 AddPaymentCard()
-                /*Column(
+                Column(
                     verticalArrangement = Arrangement.SpaceEvenly
                 ) {
                     Row{
@@ -212,8 +225,8 @@ fun EWalletScreen() {
                             )
                         }
                     }
-                }*/
-            }
+                }
+            }*/
             Spacer(modifier = Modifier.weight(1f))
             Row(
                 verticalAlignment = Alignment.CenterVertically,

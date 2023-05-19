@@ -90,7 +90,7 @@ fun EmptyBasket() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_background),
+            painter = painterResource(id = R.drawable.emptycard),
             contentDescription = "Panier vide"
         )
         Spacer(modifier = Modifier.size(16.dp))
@@ -130,7 +130,8 @@ fun MenuList(meal: Meal) {
                 Column(modifier = Modifier.weight(1f)) {
                     Text(text = meal.nom, fontWeight = FontWeight.Bold, fontSize = 20.sp, maxLines = 1)
                     Spacer(modifier = Modifier.size(3.dp))
-                    Text(text = "${meal.quantite} item(s)", fontSize = 20.sp, maxLines = 1)
+                    //Text(text = "${meal.quantite} item(s)", fontSize = 20.sp, maxLines = 1)
+                    Text(text = "1 item(s)", fontSize = 20.sp, maxLines = 1)
                     Spacer(modifier = Modifier.size(3.dp))
                     Text(text = "${meal.prix} f CFA",color = androidx.compose.ui.graphics.Color.Green)
                 }

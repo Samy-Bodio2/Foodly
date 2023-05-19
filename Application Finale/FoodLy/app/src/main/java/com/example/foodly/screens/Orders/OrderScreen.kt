@@ -22,6 +22,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.foodly.R
+import com.example.foodly.model.Meals
+import com.example.foodly.model.mealLists
+import com.example.foodly.model.mealLists3
+import com.example.foodly.model.mealListsT3
 import com.example.foodly.ui.theme.LightGreen
 
 import com.example.foodly.ui.theme.md_theme_light_inverseSurface
@@ -273,7 +277,7 @@ fun SortButton(){
 }
 
 @Composable
-fun MealListe(meals: List<Meal>) {
+fun MealListe(meals: List<Meals>) {
     LazyColumn {
         items(meals) { meal ->
             MealCart(meal = meal)
@@ -282,7 +286,7 @@ fun MealListe(meals: List<Meal>) {
     }
 }
 @Composable
-fun MealListe2(meals: List<Meal>) {
+fun MealListe2(meals: List<Meals>) {
     LazyColumn {
         items(meals) { meal ->
             MealCart2(meal = meal)
@@ -292,7 +296,7 @@ fun MealListe2(meals: List<Meal>) {
 }
 
 @Composable
-fun MealListe3(meals: List<Meal>) {
+fun MealListe3(meals: List<Meals>) {
     LazyColumn {
         items(meals) { meal ->
             MealCart3(meal = meal)
@@ -302,7 +306,7 @@ fun MealListe3(meals: List<Meal>) {
 }
 
 @Composable
-fun MealCart(meal: Meal) {
+fun MealCart(meal: Meals) {
 
     Card(
         modifier = Modifier
@@ -369,7 +373,7 @@ fun MealCart(meal: Meal) {
 }
 
 @Composable
-fun MealCart2(meal: Meal) {
+fun MealCart2(meal: Meals) {
 
     Card(
         modifier = Modifier
@@ -436,7 +440,7 @@ fun MealCart2(meal: Meal) {
 }
 
 @Composable
-fun MealCart3(meal: Meal) {
+fun MealCart3(meal: Meals) {
 
     Card(
         modifier = Modifier

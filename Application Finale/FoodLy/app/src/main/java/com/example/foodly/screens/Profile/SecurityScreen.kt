@@ -1,5 +1,6 @@
 package com.example.foodly.screens.Profile
 
+import RoundedButton
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.SwitchDefaults

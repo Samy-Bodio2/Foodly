@@ -25,9 +25,10 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
 //import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.foodly.R
-/*
+
 @ExperimentalAnimationApi
 @Composable
 fun PaymentCard(
@@ -233,5 +234,3 @@ enum class CardType(
     None("", R.drawable.ic_visa_logo),
     Visa("visa", R.drawable.ic_visa_logo),
 }
-
- */

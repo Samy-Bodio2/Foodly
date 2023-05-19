@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">MapSam</string>
+    <string name="app_name">Foodly</string>
     <string name="title_activity_maps">MapsActivity</string>
 </resources>

@@ -55,7 +55,7 @@ fun NavGraph(navController: NavHostController) {
             CategoryScreen(navController)
         }
         composable(route = Screen.EWalletScreen.route){
-            EWalletScreen(navController)
+            EWalletScreen()
         }
         composable(route = Screen.TransactionHistoryScreen.route){
             TransactionHistoryScreen(navController)

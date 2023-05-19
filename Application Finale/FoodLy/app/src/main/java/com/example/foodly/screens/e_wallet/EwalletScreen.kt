@@ -1,6 +1,7 @@
 package com.example.foodly.screens.e_wallet
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -36,6 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import com.example.foodly.R
+import com.example.foodly.component.AddPaymentCard
 import com.example.foodly.ui.theme.LightGreen2
 import java.text.SimpleDateFormat
 import java.util.*
@@ -82,6 +84,7 @@ val testList = listOf(
     ),
 )
 
+@OptIn(ExperimentalAnimationApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun EWalletScreen() {
@@ -140,7 +143,8 @@ fun EWalletScreen() {
                     )
                     .padding(horizontal = 16.dp, vertical = 16.dp)
             ) {
-                Column(
+                AddPaymentCard()
+                /*Column(
                     verticalArrangement = Arrangement.SpaceEvenly
                 ) {
                     Row{
@@ -208,7 +212,7 @@ fun EWalletScreen() {
                             )
                         }
                     }
-                }
+                }*/
             }
             Spacer(modifier = Modifier.weight(1f))
             Row(

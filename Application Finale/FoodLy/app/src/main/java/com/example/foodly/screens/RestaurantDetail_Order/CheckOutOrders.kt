@@ -54,7 +54,7 @@ fun CheckOutOrders() {
     val scrollState = rememberScrollState()
     Scaffold(
         topBar = {
-            TopAppBar(
+            TopAppBar( backgroundColor = white,
                 navigationIcon = {
                     IconButton(onClick = {
 //                        navController.navigate("EWalletScreen") {
@@ -64,6 +64,7 @@ fun CheckOutOrders() {
                     }) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
+                            tint = Black,
                             contentDescription = "Retour"
                         )
                     }

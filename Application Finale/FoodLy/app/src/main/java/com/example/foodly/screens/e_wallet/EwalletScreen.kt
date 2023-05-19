@@ -1,6 +1,6 @@
 package com.example.foodly.screens.e_wallet
 
-import android.annotation.SuppressLint
+
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -41,6 +41,7 @@ import com.example.foodly.R
 import com.example.foodly.component.AddPaymentCard
 import com.example.foodly.component.PaymentCard
 import com.example.foodly.ui.theme.LightGreen2
+import com.example.foodly.ui.theme.white
 import java.text.SimpleDateFormat
 import java.util.*
 

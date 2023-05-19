@@ -155,7 +155,7 @@ val testList2 = listOf(
 fun TransactionHistoryScreen(navController : NavHostController) {
     Scaffold(
         topBar = {
-            TopAppBar(backgroundColor = Color.white,
+            TopAppBar(backgroundColor = Color.White,
                 navigationIcon = {
                     IconButton(onClick = {
                         navController.navigate(Screen.EWalletScreen.route) {

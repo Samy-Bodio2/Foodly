@@ -1,6 +1,7 @@
 package com.example.foodly.screens.e_wallet
 
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -87,8 +88,8 @@ val testList = listOf(
     ),
 )
 
-@OptIn(ExperimentalAnimationApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun EWalletScreen() {
     var nameText by remember { mutableStateOf(TextFieldValue()) }

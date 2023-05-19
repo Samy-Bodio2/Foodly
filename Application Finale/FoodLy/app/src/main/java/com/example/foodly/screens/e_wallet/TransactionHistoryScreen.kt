@@ -23,6 +23,8 @@ import androidx.navigation.NavHostController
 import com.example.foodly.R
 import java.text.SimpleDateFormat
 import com.example.foodly.model.PopularRestaurant
+import com.example.foodly.navigation.Screen
+import com.example.foodly.ui.theme.white
 import java.util.*
 
 val currentTime2 = SimpleDateFormat("MMM d,yyyy | HH:mm a", Locale.getDefault()).format(Date())
@@ -153,16 +155,17 @@ val testList2 = listOf(
 fun TransactionHistoryScreen(navController : NavHostController) {
     Scaffold(
         topBar = {
-            TopAppBar(
+            TopAppBar(backgroundColor = Color.White,
                 navigationIcon = {
                     IconButton(onClick = {
-                        navController.navigate("EWalletScreen") {
+                        navController.navigate(Screen.EWalletScreen.route) {
                             popUpTo(navController.graph.startDestinationId)
                             launchSingleTop = true
                         }
                     }) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
+                            tint = Color.Black,
                             contentDescription = "Retour"
                         )
                     }

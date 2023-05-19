@@ -66,14 +66,12 @@ fun PageViewScreen( navController: NavHostController){
             ) {
                 Image(painter = painterResource(id = list[index].image), contentDescription = null)
                 Spacer(modifier = Modifier.height(30.dp))
-                Indicator(count = list.size, index = index)
-                Spacer(modifier = Modifier.height(35.dp))
                 Text(
                     text = list[index].title,
                     style = TextStyle(
-                        fontSize = 28.sp,
+                        fontSize = 32.sp,
                         fontFamily = metropolisFontFamily,
-                        color = primaryFontColor
+                        color = LightGreen
                     )
                 )
                 Spacer(modifier = Modifier.height(33.dp))
@@ -87,6 +85,7 @@ fun PageViewScreen( navController: NavHostController){
                     ),
                     modifier = Modifier.padding(horizontal = 45.dp)
                 )
+                Indicator(count = list.size, index = index)
                 Spacer(modifier = Modifier.height(40.dp))
                 FilledButton(modifier = Modifier.padding(horizontal = 34.dp), text = "Next") {
                     scope.launch {

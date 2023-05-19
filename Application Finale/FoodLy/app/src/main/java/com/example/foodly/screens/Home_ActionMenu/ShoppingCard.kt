@@ -30,10 +30,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
 import com.example.foodly.model.Meal
 import com.example.foodly.model.cartList
 import com.example.foodly.model.mealList
+import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.FoodlyTheme
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
@@ -41,7 +44,7 @@ import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 //@Composable
 @Composable
-fun BasketScreen() {
+fun ShoppingCard(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppbar()
@@ -87,7 +90,7 @@ fun EmptyBasket() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_background),
+            painter = painterResource(id = R.drawable.emptycard),
             contentDescription = "Panier vide"
         )
         Spacer(modifier = Modifier.size(16.dp))
@@ -127,7 +130,8 @@ fun MenuList(meal: Meal) {
                 Column(modifier = Modifier.weight(1f)) {
                     Text(text = meal.nom, fontWeight = FontWeight.Bold, fontSize = 20.sp, maxLines = 1)
                     Spacer(modifier = Modifier.size(3.dp))
-                    Text(text = "${meal.quantite} item(s)", fontSize = 20.sp, maxLines = 1)
+                    //Text(text = "${meal.quantite} item(s)", fontSize = 20.sp, maxLines = 1)
+                    Text(text = "1 item(s)", fontSize = 20.sp, maxLines = 1)
                     Spacer(modifier = Modifier.size(3.dp))
                     Text(text = "${meal.prix} f CFA",color = androidx.compose.ui.graphics.Color.Green)
                 }
@@ -168,6 +172,7 @@ fun Contenu(meals: List<Meal>) {
 @Composable
 fun DefaultPreview() {
     FoodlyTheme {
-        BasketScreen()
+        val navController = rememberNavController()
+        ShoppingCard(navController)
     }
 }

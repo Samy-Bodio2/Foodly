@@ -1,11 +1,17 @@
 package com.example.foodly.screens.Home_ActionMenu
 
+import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -14,23 +20,55 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberImagePainter
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.foodly.R
+import com.example.foodly.read
+import com.google.firebase.firestore.FirebaseFirestore
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun HomeScreen(navController: NavController){
-    Box(Modifier.verticalScroll(rememberScrollState())){
-        Column {
+fun HomeScreen(navController: NavController) {
+    Scaffold(
+        topBar = {
             AppBar()
-            Content()
+        },
+        content = {
+        LazyColumn{
+            item {
+                Content()
+                Spacer(Modifier.size(20.dp))
+            }
+
+            item{
+                lazyItems()
+            }
         }
-    }
+
+
+
+
+        }
+    )
 }
+
+//    Scaffold(
+//        topBar = {AppBar()},
+//        content = {
+//Box(Modifier.verticalScroll(rememberScrollState())){Content()}
+//
+//
+//        }
+//    )
+  //  }
+
+
 
 @Composable
 fun AppBar(){
@@ -62,7 +100,9 @@ fun AppBar(){
 
 @Composable
 fun Content(){
-    Column(){
+
+Column{
+
         Header()
         Spacer(modifier = Modifier.width(16.dp))
         PromotionSection()
@@ -75,14 +115,36 @@ fun Content(){
         Spacer(modifier = Modifier.width(16.dp))
         ChipSection(chips = listOf("All","Hamburger","Pizza","Drink","Cake"))
         Spacer(modifier = Modifier.width(16.dp))
-        MenuList()
-        Spacer(modifier = Modifier.height(20.dp))
-        MenuList1()
-        Spacer(modifier = Modifier.height(20.dp))
-        MenuList2()
     }
 }
 
+
+
+
+
+
+@Composable
+fun lazyItems(){
+    val list by remember { mutableStateOf(read()) }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 20.dp)
+    ) {
+        list.forEach {  item ->
+
+            item?.let {
+                MenuList(
+                    url = it.Image,
+                    titre = it.name,
+                    restauName = it.restaurant_name,
+                    price = it.price
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+            }
+        }
+    }
+}
 @Composable
 fun Header(){
     Row(
@@ -268,56 +330,83 @@ fun CategoryButton(
 
 @Composable
 fun DiscountSection(){
-    Column {
-        Row(
-            Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(text = "Discount Guaranteed", style = MaterialTheme.typography.h6)
-            TextButton(onClick = {}) {
-                Text(text = "See All", color = Color.Green)
-            }
-        }
-        DiscountSectionItems()
-    }
-}
+    val MenuItemss by remember { mutableStateOf(read()) }
 
-@Composable
-fun DiscountSectionItems(){
+
+
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(text = "Discount Guaranteed", style = MaterialTheme.typography.h6)
+                    TextButton(onClick = {}) {
+                        Text(text = "See All", color = Color.Green)
+                    }
+                }
     LazyRow(
         contentPadding = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         item {
-            DiscountSectionItem(
-                imagePainter = painterResource(id = R.drawable.kontcha),
-                title = "Kontcha",
-                headers = "1.5km | 4,8 (1.2k) ",
-                price = "6.00"
-
-            )
+        MenuItemss.forEachIndexed { index, item ->
+            MenuItemss[index]?.let {
+                DiscountSectionItems(it.Image, it.name, it.restaurant_name, it.price)
+            }
         }
-        item {
-            DiscountSectionItem(
-                imagePainter = painterResource(id = R.drawable.ekwang),
-                title = "Ekwang",
-                headers = "1.7km| 4,7 (900) ",
-                price = "5.64"
-
-            )
         }
-        item {
-            DiscountSectionItem(
-                imagePainter = painterResource(id = R.drawable.mbongo),
-                title = "Mbongo Poisson",
-                headers = "1.9km | 4,4 (1.1k) ",
-                price = "4.76"
-            )
+
+
+//                MenuItemss[index]?.let {
+//                    DiscountSectionItems(it.Image,it.name,it.restaurant_name,it.price)
+//
+//                }
+
+
+
         }
     }
+
+    /*
+                MenuItemss[index]?.let {
+                    Text(text = it.name,
+                        Modifier
+                            .width(100.dp)
+                            .border(1.dp, Color.LightGray, RoundedCornerShape(20.dp))
+                            .clip(RoundedCornerShape(20.dp))
+                            .padding(10.dp)
+                        , textAlign = TextAlign.Center)
+                }
+                MenuItemss[index]?.Image?.let {
+                    MyImage(url = it)
+                }*/
+
+
+data class MenuItem(
+    val Confirmed: Boolean,
+    val Image: String,
+    val date: String,
+    val name: String,
+    val price: Double,
+    val quantity : Double,
+    val restaurant_name : String
+){
+    constructor() : this(false,"","", "",0.0,0.0,"")
+}
+
+@Composable
+fun DiscountSectionItems(url: String,titre:String,restauName:String="",price: Double=0.0){
+    val imagePainter: Painter = rememberImagePainter(url)
+
+            DiscountSectionItem(
+                imagePainter = imagePainter,
+                title = titre,
+                headers = restauName,
+                price = price.toString()
+
+            )
 }
 
 @Composable
@@ -400,31 +489,31 @@ fun ChipSection(chips: List<String>){
 }
 
 @Composable
-fun MenuList() {
-    LazyRow(
+fun MenuList(url: String,titre:String,restauName:String,price: Double) {
+    val imagePainter: Painter = rememberImagePainter(url)
+    Row(
         Modifier.height(90.dp),
-        contentPadding = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ){
-        item {
+
             MenuItem(
-                imagePainter = painterResource(id = R.drawable.pizzas),
-                title = "Pizza Hut",
-                subtitle = "1.6 km | 4.6 (2.3k)",
-                price = "$1.50",
+                imagePainter = imagePainter,
+                title = titre,
+                subtitle = restauName,
+                price = price.toString(),
                 backgroundColor = Color.White
             )
-        }
+
 
     }
 
 }
 
 @Composable
-fun MenuItem(title: String = "",
-             subtitle: String = "",
-             price: String = "",
-             backgroundColor: Color = Color.Transparent,
+fun MenuItem(title: String ,
+             subtitle: String,
+             price: String ,
+             backgroundColor: Color ,
              imagePainter: Painter
 ){
     Card(

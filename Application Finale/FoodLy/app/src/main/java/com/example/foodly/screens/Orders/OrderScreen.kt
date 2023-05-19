@@ -2,93 +2,80 @@ package com.example.foodly.screens.Orders
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Yellow
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
-import com.example.foodly.model.Meals
-import com.example.foodly.model.mealLists
-import com.example.foodly.model.mealLists3
-import com.example.foodly.model.mealListsT3
-import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.LightGreen
-
-import com.example.foodly.ui.theme.md_theme_light_inverseSurface
-
 
 
 @Composable
-fun OrderScreen(navController: NavController) {
-    Scaffold(
+fun CategoryItem() {
+    androidx.compose.material3.Scaffold(
         topBar = {
+            TopAppBar(
+                title = { androidx.compose.material3.Text("Oeders") },
+                navigationIcon = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.salad),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .height(30.dp)
+                    )
+                },
+                actions = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.search),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .height(30.dp)
+                    )
+                }
+            )
+        }){}
+    Row(modifier =  Modifier .padding(top = 8.dp), horizontalArrangement = Arrangement.Center){
+        Spacer(modifier = Modifier.padding(top= 20.dp))
+        Column {
+            Spacer(modifier = Modifier.padding(top= 20.dp))
             AppBarCat()
-        }
-
-    ) {it
-        Row(
-            modifier = Modifier,
-            verticalAlignment = Alignment.Top
-
-        ){
-            MealListe(mealLists)
-            Spacer(modifier = Modifier.width(width = 30.dp))
-            MealListe2(mealListsT3)
-            Spacer(modifier = Modifier.width(width = 30.dp))
-            MealListe3(mealLists3)
+            Spacer(modifier = Modifier.padding(top= 20.dp))
+            Content()
         }
     }
 }
-
 @Composable
 fun AppBarCat() {
     Column(modifier = Modifier.height(100.dp),
-           horizontalAlignment = Alignment.Start
-          ){
+        horizontalAlignment = Alignment.Start
+    ){
         Row(modifier = Modifier
             .fillMaxWidth(),
             horizontalArrangement = Arrangement.Start
 
-             ){
+        ){
             Spacer(modifier = Modifier.padding(top=20.dp))
-                    Image(
-                        painter = painterResource(id = R.drawable.salad), contentDescription = "Homme Screen",
-                        modifier = Modifier
-                            .height(45.dp)
-                            .padding(top = 8.dp)
-                    )
-            Spacer(modifier = Modifier.width(width = 6.dp))
 
-            Text(text = "Orders", fontSize = 19.sp, modifier = Modifier .padding(top = 10.dp),)
-
-            Spacer(modifier = Modifier.width(width = 230.dp))
-            Image(
-                painter = painterResource(id = R.drawable.search), contentDescription = "Homme Screen",
-                modifier = Modifier
-                    .height(30.dp)
-                    .padding(top = 10.dp)
-            )
-                }
-        titleNavigation()
         }
+        Spacer(modifier = Modifier.padding(top=30.dp))
+        titleNavigation()
     }
+}
 @Composable
 fun titleNavigation(){
     Row(
@@ -98,13 +85,13 @@ fun titleNavigation(){
     ){
         Text(
             "Filter", fontWeight = FontWeight.Bold,
-                fontSize = 12.sp,
+            fontSize = 12.sp,
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(0.2f)
                 .padding(horizontal = 0.dp),
 
-        )
+            )
 
         Spacer(modifier = Modifier.width(8.dp))
         Text(
@@ -125,34 +112,291 @@ fun titleNavigation(){
                 .fillMaxWidth()
                 .weight(0.2f)
                 .padding(start = 30.dp),
-
-
-            )
-
+        )
         Spacer(modifier = Modifier.width(8.dp))
-
-
     }
 
+}
+
+//menu
+@Composable
+fun Content(){
+    Column {
+        Menu()
+        Spacer(modifier = Modifier.height(20.dp))
+        SortButton()
+        Spacer(modifier = Modifier.height(20.dp))
+        Menu2()
+        Spacer(modifier = Modifier.height(20.dp))
+        SortButton()
+        Spacer(modifier = Modifier.height(20.dp))
+        Menu3()
+    }
+}
+
+
+@Composable
+fun Menu(){
+    LazyRow(
+        Modifier.height(90.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
+    ){
+        item{
+            MenuItem(
+                imagePainter = painterResource(id = R.drawable.okok),
+                title= "Zero Zero Noodles",
+                descrip = "4 items | 27 km",
+                price = 10.50f,
+                backgroundColor= Color.White
+            )
+        }
+    }
+}
+@Composable
+fun Menu2(){
+    LazyRow(
+        Modifier.height(90.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
+    ){
+        item{
+            MenuItem2(
+                imagePainter = painterResource(id = R.drawable.okok),
+                title= "Zero Zero Noodles",
+                descrip = "4 items | 27 km",
+                price = 10.50f,
+                backgroundColor= Color.White
+            )
+        }
+    }
+}
+@Composable
+fun Menu3(){
+    LazyRow(
+        Modifier.height(90.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
+    ){
+        item{
+            MenuItem3(
+                imagePainter = painterResource(id = R.drawable.okok),
+                title= "Zero Zero Noodles",
+                descrip = "4 items | 27 km",
+                price = 10.50f,
+                backgroundColor= Color.White
+            )
+        }
+    }
+}
+@Composable
+fun MenuItem(
+    imagePainter: Painter,
+    title: String ="",
+    descrip: String ="",
+    price: Float,
+    backgroundColor: Color = Color.Transparent) {
+    Card(
+        Modifier.width(320.dp) .height(630.dp) ,
+        shape = RoundedCornerShape(8.dp),
+        backgroundColor = backgroundColor,
+
+        ) {
+        Row {
+            Box(
+                modifier = Modifier.run {
+                    width(100.dp)
+                        .height(150.dp)
+
+                }
+            ) {
+                Image(
+                    painter = imagePainter, contentDescription = "",
+                    modifier = Modifier
+                        .fillMaxHeight(),
+                    alignment = Alignment.CenterEnd,
+                    contentScale = ContentScale.FillBounds
+                )
+            }
+
+            Column(
+                Modifier
+                    .padding(horizontal = 16.dp)
+                    .fillMaxHeight(),
+                verticalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Text(text = "${title}", fontWeight = FontWeight.Bold,modifier = Modifier .padding(horizontal = 2.dp, vertical = 2.dp))
+                Spacer(modifier = Modifier.padding(top =5.dp))
+                Text(text = "${descrip}", modifier = Modifier.weight(1f) .padding(horizontal = 2.dp, vertical = 2.dp) )
+                Row(
+                    modifier = Modifier,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Text(text = "${price}f CFA", color =LightGreen,fontWeight = FontWeight.Bold,modifier = Modifier.weight(1f) .padding(horizontal = 2.dp, vertical = 2.dp))
+                    Button(
+                        modifier = Modifier
+                            .height(35.dp)
+                            .width(85.dp)
+                            .padding(bottom = 7.dp),
+                        onClick = { /* Gérer l'événement du clic */ },
+                        colors = ButtonDefaults.buttonColors(
+                            backgroundColor = LightGreen,
+                            contentColor = Color.White
+                        ),
+                        border = BorderStroke(2.dp, color = LightGreen),
+                        shape = RoundedCornerShape(5.dp)
+                    ) {
+
+                        Text("Completed", modifier = Modifier .padding(0.dp))
+
+                    }
+
+
+                }
+            }
+        }
+    }
 }
 
 @Composable
-fun TopBar(){
-    Column(modifier = Modifier.height(100.dp)){
-        Row(modifier = Modifier.padding(15.dp)) {
-            Icon(
-                imageVector = Icons.Default.ArrowBack,
-                contentDescription = null
-            )
-            Spacer(modifier = Modifier.size(15.dp))
-            Text(text = "Hamburger",
-                fontSize = 25.sp
-            )
+fun MenuItem2(
+    imagePainter: Painter,
+    title: String ="",
+    descrip: String ="",
+    price: Float,
+    backgroundColor: Color = Color.Transparent) {
+    Card(
+        Modifier.width(320.dp) .height(630.dp) ,
+        shape = RoundedCornerShape(8.dp),
+        backgroundColor = backgroundColor,
+
+        ) {
+        Row {
+            Box(
+                modifier = Modifier.run {
+                    width(100.dp)
+                        .height(150.dp)
+
+                }
+            ) {
+                Image(
+                    painter = imagePainter, contentDescription = "",
+                    modifier = Modifier
+                        .fillMaxHeight(),
+                    alignment = Alignment.CenterEnd,
+                    contentScale = ContentScale.FillBounds
+                )
+            }
+
+            Column(
+                Modifier
+                    .padding(horizontal = 16.dp)
+                    .fillMaxHeight(),
+                verticalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Text(text = "${title}", fontWeight = FontWeight.Bold, modifier = Modifier .padding(horizontal = 2.dp, vertical = 2.dp))
+                Spacer(modifier = Modifier.padding(top =5.dp))
+                Text(text = "${descrip}",modifier = Modifier.weight(1f) .padding(horizontal = 2.dp, vertical = 2.dp) )
+                Row(
+                    modifier = Modifier,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Text(text = "${price}f CFA", color = LightGreen ,fontWeight = FontWeight.Bold ,modifier = Modifier.weight(1f) .padding(horizontal = 2.dp, vertical = 2.dp))
+                    Button(
+                        modifier = Modifier
+                            .height(35.dp)
+                            .width(85.dp)
+                            .padding(bottom = 7.dp),
+                        onClick = { /* Gérer l'événement du clic */ },
+                        colors = ButtonDefaults.buttonColors(
+                            backgroundColor = LightGreen,
+                            contentColor = Color.White
+                        ),
+                        border = BorderStroke(2.dp, color = LightGreen),
+                        shape = RoundedCornerShape(5.dp)
+                    ) {
+
+                        Text("Completed", fontWeight = FontWeight.Bold, modifier = Modifier .padding(0.dp))
+
+                    }
+
+
+                }
+            }
         }
-
-
     }
 }
+
+@Composable
+fun MenuItem3(
+    imagePainter: Painter,
+    title: String ="",
+    descrip: String ="",
+    price: Float,
+    backgroundColor: Color = Color.Transparent) {
+    Card(
+        Modifier.width(320.dp) .height(630.dp) ,
+        shape = RoundedCornerShape(8.dp),
+        backgroundColor = backgroundColor,
+
+        ) {
+        Row {
+            Box(
+                modifier = Modifier.run {
+                    width(100.dp)
+                        .height(150.dp)
+
+                }
+            ) {
+                Image(
+                    painter = imagePainter, contentDescription = "",
+                    modifier = Modifier
+                        .fillMaxHeight(),
+                    alignment = Alignment.CenterEnd,
+                    contentScale = ContentScale.FillBounds
+                )
+            }
+
+            Column(
+                Modifier
+                    .padding(horizontal = 16.dp)
+                    .fillMaxHeight(),
+                verticalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Text(text = "${title}" ,fontWeight = FontWeight.Bold , modifier = Modifier .padding(horizontal = 2.dp, vertical = 2.dp))
+                Spacer(modifier = Modifier.padding(top =5.dp))
+                Text(text = "${descrip}", modifier = Modifier.weight(1f) .padding(horizontal = 2.dp, vertical = 2.dp) )
+                Row(
+                    modifier = Modifier,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Text(text = "${price}f CFA", fontWeight = FontWeight.Bold,color = LightGreen,modifier = Modifier.weight(1f) .padding(horizontal = 2.dp, vertical = 2.dp))
+                    Button(
+                        modifier = Modifier
+                            .height(35.dp)
+                            .width(85.dp)
+                            .padding(bottom = 7.dp),
+                        onClick = { /* Gérer l'événement du clic */ },
+                        colors = ButtonDefaults.buttonColors(
+                            backgroundColor = LightGreen,
+                            contentColor = Color.White
+                        ),
+                        border = BorderStroke(2.dp, color = LightGreen),
+                        shape = RoundedCornerShape(5.dp)
+                    ) {
+
+                        Text("Completed", fontWeight = FontWeight.Bold, modifier = Modifier .padding(0.dp))
+
+                    }
+
+
+                }
+            }
+        }
+    }
+}
+
+//btn
 
 @Composable
 fun SortButton(){
@@ -170,20 +414,15 @@ fun SortButton(){
             onClick = { /* Gérer l'événement du clic */ },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.White,
-                contentColor = Color.Green
+                contentColor = LightGreen
             ),
-            border = BorderStroke(2.dp, Color.Green),
+            border = BorderStroke(2.dp, LightGreen),
             shape = RoundedCornerShape(50.dp)
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    painter = painterResource(id = R.drawable.baseline_filter_24 ),
-                    contentDescription = null,
-                    tint = Color.Green,
-                    modifier = Modifier.height(12.dp)
-                )
+
                 Spacer(modifier = Modifier.width(4.dp))
-                Text("Filter", fontWeight = FontWeight.Bold,
+                Text("Leave a Review", fontWeight = FontWeight.Bold,
                     fontSize = 12.sp)
             }
         }
@@ -197,321 +436,32 @@ fun SortButton(){
                 .padding(horizontal = 0.dp),
             onClick = { /* Gérer l'événement du clic */ },
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.White,
-                contentColor = Color.Green
+                backgroundColor = LightGreen,
+                contentColor = Color.White
             ),
-            border = BorderStroke(2.dp, Color.Green),
-            shape = RoundedCornerShape(50.dp)
+            border = BorderStroke(2.dp, LightGreen),
+            shape = RoundedCornerShape(30.dp)
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    painter = painterResource(id = R.drawable.baseline_filter_24 ),
-                    contentDescription = null,
-                    tint = Color.Green,
-                    modifier = Modifier.height(12.dp)
-                )
                 Spacer(modifier = Modifier.width(4.dp))
-                Text("Filter", fontWeight = FontWeight.Bold,
+                Text("Order Again", fontWeight = FontWeight.Bold,
                     fontSize = 12.sp)
             }
         }
 
         Spacer(modifier = Modifier.width(8.dp))
 
-        Button(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(0.2f)
-                .padding(horizontal = 0.dp),
-            onClick = { /* Gérer l'événement du clic */ },
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.White,
-                contentColor = Color.Green
-            ),
-            border = BorderStroke(2.dp, Color.Green),
-            shape = RoundedCornerShape(50.dp)
-        ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    painter = painterResource(id = R.drawable.baseline_filter_24 ),
-                    contentDescription = null,
-                    tint = Color.Green,
-                    modifier = Modifier.height(12.dp)
-                )
-                Spacer(modifier = Modifier.width(4.dp))
-                Text("Filter", fontWeight = FontWeight.Bold,
-                    fontSize = 12.sp)
-            }
-        }
 
-        Spacer(modifier = Modifier.width(8.dp))
 
-        Button(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(0.2f)
-                .padding(horizontal = 0.dp),
-            onClick = { /* Gérer l'événement du clic */ },
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.White,
-                contentColor = Color.Green
-            ),
-            border = BorderStroke(2.dp, Color.Green),
-            shape = RoundedCornerShape(50.dp)
-        ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    painter = painterResource(id = R.drawable.baseline_filter_24 ),
-                    contentDescription = null,
-                    tint = Color.Green,
-                    modifier = Modifier.height(12.dp)
-                )
-                Spacer(modifier = Modifier.width(4.dp))
-                Text("Filter", fontWeight = FontWeight.Bold,
-                    fontSize = 12.sp)
-            }
-        }
 
-        Spacer(modifier = Modifier.width(8.dp))
 
     }
 
 
-}
-
-@Composable
-fun MealListe(meals: List<Meals>) {
-    LazyColumn {
-        items(meals) { meal ->
-            MealCart(meal = meal)
-            Spacer(modifier = Modifier.size(5.dp))
-        }
-    }
-}
-@Composable
-fun MealListe2(meals: List<Meals>) {
-    LazyColumn {
-        items(meals) { meal ->
-            MealCart2(meal = meal)
-            Spacer(modifier = Modifier.size(5.dp))
-        }
-    }
-}
-
-@Composable
-fun MealListe3(meals: List<Meals>) {
-    LazyColumn {
-        items(meals) { meal ->
-            MealCart3(meal = meal)
-            Spacer(modifier = Modifier.size(5.dp))
-        }
-    }
-}
-
-@Composable
-fun MealCart(meal: Meals) {
-
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        elevation = 2.dp,
-        shape = RoundedCornerShape(22.dp)
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(5.dp)
-        ) {
-            Image(
-                painter = painterResource(id = meal.image),
-                contentDescription = meal.nom,
-                modifier = Modifier
-                    .size(100.dp)
-                    .clip(
-                        RoundedCornerShape(16.dp)
-                    )
-                    .padding(5.dp)
-                    .background(color = md_theme_light_inverseSurface)
-            )
-            Column(modifier = Modifier.padding(start = 5.dp)) {
-                Text(text = meal.nom, style = MaterialTheme.typography.h5,fontWeight = FontWeight.Medium)
-
-                Spacer(modifier = Modifier.width(24.dp))
-
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(text = "${meal.note}")
-                }
-
-
-                Spacer(modifier = Modifier.width(6.dp))
-
-                Row(verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Start) {
-                    Text(text = "${meal.prix}f CFA", modifier = Modifier.weight(1f))
-
-                    Button(
-                        modifier = Modifier
-                            .fillMaxHeight()
-                            .height(35.dp)
-                            .padding(end = 50.dp),
-                        onClick = { /* Gérer l'événement du clic */ },
-                        colors = ButtonDefaults.buttonColors(
-                            backgroundColor = LightGreen,
-                            contentColor = Color.White
-                        ),
-                        border = BorderStroke(2.dp, LightGreen),
-                        shape = RoundedCornerShape(20.dp)
-                    ) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-
-                            Text("Filter", fontWeight = FontWeight.Bold,
-                                fontSize = 15.sp)
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun MealCart2(meal: Meals) {
-
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        elevation = 2.dp,
-        shape = RoundedCornerShape(22.dp)
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(5.dp)
-        ) {
-            Image(
-                painter = painterResource(id = meal.image),
-                contentDescription = meal.nom,
-                modifier = Modifier
-                    .size(100.dp)
-                    .clip(
-                        RoundedCornerShape(16.dp)
-                    )
-                    .padding(5.dp)
-                    .background(color = md_theme_light_inverseSurface)
-            )
-            Column(modifier = Modifier.padding(start = 5.dp)) {
-                Text(text = meal.nom, style = MaterialTheme.typography.h5,fontWeight = FontWeight.Medium)
-
-                Spacer(modifier = Modifier.width(24.dp))
-
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(text = "${meal.note}")
-                }
-
-
-                Spacer(modifier = Modifier.width(6.dp))
-
-                Row(verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Start) {
-                    Text(text = "${meal.prix}f CFA", modifier = Modifier.weight(1f))
-
-                    Button(
-                        modifier = Modifier
-                            .fillMaxHeight()
-                            .height(35.dp)
-                            .padding(end = 50.dp),
-                        onClick = { /* Gérer l'événement du clic */ },
-                        colors = ButtonDefaults.buttonColors(
-                            backgroundColor = LightGreen,
-                            contentColor = Color.White
-                        ),
-                        border = BorderStroke(2.dp, LightGreen),
-                        shape = RoundedCornerShape(20.dp)
-                    ) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-
-                            Text("Filter", fontWeight = FontWeight.Bold,
-                                fontSize = 15.sp)
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun MealCart3(meal: Meals) {
-
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        elevation = 2.dp,
-        shape = RoundedCornerShape(22.dp)
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(5.dp)
-        ) {
-            Image(
-                painter = painterResource(id = meal.image),
-                contentDescription = meal.nom,
-                modifier = Modifier
-                    .size(100.dp)
-                    .clip(
-                        RoundedCornerShape(16.dp)
-                    )
-                    .padding(5.dp)
-                    .background(color = md_theme_light_inverseSurface)
-            )
-            Column(modifier = Modifier.padding(start = 5.dp)) {
-                Text(text = meal.nom, style = MaterialTheme.typography.h5,fontWeight = FontWeight.Medium)
-
-                Spacer(modifier = Modifier.width(24.dp))
-
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(text = "${meal.note}")
-                }
-
-
-                Spacer(modifier = Modifier.width(6.dp))
-
-                Row(verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Start) {
-                    Text(text = "${meal.prix}f CFA", modifier = Modifier.weight(1f))
-
-                    Button(
-                        modifier = Modifier
-                            .fillMaxHeight()
-                            .height(35.dp)
-                            .padding(end = 50.dp),
-                        onClick = { /* Gérer l'événement du clic */ },
-                        colors = ButtonDefaults.buttonColors(
-                            backgroundColor = LightGreen,
-                            contentColor = Color.White
-                        ),
-                        border = BorderStroke(2.dp, LightGreen),
-                        shape = RoundedCornerShape(20.dp)
-                    ) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-
-                            Text("Filter", fontWeight = FontWeight.Bold,
-                                fontSize = 15.sp)
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
 
 @Preview
 @Composable
 fun  OrderScreens(){
-    val navController = rememberNavController()
-    OrderScreen(navController)
+    CategoryItem()
 }

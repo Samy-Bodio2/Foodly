@@ -19,17 +19,12 @@ var mealLists = listOf(
         22.00f,
         R.drawable.image3
     ),
-)
-var mealListsT3 = listOf(
     Meals("Eats Meets West",
         "",
         "2 items | 1.9km",
         20.50f,
         R.drawable.salade1
     ),
-
-)
-var mealLists3 = listOf(
     Meals("Gardenica Salad",
         "",
         "3 item | 2.2 km",
@@ -37,3 +32,4 @@ var mealLists3 = listOf(
         R.drawable.salad
     ),
 )
+

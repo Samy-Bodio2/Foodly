@@ -263,30 +263,36 @@ fun LoginScreen(navController: NavController) {
                         }
 
                         SocialMediaSignInButtons()
-                        Row(modifier = Modifier.fillMaxWidth().padding(20.dp)){
-                            androidx.compose.material3.Text(
-                                text = "Don't have an account?",
-                                fontSize = 14.sp,
-                                modifier = Modifier.padding(top = 16.dp)
-                            )
-                            androidx.compose.material3.TextButton(onClick = { navController.navigate(Screen.RegisterScreen.route) }) {
-                                androidx.compose.material3.Text(
-                                    text = "Sign up",
-                                    color = LightGreen
-                                )
+                        Column() {
+                            Row(modifier = Modifier
+                                .fillMaxWidth())
+                            {
+                                TextButton(onClick = { navController.navigate(Screen.RegisterScreen.route) }) {
+                                    Spacer(modifier = Modifier.width(50.dp))
+                                    Text(
+                                        text = "Don't have an account? ",
+                                        color = Color.Black
+                                    )
+                                    Text(
+                                        text = "Sign up",
+                                        color = LightGreen
+                                    )
+                                }
                             }
-                        }
-                        Row(modifier = Modifier.fillMaxWidth().padding(20.dp)){
-                            androidx.compose.material3.Text(
-                                text = "Forgot password ?",
-                                fontSize = 14.sp,
-                                modifier = Modifier.padding(top = 16.dp)
-                            )
-                            androidx.compose.material3.TextButton(onClick = { navController.navigate(Screen.OtpVerifyScreen.route) }) {
-                                androidx.compose.material3.Text(
-                                    text = "Reset password",
-                                    color = LightGreen
-                                )
+                            Row(modifier = Modifier
+                                .fillMaxWidth())
+                            {
+                                TextButton(onClick = { navController.navigate(Screen.ResetScreen.route) }) {
+                                    Spacer(modifier = Modifier.width(44.dp))
+                                    Text(
+                                        text = "Forgot password? ",
+                                        color = Color.Black
+                                    )
+                                    Text(
+                                        text = "Reset password",
+                                        color = LightGreen
+                                    )
+                                }
                             }
                         }
                     }
@@ -312,7 +318,9 @@ fun SocialMediaSignInButtons() {
                 Color.White,
             ),
             elevation = ButtonDefaults.elevation(defaultElevation = 0.dp),
-            modifier = Modifier.clip(shape = Shapes.large).border(1.dp, LightGreen, RoundedCornerShape(10.dp)),
+            modifier = Modifier
+                .clip(shape = Shapes.large)
+                .border(1.dp, LightGreen, RoundedCornerShape(10.dp)),
             contentPadding = PaddingValues(horizontal = 26.dp, vertical = 10.dp)
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -335,7 +343,9 @@ fun SocialMediaSignInButtons() {
                 backgroundColor = Color.White,
             ),
             elevation = ButtonDefaults.elevation(defaultElevation = 0.dp),
-            modifier = Modifier.clip(shape = Shapes.large).border(1.dp, LightGreen, RoundedCornerShape(10.dp)),
+            modifier = Modifier
+                .clip(shape = Shapes.large)
+                .border(1.dp, LightGreen, RoundedCornerShape(10.dp)),
             contentPadding = PaddingValues(horizontal = 26.dp, vertical = 10.dp)
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {

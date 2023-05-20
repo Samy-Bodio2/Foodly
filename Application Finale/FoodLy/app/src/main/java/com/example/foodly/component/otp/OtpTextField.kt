@@ -149,13 +149,13 @@ private fun ColumnScope.BottomActionButtons(onVerifyClick: () -> Unit){
             onClick = { },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
-                contentColor = Color(0xFF9300FC),
-                disabledBackgroundColor = Color(0x009300FC)
+                contentColor = Color(0xFF30A235),
+                disabledBackgroundColor = Color(0xFF30A235)
             ),
             enabled = true,
             modifier = Modifier
                 .weight(1f)
-                .border(2.5.dp, Color(0xFF9500FF), shape = RoundedCornerShape(100.dp)),
+                .border(2.5.dp, Color(0xFF30A235), shape = RoundedCornerShape(100.dp)),
             shape = RoundedCornerShape(100.dp),
             elevation = ButtonDefaults.elevation(
                 defaultElevation = 0.dp,
@@ -183,9 +183,9 @@ private fun ColumnScope.BottomActionButtons(onVerifyClick: () -> Unit){
                 onVerifyClick()
             },
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color(0xFF9500FF),
+                backgroundColor = Color(0xFF30A235),
                 contentColor = Color.White,
-                disabledBackgroundColor = Color(0x7A9300FC)
+                disabledBackgroundColor = Color(0xFF30A235)
             ),
             enabled = true,
             shape = RoundedCornerShape(100.dp),

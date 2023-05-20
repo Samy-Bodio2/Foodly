@@ -39,6 +39,9 @@ fun NavGraph(navController: NavHostController) {
         composable(route = Screen.RegisterScreen.route){
             RegisterScreen(navController)
         }
+        composable(route = Screen.ResetScreen.route){
+            ResetScreen(navController)
+        }
         composable(route = Screen.OtpVerifyScreen.route){
             OtpVerifyScreen(navController)
         }

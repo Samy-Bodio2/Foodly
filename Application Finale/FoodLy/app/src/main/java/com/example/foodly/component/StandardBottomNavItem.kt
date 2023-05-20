@@ -23,8 +23,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.foodly.ui.theme.LightGreen
 import com.example.foodly.ui.theme.SpaceSmall
-import com.example.foodly.ui.theme.orange2
 
 @Composable
 @Throws(IllegalArgumentException::class)
@@ -34,7 +34,7 @@ fun RowScope.StandardBottomNavItem(
     contentDescription: String? = null,
     selected: Boolean = false,
     alertCount: Int? = null,
-    selectedColor: Color = orange2,
+    selectedColor: Color = LightGreen,
     unselectedColor: Color = Color.Gray,
     enabled: Boolean = true,
     onClick: () -> Unit
@@ -107,7 +107,7 @@ fun RowScope.StandardBottomNavItem(
                             .offset(10.dp)
                             .size(15.dp)
                             .clip(CircleShape)
-                            .background(orange2)
+                            .background(LightGreen)
                     )
                 }
             }

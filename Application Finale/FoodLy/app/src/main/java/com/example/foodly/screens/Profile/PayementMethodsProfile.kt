@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4
 //package com.example.foodly.screens.Profile
 //
 //import androidx.compose.foundation.Image
@@ -372,9 +368,6 @@
 //
 //
 //
-<<<<<<< HEAD
-=======
-=======
 
 
 
@@ -402,7 +395,7 @@ import com.example.foodly.ui.theme.*
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Payement(){
+fun PayementMethodsProfile(){
     var isChecked by remember { mutableStateOf(false) }
     var selectedOption by remember { mutableStateOf(0) }
     val scrollState = rememberScrollState()
@@ -751,5 +744,3 @@ fun Payement(){
         }
     }
 }
->>>>>>> 54d9f8e05d16c767646ee7286fef1fcb5e9adc80
->>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4

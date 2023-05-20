@@ -1,4 +1,4 @@
-package com.example.foodly
+package com.example.foodly.utils
 
 import android.widget.Toast
 import androidx.compose.foundation.clickable
@@ -16,20 +16,20 @@ import com.google.firebase.ktx.Firebase
 
 fun read():MutableList<MenuItem?>{ val list = mutableStateListOf<MenuItem?>()
 
- //   LaunchedEffect(Unit) {
-        val db: FirebaseFirestore = FirebaseFirestore.getInstance()
-        db.collection("Menu").get()
-            .addOnSuccessListener { queryDocumentSnapshots ->
-                if (!queryDocumentSnapshots.isEmpty) {
-                    val documents = queryDocumentSnapshots.documents
-                    val menuItems = documents.mapNotNull { it.toObject(MenuItem::class.java) }
-                    list.addAll(menuItems)
-                }
+    //   LaunchedEffect(Unit) {
+    val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    db.collection("Menu").get()
+        .addOnSuccessListener { queryDocumentSnapshots ->
+            if (!queryDocumentSnapshots.isEmpty) {
+                val documents = queryDocumentSnapshots.documents
+                val menuItems = documents.mapNotNull { it.toObject(MenuItem::class.java) }
+                list.addAll(menuItems)
             }
-            .addOnFailureListener {
-                // Gérer les erreurs ici
-            }
-  //  }
+        }
+        .addOnFailureListener {
+            // Gérer les erreurs ici
+        }
+    //  }
     return list
 }
 
@@ -40,7 +40,7 @@ fun ModifConfirm(){
     val docRef = db.collection("Menu").document("9uxTdagZh81Hex3d4WQ9")
     docRef.get()
         .addOnSuccessListener {
-            document ->
+                document ->
             val confirm = document.getBoolean("Confirmed")
             if(!confirm!!){
                 val CollectionUpdate = mapOf("Confirmed" to !confirm)

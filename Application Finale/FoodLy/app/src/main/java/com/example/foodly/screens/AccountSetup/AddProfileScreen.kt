@@ -59,10 +59,6 @@ fun AddProfileScreen(navController: NavController) {
             modifier = Modifier
                 .align(Alignment.BottomCenter),
         ) {
-
-            val gradientColors = listOf(Color(0xFFF15C48), Color(0xFFF16356))
-
-
             Image(
                 painter = painterResource(id = R.drawable.user_img),
                 contentDescription = null,

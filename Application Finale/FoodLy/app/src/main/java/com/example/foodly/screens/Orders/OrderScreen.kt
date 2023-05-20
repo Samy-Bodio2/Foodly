@@ -21,12 +21,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
 import com.example.foodly.ui.theme.LightGreen
 
 
 @Composable
-fun CategoryItem() {
+fun OrderScreen(navController: NavController) {
     androidx.compose.material3.Scaffold(
         topBar = {
             TopAppBar(
@@ -197,7 +199,9 @@ fun MenuItem(
     price: Float,
     backgroundColor: Color = Color.Transparent) {
     Card(
-        Modifier.width(320.dp) .height(630.dp) ,
+        Modifier
+            .width(320.dp)
+            .height(630.dp) ,
         shape = RoundedCornerShape(8.dp),
         backgroundColor = backgroundColor,
 
@@ -227,12 +231,16 @@ fun MenuItem(
             ) {
                 Text(text = "${title}", fontWeight = FontWeight.Bold,modifier = Modifier .padding(horizontal = 2.dp, vertical = 2.dp))
                 Spacer(modifier = Modifier.padding(top =5.dp))
-                Text(text = "${descrip}", modifier = Modifier.weight(1f) .padding(horizontal = 2.dp, vertical = 2.dp) )
+                Text(text = "${descrip}", modifier = Modifier
+                    .weight(1f)
+                    .padding(horizontal = 2.dp, vertical = 2.dp) )
                 Row(
                     modifier = Modifier,
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    Text(text = "${price}f CFA", color =LightGreen,fontWeight = FontWeight.Bold,modifier = Modifier.weight(1f) .padding(horizontal = 2.dp, vertical = 2.dp))
+                    Text(text = "${price}f CFA", color =LightGreen,fontWeight = FontWeight.Bold,modifier = Modifier
+                        .weight(1f)
+                        .padding(horizontal = 2.dp, vertical = 2.dp))
                     Button(
                         modifier = Modifier
                             .height(35.dp)
@@ -266,7 +274,9 @@ fun MenuItem2(
     price: Float,
     backgroundColor: Color = Color.Transparent) {
     Card(
-        Modifier.width(320.dp) .height(630.dp) ,
+        Modifier
+            .width(320.dp)
+            .height(630.dp) ,
         shape = RoundedCornerShape(8.dp),
         backgroundColor = backgroundColor,
 
@@ -296,12 +306,16 @@ fun MenuItem2(
             ) {
                 Text(text = "${title}", fontWeight = FontWeight.Bold, modifier = Modifier .padding(horizontal = 2.dp, vertical = 2.dp))
                 Spacer(modifier = Modifier.padding(top =5.dp))
-                Text(text = "${descrip}",modifier = Modifier.weight(1f) .padding(horizontal = 2.dp, vertical = 2.dp) )
+                Text(text = "${descrip}",modifier = Modifier
+                    .weight(1f)
+                    .padding(horizontal = 2.dp, vertical = 2.dp) )
                 Row(
                     modifier = Modifier,
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    Text(text = "${price}f CFA", color = LightGreen ,fontWeight = FontWeight.Bold ,modifier = Modifier.weight(1f) .padding(horizontal = 2.dp, vertical = 2.dp))
+                    Text(text = "${price}f CFA", color = LightGreen ,fontWeight = FontWeight.Bold ,modifier = Modifier
+                        .weight(1f)
+                        .padding(horizontal = 2.dp, vertical = 2.dp))
                     Button(
                         modifier = Modifier
                             .height(35.dp)
@@ -335,7 +349,9 @@ fun MenuItem3(
     price: Float,
     backgroundColor: Color = Color.Transparent) {
     Card(
-        Modifier.width(320.dp) .height(630.dp) ,
+        Modifier
+            .width(320.dp)
+            .height(630.dp) ,
         shape = RoundedCornerShape(8.dp),
         backgroundColor = backgroundColor,
 
@@ -365,12 +381,16 @@ fun MenuItem3(
             ) {
                 Text(text = "${title}" ,fontWeight = FontWeight.Bold , modifier = Modifier .padding(horizontal = 2.dp, vertical = 2.dp))
                 Spacer(modifier = Modifier.padding(top =5.dp))
-                Text(text = "${descrip}", modifier = Modifier.weight(1f) .padding(horizontal = 2.dp, vertical = 2.dp) )
+                Text(text = "${descrip}", modifier = Modifier
+                    .weight(1f)
+                    .padding(horizontal = 2.dp, vertical = 2.dp) )
                 Row(
                     modifier = Modifier,
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    Text(text = "${price}f CFA", fontWeight = FontWeight.Bold,color = LightGreen,modifier = Modifier.weight(1f) .padding(horizontal = 2.dp, vertical = 2.dp))
+                    Text(text = "${price}f CFA", fontWeight = FontWeight.Bold,color = LightGreen,modifier = Modifier
+                        .weight(1f)
+                        .padding(horizontal = 2.dp, vertical = 2.dp))
                     Button(
                         modifier = Modifier
                             .height(35.dp)
@@ -463,5 +483,6 @@ fun SortButton(){
 @Preview
 @Composable
 fun  OrderScreens(){
-    CategoryItem()
+    val navController = rememberNavController()
+    OrderScreen(navController)
 }

@@ -6,21 +6,12 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-<<<<<<< HEAD
 import androidx.compose.foundation.lazy.items
-=======
->>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-<<<<<<< HEAD
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.ShoppingCart
-=======
 import androidx.compose.material.icons.filled.Menu
->>>>>>> 705626345b93e8416de3c52cbe97f0d68bca5787
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -38,44 +29,27 @@ import coil.compose.rememberImagePainter
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.foodly.R
-<<<<<<< HEAD
-import com.example.foodly.navigation.Screen
-import com.example.foodly.ui.theme.LightGreen
-=======
-<<<<<<< HEAD
-import com.example.foodly.read
-=======
->>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4
+import com.example.foodly.utils.read
 import com.google.firebase.firestore.FirebaseFirestore
->>>>>>> 705626345b93e8416de3c52cbe97f0d68bca5787
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-<<<<<<< HEAD
-fun HomeScreen(navController: NavController){
-    Box(Modifier.verticalScroll(rememberScrollState())){
-        Column {
-            AppBar(navController)
-            Content(navController)
-=======
-<<<<<<< HEAD
 fun HomeScreen(navController: NavController) {
     Scaffold(
         topBar = {
             AppBar()
         },
         content = {
-        LazyColumn{
-            item {
-                Content()
-                Spacer(Modifier.size(20.dp))
-            }
+            LazyColumn{
+                item {
+                    Content()
+                    Spacer(Modifier.size(20.dp))
+                }
 
-            item{
-                lazyItems()
+                item{
+                    lazyItems()
+                }
             }
->>>>>>> 705626345b93e8416de3c52cbe97f0d68bca5787
-        }
 
 
 
@@ -83,28 +57,6 @@ fun HomeScreen(navController: NavController) {
         }
     )
 }
-=======
-fun HomeScreen(navController: NavController){
-//    Box(){
-//
-//
-//                AppBar()
-//                Content()
-//                //DiscountSection()
-//
-//        }
-    Scaffold(
-        topBar = {AppBar()},
-        content = {
-Box(Modifier.verticalScroll(rememberScrollState())){Content()}
-
-
-        }
-    )
-    }
-
-
->>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4
 
 //    Scaffold(
 //        topBar = {AppBar()},
@@ -114,14 +66,12 @@ Box(Modifier.verticalScroll(rememberScrollState())){Content()}
 //
 //        }
 //    )
-  //  }
+//  }
 
 
 
 @Composable
-// fonction d'entete qui va contenir la photo de l'utilisateur connecter ainsi que les boutons de notifications
-// et d'ajout au panier
-fun AppBar(navController: NavController){
+fun AppBar(){
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -133,31 +83,29 @@ fun AppBar(navController: NavController){
         Row(verticalAlignment = Alignment.CenterVertically){
             Text(text = "Times Square", Modifier.weight(1f), fontWeight = FontWeight.Medium)
             Spacer(modifier = Modifier.width(36.dp))
-            IconButton(onClick = { /* Do Something */ }) {
-                Icon(Icons.Filled.Notifications, contentDescription = "Search")
-            }
+            Icon(
+                painter = painterResource(id = R.drawable.baseline_notifications_24),
+                contentDescription = "Down",
+                modifier = Modifier.size(16.dp)
+            )
             Spacer(modifier = Modifier.width(16.dp))
-            IconButton(onClick = { navController.navigate(Screen.ShoppingCard.route) }) {
-                Icon(Icons.Filled.ShoppingCart, contentDescription = "Search")
-            }
+            Icon(
+                painter = painterResource(id = R.drawable.baseline_shopping_bag_24),
+                contentDescription = "bag",
+                modifier = Modifier.size(16.dp)
+            )
         }
     }
 }
 
-
 @Composable
-<<<<<<< HEAD
-fun Content(navController: NavController){
-    Column(){
-=======
 fun Content(){
 
-Column{
+    Column{
 
->>>>>>> 705626345b93e8416de3c52cbe97f0d68bca5787
         Header()
         Spacer(modifier = Modifier.width(16.dp))
-        PromotionSection(navController)
+        PromotionSection()
         Spacer(modifier = Modifier.width(16.dp))
         CategorySection()
         Spacer(modifier = Modifier.width(16.dp))
@@ -198,7 +146,6 @@ fun lazyItems(){
     }
 }
 @Composable
-// fonction est utiliser pour afficher la barre de recherche
 fun Header(){
     Row(
         Modifier
@@ -232,8 +179,7 @@ fun Header(){
 }
 
 @Composable
-// cette fonction est pour afficher le box de la promotion de nous menu
-fun PromotionSection(navController: NavController){
+fun PromotionSection(){
     Column(Modifier.padding(horizontal = 16.dp)) {
         Row(
             Modifier.fillMaxWidth(),
@@ -241,10 +187,8 @@ fun PromotionSection(navController: NavController){
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(text = "Special Offers", style = MaterialTheme.typography.h6)
-            TextButton(onClick = {
-                navController.navigate(Screen.CategoryScreen.route)
-            }) {
-                Text(text = "See All", color = LightGreen)
+            TextButton(onClick = {}) {
+                Text(text = "See All", color = Color.Green)
             }
         }
     }
@@ -259,16 +203,13 @@ fun PromotionSection(navController: NavController){
                 title = "30%",
                 subtitle = "Discount Only",
                 header = "Valid for today",
-                backgroundColor = LightGreen
+                backgroundColor = Color.Green
             )
         }
     }
 }
 
 @Composable
-// cette fonction nous permet de declarer toute les variables qui seront prises pour afficher le resultat du
-//boxs publicitaire tout en modifiant les polices d'ecriture, l'alignement et la facon donc les elements
-//seront disposer
 fun PromotionItem(
     title: String = "",
     subtitle: String = "",
@@ -277,8 +218,8 @@ fun PromotionItem(
     imagePainter: Painter
 ) {
     Card(
-        Modifier.width(380.dp),
-        shape = RoundedCornerShape(20.dp),
+        Modifier.width(350.dp),
+        shape = RoundedCornerShape(8.dp),
         backgroundColor = backgroundColor,
         elevation = 0.dp
     ) {
@@ -289,16 +230,16 @@ fun PromotionItem(
                     .fillMaxHeight(),
                 verticalArrangement = Arrangement.Center
             ) {
-                Text(text = title, fontSize = 40.sp, color = Color.White, fontWeight = FontWeight.ExtraBold)
-                Text(text = subtitle, fontSize = 20.sp, color = Color.White, fontWeight = FontWeight.Bold)
-                Text(text = header, fontSize = 20.sp, color = Color.White, fontWeight = FontWeight.Bold)
+                Text(text = title, fontSize = 34.sp, color = Color.White)
+                Text(text = subtitle, fontSize = 22.sp, color = Color.White, fontWeight = FontWeight.Bold)
+                Text(text = header, fontSize = 22.sp, color = Color.White, fontWeight = FontWeight.Bold)
             }
             Image(
                 painter = imagePainter, contentDescription = "",
                 modifier = Modifier
                     .fillMaxHeight()
                     .weight(1f)
-                    .clip(RoundedCornerShape(20.dp)),
+                    .clip(RoundedCornerShape(8.dp)),
                 alignment = Alignment.CenterEnd,
                 contentScale = ContentScale.Crop
             )
@@ -307,10 +248,9 @@ fun PromotionItem(
 }
 
 @Composable
-//cette fonction permet d'avoir un apercu des produits que nous avons dans nos restaurants
 fun CategorySection(){
     Row(
-        Modifier.fillMaxWidth().padding(18.dp),
+        Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         CategoryButton(
@@ -336,7 +276,7 @@ fun CategorySection(){
     }
     Spacer(modifier = Modifier.width(4.dp))
     Row(
-        Modifier.fillMaxWidth().padding(18.dp),
+        Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         CategoryButton(
@@ -363,7 +303,6 @@ fun CategorySection(){
 }
 
 @Composable
-// cette fonction permet de styler les elements present dans notre box categorie
 fun CategoryButton(
     text: String = "",
     icon: Painter,
@@ -391,198 +330,55 @@ fun CategoryButton(
 
 @Composable
 fun DiscountSection(){
-<<<<<<< HEAD
-    Column {
-        Row(
-            Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(text = "Discount Guaranteed", style = MaterialTheme.typography.h6)
-            TextButton(onClick = {}) {
-                Text(text = "See All", color = LightGreen)
-=======
-<<<<<<< HEAD
     val MenuItemss by remember { mutableStateOf(read()) }
 
 
 
-                Row(
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(text = "Discount Guaranteed", style = MaterialTheme.typography.h6)
-                    TextButton(onClick = {}) {
-                        Text(text = "See All", color = Color.Green)
-                    }
-                }
-=======
-    val context = LocalContext.current
-    var MenuItemss = mutableStateListOf<MenuItem?>()
-    var db: FirebaseFirestore = FirebaseFirestore.getInstance()
-    LaunchedEffect(Unit) {
-        db.collection("Menu").get()
-            .addOnSuccessListener { queryDocumentSnapshots ->
-                if (!queryDocumentSnapshots.isEmpty) {
-                    val list = queryDocumentSnapshots.documents
-                    for (d in list) {
-                        val c: MenuItem? = d.toObject(MenuItem::class.java)
-                        MenuItemss.add(c)
-                        Toast.makeText(
-                            context,
-                            "reussi",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-
-
-                } else {
-                    Toast.makeText(
-                        context,
-                        "No need  found create one",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-            }.addOnFailureListener {
-                Toast.makeText(
-                    context,
-                    "fail to get the data",
-                    Toast.LENGTH_SHORT
-                ).show()
->>>>>>> 705626345b93e8416de3c52cbe97f0d68bca5787
-            }
-    }
-/*    LazyColumn(Modifier.fillMaxSize()){
-        itemsIndexed(*/MenuItemss.forEachIndexed{
-                index, item ->
-
-//                MenuItemss[index]?.name?.let {
-//                    Text(
-//                        text = it,
-//                        Modifier.width(100.dp)
-//                            .border(1.dp, Color.LightGray, RoundedCornerShape(20.dp))
-//                            .clip(RoundedCornerShape(20.dp)).padding(10.dp),
-//                        textAlign = TextAlign.Center
-//                    )
-//                }
-
-//                MenuItemss[index]?.let {
-//                    DiscountSectionItems(it.Image,it.name,it.restaurant_name,it.price)
-//
-//                }
-                    Column {
-                        Row(
-                            Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 16.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceBetween
-                        ) {
-                            Text(text = "Discount Guaranteed", style = MaterialTheme.typography.h6)
-                            TextButton(onClick = {}) {
-                                Text(text = "See All", color = Color.Green)
-                            }
-                        }
-                        MenuItemss[index]?.let {
-                            DiscountSectionItems(it.Image,it.name,it.restaurant_name,it.price)
-                        }
-                    }
-
-
-
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(text = "Discount Guaranteed", style = MaterialTheme.typography.h6)
+        TextButton(onClick = {}) {
+            Text(text = "See All", color = Color.Green)
         }
     }
-
-    /*
-                MenuItemss[index]?.let {
-                    Text(text = it.name,
-                        Modifier
-                            .width(100.dp)
-                            .border(1.dp, Color.LightGray, RoundedCornerShape(20.dp))
-                            .clip(RoundedCornerShape(20.dp))
-                            .padding(10.dp)
-                        , textAlign = TextAlign.Center)
-                }
-                MenuItemss[index]?.Image?.let {
-                    MyImage(url = it)
-                }*/
-
-
-data class MenuItem(
-    val Confirmed: Boolean,
-    val Image: String,
-    val date: String,
-    val name: String,
-    val price: Double,
-    val quantity : Double,
-    val restaurant_name : String
-){
-    constructor() : this(false,"","", "",0.0,0.0,"")
-}
-
-@Composable
-<<<<<<< HEAD
-fun DiscountSectionItems(url: String,titre:String,restauName:String="",price: Double=0.0){
-    val imagePainter: Painter = rememberImagePainter(url)
-=======
-// cette fonction permet d'afficher les differents repas que nous proposons ainsi que leurs prix,leurs notes,
-//le nombreux de personnes aimant ce plat ainsi que la distance vous separant du restaurant qui le propose
-fun DiscountSectionItems(){
->>>>>>> 54d9f8e05d16c767646ee7286fef1fcb5e9adc80
->>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4
     LazyRow(
         contentPadding = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         item {
-<<<<<<< HEAD
-        MenuItemss.forEachIndexed { index, item ->
-            MenuItemss[index]?.let {
-                DiscountSectionItems(it.Image, it.name, it.restaurant_name, it.price)
+            MenuItemss.forEachIndexed { index, item ->
+                MenuItemss[index]?.let {
+                    DiscountSectionItems(it.Image, it.name, it.restaurant_name, it.price)
+                }
             }
         }
-        }
-
-
-//                MenuItemss[index]?.let {
-//                    DiscountSectionItems(it.Image,it.name,it.restaurant_name,it.price)
-//
-//                }
 
 
 
-        }
-=======
-            DiscountSectionItem(
-                imagePainter = imagePainter,
-                title = titre,
-                headers = restauName,
-                price = price.toString()
 
-            )
-        }
->>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4
+
+
     }
+}
 
-    /*
-                MenuItemss[index]?.let {
-                    Text(text = it.name,
-                        Modifier
-                            .width(100.dp)
-                            .border(1.dp, Color.LightGray, RoundedCornerShape(20.dp))
-                            .clip(RoundedCornerShape(20.dp))
-                            .padding(10.dp)
-                        , textAlign = TextAlign.Center)
-                }
-                MenuItemss[index]?.Image?.let {
-                    MyImage(url = it)
-                }*/
+/*
+            MenuItemss[index]?.let {
+                Text(text = it.name,
+                    Modifier
+                        .width(100.dp)
+                        .border(1.dp, Color.LightGray, RoundedCornerShape(20.dp))
+                        .clip(RoundedCornerShape(20.dp))
+                        .padding(10.dp)
+                    , textAlign = TextAlign.Center)
+            }
+            MenuItemss[index]?.Image?.let {
+                MyImage(url = it)
+            }*/
 
 
 data class MenuItem(
@@ -601,17 +397,16 @@ data class MenuItem(
 fun DiscountSectionItems(url: String,titre:String,restauName:String="",price: Double=0.0){
     val imagePainter: Painter = rememberImagePainter(url)
 
-            DiscountSectionItem(
-                imagePainter = imagePainter,
-                title = titre,
-                headers = restauName,
-                price = price.toString()
+    DiscountSectionItem(
+        imagePainter = imagePainter,
+        title = titre,
+        headers = restauName,
+        price = price.toString()
 
-            )
+    )
 }
 
 @Composable
-//le style et la forme des boxs
 fun DiscountSectionItem(
     title: String = "",
     headers: String ="",
@@ -666,8 +461,6 @@ fun Recommended(){
 }
 
 @Composable
-//cette fonction permet de creer une barre de menu navigable qui va permettre de consulter au clic les differents
-//produits recommander
 fun ChipSection(chips: List<String>){
     var selectedChipIndex by remember{
         mutableStateOf(0)
@@ -693,27 +486,20 @@ fun ChipSection(chips: List<String>){
 }
 
 @Composable
-<<<<<<< HEAD
 fun MenuList(url: String,titre:String,restauName:String,price: Double) {
     val imagePainter: Painter = rememberImagePainter(url)
     Row(
-=======
-// cette fonction va permetre de recuperer les informations de menu preenregistrer et les afficher dans les
-// MenuItem ou box qui seront creer au prealable
-fun MenuList() {
-    LazyRow(
->>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4
         Modifier.height(90.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ){
 
-            MenuItem(
-                imagePainter = imagePainter,
-                title = titre,
-                subtitle = restauName,
-                price = price.toString(),
-                backgroundColor = Color.White
-            )
+        MenuItem(
+            imagePainter = imagePainter,
+            title = titre,
+            subtitle = restauName,
+            price = price.toString(),
+            backgroundColor = Color.White
+        )
 
 
     }

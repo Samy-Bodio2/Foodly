@@ -1,5 +1,6 @@
 package com.example.foodly.screens.Onboarding_SignUp_SignIn
 
+import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.*
@@ -21,6 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.*
@@ -35,6 +37,7 @@ import com.example.foodly.component.VisibilityOff
 import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.*
 import com.example.foodly.ui.theme.LightGreen
+
 //import com.google.firebase.auth.ktx.auth
 //import com.google.firebase.ktx.Firebase
 
@@ -48,8 +51,8 @@ fun LoginScreen(navController: NavController) {
     val keyboardController = LocalSoftwareKeyboardController.current
     var passwordHidden by rememberSaveable { mutableStateOf(true) }
     var showMessage by remember { mutableStateOf(false) }
-    var showError by remember { mutableStateOf(false) }
     val gradientColor = listOf(LightGreen, Color.Black )
+    val context = LocalContext.current
     val cornerRadius = 16.dp
 
     Surface {
@@ -169,8 +172,12 @@ fun LoginScreen(navController: NavController) {
                             .fillMaxWidth()
                             .padding(start = 32.dp, end = 32.dp),
                         onClick = {
-                            if (email.isEmpty() || password.isEmpty()) {
-                                showError = true
+                            if (email.isEmpty()) {
+                                Toast.makeText(context, "Please enter email", Toast.LENGTH_SHORT).show()
+                            }else if(password.isEmpty()){
+                                Toast.makeText(context, "Please enter password", Toast.LENGTH_SHORT).show()
+                            }else if(email.isEmpty() && password.isEmpty()){
+                                Toast.makeText(context, "Please enter password and password", Toast.LENGTH_SHORT).show()
                             }else{
                                 navController.navigate(Screen.AddProfileScreen.route)
                                 /*
@@ -238,24 +245,6 @@ fun LoginScreen(navController: NavController) {
                             }
                         )
                     }
-                    if (showError) {
-                        BackHandler {
-                            showError = false
-                        }
-                        AlertDialog(
-                            onDismissRequest = { showError = false },
-                            title = { Text("Erreur") },
-                            text = { Text("Champ vide") },
-                            buttons = {
-                                Button(
-                                    onClick = { showError = false }
-                                ) {
-                                    Text("OK")
-                                }
-                            },
-                            backgroundColor = Color.White
-                        )
-                    }
                     Spacer(modifier = Modifier.height(16.dp))
                     Column(
                         modifier = Modifier.fillMaxSize()
@@ -273,25 +262,30 @@ fun LoginScreen(navController: NavController) {
                             androidx.compose.material3.Divider(modifier = Modifier.weight(1f))
                         }
 
-                        Spacer(modifier = Modifier.height(16.dp))
-
                         SocialMediaSignInButtons()
-                        Spacer(modifier = Modifier.width(10.dp))
-                        Row(
-                            horizontalArrangement = Arrangement.Center,
-                            modifier = Modifier.padding(top = 16.dp).fillMaxWidth()
-                        ){
-
-                            Text(
+                        Row(modifier = Modifier.fillMaxWidth().padding(20.dp)){
+                            androidx.compose.material3.Text(
+                                text = "Don't have an account?",
+                                fontSize = 14.sp,
+                                modifier = Modifier.padding(top = 16.dp)
+                            )
+                            androidx.compose.material3.TextButton(onClick = { navController.navigate(Screen.RegisterScreen.route) }) {
+                                androidx.compose.material3.Text(
+                                    text = "Sign up",
+                                    color = LightGreen
+                                )
+                            }
+                        }
+                        Row(modifier = Modifier.fillMaxWidth().padding(20.dp)){
+                            androidx.compose.material3.Text(
                                 text = "Forgot password ?",
                                 fontSize = 14.sp,
+                                modifier = Modifier.padding(top = 16.dp)
                             )
-                            Spacer(modifier = Modifier.width(10.dp))
-                            TextButton(onClick = { Screen.LoginScreen.route }) {
-                                Text(
+                            androidx.compose.material3.TextButton(onClick = { navController.navigate(Screen.OtpVerifyScreen.route) }) {
+                                androidx.compose.material3.Text(
                                     text = "Reset password",
-                                    color = LightGreen,
-                                    fontSize = 14.sp,
+                                    color = LightGreen
                                 )
                             }
                         }

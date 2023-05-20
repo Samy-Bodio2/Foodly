@@ -55,7 +55,7 @@ fun Let_You_In(navController: NavController) {
                 )
                 SocialButton(iconId = R.drawable.ic_facebook, label = "Continue with Facebook")
                 SocialButton(iconId = R.drawable.ic_google, label = "Continue with Google")
-                SocialButton(iconId = R.drawable.ic_facebook, label = "Continue with Apple")
+                SocialButton(iconId = R.drawable.apple, label = "Continue with Apple")
                 Spacer(modifier = Modifier.height(16.dp))
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -83,7 +83,7 @@ fun Let_You_In(navController: NavController) {
                         fontSize = 14.sp,
                         modifier = Modifier.padding(top = 16.dp)
                     )
-                    TextButton(onClick = { Screen.RegisterScreen.route }) {
+                    TextButton(onClick = { navController.navigate(Screen.RegisterScreen.route) }) {
                         Text(text = "Sign up", color = LightGreen)
                     }
                 }

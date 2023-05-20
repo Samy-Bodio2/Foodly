@@ -16,6 +16,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -26,91 +27,128 @@ import com.example.foodly.ui.theme.LightGreen
 @Composable
 
 fun AddMenu() {
-    Column(modifier = Modifier.fillMaxSize()) {
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ) {
         Image(
-            painter = painterResource(R.drawable.food),
-            contentDescription = "Mixed Vegetable Salad",
+            painter = painterResource(id = R.drawable.food),
+            contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(200.dp)
+                .heightIn(max = 400.dp)
+                .align(Alignment.TopCenter)
         )
-        Row(
+
+        IconButton(
+            onClick = { /* Do something */ },
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
+                .padding(16.dp)
+                .align(Alignment.TopStart)
         ) {
-            IconButton(onClick = { /* Handle back button click */ }) {
-                Icon(
-                    Icons.Filled.ArrowBack,
-                    contentDescription = "Back"
-                )
-            }
-            IconButton(onClick = { /* Handle send button click */ }) {
-                Icon(
-                    Icons.Filled.Send,
-                    contentDescription = "Send"
-                )
-            }
-        }
-        Text(
-            text = "Mixed Vegetable Salad",
-            style = MaterialTheme.typography.bodyLarge,
-            modifier = Modifier
-                .padding(start = 16.dp, top = 16.dp, end = 16.dp)
-        )
-        Divider(modifier = Modifier.padding(vertical = 8.dp))
-        Text(
-            text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor mauris vel libero elementum, at molestie justo commodo. Morbi quis imperdiet velit, eu dignissim nisl.",
-            style = MaterialTheme.typography.bodySmall,
-            modifier = Modifier
-                .padding(horizontal = 16.dp)
-        )
-        Row(
-            modifier = Modifier
-                .padding(horizontal = 16.dp, vertical = 8.dp)
-                .align(Alignment.CenterHorizontally)
-        ) {
-            Button(
-                onClick = { /* Handle decrement button click */ },
-                shape = RoundedCornerShape(8.dp),
-                colors = ButtonDefaults.buttonColors(Color.White)
-            ) {
-                Text(text = "-")
-            }
-            Text(
-                text = "2",
-                style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.padding(horizontal = 16.dp)
+            Icon(
+                imageVector = Icons.Default.ArrowBack,
+                contentDescription = "Back"
             )
-            Button(
-                onClick = { /* Handle increment button click */ },
-                shape = RoundedCornerShape(8.dp),
-                colors = ButtonDefaults.buttonColors(Color.White)
-            ) {
-                Text(text = "+")
-            }
         }
-        TextField(
-            value = "",
-            onValueChange = { /* Handle text field value change */ },
-            placeholder = { Text(text = "Note to Restaurant (optional)") },
+
+        IconButton(
+            onClick = { /* Do something */ },
             modifier = Modifier
-                .padding(horizontal = 16.dp, vertical = 8.dp)
-                .fillMaxWidth()
-                .height(56.dp)
-                .clip(RoundedCornerShape(8.dp))
-        )
-        Button(
-            onClick = { /* Handle add to basket button click */ },
-            shape = RoundedCornerShape(24.dp),
-            colors = ButtonDefaults.buttonColors(LightGreen),
-            modifier = Modifier
-                .padding(horizontal = 16.dp, vertical = 8.dp)
-                .fillMaxWidth()
-                .height(56.dp)
+                .padding(16.dp)
+                .align(Alignment.TopEnd)
         ) {
-            Text(text = "Add to basket - $12.00")
+            Icon(
+                imageVector = Icons.Default.Send,
+                contentDescription = "Send"
+            )
+        }
+
+        Column(
+            modifier = Modifier
+                .padding(top = 240.dp)
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+        ) {
+            Text(
+                text = "Mixed Vegetable Salad",
+                style = MaterialTheme.typography.headlineLarge,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Divider()
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Text(
+                text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor nisi, porttitor at ex nec, convallis viverra orci.",
+                style = MaterialTheme.typography.bodyMedium,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Button(
+                    onClick = { /* Do something */ },
+                    colors = ButtonDefaults.buttonColors(
+                        Color.White,
+                        contentColor = MaterialTheme.colorScheme.primary
+                    )
+                ) {
+                    Text(text = "+")
+                }
+
+                Spacer(modifier = Modifier.width(8.dp))
+
+                Text(
+                    text = "1",
+                    style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier.widthIn(max = 40.dp)
+                )
+
+                Spacer(modifier = Modifier.width(8.dp))
+
+                Button(
+                    onClick = { /* Do something */ },
+                    colors = ButtonDefaults.buttonColors(
+                        Color.White,
+                        contentColor = MaterialTheme.colorScheme.primary
+                    )
+                ) {
+                    Text(text = "-")
+                }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            TextField(
+                value = "",
+                onValueChange = { /* Do something */ },
+                placeholder = { Text(text = "Note to Restaurant (optional)") },
+                shape = RoundedCornerShape(4.dp),
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(
+                onClick = { /* Do something */ },
+                shape = RoundedCornerShape(24.dp),
+                colors = ButtonDefaults.buttonColors(
+                    LightGreen,
+                    contentColor = Color.White
+                ),
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            ) {
+                Text(text = "Add to Basket - $12.00")
+            }
         }
     }
 }

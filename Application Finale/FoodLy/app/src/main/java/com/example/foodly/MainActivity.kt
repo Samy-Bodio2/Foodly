@@ -14,23 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.foodly.component.StandardScaffold
 import com.example.foodly.navigation.NavGraph
 import com.example.foodly.navigation.Screen
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4
-
-
-import com.example.foodly.screens.Onboarding_SignUp_SignIn.Let_You_In
-import com.example.foodly.screens.Profile.ProfileScreen
-import com.example.foodly.screens.Profile.SwitchButton
 import com.example.foodly.screens.Profile.TopBar
-<<<<<<< HEAD
-=======
-=======
-import com.example.foodly.screens.Home_ActionMenu.HomeScreen
-import com.example.foodly.screens.e_wallet.EWalletScreen
->>>>>>> 54d9f8e05d16c767646ee7286fef1fcb5e9adc80
->>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4
 import com.example.foodly.ui.theme.FoodlyTheme
 
 class MainActivity : ComponentActivity() {
@@ -43,19 +27,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    //val navController = rememberNavController()
-<<<<<<< HEAD
-                    val navController = rememberNavController()
-                    NavGraph(navController)
-                    //ModifConfirm()
-=======
-                    //val navController = rememberNavController()
-                    //NavGraph(navController)
-                    TopBar()
-=======
->>>>>>> 54d9f8e05d16c767646ee7286fef1fcb5e9adc80
                     LoginApplication()
->>>>>>> 66ad1931f5259f7c60ceb3989be5cc4fc660cde4
                 }
             }
         }

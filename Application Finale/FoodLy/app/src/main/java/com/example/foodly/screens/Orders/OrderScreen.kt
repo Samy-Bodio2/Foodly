@@ -32,7 +32,7 @@ fun OrderScreen(navController: NavController) {
     androidx.compose.material3.Scaffold(
         topBar = {
             TopAppBar(
-                title = { androidx.compose.material3.Text("Oeders") },
+                title = { androidx.compose.material3.Text("Orders") },
                 navigationIcon = {
                     Icon(
                         painter = painterResource(id = R.drawable.salad),

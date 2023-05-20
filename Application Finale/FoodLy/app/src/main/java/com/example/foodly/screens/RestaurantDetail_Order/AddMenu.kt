@@ -70,6 +70,7 @@ fun AddMenu() {
                 .padding(top = 240.dp)
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
+
         ) {
             Text(
                 text = "Mixed Vegetable Salad",

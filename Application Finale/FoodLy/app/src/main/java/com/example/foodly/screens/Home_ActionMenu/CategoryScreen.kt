@@ -21,16 +21,17 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.foodly.model.categories
+import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.Shapes
 
 @Composable
 fun CategoryScreen(navController: NavController) {
     Scaffold(
         topBar = {
-            MyAppBar(title = "More Category", onNavigateUp = { /* Navigation de retour */ })
+            MyAppBar(title = "More Category", onNavigateUp = { navController.navigate(Screen.HomeScreen.route) })
         }
     ) {it
-        CategoryList()
+        CategoryList(navController)
     }
 }
 @Composable
@@ -51,9 +52,9 @@ fun MyAppBar(title: String, onNavigateUp: () -> Unit) {
 }
 
 @Composable
-fun CategoryList(){
+fun CategoryList(navController: NavController){
     EasyGrid(nColumns = 4, items = categories){
-        CategoryCard(it.image, it.name, Modifier)
+        CategoryCard(it.image, it.name, Modifier, navController)
     }
 }
 
@@ -83,7 +84,8 @@ fun <T> EasyGrid(nColumns: Int, items: List<T>, content: @Composable (T) -> Unit
 fun CategoryCard(
     @DrawableRes iconResource: Int,
     title: String,
-    modifier: Modifier
+    modifier: Modifier,
+    navController: NavController
 ){
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -99,9 +101,7 @@ fun CategoryCard(
                 .height(100.dp)
                 .padding(bottom = 4.dp)
                 .clickable {
-                    ({
-                        /* navigation vers CategoryItem */
-                    })
+                    navController.navigate(Screen.CategoryItem.route)
                 }
         ) {
             Image(

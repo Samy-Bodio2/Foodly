@@ -6,6 +6,9 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -21,13 +24,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.foodly.R
+import com.example.foodly.navigation.Screen
+import com.example.foodly.ui.theme.LightGreen
 
 @Composable
 fun HomeScreen(navController: NavController){
     Box(Modifier.verticalScroll(rememberScrollState())){
         Column {
-            AppBar()
-            Content()
+            AppBar(navController)
+            Content(navController)
         }
     }
 }
@@ -35,7 +40,7 @@ fun HomeScreen(navController: NavController){
 @Composable
 // fonction d'entete qui va contenir la photo de l'utilisateur connecter ainsi que les boutons de notifications
 // et d'ajout au panier
-fun AppBar(){
+fun AppBar(navController: NavController){
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -47,27 +52,24 @@ fun AppBar(){
         Row(verticalAlignment = Alignment.CenterVertically){
             Text(text = "Times Square", Modifier.weight(1f), fontWeight = FontWeight.Medium)
             Spacer(modifier = Modifier.width(36.dp))
-            Icon(
-                painter = painterResource(id = R.drawable.baseline_notifications_24),
-                contentDescription = "Down",
-                modifier = Modifier.size(16.dp)
-            )
+            IconButton(onClick = { /* Do Something */ }) {
+                Icon(Icons.Filled.Notifications, contentDescription = "Search")
+            }
             Spacer(modifier = Modifier.width(16.dp))
-            Icon(
-                painter = painterResource(id = R.drawable.baseline_shopping_bag_24),
-                contentDescription = "bag",
-                modifier = Modifier.size(16.dp)
-            )
+            IconButton(onClick = { navController.navigate(Screen.ShoppingCard.route) }) {
+                Icon(Icons.Filled.ShoppingCart, contentDescription = "Search")
+            }
         }
     }
 }
 
+
 @Composable
-fun Content(){
+fun Content(navController: NavController){
     Column(){
         Header()
         Spacer(modifier = Modifier.width(16.dp))
-        PromotionSection()
+        PromotionSection(navController)
         Spacer(modifier = Modifier.width(16.dp))
         CategorySection()
         Spacer(modifier = Modifier.width(16.dp))
@@ -121,7 +123,7 @@ fun Header(){
 
 @Composable
 // cette fonction est pour afficher le box de la promotion de nous menu
-fun PromotionSection(){
+fun PromotionSection(navController: NavController){
     Column(Modifier.padding(horizontal = 16.dp)) {
         Row(
             Modifier.fillMaxWidth(),
@@ -129,8 +131,10 @@ fun PromotionSection(){
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(text = "Special Offers", style = MaterialTheme.typography.h6)
-            TextButton(onClick = {}) {
-                Text(text = "See All", color = Color.Green)
+            TextButton(onClick = {
+                navController.navigate(Screen.CategoryScreen.route)
+            }) {
+                Text(text = "See All", color = LightGreen)
             }
         }
     }
@@ -145,7 +149,7 @@ fun PromotionSection(){
                 title = "30%",
                 subtitle = "Discount Only",
                 header = "Valid for today",
-                backgroundColor = Color.Green
+                backgroundColor = LightGreen
             )
         }
     }
@@ -163,8 +167,8 @@ fun PromotionItem(
     imagePainter: Painter
 ) {
     Card(
-        Modifier.width(350.dp),
-        shape = RoundedCornerShape(8.dp),
+        Modifier.width(380.dp),
+        shape = RoundedCornerShape(20.dp),
         backgroundColor = backgroundColor,
         elevation = 0.dp
     ) {
@@ -175,16 +179,16 @@ fun PromotionItem(
                     .fillMaxHeight(),
                 verticalArrangement = Arrangement.Center
             ) {
-                Text(text = title, fontSize = 34.sp, color = Color.White)
-                Text(text = subtitle, fontSize = 22.sp, color = Color.White, fontWeight = FontWeight.Bold)
-                Text(text = header, fontSize = 22.sp, color = Color.White, fontWeight = FontWeight.Bold)
+                Text(text = title, fontSize = 40.sp, color = Color.White, fontWeight = FontWeight.ExtraBold)
+                Text(text = subtitle, fontSize = 20.sp, color = Color.White, fontWeight = FontWeight.Bold)
+                Text(text = header, fontSize = 20.sp, color = Color.White, fontWeight = FontWeight.Bold)
             }
             Image(
                 painter = imagePainter, contentDescription = "",
                 modifier = Modifier
                     .fillMaxHeight()
                     .weight(1f)
-                    .clip(RoundedCornerShape(8.dp)),
+                    .clip(RoundedCornerShape(20.dp)),
                 alignment = Alignment.CenterEnd,
                 contentScale = ContentScale.Crop
             )
@@ -196,7 +200,7 @@ fun PromotionItem(
 //cette fonction permet d'avoir un apercu des produits que nous avons dans nos restaurants
 fun CategorySection(){
     Row(
-        Modifier.fillMaxWidth(),
+        Modifier.fillMaxWidth().padding(18.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         CategoryButton(
@@ -222,7 +226,7 @@ fun CategorySection(){
     }
     Spacer(modifier = Modifier.width(4.dp))
     Row(
-        Modifier.fillMaxWidth(),
+        Modifier.fillMaxWidth().padding(18.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         CategoryButton(
@@ -287,7 +291,7 @@ fun DiscountSection(){
         ) {
             Text(text = "Discount Guaranteed", style = MaterialTheme.typography.h6)
             TextButton(onClick = {}) {
-                Text(text = "See All", color = Color.Green)
+                Text(text = "See All", color = LightGreen)
             }
         }
         DiscountSectionItems()

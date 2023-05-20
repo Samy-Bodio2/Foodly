@@ -25,13 +25,14 @@ import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
 import com.example.foodly.model.Meal
 import com.example.foodly.model.mealList
+import com.example.foodly.navigation.Screen
 
 
 @Composable
 fun CategoryItem(navController: NavController) {
     Scaffold(
         topBar = {
-            AppBarCat("Hamburger", onNavigateUp = { /* Navigation de retour */ })
+            AppBarCat("Hamburger", onNavigateUp = { navController.navigate(Screen.CategoryScreen.route) })
         }
     ) {it
 

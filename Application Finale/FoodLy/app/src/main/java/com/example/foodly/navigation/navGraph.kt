@@ -22,7 +22,7 @@ fun NavGraph(navController: NavHostController) {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.Splash.route){
+        startDestination = Screen.HomeScreen.route){
 
         composable(route = Screen.Splash.route){
             AnimatedSplashScreen(navController)
@@ -62,7 +62,7 @@ fun NavGraph(navController: NavHostController) {
         }
 
         composable(route = Screen.EWalletScreen.route){
-            EWalletScreen()
+            EWalletScreen(navController)
         }
         composable(route = Screen.TransactionHistoryScreen.route){
             TransactionHistoryScreen(navController)

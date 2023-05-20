@@ -1,5 +1,7 @@
 package com.example.foodly.screens.Onboarding_SignUp_SignIn
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
@@ -37,9 +39,8 @@ import com.example.foodly.component.VisibilityOff
 import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.*
 import com.example.foodly.ui.theme.LightGreen
-
-//import com.google.firebase.auth.ktx.auth
-//import com.google.firebase.ktx.Firebase
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 
@@ -179,15 +180,13 @@ fun LoginScreen(navController: NavController) {
                             }else if(email.isEmpty() && password.isEmpty()){
                                 Toast.makeText(context, "Please enter password and password", Toast.LENGTH_SHORT).show()
                             }else{
-                                navController.navigate(Screen.AddProfileScreen.route)
-                                /*
                                 try{
                                     val auth = Firebase.auth
                                     auth.signInWithEmailAndPassword(email, password)
                                         .addOnCompleteListener { task ->
                                             showMessage = if (task.isSuccessful){
                                                 Log.d(TAG, "signInWithEmail: success")
-                                                navController.navigate("homescreen"){
+                                                navController.navigate(Screen.AddProfileScreen.route){
                                                     popUpTo(navController.graph.startDestinationId)
                                                     launchSingleTop = true
                                                 }
@@ -199,7 +198,7 @@ fun LoginScreen(navController: NavController) {
                                         }
                                 }catch (e: Exception) {
                                     println("Erreur : $e.message")
-                                }*/
+                                }
                             }
                         },
 

@@ -1,7 +1,6 @@
 package com.example.foodly.screens.e_wallet
 
 
-import android.annotation.SuppressLint
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -96,7 +95,7 @@ val testList = listOf(
     ),
 )
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+@Suppress("UnusedMaterialScaffoldPaddingParameter")
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun EWalletScreen(navController : NavController) {

@@ -24,17 +24,22 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
+import com.example.foodly.screens.RestaurantDetail_Order.MyScreen
 import com.example.foodly.utils.read
 import com.google.firebase.firestore.FirebaseFirestore
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(
+    navController: NavController
+) {
     Scaffold(
         topBar = {
             AppBar()
@@ -691,4 +696,13 @@ fun BoxWithRes(
         )
     }
 
+}
+
+@Preview
+@Composable
+fun HomeScreenPreview() {
+    val navController = rememberNavController()
+    HomeScreen(navController)
+
+    //MyBox()
 }

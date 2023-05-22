@@ -22,15 +22,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import coil.size.Size
 import com.example.foodly.R
 import com.example.foodly.ui.theme.LightGreen
 import com.example.foodly.ui.theme.LightGreen2
 import com.example.foodly.ui.theme.colorWhite
+import com.example.foodly.ui.theme.white
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AdresseScreen() {
+fun AdresseScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -48,9 +52,11 @@ fun AdresseScreen() {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = 16.dp,
-                        vertical= 70.dp)
-            ){
+                    .padding(
+                        horizontal = 16.dp,
+                        vertical = 70.dp
+                    )
+            ) {
                 Box(
                     modifier = Modifier
 
@@ -110,10 +116,10 @@ fun AdresseScreen() {
                     }
 
                 }
+
                 Box(
                     modifier = Modifier
-                        .padding(horizontal = 10.dp ,
-                            vertical= 25.dp)
+
                         .background(Color.White)
                         .border(
                             BorderStroke(2.dp, Color.White),
@@ -142,10 +148,9 @@ fun AdresseScreen() {
                                     fontSize = 24.sp,
                                     fontWeight = FontWeight.Bold
                                 )
-
                             }
                             androidx.compose.material.Text(
-                                text = "5259 Blue Bill Park,4627",
+                                text = "5256 Blue Bill Park. PC 4627",
                                 fontSize = 18.sp
                             )
 
@@ -159,13 +164,12 @@ fun AdresseScreen() {
                                 .size(48.dp)
                         )
                     }
-                    Spacer(modifier = Modifier.size(size = 12.dp))
 
                 }
+
                 Box(
                     modifier = Modifier
-                        .padding(horizontal = 10.dp ,
-                            vertical= 10.dp)
+
                         .background(Color.White)
                         .border(
                             BorderStroke(2.dp, Color.White),
@@ -190,139 +194,151 @@ fun AdresseScreen() {
                         Column() {
                             Row() {
                                 androidx.compose.material.Text(
-                                    text = "My Appartment",
+                                    text = "My Apartment",
                                     fontSize = 24.sp,
                                     fontWeight = FontWeight.Bold
                                 )
-
                             }
                             androidx.compose.material.Text(
-                                text = "21833 Logbessou,8327",
+                                text = "21833 Clyde Gallagher, PC 4662",
                                 fontSize = 18.sp
                             )
 
                         }
+                        Spacer(modifier = Modifier.size(size = 20.dp))
+                        Icon(
+                            Icons.Rounded.Edit,
+                            contentDescription = "pencil",
+                            tint = LightGreen,
+                            modifier = Modifier
+                                .size(48.dp)
+                        )
                     }
-                    Spacer(modifier = Modifier.size(size = 20.dp))
-                    Icon(
-                        Icons.Rounded.Edit,
-                        contentDescription = "pencil",
-                        tint = LightGreen,
-                        modifier = Modifier
-                            .size(48.dp)
-                    )
-                }
-                Spacer(modifier = Modifier.size(size = 12.dp))
 
-            }
-            Box(
-                modifier = Modifier
-                    .padding(horizontal = 10.dp ,vertical= 30.dp
-                    )
-                    .background(Color.White)
-                    .border(
-                        BorderStroke(2.dp, Color.White),
-                        RoundedCornerShape(50.dp)
-                    )
-            )
-            {
-                Row(
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxWidth()
+                }
+
+                Box(
+                    modifier = Modifier
+
+                        .background(Color.White)
+                        .border(
+                            BorderStroke(2.dp, Color.White),
+                            RoundedCornerShape(50.dp)
+                        )
                 )
                 {
-                    Icon(
-                        Icons.Rounded.LocationOn,
-                        contentDescription = "position",
-                        tint = LightGreen,
-                        modifier = Modifier
-                            .size(48.dp)
+                    Row(
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxWidth()
                     )
-                    Spacer(modifier = Modifier.size(size = 20.dp))
-                    Column() {
-                        Row() {
+                    {
+                        Icon(
+                            Icons.Rounded.LocationOn,
+                            contentDescription = "position",
+                            tint = LightGreen,
+                            modifier = Modifier
+                                .size(48.dp)
+                        )
+                        Spacer(modifier = Modifier.size(size = 20.dp))
+                        Column() {
+                            Row() {
+                                androidx.compose.material.Text(
+                                    text = "Parent's House",
+                                    fontSize = 24.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                            }
                             androidx.compose.material.Text(
-                                text = "Parrent's House",
-                                fontSize = 24.sp,
-                                fontWeight = FontWeight.Bold
+                                text = "6993 Meadow Valley Terra, PC 36",
+                                fontSize = 18.sp
                             )
 
                         }
-                        androidx.compose.material.Text(
-                            text = "6993 Bonamoussadi 23",
-                            fontSize = 18.sp
+                        Spacer(modifier = Modifier.size(size = 20.dp))
+                        Icon(
+                            Icons.Rounded.Edit,
+                            contentDescription = "pencil",
+                            tint = LightGreen,
+                            modifier = Modifier
+                                .size(48.dp)
                         )
-
                     }
-                    Spacer(modifier = Modifier.size(size = 20.dp))
-                    Icon(
-                        Icons.Rounded.Edit,
-                        contentDescription = "pencil",
-                        tint = LightGreen,
-                        modifier = Modifier
-                            .size(48.dp)
-                    )
-                }
-                Spacer(modifier = Modifier.size(size = 12.dp))
 
-            }
-            Box(
-                modifier = Modifier
-                    .padding(horizontal = 10.dp ,vertical= 10.dp
-                    )
-                    .background(Color.White)
-                    .border(
-                        BorderStroke(2.dp, Color.White),
-                        RoundedCornerShape(50.dp)
-                    )
-            )
-            {
-                Row(
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxWidth()
+                }
+
+                Box(
+                    modifier = Modifier
+
+                        .background(Color.White)
+                        .border(
+                            BorderStroke(2.dp, Color.White),
+                            RoundedCornerShape(50.dp)
+                        )
                 )
                 {
-                    Icon(
-                        Icons.Rounded.LocationOn,
-                        contentDescription = "position",
-                        tint = LightGreen,
-                        modifier = Modifier
-                            .size(48.dp)
+                    Row(
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxWidth()
                     )
-                    Spacer(modifier = Modifier.size(size = 20.dp))
-                    Column() {
-                        Row() {
+                    {
+                        Icon(
+                            Icons.Rounded.LocationOn,
+                            contentDescription = "position",
+                            tint = LightGreen,
+                            modifier = Modifier
+                                .size(48.dp)
+                        )
+                        Spacer(modifier = Modifier.size(size = 20.dp))
+                        Column() {
+                            Row() {
+                                androidx.compose.material.Text(
+                                    text = "My Villa",
+                                    fontSize = 24.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                            }
                             androidx.compose.material.Text(
-                                text = "My Villa",
-                                fontSize = 24.sp,
-                                fontWeight = FontWeight.Bold
+                                text = "61840 SunBrook Park, PC 5679",
+                                fontSize = 18.sp
                             )
 
                         }
-                        androidx.compose.material.Text(
-                            text = "61480 Douala Akwa 21",
-                            fontSize = 18.sp
+                        Spacer(modifier = Modifier.size(size = 20.dp))
+                        Icon(
+                            Icons.Rounded.Edit,
+                            contentDescription = "pencil",
+                            tint = LightGreen,
+                            modifier = Modifier
+                                .size(48.dp)
                         )
-
                     }
-                    Spacer(modifier = Modifier.size(size = 20.dp))
-                    Icon(
-                        Icons.Rounded.Edit,
-                        contentDescription = "pencil",
-                        tint = LightGreen,
-                        modifier = Modifier
-                            .size(48.dp)
+
+                }
+
+                androidx.compose.material.Button(
+                    onClick = { /* TODO */ },
+                    shape = RoundedCornerShape(16.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        LightGreen2,
+                        contentColor = LightGreen2
+                    ),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .width(20.dp)
+                        .padding(horizontal = 16.dp, vertical = 16.dp)
+                ) {
+                    androidx.compose.material.Text(
+                        text = "And new adress",
+                        fontSize = 11.sp,
+                        modifier = Modifier.padding(0.dp),
+                        color = white,
+                        maxLines = 1
                     )
                 }
-                Spacer(modifier = Modifier.size(size = 12.dp))
-
             }
         })
-
-
-
 }
 
 
@@ -331,5 +347,6 @@ fun AdresseScreen() {
 @Preview
 @Composable
 fun PreviewAdresse(){
-    AdresseScreen()
+    val navController = rememberNavController()
+    AdresseScreen(navController)
 }

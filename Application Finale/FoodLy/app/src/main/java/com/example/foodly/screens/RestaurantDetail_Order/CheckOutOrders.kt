@@ -20,12 +20,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.foodly.R
 import com.example.foodly.ui.theme.LightGreen
 import com.example.foodly.ui.theme.LightGreen2
 import com.example.foodly.ui.theme.md_theme_light_onPrimary
 import com.example.foodly.ui.theme.white
 import com.example.foodly.model.CheckOutData
+import com.example.foodly.navigation.Screen
 
 val order = listOf(
     CheckOutData(
@@ -50,7 +52,7 @@ val order = listOf(
 
 @Suppress("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun CheckOutOrders() {
+fun CheckOutOrders(navController: NavController) {
     val scrollState = rememberScrollState()
     Scaffold(
         topBar = {
@@ -62,11 +64,14 @@ fun CheckOutOrders() {
 //                            launchSingleTop = true
 //                        }
                     }) {
-                        Icon(
-                            imageVector = Icons.Default.ArrowBack,
-                            tint = Black,
-                            contentDescription = "Retour"
-                        )
+                        IconButton(onClick = { navController.navigate(Screen.AddMenu.route) }) {
+                            Icon(
+                                imageVector = Icons.Default.ArrowBack,
+                                tint = Black,
+                                contentDescription = "Retour",
+                            )
+                        }
+
                     }
                 },
                 title = {
@@ -155,13 +160,16 @@ fun CheckOutOrders() {
                                 )
                             }
                             Spacer(modifier = Modifier.size(size = 20.dp))
-                            Icon(
-                                Icons.Rounded.KeyboardArrowRight,
-                                contentDescription = "pencil",
-                                tint = LightGreen,
-                                modifier = Modifier
-                                    .size(28.dp)
-                            )
+                            IconButton(onClick = { navController.navigate(Screen.DeliverTo.route) }) {
+                                Icon(
+                                    Icons.Rounded.KeyboardArrowRight,
+                                    contentDescription = "pencil",
+                                    tint = LightGreen,
+                                    modifier = Modifier
+                                        .size(28.dp)
+                                )
+                            }
+
                         }
                     }
                 }

@@ -1,6 +1,10 @@
 package com.example.foodly.screens.Onboarding_SignUp_SignIn
 
+import android.content.ContentValues
+import android.hardware.lights.Light
+import android.util.Log
 import android.util.Patterns
+import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -29,6 +33,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -47,15 +52,16 @@ import com.example.foodly.component.VisibilityOff
 import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.LightGreen
 import com.example.foodly.ui.theme.colorBlack
-//import com.google.firebase.auth.ktx.auth
-//import com.google.firebase.firestore.ktx.firestore
-//import com.google.firebase.ktx.Firebase
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import org.mindrot.jbcrypt.BCrypt
 import java.util.*
 
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun RegisterScreen(navController: NavController) {
+    val context = LocalContext.current
     val keyboardController = LocalSoftwareKeyboardController.current
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
@@ -74,7 +80,7 @@ fun RegisterScreen(navController: NavController) {
 
 
 
-    /*val db = Firebase.firestore
+    val db = Firebase.firestore
     val start_date = Date()
     val customerCollectionRef = db.collection("Customers")
     val passwordHash = BCrypt.hashpw(password, BCrypt.gensalt(12))
@@ -92,7 +98,7 @@ fun RegisterScreen(navController: NavController) {
         // Ajouter le nouveau document à la collection "customer"
         customerCollectionRef.add(newCustomer)
     }
-*/
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -342,16 +348,24 @@ fun RegisterScreen(navController: NavController) {
                         .padding(start = 32.dp, end = 32.dp),
                     onClick = {
                         if (username.isEmpty()) {
-                            showDialogUsername = true
-                        }else if(email.isBlank() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                            showDialogEmail = true
-                        }else if(phoneNumber.startsWith("6") && phoneNumber.length == 9 || phoneNumber.isEmpty()){
-                            showDialogPhoneNumber = false
-                        }else if(password.isEmpty() || conpassword.isEmpty() || password != conpassword || password.length >= 8 || conpassword.length >= 8){
-                            showDialogPassWord = true
+                            Toast.makeText(context, "Please enter username", Toast.LENGTH_SHORT).show()
+                        }else if(email.isBlank()){
+                            Toast.makeText(context, "Please enter email", Toast.LENGTH_SHORT).show()
+                        }else if(phoneNumber.isEmpty()){
+                            Toast.makeText(context, "Please enter phone_number", Toast.LENGTH_SHORT).show()
+                        }else if(password.isEmpty() || conpassword.isEmpty()){
+                            Toast.makeText(context, "Please enter password", Toast.LENGTH_SHORT).show()
+                        }else if(phoneNumber.startsWith("6") && phoneNumber.length == 9){
+                            Toast.makeText(context, "Please enter format phone number valid", Toast.LENGTH_SHORT).show()
+                        }else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                            Toast.makeText(context, "Please enter format email valid", Toast.LENGTH_SHORT).show()
+                        }else if(conpassword.isEmpty() || password != conpassword || password.length >= 8 || conpassword.length >= 8){
+                            Toast.makeText(context, "password not valid", Toast.LENGTH_SHORT).show()
+                        }else if(email.isBlank() && username.isEmpty() && phoneNumber.isEmpty() && password.isEmpty() && conpassword.isEmpty() ){
+                            Toast.makeText(context, "Please enter your information", Toast.LENGTH_SHORT).show()
                         }else {
-                           // SaveCustomer()
-                            //createUser(email, password, navController)
+                            SaveCustomer()
+                            createUser(email, password, navController)
                         }
                     },
 
@@ -474,7 +488,7 @@ fun RegisterScreen(navController: NavController) {
     }
 }
 
-/*
+
 fun createUser(
     email: String,
     password: String,
@@ -489,7 +503,7 @@ fun createUser(
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d(ContentValues.TAG, "createUserWithEmail:success")
-                    navController.navigate(Screen.HomeScreen.route){
+                    navController.navigate(Screen.AddProfileScreen.route){
                         popUpTo(navController.graph.startDestinationId)
                         launchSingleTop = true
                     } // naviguer vers la page de connexion
@@ -502,4 +516,4 @@ fun createUser(
     } catch (e: Exception) {
         println("Erreur : $e.message")
     }
-}*/
+}

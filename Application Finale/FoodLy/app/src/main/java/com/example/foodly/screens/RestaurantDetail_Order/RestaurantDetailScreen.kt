@@ -20,8 +20,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 fun MyScreen() {
     Scaffold(
         topBar = {

@@ -32,15 +32,23 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.graphics.Color.Companion.Green
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.foodly.R
 import com.example.foodly.component.AddPaymentCard
+import com.example.foodly.component.CreditCardFilter
+import com.example.foodly.component.InputItem
 import com.example.foodly.component.PaymentCard
+import com.example.foodly.navigation.Screen
+import com.example.foodly.ui.theme.LightGreen
 import com.example.foodly.ui.theme.LightGreen2
 import com.example.foodly.ui.theme.white
 import java.text.SimpleDateFormat
@@ -91,11 +99,12 @@ val testList = listOf(
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun EWalletScreen() {
+fun EWalletScreen(navController : NavController) {
     var nameText by remember { mutableStateOf(TextFieldValue()) }
     var cardNumber by remember { mutableStateOf(TextFieldValue()) }
     var expiryNumber by remember { mutableStateOf(TextFieldValue()) }
     var cvcNumber by remember { mutableStateOf(TextFieldValue()) }
+    var isFormVisible by remember { mutableStateOf(true) }
     Scaffold(
         topBar = {
             TopAppBar(
@@ -126,7 +135,7 @@ fun EWalletScreen() {
                         IconButton(onClick = { /* Do Something */ }) {
                             Icon(Icons.Filled.Search, contentDescription = "Search")
                         }
-                        IconButton(onClick = { /* Do Something */ }) {
+                        IconButton(onClick = { isFormVisible = true }) {
                             Icon(Icons.Filled.Menu, contentDescription = "Menu")
                         }
                     }
@@ -140,13 +149,90 @@ fun EWalletScreen() {
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
         ) {
-            Spacer(modifier = Modifier.height(60.dp))
             PaymentCard(
                 nameText,
                 cardNumber,
                 expiryNumber,
                 cvcNumber
             )
+
+
+            if (isFormVisible) {
+                LazyColumn(
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .fillMaxWidth()
+                ) {
+                    item {
+                        InputItem(
+                            textFieldValue = nameText,
+                            label = stringResource(id = R.string.card_holder_name),
+                            onTextChanged = { nameText = it },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 4.dp)
+                        )
+                    }
+
+                    item {
+                        InputItem(
+                            textFieldValue = cardNumber,
+                            label = stringResource(id = R.string.card_holder_number),
+                            keyboardType = KeyboardType.Number,
+                            onTextChanged = { cardNumber = it },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 4.dp),
+                            visualTransformation = CreditCardFilter
+                        )
+                    }
+
+                    item {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 4.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            InputItem(
+                                textFieldValue = expiryNumber,
+                                label = stringResource(id = R.string.expiry_date),
+                                keyboardType = KeyboardType.Number,
+                                onTextChanged = { expiryNumber = it },
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(end = 8.dp)
+                            )
+                            InputItem(
+                                textFieldValue = cvcNumber,
+                                label = stringResource(id = R.string.cvc),
+                                keyboardType = KeyboardType.Number,
+                                onTextChanged = { cvcNumber = it },
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(start = 8.dp)
+                            )
+                        }
+                    }
+                    item {
+                        Button(
+                            onClick = { isFormVisible = false },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 8.dp),
+                            colors = ButtonDefaults.buttonColors(LightGreen),
+                            shape = RoundedCornerShape(20.dp)
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.save),
+                                color = White,
+                                modifier = Modifier.padding(horizontal = 30.dp, vertical = 8.dp)
+                            )
+                        }
+                    }
+                }
+            }
+
             /*
             Box(
                 modifier = Modifier
@@ -229,7 +315,6 @@ fun EWalletScreen() {
                     }
                 }
             }*/
-            Spacer(modifier = Modifier.weight(1f))
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -243,10 +328,7 @@ fun EWalletScreen() {
                 Spacer(modifier = Modifier.width(110.dp))
                 TextButton(
                     onClick = {
-//                        navController.navigate("MyTopAppBar") {
-//                        popUpTo(navController.graph.startDestinationId)
-//                        launchSingleTop = true
-//                    }
+                        navController.navigate(Screen.TransactionHistoryScreen.route)
                     }
                 ) {
                     Text(
@@ -327,5 +409,3 @@ fun PopularRestaurantList(testList: List<PopularRestaurant>) {
         }
     }
 }
-
-

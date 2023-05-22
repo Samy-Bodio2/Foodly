@@ -13,7 +13,6 @@ import androidx.navigation.NavController
 import com.example.foodly.model.BottomNavItem
 import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.colorWhite
-import com.example.foodly.ui.theme.orange2
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -29,13 +28,13 @@ fun StandardScaffold(
         ),
         BottomNavItem(
             route = Screen.OrderScreen.route,
-            icon = Icons.Outlined.MenuBook,
-            contentDescription = "Favorite"
+            icon = Icons.Outlined.Checklist,
+            contentDescription = "Order"
         ),
         BottomNavItem(
             route = Screen.EWalletScreen.route,
             icon = Icons.Outlined.Wallet,
-            contentDescription = "Restaurant Menu",
+            contentDescription = "Wallet",
         ),
         BottomNavItem(
             route = Screen.ProfileScreen.route,

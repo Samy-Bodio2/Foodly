@@ -1,5 +1,8 @@
 package com.example.foodly.screens.Onboarding_SignUp_SignIn
 
+import android.content.ContentValues.TAG
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.*
@@ -21,6 +24,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.*
@@ -35,8 +39,8 @@ import com.example.foodly.component.VisibilityOff
 import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.*
 import com.example.foodly.ui.theme.LightGreen
-//import com.google.firebase.auth.ktx.auth
-//import com.google.firebase.ktx.Firebase
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 
@@ -48,8 +52,8 @@ fun LoginScreen(navController: NavController) {
     val keyboardController = LocalSoftwareKeyboardController.current
     var passwordHidden by rememberSaveable { mutableStateOf(true) }
     var showMessage by remember { mutableStateOf(false) }
-    var showError by remember { mutableStateOf(false) }
     val gradientColor = listOf(LightGreen, Color.Black )
+    val context = LocalContext.current
     val cornerRadius = 16.dp
 
     Surface {
@@ -169,18 +173,20 @@ fun LoginScreen(navController: NavController) {
                             .fillMaxWidth()
                             .padding(start = 32.dp, end = 32.dp),
                         onClick = {
-                            if (email.isEmpty() || password.isEmpty()) {
-                                showError = true
+                            if (email.isEmpty()) {
+                                Toast.makeText(context, "Please enter email", Toast.LENGTH_SHORT).show()
+                            }else if(password.isEmpty()){
+                                Toast.makeText(context, "Please enter password", Toast.LENGTH_SHORT).show()
+                            }else if(email.isEmpty() && password.isEmpty()){
+                                Toast.makeText(context, "Please enter password and password", Toast.LENGTH_SHORT).show()
                             }else{
-                                navController.navigate(Screen.AddProfileScreen.route)
-                                /*
                                 try{
                                     val auth = Firebase.auth
                                     auth.signInWithEmailAndPassword(email, password)
                                         .addOnCompleteListener { task ->
                                             showMessage = if (task.isSuccessful){
                                                 Log.d(TAG, "signInWithEmail: success")
-                                                navController.navigate("homescreen"){
+                                                navController.navigate(Screen.AddProfileScreen.route){
                                                     popUpTo(navController.graph.startDestinationId)
                                                     launchSingleTop = true
                                                 }
@@ -192,7 +198,7 @@ fun LoginScreen(navController: NavController) {
                                         }
                                 }catch (e: Exception) {
                                     println("Erreur : $e.message")
-                                }*/
+                                }
                             }
                         },
 
@@ -238,24 +244,6 @@ fun LoginScreen(navController: NavController) {
                             }
                         )
                     }
-                    if (showError) {
-                        BackHandler {
-                            showError = false
-                        }
-                        AlertDialog(
-                            onDismissRequest = { showError = false },
-                            title = { Text("Erreur") },
-                            text = { Text("Champ vide") },
-                            buttons = {
-                                Button(
-                                    onClick = { showError = false }
-                                ) {
-                                    Text("OK")
-                                }
-                            },
-                            backgroundColor = Color.White
-                        )
-                    }
                     Spacer(modifier = Modifier.height(16.dp))
                     Column(
                         modifier = Modifier.fillMaxSize()
@@ -273,26 +261,37 @@ fun LoginScreen(navController: NavController) {
                             androidx.compose.material3.Divider(modifier = Modifier.weight(1f))
                         }
 
-                        Spacer(modifier = Modifier.height(16.dp))
-
                         SocialMediaSignInButtons()
-                        Spacer(modifier = Modifier.width(10.dp))
-                        Row(
-                            horizontalArrangement = Arrangement.Center,
-                            modifier = Modifier.padding(top = 16.dp).fillMaxWidth()
-                        ){
-
-                            Text(
-                                text = "Forgot password ?",
-                                fontSize = 14.sp,
-                            )
-                            Spacer(modifier = Modifier.width(10.dp))
-                            TextButton(onClick = { Screen.LoginScreen.route }) {
-                                Text(
-                                    text = "Reset password",
-                                    color = LightGreen,
-                                    fontSize = 14.sp,
-                                )
+                        Column() {
+                            Row(modifier = Modifier
+                                .fillMaxWidth())
+                            {
+                                TextButton(onClick = { navController.navigate(Screen.RegisterScreen.route) }) {
+                                    Spacer(modifier = Modifier.width(50.dp))
+                                    Text(
+                                        text = "Don't have an account? ",
+                                        color = Color.Black
+                                    )
+                                    Text(
+                                        text = "Sign up",
+                                        color = LightGreen
+                                    )
+                                }
+                            }
+                            Row(modifier = Modifier
+                                .fillMaxWidth())
+                            {
+                                TextButton(onClick = { navController.navigate(Screen.ResetScreen.route) }) {
+                                    Spacer(modifier = Modifier.width(44.dp))
+                                    Text(
+                                        text = "Forgot password? ",
+                                        color = Color.Black
+                                    )
+                                    Text(
+                                        text = "Reset password",
+                                        color = LightGreen
+                                    )
+                                }
                             }
                         }
                     }
@@ -318,7 +317,9 @@ fun SocialMediaSignInButtons() {
                 Color.White,
             ),
             elevation = ButtonDefaults.elevation(defaultElevation = 0.dp),
-            modifier = Modifier.clip(shape = Shapes.large).border(1.dp, LightGreen, RoundedCornerShape(10.dp)),
+            modifier = Modifier
+                .clip(shape = Shapes.large)
+                .border(1.dp, LightGreen, RoundedCornerShape(10.dp)),
             contentPadding = PaddingValues(horizontal = 26.dp, vertical = 10.dp)
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -341,7 +342,9 @@ fun SocialMediaSignInButtons() {
                 backgroundColor = Color.White,
             ),
             elevation = ButtonDefaults.elevation(defaultElevation = 0.dp),
-            modifier = Modifier.clip(shape = Shapes.large).border(1.dp, LightGreen, RoundedCornerShape(10.dp)),
+            modifier = Modifier
+                .clip(shape = Shapes.large)
+                .border(1.dp, LightGreen, RoundedCornerShape(10.dp)),
             contentPadding = PaddingValues(horizontal = 26.dp, vertical = 10.dp)
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {

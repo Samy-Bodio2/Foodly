@@ -1,6 +1,5 @@
 package com.example.foodly.screens.Profile
 
-import RoundedButton
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.SwitchDefaults
@@ -18,12 +17,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.LightGreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 
-fun SecurityScreen() {
+fun SecurityScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -84,16 +86,28 @@ fun SecurityScreen() {
 
                 Spacer(modifier = Modifier.size(size = 30.dp))
 
-                RoundedButton(
-                    label = "Change PIN",
-                    backgroundColor = LightGreen
-                )
-                Spacer(modifier = Modifier.size(size = 10.dp))
+                Button(
+                    onClick = {
 
-                RoundedButton(
-                    label = "Change Password",
-                    backgroundColor = LightGreen
-                )
+                    },
+                    shape = RoundedCornerShape(50),
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(LightGreen)
+                ) {
+                    Text(text = "Change PIN", color = Color.White)
+                }
+                Spacer(modifier = Modifier.size(size = 10.dp))
+                Button(
+                    onClick = {
+
+                    },
+                    shape = RoundedCornerShape(50),
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(LightGreen)
+                ) {
+                    Text(text = "Change Password", color = Color.White)
+                }
+
             }
         }
     )
@@ -104,5 +118,6 @@ fun SecurityScreen() {
 @Preview
 @Composable
 fun PreviewSecurity(){
-    SecurityScreen()
+    val navController = rememberNavController()
+    SecurityScreen(navController)
 }

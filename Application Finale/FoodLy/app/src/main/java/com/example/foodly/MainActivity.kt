@@ -14,8 +14,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.foodly.component.StandardScaffold
 import com.example.foodly.navigation.NavGraph
 import com.example.foodly.navigation.Screen
-import com.example.foodly.screens.Home_ActionMenu.HomeScreen
-import com.example.foodly.screens.e_wallet.EWalletScreen
 import com.example.foodly.ui.theme.FoodlyTheme
 
 class MainActivity : ComponentActivity() {

@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.foodly.R
+import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.*
 
 
@@ -94,12 +95,12 @@ fun OtpVerifyScreen(navController: NavController) {
 
             Button(
                 onClick = {
-                    navController.navigate("homescreen") {
+                    navController.navigate(Screen.HomeScreen.route) {
                         popUpTo(navController.graph.startDestinationId)
                         launchSingleTop = true
                     }
                 },
-                colors = ButtonDefaults.buttonColors(backgroundColor = orange2),
+                colors = ButtonDefaults.buttonColors(LightGreen),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp)

@@ -85,8 +85,9 @@ fun PageViewScreen( navController: NavHostController){
                     ),
                     modifier = Modifier.padding(horizontal = 45.dp)
                 )
-                Indicator(count = list.size, index = index)
                 Spacer(modifier = Modifier.height(40.dp))
+                Indicator(count = list.size, index = index)
+                Spacer(modifier = Modifier.height(20.dp))
                 FilledButton(modifier = Modifier.padding(horizontal = 34.dp), text = "Next") {
                     scope.launch {
                         if (index < list.size - 1) {
@@ -101,7 +102,6 @@ fun PageViewScreen( navController: NavHostController){
                 BorderButton(modifier = Modifier.padding(horizontal = 34.dp), text = "Skip", color = LightGreen) {
                     navController.navigate(Screen.Lets_You_In.route)
                 }
-                Spacer(modifier = Modifier.height(20.dp))
             }
         }
     }

@@ -1,11 +1,20 @@
 package com.example.foodly.screens.Home_ActionMenu
 
+import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -14,28 +23,56 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberImagePainter
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
+<<<<<<< HEAD
+import com.example.foodly.screens.RestaurantDetail_Order.MyScreen
+=======
+import com.example.foodly.navigation.Screen
+import com.example.foodly.ui.theme.LightGreen
+>>>>>>> 0a9df8f0859ee1b4ed91dfb0ce63183544f3d978
+import com.example.foodly.utils.read
+import com.google.firebase.firestore.FirebaseFirestore
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun HomeScreen(navController: NavController){
-    Box(Modifier.verticalScroll(rememberScrollState())){
-        Column {
-            AppBar()
-            Content()
+fun HomeScreen(
+    navController: NavController
+) {
+    Scaffold(
+        topBar = {
+            AppBar(navController)
+        },
+        content = {
+            LazyColumn{
+                item {
+                    Content(navController)
+                    Spacer(Modifier.size(20.dp))
+                }
+
+                item{
+                    lazyItems()
+                }
+            }
+
+
+
+
         }
-    }
+    )
 }
 
 @Composable
-// fonction d'entete qui va contenir la photo de l'utilisateur connecter ainsi que les boutons de notifications
-// et d'ajout au panier
-fun AppBar(){
+fun AppBar(navController : NavController){
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -45,29 +82,27 @@ fun AppBar(){
     ){
         BoxWithRes(resId = R.drawable.baseline_account_circle_24, description = "Person")
         Row(verticalAlignment = Alignment.CenterVertically){
-            Text(text = "Times Square", Modifier.weight(1f), fontWeight = FontWeight.Medium)
+            Text(text = "Times Square", Modifier.size(10.dp), fontWeight = FontWeight.ExtraBold)
             Spacer(modifier = Modifier.width(36.dp))
-            Icon(
-                painter = painterResource(id = R.drawable.baseline_notifications_24),
-                contentDescription = "Down",
-                modifier = Modifier.size(16.dp)
-            )
+            IconButton(onClick = {  }) {
+                Icon(Icons.Filled.Notifications, contentDescription = "Notification")
+            }
             Spacer(modifier = Modifier.width(16.dp))
-            Icon(
-                painter = painterResource(id = R.drawable.baseline_shopping_bag_24),
-                contentDescription = "bag",
-                modifier = Modifier.size(16.dp)
-            )
+            IconButton(onClick = { navController.navigate(Screen.ShoppingCard.route) }) {
+                Icon(Icons.Filled.ShoppingCart, contentDescription = "Shopping Cart")
+            }
         }
     }
 }
 
 @Composable
-fun Content(){
-    Column(){
+fun Content(navController: NavController){
+
+    Column{
+
         Header()
         Spacer(modifier = Modifier.width(16.dp))
-        PromotionSection()
+        PromotionSection(navController)
         Spacer(modifier = Modifier.width(16.dp))
         CategorySection()
         Spacer(modifier = Modifier.width(16.dp))
@@ -77,16 +112,37 @@ fun Content(){
         Spacer(modifier = Modifier.width(16.dp))
         ChipSection(chips = listOf("All","Hamburger","Pizza","Drink","Cake"))
         Spacer(modifier = Modifier.width(16.dp))
-        MenuList()
-        Spacer(modifier = Modifier.height(20.dp))
-        MenuList1()
-        Spacer(modifier = Modifier.height(20.dp))
-        MenuList2()
     }
 }
 
+
+
+
+
+
 @Composable
-// fonction est utiliser pour afficher la barre de recherche
+fun lazyItems(){
+    val list by remember { mutableStateOf(read()) }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 20.dp)
+    ) {
+        list.forEach {  item ->
+
+            item?.let {
+                MenuList(
+                    url = it.Image,
+                    titre = it.name,
+                    restauName = it.restaurant_name,
+                    price = it.price
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+            }
+        }
+    }
+}
+@Composable
 fun Header(){
     Row(
         Modifier
@@ -120,8 +176,7 @@ fun Header(){
 }
 
 @Composable
-// cette fonction est pour afficher le box de la promotion de nous menu
-fun PromotionSection(){
+fun PromotionSection(navController: NavController){
     Column(Modifier.padding(horizontal = 16.dp)) {
         Row(
             Modifier.fillMaxWidth(),
@@ -129,8 +184,8 @@ fun PromotionSection(){
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(text = "Special Offers", style = MaterialTheme.typography.h6)
-            TextButton(onClick = {}) {
-                Text(text = "See All", color = Color.Green)
+            TextButton(onClick = {navController.navigate(Screen.CategoryScreen.route)}) {
+                Text(text = "See All", color = LightGreen)
             }
         }
     }
@@ -145,16 +200,13 @@ fun PromotionSection(){
                 title = "30%",
                 subtitle = "Discount Only",
                 header = "Valid for today",
-                backgroundColor = Color.Green
+                backgroundColor = LightGreen
             )
         }
     }
 }
 
 @Composable
-// cette fonction nous permet de declarer toute les variables qui seront prises pour afficher le resultat du
-//boxs publicitaire tout en modifiant les polices d'ecriture, l'alignement et la facon donc les elements
-//seront disposer
 fun PromotionItem(
     title: String = "",
     subtitle: String = "",
@@ -163,8 +215,8 @@ fun PromotionItem(
     imagePainter: Painter
 ) {
     Card(
-        Modifier.width(350.dp),
-        shape = RoundedCornerShape(8.dp),
+        Modifier.width(380.dp),
+        shape = RoundedCornerShape(20.dp),
         backgroundColor = backgroundColor,
         elevation = 0.dp
     ) {
@@ -193,10 +245,11 @@ fun PromotionItem(
 }
 
 @Composable
-//cette fonction permet d'avoir un apercu des produits que nous avons dans nos restaurants
 fun CategorySection(){
     Row(
-        Modifier.fillMaxWidth(),
+        Modifier
+            .fillMaxWidth()
+            .padding(20.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         CategoryButton(
@@ -222,7 +275,9 @@ fun CategorySection(){
     }
     Spacer(modifier = Modifier.width(4.dp))
     Row(
-        Modifier.fillMaxWidth(),
+        Modifier
+            .fillMaxWidth()
+            .padding(20.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         CategoryButton(
@@ -249,7 +304,6 @@ fun CategorySection(){
 }
 
 @Composable
-// cette fonction permet de styler les elements present dans notre box categorie
 fun CategoryButton(
     text: String = "",
     icon: Painter,
@@ -277,62 +331,84 @@ fun CategoryButton(
 
 @Composable
 fun DiscountSection(){
-    Column {
-        Row(
-            Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(text = "Discount Guaranteed", style = MaterialTheme.typography.h6)
-            TextButton(onClick = {}) {
-                Text(text = "See All", color = Color.Green)
-            }
-        }
-        DiscountSectionItems()
-    }
-}
+    val MenuItemss by remember { mutableStateOf(read()) }
 
-@Composable
-// cette fonction permet d'afficher les differents repas que nous proposons ainsi que leurs prix,leurs notes,
-//le nombreux de personnes aimant ce plat ainsi que la distance vous separant du restaurant qui le propose
-fun DiscountSectionItems(){
+
+
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(text = "Discount Guaranteed", style = MaterialTheme.typography.h6)
+        TextButton(onClick = {}) {
+            Text(text = "See All", color = LightGreen)
+        }
+    }
     LazyRow(
         contentPadding = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         item {
-            DiscountSectionItem(
-                imagePainter = painterResource(id = R.drawable.kontcha),
-                title = "Kontcha",
-                headers = "1.5km | 4,8 (1.2k) ",
-                price = "6.00"
+            MenuItemss.forEachIndexed { index, item ->
+                MenuItemss[index]?.let {
+                    DiscountSectionItems(it.Image, it.name, it.restaurant_name, it.price)
+                }
+            }
+        }
 
-            )
-        }
-        item {
-            DiscountSectionItem(
-                imagePainter = painterResource(id = R.drawable.ekwang),
-                title = "Ekwang",
-                headers = "1.7km| 4,7 (900) ",
-                price = "5.64"
 
-            )
-        }
-        item {
-            DiscountSectionItem(
-                imagePainter = painterResource(id = R.drawable.mbongo),
-                title = "Mbongo Poisson",
-                headers = "1.9km | 4,4 (1.1k) ",
-                price = "4.76"
-            )
-        }
+
+
+
+
     }
 }
 
+/*
+            MenuItemss[index]?.let {
+                Text(text = it.name,
+                    Modifier
+                        .width(100.dp)
+                        .border(1.dp, Color.LightGray, RoundedCornerShape(20.dp))
+                        .clip(RoundedCornerShape(20.dp))
+                        .padding(10.dp)
+                    , textAlign = TextAlign.Center)
+            }
+            MenuItemss[index]?.Image?.let {
+                MyImage(url = it)
+            }*/
+
+
+data class MenuItem(
+    val Confirmed: Boolean,
+    val Image: String,
+    val date: String,
+    val name: String,
+    val price: Double,
+    val quantity : Double,
+    val restaurant_name : String
+){
+    constructor() : this(false,"","", "",0.0,0.0,"")
+}
+
 @Composable
-//le style et la forme des boxs
+fun DiscountSectionItems(url: String,titre:String,restauName:String="",price: Double=0.0){
+    val imagePainter: Painter = rememberImagePainter(url)
+
+    Spacer(modifier = Modifier.padding(10.dp))
+    DiscountSectionItem(
+        imagePainter = imagePainter,
+        title = titre,
+        headers = restauName,
+        price = price.toString()
+
+    )
+}
+
+@Composable
 fun DiscountSectionItem(
     title: String = "",
     headers: String ="",
@@ -352,8 +428,8 @@ fun DiscountSectionItem(
                 modifier = Modifier
                     .fillMaxWidth()
                     .aspectRatio(1f)
-                    .clip(RoundedCornerShape(8.dp)),
-                contentScale = ContentScale.Fit
+                    .clip(RoundedCornerShape(20.dp)),
+                contentScale = ContentScale.FillBounds
             )
             Column(
                 Modifier
@@ -387,8 +463,6 @@ fun Recommended(){
 }
 
 @Composable
-//cette fonction permet de creer une barre de menu navigable qui va permettre de consulter au clic les differents
-//produits recommander
 fun ChipSection(chips: List<String>){
     var selectedChipIndex by remember{
         mutableStateOf(0)
@@ -402,7 +476,7 @@ fun ChipSection(chips: List<String>){
                 }
                 .clip(RoundedCornerShape(10.dp))
                 .background(
-                    if (selectedChipIndex == it) Color.Green
+                    if (selectedChipIndex == it) LightGreen
                     else Color.White
                 )
                 .padding(15.dp)
@@ -414,38 +488,36 @@ fun ChipSection(chips: List<String>){
 }
 
 @Composable
-// cette fonction va permetre de recuperer les informations de menu preenregistrer et les afficher dans les
-// MenuItem ou box qui seront creer au prealable
-fun MenuList() {
-    LazyRow(
+fun MenuList(url: String,titre:String,restauName:String,price: Double) {
+    val imagePainter: Painter = rememberImagePainter(url)
+    Row(
         Modifier.height(90.dp),
-        contentPadding = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ){
-        item {
-            MenuItem(
-                imagePainter = painterResource(id = R.drawable.pizzas),
-                title = "Pizza Hut",
-                subtitle = "1.6 km | 4.6 (2.3k)",
-                price = "$1.50",
-                backgroundColor = Color.White
-            )
-        }
+
+        MenuItem(
+            imagePainter = imagePainter,
+            title = titre,
+            subtitle = restauName,
+            price = price.toString(),
+            backgroundColor = Color.White
+        )
+
 
     }
 
 }
 
 @Composable
-fun MenuItem(title: String = "",
-             subtitle: String = "",
-             price: String = "",
-             backgroundColor: Color = Color.Transparent,
+fun MenuItem(title: String ,
+             subtitle: String,
+             price: String ,
+             backgroundColor: Color ,
              imagePainter: Painter
 ){
     Card(
-        Modifier.width(350.dp),
-        shape = RoundedCornerShape(8.dp),
+        Modifier.width(390.dp),
+        shape = RoundedCornerShape(20.dp),
         backgroundColor = backgroundColor,
         elevation = 0.dp
     ){
@@ -455,7 +527,7 @@ fun MenuItem(title: String = "",
                 modifier = Modifier
                     .fillMaxHeight()
                     .weight(1f)
-                    .clip(RoundedCornerShape(8.dp)),
+                    .clip(RoundedCornerShape(20.dp)),
                 alignment = Alignment.CenterEnd,
                 contentScale = ContentScale.Crop
             )
@@ -621,4 +693,13 @@ fun BoxWithRes(
         )
     }
 
+}
+
+@Preview
+@Composable
+fun HomeScreenPreview() {
+    val navController = rememberNavController()
+    HomeScreen(navController)
+
+    //MyBox()
 }

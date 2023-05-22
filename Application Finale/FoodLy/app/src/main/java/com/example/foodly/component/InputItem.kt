@@ -1,5 +1,6 @@
 package com.example.foodly.component
 
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -11,6 +12,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun InputItem(
@@ -41,6 +43,7 @@ fun InputItem(
             }
         },
         modifier = modifier,
-        visualTransformation = visualTransformation
+        visualTransformation = visualTransformation,
+        shape = RoundedCornerShape(20.dp)
     )
 }

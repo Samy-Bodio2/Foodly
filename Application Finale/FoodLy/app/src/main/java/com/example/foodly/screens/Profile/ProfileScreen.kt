@@ -11,6 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,12 +21,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.foodly.R
+import com.example.foodly.navigation.Screen
 
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(navController: NavController) {
     Column(modifier = Modifier.padding(horizontal = 16.dp)) {
         //Top With the world profile
         Row(
@@ -73,12 +77,14 @@ fun ProfileScreen() {
             Row(
                 horizontalArrangement = Arrangement.Start,
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth().padding(16.dp)
             ) {
                 Icon(Icons.Outlined.CalendarMonth, null)
-                Text(text = "My Favorite Restaurants", fontSize = 24.sp)
-                Spacer(modifier = Modifier.width(width = 55.dp))
-                Icon(Icons.Outlined.ChevronRight, null)
+                Text(text = "My Favorite Restaurants", fontSize = 24.sp )
+                Spacer(modifier = Modifier.width(width = 65.dp))
+                IconButton(onClick = { navController.navigate(Screen.FavoriteRestaurants.route) }) {
+                    Icon(Icons.Outlined.ChevronRight, null)
+                }
             }
 
             Spacer(modifier = Modifier.size(size = 8.dp))
@@ -86,12 +92,14 @@ fun ProfileScreen() {
             Row(
                 horizontalArrangement = Arrangement.Start,
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth().padding(16.dp)
             ) {
                 Icon(Icons.Outlined.AccountBalanceWallet, null)
                 Text(text = "Payment Methods", fontSize = 24.sp)
                 Spacer(modifier = Modifier.width(width =  118.dp))
-                Icon(Icons.Outlined.ChevronRight, null)
+                IconButton(onClick = { navController.navigate(Screen.PayementMethodsProfile.route) }) {
+                    Icon(Icons.Outlined.ChevronRight, null)
+                }
             }
         }
 
@@ -107,7 +115,9 @@ fun ProfileScreen() {
                 Icon(Icons.Outlined.PersonOutline, null)
                 Text(text = "Profile", fontSize = 24.sp)
                 Spacer(modifier = Modifier.width(width =  242.dp))
-                Icon(Icons.Outlined.ChevronRight, null)
+                IconButton(onClick = { navController.navigate(Screen.UpdateProfileScreen.route) }) {
+                    Icon(Icons.Outlined.ChevronRight, null)
+                }
             }
 
             Spacer(modifier = Modifier.size(size = 8.dp))
@@ -120,7 +130,9 @@ fun ProfileScreen() {
                 Icon(Icons.Outlined.LocationOn, null)
                 Text(text = "Address", fontSize = 24.sp)
                 Spacer(modifier = Modifier.width(width =  224.dp))
-                Icon(Icons.Outlined.ChevronRight, null)
+                IconButton(onClick = { navController.navigate(Screen.AddressScreen.route) }) {
+                    Icon(Icons.Outlined.ChevronRight, null)
+                }
             }
 
             Spacer(modifier = Modifier.size(size = 8.dp))
@@ -133,7 +145,9 @@ fun ProfileScreen() {
                 Icon(Icons.Outlined.NotificationsNone, null)
                 Text(text = "Notifications", fontSize = 24.sp)
                 Spacer(modifier = Modifier.width(width =  176.dp))
-                Icon(Icons.Outlined.ChevronRight, null)
+                IconButton(onClick = { navController.navigate(Screen.NotificationsScreen.route) }) {
+                    Icon(Icons.Outlined.ChevronRight, null)
+                }
             }
 
             Spacer(modifier = Modifier.size(size = 8.dp))
@@ -146,7 +160,9 @@ fun ProfileScreen() {
                 Icon(Icons.Outlined.GppGood, null)
                 Text(text = "Security", fontSize = 24.sp)
                 Spacer(modifier = Modifier.width(width =  226.dp))
-                Icon(Icons.Outlined.ChevronRight, null)
+                IconButton(onClick = { navController.navigate(Screen.SecurityScreen.route) }) {
+                    Icon(Icons.Outlined.ChevronRight, null)
+                }
             }
 
             Spacer(modifier = Modifier.size(size = 8.dp))

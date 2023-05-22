@@ -1,4 +1,4 @@
-//package com.example.foodly.screens.Profile
+package com.example.foodly.screens.Profile
 //
 //import androidx.compose.foundation.Image
 //import androidx.compose.foundation.background
@@ -379,6 +379,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.outlined.QrCodeScanner
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -389,13 +390,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.foodly.R
 import com.example.foodly.ui.theme.*
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun PayementMethodsProfile(){
+fun PayementMethodsProfile(navController: NavController){
     var isChecked by remember { mutableStateOf(false) }
     var selectedOption by remember { mutableStateOf(0) }
     val scrollState = rememberScrollState()
@@ -414,6 +416,7 @@ fun PayementMethodsProfile(){
                             tint = Color.Black,
                             contentDescription = "Retour"
                         )
+                        Icon(Icons.Outlined.QrCodeScanner, contentDescription = null)
                     }
                 },
                 title = {

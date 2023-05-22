@@ -17,13 +17,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.LightGreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 
-fun SecurityScreen() {
+fun SecurityScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -116,5 +118,6 @@ fun SecurityScreen() {
 @Preview
 @Composable
 fun PreviewSecurity(){
-    SecurityScreen()
+    val navController = rememberNavController()
+    SecurityScreen(navController)
 }

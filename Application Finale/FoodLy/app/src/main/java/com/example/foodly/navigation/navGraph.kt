@@ -12,7 +12,7 @@ import com.example.foodly.screens.Home_ActionMenu.ShoppingCard
 import com.example.foodly.screens.Onboarding_SignUp_SignIn.*
 import com.example.foodly.screens.Orders.CancelOrder
 import com.example.foodly.screens.Orders.OrderScreen
-import com.example.foodly.screens.Profile.ProfileScreen
+import com.example.foodly.screens.Profile.*
 import com.example.foodly.screens.RestaurantDetail_Order.RestaurantScreen
 import com.example.foodly.screens.e_wallet.EWalletScreen
 import com.example.foodly.screens.e_wallet.TransactionHistoryScreen
@@ -22,7 +22,7 @@ fun NavGraph(navController: NavHostController) {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.Lets_You_In.route){
+        startDestination = Screen.ProfileScreen.route){
 
         composable(route = Screen.Splash.route){
             AnimatedSplashScreen(navController)
@@ -81,7 +81,26 @@ fun NavGraph(navController: NavHostController) {
             RestaurantScreen(navController)
         }
         composable(route = Screen.ProfileScreen.route){
-            ProfileScreen()
+            ProfileScreen(navController)
         }
+        composable(route = Screen.FavoriteRestaurants.route){
+            FavoriteRestaurants(navController)
+        }
+        composable(route = Screen.NotificationsScreen.route){
+            NotificationsScreen(navController)
+        }
+        composable(route = Screen.PayementMethodsProfile.route){
+            PayementMethodsProfile(navController)
+        }
+        composable(route = Screen.SecurityScreen.route){
+            SecurityScreen(navController)
+        }
+        composable(route = Screen.UpdateProfileScreen.route){
+            UpdateProfileScreen(navController)
+        }
+        composable(route = Screen.AddressScreen.route){
+            AdresseScreen(navController)
+        }
+
     }
 }

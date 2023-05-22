@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.foodly.R
 import com.example.foodly.navigation.Screen
+import com.example.foodly.ui.theme.LightGreen
 import com.example.foodly.utils.read
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -176,7 +177,7 @@ fun PromotionSection(navController: NavController){
         ) {
             Text(text = "Special Offers", style = MaterialTheme.typography.h6)
             TextButton(onClick = {navController.navigate(Screen.CategoryScreen.route)}) {
-                Text(text = "See All", color = Color.Green)
+                Text(text = "See All", color = LightGreen)
             }
         }
     }
@@ -191,7 +192,7 @@ fun PromotionSection(navController: NavController){
                 title = "30%",
                 subtitle = "Discount Only",
                 header = "Valid for today",
-                backgroundColor = Color.Green
+                backgroundColor = LightGreen
             )
         }
     }
@@ -335,7 +336,7 @@ fun DiscountSection(){
     ) {
         Text(text = "Discount Guaranteed", style = MaterialTheme.typography.h6)
         TextButton(onClick = {}) {
-            Text(text = "See All", color = Color.Green)
+            Text(text = "See All", color = LightGreen)
         }
     }
     LazyRow(
@@ -467,7 +468,7 @@ fun ChipSection(chips: List<String>){
                 }
                 .clip(RoundedCornerShape(10.dp))
                 .background(
-                    if (selectedChipIndex == it) Color.Green
+                    if (selectedChipIndex == it) LightGreen
                     else Color.White
                 )
                 .padding(15.dp)

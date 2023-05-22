@@ -21,17 +21,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
+import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddMenu() {
+fun AddMenu(navController: NavController) {
     Column {
         TopAppBar(
-            title = { Text(text = "Mixed Vegetable Salab") },
+            title = { Text(text = "") },
             navigationIcon = {
-                IconButton(onClick = { /*TODO*/ }) {
+                IconButton(onClick = { navController.navigate(Screen.RestaurantScreen.route) }) {
                     Icon(Icons.Default.ArrowBack, contentDescription = null)
                 }
             },
@@ -47,8 +50,7 @@ fun AddMenu() {
             contentScale = ContentScale.FillBounds,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(250.dp),
-            contentScale = ContentScale.FillBounds
+                .height(300.dp),
         )
         
         Text(
@@ -67,82 +69,24 @@ fun AddMenu() {
 
 
         val counter = remember { mutableStateOf(1) }
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .width(110.dp)
-                .height(40.dp)
-                .clip(shape = CircleShape)
-                .background(LightGreen3)
-        ) {
-<<<<<<< HEAD
-            Spacer(modifier = Modifier.width(100.dp))
-=======
-            Icon(
-                imageVector = Icons.Default.ArrowBack,
-                contentDescription = "Back"
-            )
-        }
 
-        IconButton(
-            onClick = { /* Do something */ },
-            modifier = Modifier
-                .padding(16.dp)
-                .align(Alignment.TopEnd)
-        ) {
-            Icon(
-                imageVector = Icons.Default.Send,
-                contentDescription = "Send"
-            )
-        }
-
-        Column(
-            modifier = Modifier
-                .padding(top = 240.dp)
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-
-        ) {
-            Text(
-                text = "Mixed Vegetable Salad",
-                style = MaterialTheme.typography.headlineLarge,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Divider()
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Text(
-                text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor nisi, porttitor at ex nec, convallis viverra orci.",
-                style = MaterialTheme.typography.bodyMedium,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
->>>>>>> e9b9c94a81fa1ba4cf7b8ef76313f5dc419e2b49
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(5.dp),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
+                //horizontalArrangement = Arrangement.SpaceBetween
             ) {
-
+                Spacer(modifier = Modifier.weight(1f))
                 Box(
                     modifier = Modifier
                         .clip(shape = CircleShape)
-                        .background(colorWhite)
+                        .background(LightGreen2)
                         .size(32.dp, 32.dp),
                     contentAlignment = Alignment.Center
                 ) {
                     IconButton(onClick = {
-                        if(counter.value < 1){
+                        if(counter.value < 2){
                         counter.value == 1
                     }else{
                             counter.value--
@@ -151,19 +95,20 @@ fun AddMenu() {
                         Icon(
                             imageVector = Icons.Default.Minimize,
                             contentDescription = "",
-                            tint = LightGreen,
+                            tint = Color.White,
                             modifier = Modifier.size(20.dp, 20.dp)
                         )
                     }
                 }
-
+                Spacer(modifier = Modifier.width(8.dp))
                 Text(
                     text = "${counter.value}",
                     color = colorBlack,
                     style = androidx.compose.material.MaterialTheme.typography.button,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 12.sp
                 )
-
+                Spacer(modifier = Modifier.width(8.dp))
                 Box(
                     modifier = Modifier
                         .clip(shape = CircleShape)
@@ -182,8 +127,9 @@ fun AddMenu() {
                         )
                     }
                 }
+                Spacer(modifier = Modifier.weight(1f))
             }
-        }
+
 
         TextField(
             value = "",
@@ -194,7 +140,7 @@ fun AddMenu() {
         )
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate(Screen.CheckOutOrder.route) },
             shape = RoundedCornerShape(24.dp),
             modifier = Modifier
                 .fillMaxWidth()
@@ -209,6 +155,7 @@ fun AddMenu() {
 @Preview
 @Composable
 fun PreviewPlaceOrderScreen(){
-    AddMenu()
+    val navController = rememberNavController()
+    AddMenu(navController)
 }
 

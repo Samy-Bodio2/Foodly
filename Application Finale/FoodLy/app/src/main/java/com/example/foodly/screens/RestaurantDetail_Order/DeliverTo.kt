@@ -15,11 +15,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.*
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun DeliverTo(){
+fun DeliverTo(navController: NavController){
     var isChecked by remember { mutableStateOf(false) }
     var selectedOption by remember { mutableStateOf(0) }
     val scrollState = rememberScrollState()
@@ -28,10 +30,10 @@ fun DeliverTo(){
             TopAppBar( backgroundColor = white,
                 navigationIcon = {
                     IconButton(onClick = {
-//                        navController.navigate("EWalletScreen") {
-//                            popUpTo(navController.graph.startDestinationId)
-//                            launchSingleTop = true
-//                        }
+                       navController.navigate(Screen.CheckOutOrder.route) {
+                            popUpTo(navController.graph.startDestinationId)
+                            launchSingleTop = true
+                        }
                     }) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,

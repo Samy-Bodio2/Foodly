@@ -23,7 +23,7 @@ val LightGreen2 = Color(0xFF8FCE91)
 val LightGreen3 = Color(0xFFC3EEC4)
 
 val md_theme_light_primary = Color(0xFF30A235)
-val md_theme_light_onPrimary = Color(0xFFFFFFFF)
+val md_theme_light_onPrimary = Color(0xFFF1EBEB)
 val md_theme_light_primaryContainer = Color(0xFFC9E6FF)
 val md_theme_light_onPrimaryContainer = Color(0xFF001E2F)
 val md_theme_light_secondary = Color(0xFF50606E)

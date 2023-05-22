@@ -124,7 +124,7 @@ fun DeliverTo(navController: NavController){
                             onClick = { selectedOption = 0 },
                             colors = RadioButtonDefaults.colors(
                                 selectedColor = LightGreen,
-                                unselectedColor = white
+                                unselectedColor = LightGreen
                             ),
                         )
                     }
@@ -175,7 +175,7 @@ fun DeliverTo(navController: NavController){
                             onClick = { selectedOption = 1 },
                             colors = RadioButtonDefaults.colors(
                                 selectedColor = LightGreen,
-                                unselectedColor = white
+                                unselectedColor = LightGreen
                             ),
                         )
                     }
@@ -226,7 +226,7 @@ fun DeliverTo(navController: NavController){
                             onClick = { selectedOption = 2 },
                             colors = RadioButtonDefaults.colors(
                                 selectedColor = LightGreen,
-                                unselectedColor = white
+                                unselectedColor = LightGreen
                             ),
                         )
                     }
@@ -277,7 +277,7 @@ fun DeliverTo(navController: NavController){
                             onClick = { selectedOption = 3 },
                             colors = RadioButtonDefaults.colors(
                                 selectedColor = LightGreen,
-                                unselectedColor = white
+                                unselectedColor = LightGreen
                             ),
                         )
                     }
@@ -328,7 +328,7 @@ fun DeliverTo(navController: NavController){
                             onClick = { selectedOption = 4 },
                             colors = RadioButtonDefaults.colors(
                                 selectedColor = LightGreen,
-                                unselectedColor = white
+                                unselectedColor = LightGreen
                             ),
                         )
                     }
@@ -379,3 +379,4 @@ fun DeliverTo(navController: NavController){
         }
     }
 }
+

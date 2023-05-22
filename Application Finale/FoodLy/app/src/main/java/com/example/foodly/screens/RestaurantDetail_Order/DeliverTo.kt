@@ -1,6 +1,5 @@
 package com.example.foodly.screens.RestaurantDetail_Order
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,7 +18,8 @@ import androidx.navigation.NavController
 import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.*
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+
+@Suppress("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun DeliverTo(navController: NavController){
     var isChecked by remember { mutableStateOf(false) }

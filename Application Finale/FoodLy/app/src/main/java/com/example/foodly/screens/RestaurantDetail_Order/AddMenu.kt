@@ -44,6 +44,7 @@ fun AddMenu() {
         Image(
             painter = painterResource(R.drawable.food),
             contentDescription = null,
+            contentScale = ContentScale.FillBounds,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(250.dp),
@@ -74,7 +75,57 @@ fun AddMenu() {
                 .clip(shape = CircleShape)
                 .background(LightGreen3)
         ) {
+<<<<<<< HEAD
             Spacer(modifier = Modifier.width(100.dp))
+=======
+            Icon(
+                imageVector = Icons.Default.ArrowBack,
+                contentDescription = "Back"
+            )
+        }
+
+        IconButton(
+            onClick = { /* Do something */ },
+            modifier = Modifier
+                .padding(16.dp)
+                .align(Alignment.TopEnd)
+        ) {
+            Icon(
+                imageVector = Icons.Default.Send,
+                contentDescription = "Send"
+            )
+        }
+
+        Column(
+            modifier = Modifier
+                .padding(top = 240.dp)
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+
+        ) {
+            Text(
+                text = "Mixed Vegetable Salad",
+                style = MaterialTheme.typography.headlineLarge,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Divider()
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Text(
+                text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor nisi, porttitor at ex nec, convallis viverra orci.",
+                style = MaterialTheme.typography.bodyMedium,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+>>>>>>> e9b9c94a81fa1ba4cf7b8ef76313f5dc419e2b49
             Row(
                 modifier = Modifier
                     .fillMaxWidth()

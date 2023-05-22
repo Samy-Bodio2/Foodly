@@ -34,12 +34,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
-<<<<<<< HEAD
-import com.example.foodly.screens.RestaurantDetail_Order.MyScreen
-=======
 import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.LightGreen
->>>>>>> 0a9df8f0859ee1b4ed91dfb0ce63183544f3d978
 import com.example.foodly.utils.read
 import com.google.firebase.firestore.FirebaseFirestore
 

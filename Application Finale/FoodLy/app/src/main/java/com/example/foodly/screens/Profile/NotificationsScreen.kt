@@ -14,11 +14,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 
-fun NotificationScreen() {
+fun NotificationsScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -148,5 +150,6 @@ fun NotificationScreen() {
 @Preview
 @Composable
 fun PreviewNotification(){
-    NotificationScreen()
+    val navController = rememberNavController()
+    NotificationsScreen(navController)
 }

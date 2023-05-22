@@ -11,7 +11,10 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -31,7 +34,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
+<<<<<<< HEAD
 import com.example.foodly.screens.RestaurantDetail_Order.MyScreen
+=======
+import com.example.foodly.navigation.Screen
+import com.example.foodly.ui.theme.LightGreen
+>>>>>>> 0a9df8f0859ee1b4ed91dfb0ce63183544f3d978
 import com.example.foodly.utils.read
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -42,12 +50,12 @@ fun HomeScreen(
 ) {
     Scaffold(
         topBar = {
-            AppBar()
+            AppBar(navController)
         },
         content = {
             LazyColumn{
                 item {
-                    Content()
+                    Content(navController)
                     Spacer(Modifier.size(20.dp))
                 }
 
@@ -63,20 +71,8 @@ fun HomeScreen(
     )
 }
 
-//    Scaffold(
-//        topBar = {AppBar()},
-//        content = {
-//Box(Modifier.verticalScroll(rememberScrollState())){Content()}
-//
-//
-//        }
-//    )
-//  }
-
-
-
 @Composable
-fun AppBar(){
+fun AppBar(navController : NavController){
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -86,31 +82,27 @@ fun AppBar(){
     ){
         BoxWithRes(resId = R.drawable.baseline_account_circle_24, description = "Person")
         Row(verticalAlignment = Alignment.CenterVertically){
-            Text(text = "Times Square", Modifier.weight(1f), fontWeight = FontWeight.Medium)
+            Text(text = "Times Square", Modifier.size(10.dp), fontWeight = FontWeight.ExtraBold)
             Spacer(modifier = Modifier.width(36.dp))
-            Icon(
-                painter = painterResource(id = R.drawable.baseline_notifications_24),
-                contentDescription = "Down",
-                modifier = Modifier.size(16.dp)
-            )
+            IconButton(onClick = {  }) {
+                Icon(Icons.Filled.Notifications, contentDescription = "Notification")
+            }
             Spacer(modifier = Modifier.width(16.dp))
-            Icon(
-                painter = painterResource(id = R.drawable.baseline_shopping_bag_24),
-                contentDescription = "bag",
-                modifier = Modifier.size(16.dp)
-            )
+            IconButton(onClick = { navController.navigate(Screen.ShoppingCard.route) }) {
+                Icon(Icons.Filled.ShoppingCart, contentDescription = "Shopping Cart")
+            }
         }
     }
 }
 
 @Composable
-fun Content(){
+fun Content(navController: NavController){
 
     Column{
 
         Header()
         Spacer(modifier = Modifier.width(16.dp))
-        PromotionSection()
+        PromotionSection(navController)
         Spacer(modifier = Modifier.width(16.dp))
         CategorySection()
         Spacer(modifier = Modifier.width(16.dp))
@@ -184,7 +176,7 @@ fun Header(){
 }
 
 @Composable
-fun PromotionSection(){
+fun PromotionSection(navController: NavController){
     Column(Modifier.padding(horizontal = 16.dp)) {
         Row(
             Modifier.fillMaxWidth(),
@@ -192,8 +184,8 @@ fun PromotionSection(){
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(text = "Special Offers", style = MaterialTheme.typography.h6)
-            TextButton(onClick = {}) {
-                Text(text = "See All", color = Color.Green)
+            TextButton(onClick = {navController.navigate(Screen.CategoryScreen.route)}) {
+                Text(text = "See All", color = LightGreen)
             }
         }
     }
@@ -208,7 +200,7 @@ fun PromotionSection(){
                 title = "30%",
                 subtitle = "Discount Only",
                 header = "Valid for today",
-                backgroundColor = Color.Green
+                backgroundColor = LightGreen
             )
         }
     }
@@ -223,8 +215,8 @@ fun PromotionItem(
     imagePainter: Painter
 ) {
     Card(
-        Modifier.width(350.dp),
-        shape = RoundedCornerShape(8.dp),
+        Modifier.width(380.dp),
+        shape = RoundedCornerShape(20.dp),
         backgroundColor = backgroundColor,
         elevation = 0.dp
     ) {
@@ -255,7 +247,9 @@ fun PromotionItem(
 @Composable
 fun CategorySection(){
     Row(
-        Modifier.fillMaxWidth(),
+        Modifier
+            .fillMaxWidth()
+            .padding(20.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         CategoryButton(
@@ -281,7 +275,9 @@ fun CategorySection(){
     }
     Spacer(modifier = Modifier.width(4.dp))
     Row(
-        Modifier.fillMaxWidth(),
+        Modifier
+            .fillMaxWidth()
+            .padding(20.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         CategoryButton(
@@ -348,7 +344,7 @@ fun DiscountSection(){
     ) {
         Text(text = "Discount Guaranteed", style = MaterialTheme.typography.h6)
         TextButton(onClick = {}) {
-            Text(text = "See All", color = Color.Green)
+            Text(text = "See All", color = LightGreen)
         }
     }
     LazyRow(
@@ -402,6 +398,7 @@ data class MenuItem(
 fun DiscountSectionItems(url: String,titre:String,restauName:String="",price: Double=0.0){
     val imagePainter: Painter = rememberImagePainter(url)
 
+    Spacer(modifier = Modifier.padding(10.dp))
     DiscountSectionItem(
         imagePainter = imagePainter,
         title = titre,
@@ -431,8 +428,8 @@ fun DiscountSectionItem(
                 modifier = Modifier
                     .fillMaxWidth()
                     .aspectRatio(1f)
-                    .clip(RoundedCornerShape(8.dp)),
-                contentScale = ContentScale.Fit
+                    .clip(RoundedCornerShape(20.dp)),
+                contentScale = ContentScale.FillBounds
             )
             Column(
                 Modifier
@@ -479,7 +476,7 @@ fun ChipSection(chips: List<String>){
                 }
                 .clip(RoundedCornerShape(10.dp))
                 .background(
-                    if (selectedChipIndex == it) Color.Green
+                    if (selectedChipIndex == it) LightGreen
                     else Color.White
                 )
                 .padding(15.dp)
@@ -519,8 +516,8 @@ fun MenuItem(title: String ,
              imagePainter: Painter
 ){
     Card(
-        Modifier.width(350.dp),
-        shape = RoundedCornerShape(8.dp),
+        Modifier.width(390.dp),
+        shape = RoundedCornerShape(20.dp),
         backgroundColor = backgroundColor,
         elevation = 0.dp
     ){
@@ -530,7 +527,7 @@ fun MenuItem(title: String ,
                 modifier = Modifier
                     .fillMaxHeight()
                     .weight(1f)
-                    .clip(RoundedCornerShape(8.dp)),
+                    .clip(RoundedCornerShape(20.dp)),
                 alignment = Alignment.CenterEnd,
                 contentScale = ContentScale.Crop
             )

@@ -1,13 +1,13 @@
 package com.example.foodly.screens.RestaurantDetail_Order
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowForward
-import androidx.compose.material.icons.filled.Send
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -21,137 +21,133 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
-import com.example.foodly.ui.theme.LightGreen
+import com.example.foodly.navigation.Screen
+import com.example.foodly.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-
-fun AddMenu() {
-    Box(
-        modifier = Modifier.fillMaxSize()
-    ) {
+fun AddMenu(navController: NavController) {
+    Column {
+        TopAppBar(
+            title = { Text(text = "") },
+            navigationIcon = {
+                IconButton(onClick = { navController.navigate(Screen.RestaurantScreen.route) }) {
+                    Icon(Icons.Default.ArrowBack, contentDescription = null)
+                }
+            },
+            actions = {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(Icons.Default.Send, contentDescription = null)
+                }
+            }
+        )
         Image(
-            painter = painterResource(id = R.drawable.food),
+            painter = painterResource(R.drawable.food),
             contentDescription = null,
             contentScale = ContentScale.FillBounds,
             modifier = Modifier
                 .fillMaxWidth()
-                .heightIn(max = 400.dp)
-                .align(Alignment.TopCenter)
+                .height(300.dp),
+        )
+        
+        Text(
+            text = "Mixed Vegetable Salab",
+            style = MaterialTheme.typography.headlineLarge,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(top = 16.dp)
+        )
+        Divider(modifier = Modifier.padding(vertical = 8.dp))
+        Text(
+            text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor nisi, porttitor at ex nec, convallis viverra orci.",
+            style = MaterialTheme.typography.bodyMedium,
+            textAlign = TextAlign.Justify,
+            modifier = Modifier.padding(horizontal = 16.dp)
         )
 
-        IconButton(
-            onClick = { /* Do something */ },
-            modifier = Modifier
-                .padding(16.dp)
-                .align(Alignment.TopStart)
-        ) {
-            Icon(
-                imageVector = Icons.Default.ArrowBack,
-                contentDescription = "Back"
-            )
-        }
 
-        IconButton(
-            onClick = { /* Do something */ },
-            modifier = Modifier
-                .padding(16.dp)
-                .align(Alignment.TopEnd)
-        ) {
-            Icon(
-                imageVector = Icons.Default.Send,
-                contentDescription = "Send"
-            )
-        }
-
-        Column(
-            modifier = Modifier
-                .padding(top = 240.dp)
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-
-        ) {
-            Text(
-                text = "Mixed Vegetable Salad",
-                style = MaterialTheme.typography.headlineLarge,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Divider()
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Text(
-                text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor nisi, porttitor at ex nec, convallis viverra orci.",
-                style = MaterialTheme.typography.bodyMedium,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
+        val counter = remember { mutableStateOf(1) }
 
             Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp),
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
+                //horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Button(
-                    onClick = { /* Do something */ },
-                    colors = ButtonDefaults.buttonColors(
-                        Color.White,
-                        contentColor = MaterialTheme.colorScheme.primary
-                    )
+                Spacer(modifier = Modifier.weight(1f))
+                Box(
+                    modifier = Modifier
+                        .clip(shape = CircleShape)
+                        .background(LightGreen2)
+                        .size(32.dp, 32.dp),
+                    contentAlignment = Alignment.Center
                 ) {
-                    Text(text = "+")
+                    IconButton(onClick = {
+                        if(counter.value < 2){
+                        counter.value == 1
+                    }else{
+                            counter.value--
+                        }
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.Minimize,
+                            contentDescription = "",
+                            tint = Color.White,
+                            modifier = Modifier.size(20.dp, 20.dp)
+                        )
+                    }
                 }
-
                 Spacer(modifier = Modifier.width(8.dp))
-
                 Text(
-                    text = "1",
-                    style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.widthIn(max = 40.dp)
+                    text = "${counter.value}",
+                    color = colorBlack,
+                    style = androidx.compose.material.MaterialTheme.typography.button,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 12.sp
                 )
-
                 Spacer(modifier = Modifier.width(8.dp))
-
-                Button(
-                    onClick = { /* Do something */ },
-                    colors = ButtonDefaults.buttonColors(
-                        Color.White,
-                        contentColor = MaterialTheme.colorScheme.primary
-                    )
+                Box(
+                    modifier = Modifier
+                        .clip(shape = CircleShape)
+                        .background(LightGreen)
+                        .size(32.dp, 32.dp),
+                    contentAlignment = Alignment.Center
                 ) {
-                    Text(text = "-")
+                    IconButton(onClick = {
+                        counter.value++
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.Add,
+                            contentDescription = "",
+                            tint = colorWhite,
+                            modifier = Modifier.size(20.dp, 20.dp)
+                        )
+                    }
                 }
+                Spacer(modifier = Modifier.weight(1f))
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
 
-            TextField(
-                value = "",
-                onValueChange = { /* Do something */ },
-                placeholder = { Text(text = "Note to Restaurant (optional)") },
-                shape = RoundedCornerShape(4.dp),
-                modifier = Modifier.fillMaxWidth()
-            )
+        TextField(
+            value = "",
+            onValueChange = { /* Do something */ },
+            placeholder = { Text(text = "Note to Restaurant (optional)") },
+            shape = RoundedCornerShape(4.dp),
+            modifier = Modifier.fillMaxWidth()
+        )
 
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Button(
-                onClick = { /* Do something */ },
-                shape = RoundedCornerShape(24.dp),
-                colors = ButtonDefaults.buttonColors(
-                    LightGreen,
-                    contentColor = Color.White
-                ),
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-            ) {
-                Text(text = "Add to Basket - $12.00")
-            }
+        Button(
+            onClick = { navController.navigate(Screen.CheckOutOrder.route) },
+            shape = RoundedCornerShape(24.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp),
+            colors = ButtonDefaults.buttonColors(LightGreen)
+        ) {
+            Text(text = "Add to basket - $12.00")
         }
     }
 }
@@ -159,5 +155,7 @@ fun AddMenu() {
 @Preview
 @Composable
 fun PreviewPlaceOrderScreen(){
-    AddMenu()
+    val navController = rememberNavController()
+    AddMenu(navController)
 }
+

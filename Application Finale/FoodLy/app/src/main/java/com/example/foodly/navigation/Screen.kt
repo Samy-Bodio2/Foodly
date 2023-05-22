@@ -33,4 +33,6 @@ sealed class Screen(val route: String){
     object RestaurantScreen: Screen("restaurant_screen")
     object SearchingDriver: Screen("searching_driver")
     object TransactionHistoryScreen: Screen("transaction_history")
+    object DocumentList: Screen("document_list")
+    object DocumentDetail: Screen("document_detail")
 }

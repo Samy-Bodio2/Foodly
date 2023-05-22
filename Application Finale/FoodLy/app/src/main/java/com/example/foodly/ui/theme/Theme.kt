@@ -91,7 +91,7 @@ fun FoodlyTheme(
     val colors = if (!useDarkTheme) {
         LightColors
     } else {
-        DarkColors
+        LightColors
     }
 
     CompositionLocalProvider(LocalSpacing provides Spacing()) {

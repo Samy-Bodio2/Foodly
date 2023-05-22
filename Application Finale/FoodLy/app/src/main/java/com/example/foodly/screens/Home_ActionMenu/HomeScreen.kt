@@ -192,7 +192,7 @@ fun PromotionSection(navController: NavController){
                 title = "30%",
                 subtitle = "Discount Only",
                 header = "Valid for today",
-                backgroundColor = LightGreen
+                backgroundColor = Color.Green
             )
         }
     }
@@ -448,7 +448,7 @@ fun Recommended(){
         ) {
             Text(text = "Recommended For You", style = MaterialTheme.typography.h6)
             TextButton(onClick = {}) {
-                Text(text = "See All", color = Color.Green)
+                Text(text = "See All", color = LightGreen)
             }
         }
     }
@@ -473,7 +473,7 @@ fun ChipSection(chips: List<String>){
                 )
                 .padding(15.dp)
             ){
-                Text(text = chips[it],color = Color.Gray,fontWeight = FontWeight.Bold)
+                Text(text = chips[it],color = Color.Black,fontWeight = FontWeight.Bold)
             }
         }
     }
@@ -508,7 +508,7 @@ fun MenuItem(title: String ,
              imagePainter: Painter
 ){
     Card(
-        Modifier.width(390.dp),
+        Modifier.width(250.dp),
         shape = RoundedCornerShape(20.dp),
         backgroundColor = backgroundColor,
         elevation = 0.dp

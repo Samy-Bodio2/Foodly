@@ -97,7 +97,7 @@ fun SortButton(){
                 backgroundColor = Color.White,
                 contentColor = Color.Green
             ),
-            border = BorderStroke(2.dp, Color.Green),
+
             shape = RoundedCornerShape(50.dp)
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {

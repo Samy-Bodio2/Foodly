@@ -2,8 +2,10 @@ package com.example.foodly.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.example.foodly.screens.AccountSetup.AddProfileScreen
 import com.example.foodly.screens.Home_ActionMenu.CategoryItem
 import com.example.foodly.screens.Home_ActionMenu.CategoryScreen
@@ -19,13 +21,15 @@ import com.example.foodly.screens.RestaurantDetail_Order.DeliverTo
 import com.example.foodly.screens.RestaurantDetail_Order.RestaurantScreen
 import com.example.foodly.screens.e_wallet.EWalletScreen
 import com.example.foodly.screens.e_wallet.TransactionHistoryScreen
+import com.example.foodly.utils.DocumentDetails
+import com.example.foodly.utils.DocumentList
 
 @Composable
 fun NavGraph(navController: NavHostController) {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.AddMenu.route){
+        startDestination = Screen.HomeScreen.route){
 
         composable(route = Screen.Splash.route){
             AnimatedSplashScreen(navController)
@@ -116,6 +120,17 @@ fun NavGraph(navController: NavHostController) {
         composable(route = Screen.DeliverTo.route){
             DeliverTo(navController)
         }
-
+        composable(
+            route = "details/{id}",
+            arguments = listOf(navArgument("id"){
+                    type = NavType.StringType
+                }
+            )
+        ){
+            DocumentDetails(navController)
+        }
+        composable(route = Screen.DocumentList.route){
+            DocumentList(navController)
+        }
     }
 }

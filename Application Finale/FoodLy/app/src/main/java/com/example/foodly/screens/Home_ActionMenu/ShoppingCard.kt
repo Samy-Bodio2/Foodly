@@ -77,7 +77,7 @@ fun TopAppbar(navController: NavController) {
             .border(1.dp, color = Black, shape = RoundedCornerShape(50.dp))
             .height(20.dp)
             .width(20.dp), contentAlignment = Alignment.Center){
-            Text(text = "...",Modifier.offset(y=(-7).dp))
+            Text(text = "...LOVE",Modifier.offset(y=(-7).dp))
         }
 
     }

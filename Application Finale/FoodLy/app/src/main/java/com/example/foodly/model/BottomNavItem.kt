@@ -8,3 +8,10 @@ data class BottomNavItem(
     val contentDescription: String? = null,
     val alertCount: Int? = null,
 )
+data class TextNavItem(
+    val route: String,
+    val text:String,
+    val contentDescription: String? = null,
+    val alertCount: Int? = null,
+
+)

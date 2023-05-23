@@ -1,8 +1,15 @@
+
 package com.example.foodly.screens.Orders
 
+<<<<<<< HEAD
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+=======
+import android.annotation.SuppressLint
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+>>>>>>> 0858ccc01ac9287bb0ac38451f4ca363aa9d1c08
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -12,7 +19,10 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
+<<<<<<< HEAD
 import androidx.compose.runtime.Composable
+=======
+>>>>>>> 0858ccc01ac9287bb0ac38451f4ca363aa9d1c08
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -22,6 +32,7 @@ import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -34,6 +45,7 @@ import coil.compose.rememberImagePainter
 import com.example.foodly.R
 import com.example.foodly.ui.theme.LightGreen
 import com.example.foodly.ui.theme.LightGreen2
+<<<<<<< HEAD
 
 @Composable
 fun OrderScreen(navController: NavController) {
@@ -213,99 +225,109 @@ fun TopAppbare(navController: NavController) {
 }
 
 
+=======
+>>>>>>> 0858ccc01ac9287bb0ac38451f4ca363aa9d1c08
 
 /*
 @Composable
 fun OrderScreen(navController: NavController) {
-    Box(modifier = Modifier .background(color = Color.White)){
-        val navController = rememberNavController()
-        TopAppbare(navController)
-        Row(modifier =  Modifier .padding(top = 8.dp), horizontalArrangement = Arrangement.Center){
-            Spacer(modifier = Modifier.padding(top= 20.dp))
-            Column {
-                Spacer(modifier = Modifier.padding(top= 20.dp))
-                AppBarCat()
-                Spacer(modifier = Modifier.padding(top= 20.dp))
-                Content()
-            }
-        }
-    }
-
-}
-@Composable
-fun AppBarCat() {
-    Column(modifier = Modifier.height(100.dp),
-        horizontalAlignment = Alignment.Start
-    ){
-        Row(modifier = Modifier
-            .fillMaxWidth(),
-            horizontalArrangement = Arrangement.Start
-        ){
-            Spacer(modifier = Modifier.padding(top=20.dp))
-        }
-        Spacer(modifier = Modifier.padding(top=30.dp))
-        TextWithLine()
-    }
-}
-
-@Composable
-fun titleNavigation(){
-    Row(
-        modifier = Modifier
-            .padding(horizontal = (17.dp)),
-        verticalAlignment = Alignment.CenterVertically
-    ){
-        Text(
-            "Filter", fontWeight = FontWeight.Bold,
-            fontSize = 12.sp,
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(0.2f)
-                .padding(horizontal = 0.dp),
-
-            )
-
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(
-            "Filter", fontWeight = FontWeight.Bold,
-            fontSize = 12.sp,
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(0.2f)
-                .padding(horizontal = 0.dp),
-
-            )
-
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(
-            "Filter", fontWeight = FontWeight.Bold,
-            fontSize = 12.sp,
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(0.2f)
-                .padding(start = 30.dp),
+    Column(modifier = Modifier.fillMaxSize()) {
+        TopAppBar(
+            title = { Text(text = "Orders") },
+            backgroundColor = Color.White,
+            navigationIcon = { IconButton(onClick = { /* Do Something */ }) {
+                Image(
+                    painter = painterResource(R.drawable.foodlylogo),
+                    contentDescription = "Logo",
+                    modifier = Modifier
+                        .height(20.dp)
+                )
+            } },
+            actions = {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    IconButton(onClick = { /* Do Something */ }) {
+                        Icon(Icons.Filled.Search, contentDescription = "Search")
+                    }
+                }
+            },
+            elevation = 0.dp
         )
-        Spacer(modifier = Modifier.width(8.dp))
+        OrderCategoryTab()
+    }
+}
+
+@Composable
+fun OrderCategoryTab() {
+    var selectedIndex by remember { mutableStateOf(0) }
+    val categories = listOf("Active", "Completed", "Cancelled")
+    val colors = listOf(
+        LightGreen,
+        LightGreen,
+        LightGreen
+    )
+
+    TabRow(selectedTabIndex = selectedIndex, backgroundColor = White) {
+        categories.forEachIndexed { index, category ->
+            Tab(
+                text = { Text(text = category, color = if (index == selectedIndex) colors[index] else Color.Gray) },
+                selected = selectedIndex == index,
+                onClick = { selectedIndex = index },
+                selectedContentColor = LightGreen,
+                unselectedContentColor =LightGreen ,
+
+                )
+        }
     }
 
+    when (selectedIndex) {
+        0 -> ActiveOrders()
+        1 -> CompletedOrders()
+        2 -> CancelledOrders()
+    }
+}
+
+@Composable
+fun ActiveOrders() {
+    Column {
+        Content()
+
+        }
+
+    }
+
+
+@Composable
+fun CompletedOrders() {
+    Column {
+        Content()
+    }
+}
+
+@Composable
+fun CancelledOrders() {
+    Column {
+        Content()
+    }
 }
 
 //menu
 @Composable
 fun Content(){
-    Column {
+    Column{
         Card( modifier = Modifier
-            .padding(start = 20.dp)
+            .padding(start = 20.dp, top = 15.dp)
             .width(320.dp)
-            .height(170.dp) ,
+            .height(170.dp),
             shape = RoundedCornerShape(8.dp),
             backgroundColor =Color.White){
             Menu()
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(100.dp) .padding(top = 40.dp))
             SortButton()
         }
 
-        Spacer(modifier = Modifier.height(30.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
         Card( modifier = Modifier
             .padding(start = 20.dp)
@@ -314,12 +336,10 @@ fun Content(){
             shape = RoundedCornerShape(8.dp),
             backgroundColor = Color.White){
             Menu2()
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(100.dp) .padding(top = 50.dp))
             SortButton()
         }
-
-
-        Spacer(modifier = Modifier.height(30.dp))
+        Spacer(modifier = Modifier.height(20.dp) )
         Card(modifier = Modifier
             .padding(start = 20.dp)
             .width(310.dp)
@@ -455,7 +475,7 @@ fun MenuItem(
                         shape = RoundedCornerShape(5.dp)
                     ) {
 
-                        Text("Completed", modifier = Modifier .padding(bottom = 1.dp),textAlign = TextAlign.Center)
+                        Text("Completed", modifier = Modifier .padding(bottom = 1.dp) .offset(y =3.dp),textAlign = TextAlign.Center)
 
                     }
 
@@ -616,30 +636,29 @@ fun MenuItem3(
                         Text("Completed", fontWeight = FontWeight.Bold, modifier = Modifier .padding(bottom = 3.dp), textAlign = TextAlign.Center)
 
                     }
-
-
                 }
-
             }
         }
     }
 }
 
+<<<<<<< HEAD
 //btn
 */
+=======
+>>>>>>> 0858ccc01ac9287bb0ac38451f4ca363aa9d1c08
 @Composable
 fun SortButton(){
     Row(
         modifier = Modifier
-            .padding(horizontal = (17.dp)),
+            .padding(start = 17.dp, top = 30.dp) .offset(y =30.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-
         Button(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(0.2f)
-                .padding(top = 105.dp),
+                .padding( top = 20.dp),
             onClick = { /* Gérer l'événement du clic */ },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.White,
@@ -662,7 +681,7 @@ fun SortButton(){
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(0.2f)
-                .padding(top = 105.dp),
+                .padding( top = 20.dp),
             onClick = { /* Gérer l'événement du clic */ },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = LightGreen,
@@ -677,52 +696,27 @@ fun SortButton(){
                     fontSize = 12.sp)
             }
         }
-    }
-}
 
-// text
-@Composable
-fun TextWithLine() {
-    Column(
-        modifier = Modifier
-            .padding(16.dp)
-            .fillMaxWidth()
-            .clickable { /* Action on click */ }
-    ) {
-        Box(){
+        Spacer(modifier = Modifier.width(8.dp))
 
 
-            Spacer(modifier = Modifier.height(1.dp))
-            Box(
 
-                modifier = Modifier
-                    .padding()
-//                    .border(
-//                        border = BorderStroke(
-//                            width = 1.dp,
-//                            color = Color.Black
-//                        )
-//                    )
-                    .background(color = Color(0xFFFFA500)), // Orange,
-//                        ContentScale = ContentScale.Fit,
-            ){
-                Text(
-                    text = "Texte avec ligne",
-                    color = Color(0xFFFFA500), // Orange
-                )
-            }
-
-        }
 
 
     }
+
+
 }
-
-
 
 @Preview
 @Composable
 fun  OrderScreens(){
     val navController = rememberNavController()
     OrderScreen(navController)
+<<<<<<< HEAD
 }
+=======
+}
+                                    
+  
+>>>>>>> 0858ccc01ac9287bb0ac38451f4ca363aa9d1c08

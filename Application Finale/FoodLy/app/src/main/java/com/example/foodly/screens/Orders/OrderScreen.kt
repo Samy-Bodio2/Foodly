@@ -1,41 +1,25 @@
-
 package com.example.foodly.screens.Orders
 
-<<<<<<< HEAD
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-=======
-import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
->>>>>>> 0858ccc01ac9287bb0ac38451f4ca363aa9d1c08
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
-<<<<<<< HEAD
 import androidx.compose.runtime.Composable
-=======
->>>>>>> 0858ccc01ac9287bb0ac38451f4ca363aa9d1c08
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.White
-import androidx.compose.ui.graphics.Color.Companion.Yellow
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -45,7 +29,6 @@ import coil.compose.rememberImagePainter
 import com.example.foodly.R
 import com.example.foodly.ui.theme.LightGreen
 import com.example.foodly.ui.theme.LightGreen2
-<<<<<<< HEAD
 
 @Composable
 fun OrderScreen(navController: NavController) {
@@ -88,7 +71,7 @@ fun OrderCategoryTab() {
                 selected = selectedIndex == index,
                 onClick = { selectedIndex = index },
                 selectedContentColor = LightGreen,
-                unselectedContentColor = Black,
+                unselectedContentColor = LightGreen,
 
             )
         }
@@ -112,7 +95,6 @@ fun ActiveOrders() {
         OrderItem(status = "Active", backgroundColor = Color.White) {
             // Handle Cancel button click
         }
-        SortButton()
     }
 }
 
@@ -122,12 +104,12 @@ fun CompletedOrders() {
         OrderItem(status = "Completed", backgroundColor = Color.White) {
             // Handle View Receipt button click
         }
-        SortButton()
+
         Spacer(modifier = Modifier.height(16.dp))
         OrderItem(status = "Completed", backgroundColor = Color.White) {
             // Handle View Receipt button click
         }
-        SortButton()
+
     }
 }
 
@@ -225,8 +207,6 @@ fun TopAppbare(navController: NavController) {
 }
 
 
-=======
->>>>>>> 0858ccc01ac9287bb0ac38451f4ca363aa9d1c08
 
 /*
 @Composable
@@ -645,20 +625,17 @@ fun MenuItem3(
 <<<<<<< HEAD
 //btn
 */
-=======
->>>>>>> 0858ccc01ac9287bb0ac38451f4ca363aa9d1c08
 @Composable
 fun SortButton(){
     Row(
         modifier = Modifier
-            .padding(start = 17.dp, top = 30.dp) .offset(y =30.dp),
+            .padding(17.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Button(
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(0.2f)
-                .padding( top = 20.dp),
+                .weight(0.2f),
             onClick = { /* Gérer l'événement du clic */ },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.White,
@@ -680,8 +657,7 @@ fun SortButton(){
         Button(
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(0.2f)
-                .padding( top = 20.dp),
+                .weight(0.2f),
             onClick = { /* Gérer l'événement du clic */ },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = LightGreen,
@@ -696,13 +672,6 @@ fun SortButton(){
                     fontSize = 12.sp)
             }
         }
-
-        Spacer(modifier = Modifier.width(8.dp))
-
-
-
-
-
     }
 
 
@@ -713,10 +682,4 @@ fun SortButton(){
 fun  OrderScreens(){
     val navController = rememberNavController()
     OrderScreen(navController)
-<<<<<<< HEAD
 }
-=======
-}
-                                    
-  
->>>>>>> 0858ccc01ac9287bb0ac38451f4ca363aa9d1c08

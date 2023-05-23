@@ -1,28 +1,39 @@
 package com.example.foodly.screens.Orders
 
+<<<<<<< HEAD
 import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+=======
+>>>>>>> f43b5b87c21801411c1b340140353d464e17b29e
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+<<<<<<< HEAD
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
+=======
+import androidx.compose.runtime.Composable
+>>>>>>> f43b5b87c21801411c1b340140353d464e17b29e
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+<<<<<<< HEAD
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.Color.Companion.Yellow
+=======
+>>>>>>> f43b5b87c21801411c1b340140353d464e17b29e
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,6 +42,7 @@ import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberImagePainter
 import com.example.foodly.R
 import com.example.foodly.ui.theme.LightGreen
+<<<<<<< HEAD
 import com.example.foodly.ui.theme.LightGreen2
 
 @Composable
@@ -171,43 +183,75 @@ fun OrderItem(status: String, backgroundColor: Color, onButtonClick: () -> Unit)
         }
     }
 }
+=======
+import android.annotation.SuppressLint
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.*
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.scrollable
+
+import androidx.compose.foundation.layout.fillMaxWidth
+
+
+@Composable
+fun TopAppbare(navController: NavController) {
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .padding(15.dp),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Row() {
+
+            Image(
+                painter = painterResource(R.drawable.foodlylogo),
+                contentDescription = "Logo",
+                modifier = Modifier
+
+                    .height(20.dp)
+            )
+
+            Spacer(modifier = Modifier.size(10.dp))
+            Text(text = "Orders", fontWeight = FontWeight.Bold, fontSize = 18.sp)
+        }
+
+        Box(modifier = Modifier
+            .height(20.dp)
+            .width(20.dp), contentAlignment = Alignment.Center){
+            Image(
+                painter = painterResource(R.drawable.search),
+                contentDescription = "Logo",
+                modifier = Modifier
+
+                    .height(20.dp)
+            )
+        }
+
+    }
+}
+
+>>>>>>> f43b5b87c21801411c1b340140353d464e17b29e
 
 
 
 /*
 @Composable
 fun OrderScreen(navController: NavController) {
-    androidx.compose.material3.Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { androidx.compose.material3.Text("Orders") },
-                navigationIcon = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.salad),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .height(30.dp)
-                    )
-                },
-                actions = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.search),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .height(30.dp)
-                    )
-                }
-            )
-        }){}
-    Row(modifier =  Modifier .padding(top = 8.dp), horizontalArrangement = Arrangement.Center){
-        Spacer(modifier = Modifier.padding(top= 20.dp))
-        Column {
+    Box(modifier = Modifier .background(color = Color.White)){
+        val navController = rememberNavController()
+        TopAppbare(navController)
+        Row(modifier =  Modifier .padding(top = 8.dp), horizontalArrangement = Arrangement.Center){
             Spacer(modifier = Modifier.padding(top= 20.dp))
-            AppBarCat()
-            Spacer(modifier = Modifier.padding(top= 20.dp))
-            Content()
+            Column {
+                Spacer(modifier = Modifier.padding(top= 20.dp))
+                AppBarCat()
+                Spacer(modifier = Modifier.padding(top= 20.dp))
+                Content()
+            }
         }
     }
+
 }
 @Composable
 fun AppBarCat() {
@@ -217,15 +261,14 @@ fun AppBarCat() {
         Row(modifier = Modifier
             .fillMaxWidth(),
             horizontalArrangement = Arrangement.Start
-
         ){
             Spacer(modifier = Modifier.padding(top=20.dp))
-
         }
         Spacer(modifier = Modifier.padding(top=30.dp))
-        titleNavigation()
+        TextWithLine()
     }
 }
+
 @Composable
 fun titleNavigation(){
     Row(
@@ -272,15 +315,42 @@ fun titleNavigation(){
 @Composable
 fun Content(){
     Column {
-        Menu()
-        Spacer(modifier = Modifier.height(20.dp))
-        SortButton()
-        Spacer(modifier = Modifier.height(20.dp))
-        Menu2()
-        Spacer(modifier = Modifier.height(20.dp))
-        SortButton()
-        Spacer(modifier = Modifier.height(20.dp))
-        Menu3()
+        Card( modifier = Modifier
+            .padding(start = 20.dp)
+            .width(320.dp)
+            .height(170.dp) ,
+            shape = RoundedCornerShape(8.dp),
+            backgroundColor =Color.White){
+            Menu()
+            Spacer(modifier = Modifier.height(20.dp))
+            SortButton()
+        }
+
+        Spacer(modifier = Modifier.height(30.dp))
+
+        Card( modifier = Modifier
+            .padding(start = 20.dp)
+            .width(320.dp)
+            .height(170.dp) ,
+            shape = RoundedCornerShape(8.dp),
+            backgroundColor = Color.White){
+            Menu2()
+            Spacer(modifier = Modifier.height(4.dp))
+            SortButton()
+        }
+
+
+        Spacer(modifier = Modifier.height(30.dp))
+        Card(modifier = Modifier
+            .padding(start = 20.dp)
+            .width(310.dp)
+            .height(110.dp) ,
+            shape = RoundedCornerShape(8.dp),
+            backgroundColor =Color.White){
+            Menu3()
+
+        }
+
     }
 }
 
@@ -294,7 +364,7 @@ fun Menu(){
     ){
         item{
             MenuItem(
-                imagePainter = painterResource(id = R.drawable.okok),
+                imagePainter = painterResource(id = R.drawable.im1),
                 title= "Zero Zero Noodles",
                 descrip = "4 items | 27 km",
                 price = 10.50f,
@@ -312,7 +382,7 @@ fun Menu2(){
     ){
         item{
             MenuItem2(
-                imagePainter = painterResource(id = R.drawable.okok),
+                imagePainter = painterResource(id = R.drawable.images2),
                 title= "Zero Zero Noodles",
                 descrip = "4 items | 27 km",
                 price = 10.50f,
@@ -330,7 +400,7 @@ fun Menu3(){
     ){
         item{
             MenuItem3(
-                imagePainter = painterResource(id = R.drawable.okok),
+                imagePainter = painterResource(id = R.drawable.im3),
                 title= "Zero Zero Noodles",
                 descrip = "4 items | 27 km",
                 price = 10.50f,
@@ -347,11 +417,13 @@ fun MenuItem(
     price: Float,
     backgroundColor: Color = Color.Transparent) {
     Card(
+
         Modifier
-            .width(320.dp)
-            .height(630.dp) ,
-        shape = RoundedCornerShape(8.dp),
-        backgroundColor = backgroundColor,
+
+            .padding(top = 10.dp)
+            .width(315.dp)
+            .height(100.dp) ,
+
 
         ) {
         Row {
@@ -374,6 +446,7 @@ fun MenuItem(
             Column(
                 Modifier
                     .padding(horizontal = 16.dp)
+
                     .fillMaxHeight(),
                 verticalArrangement = Arrangement.SpaceEvenly
             ) {
@@ -393,7 +466,7 @@ fun MenuItem(
                         modifier = Modifier
                             .height(35.dp)
                             .width(85.dp)
-                            .padding(bottom = 7.dp),
+                            .padding(bottom = 7.dp,),
                         onClick = { /* Gérer l'événement du clic */ },
                         colors = ButtonDefaults.buttonColors(
                             backgroundColor = LightGreen,
@@ -403,12 +476,14 @@ fun MenuItem(
                         shape = RoundedCornerShape(5.dp)
                     ) {
 
-                        Text("Completed", modifier = Modifier .padding(0.dp))
+                        Text("Completed", modifier = Modifier .padding(bottom = 1.dp),textAlign = TextAlign.Center)
 
                     }
 
 
+
                 }
+
             }
         }
     }
@@ -423,17 +498,18 @@ fun MenuItem2(
     backgroundColor: Color = Color.Transparent) {
     Card(
         Modifier
-            .width(320.dp)
-            .height(630.dp) ,
-        shape = RoundedCornerShape(8.dp),
-        backgroundColor = backgroundColor,
+            .fillMaxWidth()
+            .padding(top = 10.dp)
+            .width(315.dp)
+            .height(100.dp) ,
 
         ) {
         Row {
             Box(
                 modifier = Modifier.run {
                     width(100.dp)
-                        .height(150.dp)
+                        .fillMaxSize()
+                        .height(500.dp)
 
                 }
             ) {
@@ -474,19 +550,26 @@ fun MenuItem2(
                             backgroundColor = LightGreen,
                             contentColor = Color.White
                         ),
+
                         border = BorderStroke(2.dp, color = LightGreen),
                         shape = RoundedCornerShape(5.dp)
                     ) {
 
-                        Text("Completed", fontWeight = FontWeight.Bold, modifier = Modifier .padding(0.dp))
+                        Text("Completed", fontWeight = FontWeight.Bold, modifier = Modifier, textAlign = TextAlign.Center )
 
                     }
 
 
                 }
+
+
             }
+
+
         }
+
     }
+
 }
 
 @Composable
@@ -498,17 +581,15 @@ fun MenuItem3(
     backgroundColor: Color = Color.Transparent) {
     Card(
         Modifier
-            .width(320.dp)
-            .height(630.dp) ,
-        shape = RoundedCornerShape(8.dp),
-        backgroundColor = backgroundColor,
-
-        ) {
-        Row {
+            .padding(top = 10.dp)
+            .width(315.dp)
+            .height(90.dp) ,
+    ) {
+        Row (modifier = Modifier .height(400.dp)){
             Box(
                 modifier = Modifier.run {
                     width(100.dp)
-                        .height(150.dp)
+                        .height(500.dp)
 
                 }
             ) {
@@ -553,12 +634,13 @@ fun MenuItem3(
                         shape = RoundedCornerShape(5.dp)
                     ) {
 
-                        Text("Completed", fontWeight = FontWeight.Bold, modifier = Modifier .padding(0.dp))
+                        Text("Completed", fontWeight = FontWeight.Bold, modifier = Modifier .padding(bottom = 3.dp), textAlign = TextAlign.Center)
 
                     }
 
 
                 }
+
             }
         }
     }
@@ -578,7 +660,7 @@ fun SortButton(){
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(0.2f)
-                .padding(horizontal = 0.dp),
+                .padding(top = 105.dp),
             onClick = { /* Gérer l'événement du clic */ },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.White,
@@ -601,7 +683,7 @@ fun SortButton(){
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(0.2f)
-                .padding(horizontal = 0.dp),
+                .padding(top = 105.dp),
             onClick = { /* Gérer l'événement du clic */ },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = LightGreen,
@@ -616,17 +698,48 @@ fun SortButton(){
                     fontSize = 12.sp)
             }
         }
+    }
+}
 
-        Spacer(modifier = Modifier.width(8.dp))
+// text
+@Composable
+fun TextWithLine() {
+    Column(
+        modifier = Modifier
+            .padding(16.dp)
+            .fillMaxWidth()
+            .clickable { /* Action on click */ }
+    ) {
+        Box(){
 
 
+            Spacer(modifier = Modifier.height(1.dp))
+            Box(
 
+                modifier = Modifier
+                    .padding()
+//                    .border(
+//                        border = BorderStroke(
+//                            width = 1.dp,
+//                            color = Color.Black
+//                        )
+//                    )
+                    .background(color = Color(0xFFFFA500)), // Orange,
+//                        ContentScale = ContentScale.Fit,
+            ){
+                Text(
+                    text = "Texte avec ligne",
+                    color = Color(0xFFFFA500), // Orange
+                )
+            }
+
+        }
 
 
     }
-
-
 }
+
+
 
 @Preview
 @Composable

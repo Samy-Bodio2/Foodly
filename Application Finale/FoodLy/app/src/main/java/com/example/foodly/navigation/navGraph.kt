@@ -15,14 +15,10 @@ import com.example.foodly.screens.Onboarding_SignUp_SignIn.*
 import com.example.foodly.screens.Orders.CancelOrder
 import com.example.foodly.screens.Orders.OrderScreen
 import com.example.foodly.screens.Profile.*
-import com.example.foodly.screens.RestaurantDetail_Order.AddMenu
-import com.example.foodly.screens.RestaurantDetail_Order.CheckOutOrders
-import com.example.foodly.screens.RestaurantDetail_Order.DeliverTo
-import com.example.foodly.screens.RestaurantDetail_Order.RestaurantScreen
+import com.example.foodly.screens.RestaurantDetail_Order.*
 import com.example.foodly.screens.e_wallet.EWalletScreen
 import com.example.foodly.screens.e_wallet.TransactionHistoryScreen
-import com.example.foodly.utils.DocumentDetails
-import com.example.foodly.utils.DocumentList
+//import com.example.foodly.utils.DocumentDetails
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -120,6 +116,12 @@ fun NavGraph(navController: NavHostController) {
         composable(route = Screen.DeliverTo.route){
             DeliverTo(navController)
         }
+        composable(route = Screen.RestaurantScreen.route){
+            RestaurantScreen(navController)
+        }
+        composable(route = Screen.RestaurantDetailScreen.route){
+            RestaurantDetailScreen(navController)
+        }
         composable(
             route = "details/{id}",
             arguments = listOf(navArgument("id"){
@@ -127,7 +129,7 @@ fun NavGraph(navController: NavHostController) {
                 }
             )
         ){
-            DocumentDetails(navController)
+           // DocumentDetails(navController)
         }
         composable(route = Screen.DocumentList.route){
             DocumentList(navController)

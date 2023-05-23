@@ -18,11 +18,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.foodly.navigation.Screen
 
 
 @Composable
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
-fun MyScreen() {
+fun RestaurantDetailScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -39,7 +42,7 @@ fun MyScreen() {
                     horizontalArrangement = Arrangement.Start
                 ) {
                     IconButton(
-                        onClick = { /* action lorsque l'on clique sur le bouton retour */ }
+                        onClick = { navController.navigate(Screen.RestaurantScreen.route) }
                     ) {
                         Icon(
                             Icons.Default.ArrowBack,
@@ -284,7 +287,8 @@ fun MyBox() {
 @Preview
 @Composable
 fun MyScreenPreview() {
-    MyScreen()
+    val navController = rememberNavController()
+    RestaurantDetailScreen(navController)
 
     //MyBox()
 }

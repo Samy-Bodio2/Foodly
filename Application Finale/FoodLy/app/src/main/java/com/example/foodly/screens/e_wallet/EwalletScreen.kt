@@ -215,19 +215,29 @@ fun EWalletScreen(navController : NavController) {
                         }
                     }
                     item {
-                        Button(
-                            onClick = { isFormVisible = false },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(vertical = 8.dp),
-                            colors = ButtonDefaults.buttonColors(LightGreen),
-                            shape = RoundedCornerShape(20.dp)
-                        ) {
-                            Text(
-                                text = stringResource(id = R.string.save),
-                                color = White,
-                                modifier = Modifier.padding(horizontal = 30.dp, vertical = 8.dp)
-                            )
+                        Row(modifier = Modifier.fillMaxWidth().padding(8.dp), horizontalArrangement = Arrangement.SpaceBetween){
+                            Button(
+                                onClick = {  },
+                                colors = ButtonDefaults.buttonColors(LightGreen),
+                                shape = RoundedCornerShape(20.dp)
+                            ) {
+                                Text(
+                                    text = stringResource(id = R.string.save),
+                                    color = White
+                                )
+                            }
+
+                            Button(
+                                onClick = { isFormVisible = false },
+                                colors = ButtonDefaults.buttonColors(Color.Gray),
+                                shape = RoundedCornerShape(20.dp)
+                            ) {
+                                Text(
+                                    text = "Hide",
+                                    color = White,
+                                    modifier = Modifier.height(15.dp)
+                                )
+                            }
                         }
                     }
                 }

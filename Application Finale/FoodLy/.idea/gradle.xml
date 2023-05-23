@@ -12,7 +12,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/appa" />
             <option value="$PROJECT_DIR$/mapLib" />
+            <option value="$PROJECT_DIR$/testmenu" />
           </set>
         </option>
       </GradleProjectSettings>

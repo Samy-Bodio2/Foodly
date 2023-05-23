@@ -6,6 +6,7 @@ import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.foodly.R
@@ -131,5 +132,50 @@ val Typography = Typography(
         fontSize = 11.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp
+    )
+)
+val fonts = FontFamily(
+    fonts = listOf(
+        Font(R.font.popins_regular,style = FontStyle.Normal),
+        Font(R.font.poppins_medium,style = FontStyle.Normal, weight = FontWeight.Medium),
+        Font(R.font.poppins_semibold,style = FontStyle.Normal, weight = FontWeight.SemiBold)
+    )
+)
+
+val Typographys = androidx.compose.material.Typography(
+    h1 = TextStyle(
+        fontFamily = fonts,
+        fontWeight = FontWeight.Normal,
+        fontSize = 28.sp
+    ),
+    h2 = TextStyle(
+        fontFamily = fonts,
+        fontWeight = FontWeight.Normal,
+        fontSize = 26.sp
+    ),
+    h3 = TextStyle(
+        fontFamily = fonts,
+        fontWeight = FontWeight.Normal,
+        fontSize = 24.sp
+    ),
+    h4 = TextStyle(
+        fontFamily = fonts,
+        fontWeight = FontWeight.Normal,
+        fontSize = 22.sp
+    ),
+    h5 = TextStyle(
+        fontFamily = fonts,
+        fontWeight = FontWeight.Normal,
+        fontSize = 20.sp
+    ),
+    body1 = TextStyle(
+        fontFamily = fonts,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 18.sp
+    ),
+    body2 = TextStyle(
+        fontFamily = fonts,
+        fontWeight = FontWeight.Medium,
+        fontSize = 16.sp
     )
 )

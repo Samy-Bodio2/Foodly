@@ -1,14 +1,7 @@
 package com.example.foodly.utils
 
-import android.widget.Toast
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import com.example.foodly.screens.Home_ActionMenu.MenuItem
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore

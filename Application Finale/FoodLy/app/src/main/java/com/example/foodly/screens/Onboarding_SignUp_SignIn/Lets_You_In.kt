@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.text.font.FontWeight
@@ -45,7 +46,8 @@ fun Let_You_In(navController: NavController) {
                 Image(
                     painter = painterResource(id = R.drawable.welcome),
                     contentDescription = null,
-                    modifier = Modifier.size(200.dp)
+                    modifier = Modifier.size(200.dp),
+                    contentScale = ContentScale.FillBounds
                 )
                 Text(
                     text = "Let's you in",

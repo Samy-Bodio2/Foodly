@@ -1,34 +1,25 @@
 package com.example.foodly.screens.Orders
 
-<<<<<<< HEAD
-import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-=======
->>>>>>> f43b5b87c21801411c1b340140353d464e17b29e
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-<<<<<<< HEAD
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
-=======
 import androidx.compose.runtime.Composable
->>>>>>> f43b5b87c21801411c1b340140353d464e17b29e
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-<<<<<<< HEAD
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.Color.Companion.Yellow
-=======
->>>>>>> f43b5b87c21801411c1b340140353d464e17b29e
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -42,7 +33,6 @@ import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberImagePainter
 import com.example.foodly.R
 import com.example.foodly.ui.theme.LightGreen
-<<<<<<< HEAD
 import com.example.foodly.ui.theme.LightGreen2
 
 @Composable
@@ -183,15 +173,6 @@ fun OrderItem(status: String, backgroundColor: Color, onButtonClick: () -> Unit)
         }
     }
 }
-=======
-import android.annotation.SuppressLint
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.tween
-import androidx.compose.foundation.*
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
-
-import androidx.compose.foundation.layout.fillMaxWidth
 
 
 @Composable
@@ -230,8 +211,6 @@ fun TopAppbare(navController: NavController) {
 
     }
 }
-
->>>>>>> f43b5b87c21801411c1b340140353d464e17b29e
 
 
 

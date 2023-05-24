@@ -109,7 +109,7 @@ fun AddProfileScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.padding(10.dp))
                 androidx.compose.material3.TextButton(onClick = {
-                    navController.navigate("login_page"){
+                    navController.navigate(Screen.HomeScreen.route){
                         popUpTo(navController.graph.startDestinationId)
                         launchSingleTop = true
 

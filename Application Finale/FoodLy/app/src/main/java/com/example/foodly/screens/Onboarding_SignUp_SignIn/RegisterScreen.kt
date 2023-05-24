@@ -349,17 +349,17 @@ fun RegisterScreen(navController: NavController) {
                     onClick = {
                         if (username.isEmpty()) {
                             Toast.makeText(context, "Please enter username", Toast.LENGTH_SHORT).show()
+                        }else if(phoneNumber.isEmpty()){
+                                Toast.makeText(context, "Please enter phone_number", Toast.LENGTH_SHORT).show()
                         }else if(email.isBlank()){
                             Toast.makeText(context, "Please enter email", Toast.LENGTH_SHORT).show()
-                        }else if(phoneNumber.isEmpty()){
-                            Toast.makeText(context, "Please enter phone_number", Toast.LENGTH_SHORT).show()
                         }else if(password.isEmpty() || conpassword.isEmpty()){
                             Toast.makeText(context, "Please enter password", Toast.LENGTH_SHORT).show()
-                        }else if(phoneNumber.startsWith("6") && phoneNumber.length == 9){
+                        }else if(!(phoneNumber.startsWith("6") && phoneNumber.length == 9)){
                             Toast.makeText(context, "Please enter format phone number valid", Toast.LENGTH_SHORT).show()
                         }else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                             Toast.makeText(context, "Please enter format email valid", Toast.LENGTH_SHORT).show()
-                        }else if(conpassword.isEmpty() || password != conpassword || password.length >= 8 || conpassword.length >= 8){
+                        }else if(conpassword.isEmpty() || password != conpassword || password.length <= 8 || conpassword.length <= 8){
                             Toast.makeText(context, "password not valid", Toast.LENGTH_SHORT).show()
                         }else if(email.isBlank() && username.isEmpty() && phoneNumber.isEmpty() && password.isEmpty() && conpassword.isEmpty() ){
                             Toast.makeText(context, "Please enter your information", Toast.LENGTH_SHORT).show()

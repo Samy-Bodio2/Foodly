@@ -1,6 +1,7 @@
 package com.example.foodly.screens.RestaurantDetail_Order
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
@@ -8,9 +9,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Send
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,17 +33,17 @@ fun RestaurantScreen(navController: NavController){
         Modifier.verticalScroll(rememberScrollState())
     ){
         Column {
-            TopBar()
-            Content()
+            TopBar(navController)
+            Content(navController)
 
         }
     }
 }
 
 @Composable
-fun Content(){
+fun Content(navController: NavController){
     Column {
-        ForYou()
+        ForYou(navController)
         Spacer(modifier = Modifier.height(20.dp))
 
         Menus()
@@ -67,7 +66,7 @@ fun Content(){
 
 
 @Composable
-fun TopBar() {
+fun TopBar(navController : NavController) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.TopStart
@@ -75,7 +74,7 @@ fun TopBar() {
         Image(
             painter = painterResource(id = R.drawable.food1),
             contentDescription = "Background",
-            contentScale = ContentScale.FillBounds,
+            contentScale = ContentScale.Crop,
             //  modifier = Modifier.fillMaxSize(),
             modifier = Modifier.aspectRatio(1f)
         )
@@ -137,10 +136,9 @@ fun TopBar() {
                     Text(text = "Big Garden Salad", fontWeight = FontWeight.Bold, fontSize = 25.sp)
                 }
                 Box(modifier = Modifier) {
-                    Image(
-                        painter = painterResource(id = R.drawable.arrow_forward_i),
-                        contentDescription = ""
-                    )
+                    IconButton(onClick = { navController.navigate(Screen.RestaurantDetailScreen.route) }) {
+                        Icon(Icons.Filled.ChevronRight, contentDescription = null)
+                    }
                 }
             }
             //like
@@ -249,7 +247,7 @@ fun TopBar() {
 // partie du scrool
 
 @Composable
-fun ForYou(){
+fun ForYou(navController: NavController){
     Column {
         Row(
             Modifier
@@ -261,11 +259,11 @@ fun ForYou(){
             Text(text = "For You",fontWeight = FontWeight.Bold, fontSize = 25.sp)
             Spacer(modifier = Modifier.size(80.dp))
         }
-        ForYouItems()
+        ForYouItems(navController)
     }
 }
 @Composable
-fun ForYouItems(){
+fun ForYouItems(navController: NavController){
     LazyRow(
         contentPadding = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
@@ -274,21 +272,24 @@ fun ForYouItems(){
             ForYouItem(
                 imagePainter = painterResource(id = R.drawable.food1),
                 title ="Mixed Vegetable salad",
-                price = "$12.00"
+                price = "$12.00",
+                onButtonClick = {navController.navigate(Screen.AddMenu.route)}
             )
         }
         item{
             ForYouItem(
                 imagePainter = painterResource(id = R.drawable.food),
                 title ="Fruit & Spice Salad",
-                price = "$10.00"
+                price = "$10.00",
+                onButtonClick = {navController.navigate(Screen.AddMenu.route)}
             )
         }
         item{
             ForYouItem(
                 imagePainter = painterResource(id = R.drawable.food),
                 title ="Mixed Vegetable salad",
-                price = "$10.00"
+                price = "$10.00",
+                onButtonClick = {navController.navigate(Screen.AddMenu.route)}
             )
         }
     }
@@ -298,11 +299,14 @@ fun ForYouItems(){
 fun ForYouItem(
     title: String="",
     price: String="",
-    imagePainter: Painter
+    imagePainter: Painter,
+    onButtonClick: () -> Unit
 ){
-    Card(
+    val navController = rememberNavController()
+    Box(
         Modifier
             .width(160.dp)
+            .clickable(onClick = onButtonClick)
     ) {
         Column(
             Modifier

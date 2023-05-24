@@ -1,18 +1,20 @@
 package com.example.foodly.screens.Home_ActionMenu
 
 import android.annotation.SuppressLint
-import android.widget.Toast
 import androidx.compose.foundation.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+<<<<<<< HEAD
 import androidx.compose.material.icons.filled.*
+=======
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.ShoppingCart
+>>>>>>> 75d3398aad1f47448cec7b5871ec826d34f8e253
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -22,7 +24,6 @@ import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -34,11 +35,14 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
 import com.example.foodly.navigation.Screen
-import com.example.foodly.ui.theme.LightGreen
 import com.example.foodly.utils.read
+<<<<<<< HEAD
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+=======
+import com.example.foodly.ui.theme.LightGreen
+>>>>>>> 75d3398aad1f47448cec7b5871ec826d34f8e253
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -79,7 +83,7 @@ fun AppBar(navController : NavController){
     ){
         BoxWithRes(resId = R.drawable.baseline_account_circle_24, description = "Person")
         Row(verticalAlignment = Alignment.CenterVertically){
-            Text(text = "Times Square", Modifier.size(10.dp), fontWeight = FontWeight.ExtraBold)
+            Text(text = "Times Square")
             Spacer(modifier = Modifier.width(36.dp))
             IconButton(onClick = {  }) {
                 Icon(Icons.Filled.Notifications, contentDescription = "Notification")
@@ -103,7 +107,7 @@ fun Content(navController: NavController){
         Spacer(modifier = Modifier.width(16.dp))
         CategorySection()
         Spacer(modifier = Modifier.width(16.dp))
-        DiscountSection()
+        DiscountSection(navController)
         Spacer(modifier = Modifier.width(16.dp))
         Recommended()
         Spacer(modifier = Modifier.width(16.dp))
@@ -199,7 +203,7 @@ fun PromotionSection(navController: NavController){
                 title = "30%",
                 subtitle = "Discount Only",
                 header = "Valid for today",
-                backgroundColor = Color.Green
+                backgroundColor = LightGreen
             )
         }
     }
@@ -329,7 +333,7 @@ fun CategoryButton(
 }
 
 @Composable
-fun DiscountSection(){
+fun DiscountSection(navController: NavController){
     val MenuItemss by remember { mutableStateOf(read()) }
 
 
@@ -357,12 +361,6 @@ fun DiscountSection(){
                 }
             }
         }
-
-
-
-
-
-
     }
 }
 
@@ -395,7 +393,12 @@ data class MenuItem(
 }
 
 @Composable
-fun DiscountSectionItems(url: String,titre:String,restauName:String="",price: Double=0.0){
+fun DiscountSectionItems(
+    url: String,
+    titre:String,
+    restauName:String="",
+    price: Double=0.0
+){
     val imagePainter: Painter = rememberImagePainter(url)
 
     Spacer(modifier = Modifier.padding(10.dp))
@@ -404,7 +407,6 @@ fun DiscountSectionItems(url: String,titre:String,restauName:String="",price: Do
         title = titre,
         headers = restauName,
         price = price.toString()
-
     )
 }
 
@@ -418,6 +420,7 @@ fun DiscountSectionItem(
     Card(
         Modifier
             .width(160.dp)
+            .clickable(onClick = { })
     ){
         Column(
             Modifier
@@ -520,6 +523,7 @@ fun MenuItem(
              imagePainter: Painter,
              iconB: Boolean = false
 ){
+<<<<<<< HEAD
     var iconB by remember { mutableStateOf(inPanier) }
     var icon = if(!iconB){
         
@@ -530,11 +534,14 @@ fun MenuItem(
         Icons.Default.Check
         
     }
+=======
+    val navController = rememberNavController()
+>>>>>>> 75d3398aad1f47448cec7b5871ec826d34f8e253
     Card(
         Modifier.width(250.dp),
         shape = RoundedCornerShape(20.dp),
         backgroundColor = backgroundColor,
-        elevation = 0.dp
+        elevation = 0.dp,
     ){
         Row{
             Image(

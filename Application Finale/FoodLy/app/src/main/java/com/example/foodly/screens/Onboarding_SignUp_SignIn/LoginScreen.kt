@@ -188,7 +188,7 @@ fun LoginScreen(navController: NavController) {
                                         .addOnCompleteListener { task ->
                                             showMessage = if (task.isSuccessful){
                                                 Log.d(TAG, "signInWithEmail: success")
-                                                navController.navigate(Screen.AddProfileScreen.route){
+                                                navController.navigate(Screen.HomeScreen.route){
                                                     popUpTo(navController.graph.startDestinationId)
                                                     launchSingleTop = true
                                                 }

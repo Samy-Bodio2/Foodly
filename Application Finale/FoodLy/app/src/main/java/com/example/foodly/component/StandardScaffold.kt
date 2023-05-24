@@ -55,7 +55,6 @@ fun StandardScaffold(
                     elevation = 0.dp
                 ) {
                     BottomNavigation(backgroundColor = colorWhite) {
-
                         bottomNavItems.forEachIndexed { i, bottomNavItem ->
                             StandardBottomNavItem(
                                 icon = bottomNavItem.icon,
@@ -72,24 +71,7 @@ fun StandardScaffold(
                     }
                 }
             }
-        }/*
-        floatingActionButton = {
-            if (showBottomBar) {
-                FloatingActionButton(
-                    backgroundColor = orange2,
-                    onClick = onFabClick
-                ) {
-                    Icon(
-                        imageVector = Icons.Outlined.RestaurantMenu,
-                        contentDescription = "Restaurant Menu",
-                        tint = colorWhite
-                    )
-                }
-            }
-        },
-        isFloatingActionButtonDocked = true,
-        floatingActionButtonPosition = FabPosition.Center,
-        modifier = modifier*/
+        }
     ) {
         content()
     }

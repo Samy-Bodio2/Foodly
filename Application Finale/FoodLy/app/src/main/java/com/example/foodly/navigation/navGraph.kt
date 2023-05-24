@@ -90,10 +90,10 @@ fun NavGraph(navController: NavHostController) {
         composable(route = Screen.ProfileScreen.route){
             ProfileScreen(navController)
         }
-        composable(route = Screen.FavoriteRestaurants.route){
-            FavoriteRestaurants(navController)
-        }
-        composable(route = Screen.NotificationsScreen.route){
+//        composable(route = Screen.FavoriteRestaurants.route){
+//            FavoriteRestaurants(navController)
+//        }
+       composable(route = Screen.NotificationsScreen.route){
             NotificationsScreen(navController)
         }
         composable(route = Screen.PayementMethodsProfile.route){

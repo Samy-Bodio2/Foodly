@@ -23,7 +23,7 @@
           }
         },
         {
-          "client_id": "747773595038-i92na0lej2bro27k18b6ap4df94f2rb3.apps.googleusercontent.com",
+          "client_id": "747773595038-6n81btut54ormlj1n9cvl1caklf4jb1v.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -36,7 +36,44 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "747773595038-i92na0lej2bro27k18b6ap4df94f2rb3.apps.googleusercontent.com",
+              "client_id": "747773595038-6n81btut54ormlj1n9cvl1caklf4jb1v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747773595038:android:e10f02b4ebd6580c595a8f",
+        "android_client_info": {
+          "package_name": "com.projects.mealobject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "747773595038-g7gcach2maruc4g066s2ake8j91ims40.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.projects.mealobject",
+            "certificate_hash": "b578825c874c75468236b8b5ba5bef0223362f72"
+          }
+        },
+        {
+          "client_id": "747773595038-6n81btut54ormlj1n9cvl1caklf4jb1v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARUz2oVtFRkTWlrTyVPCT3K9tjjGSuy5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "747773595038-6n81btut54ormlj1n9cvl1caklf4jb1v.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -3,6 +3,7 @@ package com.example.foodly.screens.Home_ActionMenu
 import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.foundation.*
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -11,15 +12,13 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
@@ -38,6 +37,8 @@ import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.LightGreen
 import com.example.foodly.utils.read
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -125,13 +126,15 @@ fun lazyItems(){
             .padding(horizontal = 16.dp, vertical = 20.dp)
     ) {
         list.forEach {  item ->
-
+            val iconBox by remember { mutableStateOf(false) }
             item?.let {
                 MenuList(
+                    inPanier = it.Confirmed,
                     url = it.Image,
                     titre = it.name,
                     restauName = it.restaurant_name,
-                    price = it.price
+                    price = it.price,
+                    iconBox
                 )
                 Spacer(modifier = Modifier.height(20.dp))
             }
@@ -385,9 +388,10 @@ data class MenuItem(
     val name: String,
     val price: Double,
     val quantity : Double,
+    var quantiteCom : Int,
     val restaurant_name : String
 ){
-    constructor() : this(false,"","", "",0.0,0.0,"")
+    constructor() : this(false,"","", "",0.0,0.0,1,"")
 }
 
 @Composable
@@ -484,7 +488,7 @@ fun ChipSection(chips: List<String>){
 }
 
 @Composable
-fun MenuList(url: String,titre:String,restauName:String,price: Double) {
+fun MenuList(inPanier: Boolean,url: String,titre:String,restauName:String,price: Double,iconB: Boolean) {
     val imagePainter: Painter = rememberImagePainter(url)
     Row(
         Modifier.height(90.dp),
@@ -492,11 +496,13 @@ fun MenuList(url: String,titre:String,restauName:String,price: Double) {
     ){
 
         MenuItem(
+            inPanier = inPanier,
             imagePainter = imagePainter,
             title = titre,
             subtitle = restauName,
             price = price.toString(),
-            backgroundColor = Color.White
+            backgroundColor = Color.White,
+            iconB = iconB
         )
 
 
@@ -505,12 +511,25 @@ fun MenuList(url: String,titre:String,restauName:String,price: Double) {
 }
 
 @Composable
-fun MenuItem(title: String ,
+fun MenuItem(
+    inPanier: Boolean,
+    title: String ,
              subtitle: String,
              price: String ,
              backgroundColor: Color ,
-             imagePainter: Painter
+             imagePainter: Painter,
+             iconB: Boolean = false
 ){
+    var iconB by remember { mutableStateOf(inPanier) }
+    var icon = if(!iconB){
+        
+        Icons.Default.Add
+        
+    }else{
+        
+        Icons.Default.Check
+        
+    }
     Card(
         Modifier.width(250.dp),
         shape = RoundedCornerShape(20.dp),
@@ -533,6 +552,29 @@ fun MenuItem(title: String ,
                     .fillMaxHeight(),
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
+                IconButton(onClick = {
+                   // j'aimerais un code qui me permet de faire exactement la meme chose que celui si mais au lieu d'entrer l'identifiant du document manuellement j'entre la valeur du champ menu correspondant au document :"@Composable
+
+                       val db = Firebase.firestore
+                       val menuRef = db.collection("Menu")
+
+                       menuRef.whereEqualTo("name",title)
+                           .get()
+                           .addOnSuccessListener { querySnapshot ->
+                               for (document in querySnapshot.documents) {
+                                   val confirm = document.getBoolean("Confirmed")!!
+
+                                       val documentRef = menuRef.document(document.id)
+                                       val collectionUpdate = mapOf("Confirmed" to !confirm)
+                                       documentRef.update(collectionUpdate)
+
+                               }
+                           }
+
+                    iconB = !iconB
+                }) {
+                    Icon(imageVector = icon, contentDescription = "")
+                }
                 Text(text = title,  color = Color.Black)
                 Text(text = subtitle,  color = Color.Black, fontWeight = FontWeight.Bold)
                 Text(text = price, color = Color.Black)

@@ -573,7 +573,7 @@ fun PayementMethodsProfile(navController: NavController){
                     )
                     {
                         Image(
-                            painter = painterResource(id = R.drawable.google),
+                            painter = painterResource(id = R.drawable.mtn),
                             contentDescription = "",
                             modifier = Modifier.size(96.dp)
                         )
@@ -622,7 +622,7 @@ fun PayementMethodsProfile(navController: NavController){
                     )
                     {
                         Image(
-                            painter = painterResource(id = R.drawable.apple),
+                            painter = painterResource(id = R.drawable.my_orange_96px),
                             contentDescription = "",
                             modifier = Modifier.size(96.dp)
                         )

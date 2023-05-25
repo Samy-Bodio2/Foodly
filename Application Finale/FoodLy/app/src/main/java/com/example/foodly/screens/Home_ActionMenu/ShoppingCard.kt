@@ -62,17 +62,7 @@ fun ShoppingCard(navController: NavController) {
             TopAppbar(navController)
         },
         bottomBar = {
-            Button(
-                onClick = { /*TODO*/ },
-                colors = ButtonDefaults.buttonColors( LightGreen ),
-                modifier = Modifier.height(50.dp).fillMaxWidth().padding(horizontal = 16.dp),
-                shape = RoundedCornerShape(30.dp)
-            ) {
-                val list by remember { mutableStateOf(readConfirmedMenus()) }
-                var totalPrice  by remember { mutableStateOf(0.0)}// Create a variable to hold the total price
-                totalPrice = calculPrice(list)
-                Text(text = "Total: $totalPrice f CFA", color = White, fontWeight = FontWeight.SemiBold)
-            }
+
         }
     ) {it
 
@@ -221,12 +211,23 @@ fun MenuList(meals: List<Meal>) {
                                     }
                                 }
                             }
-                            Spacer(modifier = Modifier.size(40.dp))
                         }
+
                     }
+
                 }
+
                 // totalPrice += meal!!.price.toInt() // Add the price of the current menu item to the total price
             }
+        }
+        Button(
+            onClick = { /*TODO*/ },
+            colors = ButtonDefaults.buttonColors( LightGreen ),
+            modifier = Modifier.offset(y= 430.dp).height(50.dp).fillMaxWidth().padding(horizontal = 16.dp),
+            shape = RoundedCornerShape(30.dp)
+        ) {
+            totalPrice = calculPrice(list)
+            Text(text = "Total: $totalPrice f CFA", color = White, fontWeight = FontWeight.SemiBold)
         }
 
     }

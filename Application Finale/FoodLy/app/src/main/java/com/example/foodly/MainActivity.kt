@@ -1,6 +1,5 @@
 package com.example.foodly
 
-import PaymentScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,6 +15,7 @@ import com.example.foodly.navigation.NavGraph
 import com.example.foodly.navigation.Screen
 import com.example.foodly.screens.Onboarding_SignUp_SignIn.Login
 import com.example.foodly.ui.theme.FoodlyTheme
+import com.facebook.login.Login
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await

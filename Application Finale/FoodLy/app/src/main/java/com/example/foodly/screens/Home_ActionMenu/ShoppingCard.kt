@@ -12,6 +12,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -45,6 +46,7 @@ import com.example.foodly.navigation.Screen
 import com.example.foodly.screens.RestaurantDetail_Order.Menu
 import com.example.foodly.ui.theme.FoodlyTheme
 import com.example.foodly.ui.theme.LightGreen
+import com.example.foodly.ui.theme.colorWhite
 import com.example.foodly.utils.read
 import com.example.foodly.utils.readConfirmedMenus
 import com.example.foodly.viewmodels.PanierViewModel
@@ -60,7 +62,17 @@ fun ShoppingCard(navController: NavController) {
             TopAppbar(navController)
         },
         bottomBar = {
-
+            Button(
+                onClick = { /*TODO*/ },
+                colors = ButtonDefaults.buttonColors( LightGreen ),
+                modifier = Modifier.height(50.dp).fillMaxWidth().padding(horizontal = 16.dp),
+                shape = RoundedCornerShape(30.dp)
+            ) {
+                val list by remember { mutableStateOf(readConfirmedMenus()) }
+                var totalPrice  by remember { mutableStateOf(0.0)}// Create a variable to hold the total price
+                totalPrice = calculPrice(list)
+                Text(text = "Total: $totalPrice f CFA", color = White, fontWeight = FontWeight.SemiBold)
+            }
         }
     ) {it
 
@@ -127,74 +139,98 @@ fun calculPrice(list: MutableList<MenuItem?>): Double{
 }
 @Composable
 fun MenuList(meals: List<Meal>) {
-    val list by remember { mutableStateOf(readConfirmedMenus()) }
-    var totalPrice  by remember { mutableStateOf(0.0)}// Create a variable to hold the total price
-    totalPrice = calculPrice(list)
-
-    LazyColumn {
-        items(list) { meal ->
-            var quant by remember { mutableStateOf(1)}
-            var total by remember { mutableStateOf(0)}
-            total = totalPrice.toInt()
-            Card(
-                modifier = Modifier
-                    .padding(16.dp)
-                    .fillMaxWidth(),
-                elevation = 8.dp
-//shape = RoundedCornerShape(16.dp)
-            ) {
-                Column(
-
+    if (cartList.isEmpty()) {
+        EmptyBasket()
+    }else{
+        val list by remember { mutableStateOf(readConfirmedMenus()) }
+        var totalPrice  by remember { mutableStateOf(0.0)}// Create a variable to hold the total price
+        totalPrice = calculPrice(list)
+        LazyColumn {
+            items(list) { meal ->
+                var quant by remember { mutableStateOf(1)}
+                var total by remember { mutableStateOf(0)}
+                total = totalPrice.toInt()
+                Card(
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .fillMaxWidth(),
+                    elevation = 8.dp,
+                    shape = RoundedCornerShape(16.dp)
                 ) {
-                    Row( modifier = Modifier.padding(16.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween,
+                    Column(
+
                     ) {
-                        val imagePainter: Painter = rememberImagePainter(meal!!.Image)
-                        Image(
-                            painter = imagePainter,
-                            contentDescription = null,
-                            modifier = Modifier
-                                .size(80.dp)
-                        )
-                        Spacer(Modifier.width(20.dp))
-                        Column(modifier = Modifier.weight(1f)) {
-                            Text(text = meal!!.name, fontWeight = FontWeight.Bold, fontSize = 20.sp, maxLines = 1)
-                            Spacer(modifier = Modifier.size(3.dp))
-                            //Text(text = "${meal.quantite} item(s)", fontSize = 20.sp, maxLines = 1)
-                            Text(text = "${quant} item(s)", fontSize = 20.sp, maxLines = 1)
-                            Spacer(modifier = Modifier.size(3.dp))
-                            Text(text = "${meal!!.price} f CFA",color = androidx.compose.ui.graphics.Color.Green)
-                        }
-                        Spacer(Modifier.width(20.dp))
-                        Column(Modifier.height(90.dp).width(20.dp), verticalArrangement = Arrangement.SpaceBetween) {
-                            IconButton(onClick = {
-                                quant = incrementation(meal)
-                                totalPrice = calculPrice(list)
-                            }) {
-                                Icon(imageVector = Icons.Default.Add, contentDescription ="" )
+                        Row( modifier = Modifier.padding(16.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                        ) {
+                            val imagePainter: Painter = rememberImagePainter(meal!!.Image)
+                            Image(
+                                painter = imagePainter,
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .size(80.dp)
+                            )
+                            Spacer(Modifier.width(20.dp))
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(text = meal!!.name, fontWeight = FontWeight.Bold, fontSize = 20.sp, maxLines = 1)
+                                Spacer(modifier = Modifier.size(3.dp))
+                                //Text(text = "${meal.quantite} item(s)", fontSize = 20.sp, maxLines = 1)
+                                Text(text = "${quant} item(s)", fontSize = 20.sp, maxLines = 1)
+                                Spacer(modifier = Modifier.size(3.dp))
+                                Text(text = "${meal!!.price} f CFA",color = LightGreen)
                             }
-                            IconButton(onClick = {
-                                quant = decrementation(meal)
-                                totalPrice = calculPrice(list)
-                            }) {
-                                Icon(imageVector = Icons.Default.Remove, contentDescription = "")
+                            Spacer(Modifier.width(20.dp))
+                            Column(Modifier.height(90.dp).width(20.dp), verticalArrangement = Arrangement.SpaceBetween) {
+                                Box(
+                                    modifier = Modifier
+                                        .clip(shape = CircleShape)
+                                        .background(LightGreen)
+                                        .size(32.dp, 32.dp),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    IconButton(onClick = {
+                                        quant = incrementation(meal)
+                                        totalPrice = calculPrice(list)
+                                    }) {
+                                        Icon(
+                                            imageVector = Icons.Default.Add,
+                                            contentDescription = "",
+                                            tint = colorWhite,
+                                            modifier = Modifier.size(20.dp, 20.dp)
+                                        )
+                                    }
+                                }
+
+                                Box(
+                                    modifier = Modifier
+                                        .clip(shape = CircleShape)
+                                        .background(LightGreen)
+                                        .size(32.dp, 32.dp),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    IconButton(onClick = {
+                                        quant = decrementation(meal)
+                                        totalPrice = calculPrice(list)
+                                    }) {
+                                        androidx.compose.material3.Icon(
+                                            imageVector = Icons.Default.Remove,
+                                            contentDescription = "",
+                                            tint = colorWhite,
+                                            modifier = Modifier.size(20.dp, 20.dp)
+                                        )
+                                    }
+                                }
                             }
+                            Spacer(modifier = Modifier.size(40.dp))
                         }
-                        Spacer(modifier = Modifier.size(40.dp))
                     }
                 }
+                // totalPrice += meal!!.price.toInt() // Add the price of the current menu item to the total price
             }
-           // totalPrice += meal!!.price.toInt() // Add the price of the current menu item to the total price
         }
+
     }
-    Button(
-        onClick = { /*TODO*/ },
-        colors = ButtonDefaults.buttonColors( Green ),
-        modifier = Modifier.offset(y = 430.dp).height(50.dp).fillMaxWidth().padding(horizontal = 16.dp)
-    ) {
-        Text(text = "Total: $totalPrice f CFA", color = White, fontWeight = FontWeight.SemiBold)
-    }
-    }
+}
 fun incrementation(meal: MenuItem): Int
 {
     meal.quantiteCom = meal.quantiteCom + 1
@@ -204,7 +240,7 @@ fun incrementation(meal: MenuItem): Int
 
 fun decrementation(meal: MenuItem): Int
 {
-    if(meal.quantiteCom > 0) {
+    if(meal.quantiteCom > 1) {
         meal.quantiteCom = meal.quantiteCom - 1
         Log.i("Decrementation", meal.quantiteCom.toString())
     }

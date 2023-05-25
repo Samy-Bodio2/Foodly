@@ -2,25 +2,18 @@ package com.example.foodly.screens.Home_ActionMenu
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.*
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-<<<<<<< HEAD
 import androidx.compose.material.icons.filled.*
-=======
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.ShoppingCart
->>>>>>> 75d3398aad1f47448cec7b5871ec826d34f8e253
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
@@ -36,14 +29,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
 import com.example.foodly.navigation.Screen
 import com.example.foodly.utils.read
-<<<<<<< HEAD
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-=======
 import com.example.foodly.ui.theme.LightGreen
->>>>>>> 75d3398aad1f47448cec7b5871ec826d34f8e253
-
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(
@@ -442,7 +430,7 @@ fun DiscountSectionItem(
                 Text(text = title, fontWeight = FontWeight.Bold)
                 Text(text = headers,  color = Color.Black, fontWeight = FontWeight.Bold)
                 Row{
-                    Text(text = "$${price}")
+                    Text(text = "${price} FCFA")
                 }
             }
         }
@@ -531,24 +519,14 @@ fun ChipSection(chips: List<String>){
 }
 
 @Composable
-<<<<<<< HEAD
-fun MenuList(url: String,titre:String,restauName:String,price: Double) {
-    val navController = rememberNavController()
-=======
 fun MenuList(inPanier: Boolean,url: String,titre:String,restauName:String,price: Double,iconB: Boolean) {
->>>>>>> 9bd015e4f6d723862992172fa78e36bbfcd6dc54
     val imagePainter: Painter = rememberImagePainter(url)
     Row(
         Modifier.height(90.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ){
-
-<<<<<<< HEAD
-        MenuItems(
-=======
         MenuItem(
             inPanier = inPanier,
->>>>>>> 9bd015e4f6d723862992172fa78e36bbfcd6dc54
             imagePainter = imagePainter,
             title = titre,
             subtitle = restauName,
@@ -561,9 +539,6 @@ fun MenuList(inPanier: Boolean,url: String,titre:String,restauName:String,price:
     }
 
 }
-
-<<<<<<< HEAD
-=======
 @Composable
 fun MenuItem(
     inPanier: Boolean,
@@ -573,28 +548,25 @@ fun MenuItem(
              backgroundColor: Color ,
              imagePainter: Painter,
              iconB: Boolean = false
-){
-<<<<<<< HEAD
+) {
     var iconB by remember { mutableStateOf(inPanier) }
-    var icon = if(!iconB){
-        
+    var icon = if (!iconB) {
+
         Icons.Default.Add
-        
-    }else{
-        
+
+    } else {
+
         Icons.Default.Check
-        
+
     }
-=======
     val navController = rememberNavController()
->>>>>>> 75d3398aad1f47448cec7b5871ec826d34f8e253
     Card(
         Modifier.width(250.dp),
         shape = RoundedCornerShape(20.dp),
         backgroundColor = backgroundColor,
         elevation = 0.dp,
-    ){
-        Row{
+    ) {
+        Row {
             Image(
                 painter = imagePainter, contentDescription = "",
                 modifier = Modifier
@@ -611,64 +583,44 @@ fun MenuItem(
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 IconButton(onClick = {
-                   // j'aimerais un code qui me permet de faire exactement la meme chose que celui si mais au lieu d'entrer l'identifiant du document manuellement j'entre la valeur du champ menu correspondant au document :"@Composable
+                    // j'aimerais un code qui me permet de faire exactement la meme chose que celui si mais au lieu d'entrer l'identifiant du document manuellement j'entre la valeur du champ menu correspondant au document :"@Composable
 
-                       val db = Firebase.firestore
-                       val menuRef = db.collection("Menu")
+                    val db = Firebase.firestore
+                    val menuRef = db.collection("Menu")
 
-                       menuRef.whereEqualTo("name",title)
-                           .get()
-                           .addOnSuccessListener { querySnapshot ->
-                               for (document in querySnapshot.documents) {
-                                   val confirm = document.getBoolean("Confirmed")!!
+                    menuRef.whereEqualTo("name", title)
+                        .get()
+                        .addOnSuccessListener { querySnapshot ->
+                            for (document in querySnapshot.documents) {
+                                val confirm = document.getBoolean("Confirmed")!!
 
-                                       val documentRef = menuRef.document(document.id)
-                                       val collectionUpdate = mapOf("Confirmed" to !confirm)
-                                       documentRef.update(collectionUpdate)
+                                val documentRef = menuRef.document(document.id)
+                                val collectionUpdate = mapOf("Confirmed" to !confirm)
+                                documentRef.update(collectionUpdate)
 
-                               }
-                           }
+                            }
+                        }
 
                     iconB = !iconB
                 }) {
                     Icon(imageVector = icon, contentDescription = "")
                 }
-                Text(text = title,  color = Color.Black)
-                Text(text = subtitle,  color = Color.Black, fontWeight = FontWeight.Bold)
+                Text(text = title, color = Color.Black)
+                Text(text = subtitle, color = Color.Black, fontWeight = FontWeight.Bold)
                 Text(text = price, color = Color.Black)
             }
->>>>>>> 9bd015e4f6d723862992172fa78e36bbfcd6dc54
-
-
-
-
-@Composable
-fun MenuList2(navController: NavController) {
-    LazyRow(
-        Modifier.height(90.dp),
-        contentPadding = PaddingValues(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
-    ){
-        item {
-            MenuItem2(
-                imagePainter = painterResource(id = R.drawable.frite),
-                title = "Frites sauce ketchun",
-                subtitle = "1.4 km | 4.2 (1.4k)",
-                price = "$2.00",
-                backgroundColor = Color.White,
-                onButtonClick = {navController.navigate(Screen.RestaurantScreen.route)}
-            )
         }
-
     }
-
 }
+
+
 @Composable
-fun MenuItem2(title: String = "",
+fun MenuItem2(
+    imagePainter: Painter,
+    title: String = "",
               subtitle: String = "",
               price: String = "",
               backgroundColor: Color = Color.Transparent,
-              imagePainter: Painter,
               onButtonClick: () -> Unit
 ){
     Card(
@@ -737,9 +689,7 @@ fun BoxWithRes(
 
 @Preview
 @Composable
-fun HomeScreenPreview() {
+fun HomeScreenPreview(){
     val navController = rememberNavController()
     HomeScreen(navController)
-
-    //MyBox()
 }

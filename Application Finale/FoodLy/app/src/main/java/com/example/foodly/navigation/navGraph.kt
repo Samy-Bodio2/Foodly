@@ -23,7 +23,7 @@ fun NavGraph(navController: NavHostController) {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.Splash.route){
+        startDestination = Screen.ShoppingCard.route){
 
         composable(route = Screen.Splash.route){
             AnimatedSplashScreen(navController)
@@ -84,17 +84,10 @@ fun NavGraph(navController: NavHostController) {
         composable(route = Screen.ProfileScreen.route){
             ProfileScreen(navController)
         }
-<<<<<<< HEAD
-//        composable(route = Screen.FavoriteRestaurants.route){
-//            FavoriteRestaurants(navController)
-//        }
-       composable(route = Screen.NotificationsScreen.route){
-=======
         composable(route = Screen.FavoriteRestaurants.route){
-//            Screen.FavoriteRestaurants(navController)
+            //FavoriteRestaurants(navController)
         }
         composable(route = Screen.NotificationsScreen.route){
->>>>>>> 75d3398aad1f47448cec7b5871ec826d34f8e253
             NotificationsScreen(navController)
         }
         composable(route = Screen.PayementMethodsProfile.route){

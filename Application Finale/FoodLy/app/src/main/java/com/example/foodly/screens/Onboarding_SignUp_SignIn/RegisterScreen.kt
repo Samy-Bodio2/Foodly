@@ -360,7 +360,7 @@ fun RegisterScreen(navController: NavController) {
                         }else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                             Toast.makeText(context, "Please enter format email valid", Toast.LENGTH_SHORT).show()
                         }else if(conpassword.isEmpty() || password != conpassword || password.length <= 8 || conpassword.length <= 8){
-                            Toast.makeText(context, "password not valid", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "password minimum 8 characters", Toast.LENGTH_SHORT).show()
                         }else if(email.isBlank() && username.isEmpty() && phoneNumber.isEmpty() && password.isEmpty() && conpassword.isEmpty() ){
                             Toast.makeText(context, "Please enter your information", Toast.LENGTH_SHORT).show()
                         }else {

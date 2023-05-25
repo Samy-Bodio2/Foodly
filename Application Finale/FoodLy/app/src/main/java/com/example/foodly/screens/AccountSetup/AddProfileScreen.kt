@@ -2,6 +2,7 @@ package com.example.foodly.screens.AccountSetup
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -72,8 +73,9 @@ fun AddProfileScreen(navController: NavController) {
 
 
             )
-
-            Column(
+            val gradientColor = listOf(Color(0xFF30A235), Color(0xFF30A235))
+            val cornerRadius = 2.dp
+            LazyColumn(
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
@@ -81,55 +83,70 @@ fun AddProfileScreen(navController: NavController) {
                 ,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-
-                EditImage()
-                Spacer(modifier = Modifier.height(60.dp))
-
-                RegisterFullnane()
-
-                Spacer(modifier = Modifier.padding(8.dp))
-                RegisterNickName()
-
-                Spacer(modifier = Modifier.padding(8.dp))
-                RegisterEmail()
-
-                Spacer(modifier = Modifier.padding(8.dp))
-                RegisterPhone()
-                Gender()
-
-                val gradientColor = listOf(Color(0xFF30A235), Color(0xFF30A235))
-                val cornerRadius = 2.dp
-
-                Spacer(modifier = Modifier.padding(10.dp))
-                GradientButton(
-                    gradientColors = gradientColor,
-                    cornerRadius = cornerRadius,
-                    nameButton = "Continue",
-                    roundedCornerShape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp , topEnd = 30.dp, bottomStart = 30.dp),
-                    navController
-                )
-
-                GradientButton(
-                    gradientColors = gradientColor,
-                    cornerRadius = cornerRadius,
-                    nameButton = "Skip",
-                    roundedCornerShape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp , topEnd = 30.dp, bottomStart = 30.dp),
-                    navController
-                )
-
-                Spacer(modifier = Modifier.padding(10.dp))
-                androidx.compose.material3.TextButton(onClick = {
-                    navController.navigate(Screen.HomeScreen.route){
-                        popUpTo(navController.graph.startDestinationId)
-                        launchSingleTop = true
-
-                    }
-
-                }) {
+                item {
+                    EditImage()
+                    Spacer(modifier = Modifier.padding(8.dp))
 
                 }
 
-                Spacer(modifier = Modifier.padding(20.dp))
+                item {
+                    RegisterFullnane()
+                    Spacer(modifier = Modifier.padding(8.dp))
+
+                }
+                item {
+                    RegisterNickName()
+                    Spacer(modifier = Modifier.padding(8.dp))
+
+                }
+                item {
+                    RegisterEmail()
+                    Spacer(modifier = Modifier.padding(8.dp))
+
+                }
+                item {
+                    RegisterPhone()
+                    Spacer(modifier = Modifier.padding(8.dp))
+
+                }
+                item {
+                    Gender()
+                    Spacer(modifier = Modifier.padding(8.dp))
+
+                }
+
+                item{
+                    GradientButton(
+                        gradientColors = gradientColor,
+                        cornerRadius = cornerRadius,
+                        nameButton = "Continue",
+                        roundedCornerShape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp , topEnd = 30.dp, bottomStart = 30.dp),
+                        navController
+                    )
+
+                    GradientButton(
+                        gradientColors = gradientColor,
+                        cornerRadius = cornerRadius,
+                        nameButton = "Skip",
+                        roundedCornerShape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp , topEnd = 30.dp, bottomStart = 30.dp),
+                        navController
+                    )
+
+
+                }
+                item{
+                    TextButton(onClick = {
+                        navController.navigate(Screen.HomeScreen.route){
+                            popUpTo(navController.graph.startDestinationId)
+                            launchSingleTop = true
+
+                        }
+
+                    }) {
+
+                    }
+                }
+
             }
         }
     }

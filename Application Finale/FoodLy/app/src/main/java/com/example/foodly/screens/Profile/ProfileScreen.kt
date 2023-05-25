@@ -81,7 +81,7 @@ fun ProfileScreen(navController: NavController) {
                     icon = { Icon(Icons.Rounded.CalendarMonth, contentDescription = null) },
                     text = { Text("My Favorite Restaurants") },
                     trailing = { Icon(Icons.Rounded.KeyboardArrowRight, contentDescription = null) },
-                    modifier = Modifier.clickable {  }
+                    modifier = Modifier.clickable { navController.navigate(Screen.FavoriteRestaurants.route) }
                 )
                 1 -> ListItem(
                     icon = { Icon(Icons.Rounded.FolderSpecial, contentDescription = null) },
@@ -156,14 +156,14 @@ fun ProfileScreen(navController: NavController) {
                     modifier = Modifier.clickable { /*TODO*/ }
                     )
 
-                10 -> ListItem(
+                11 -> ListItem(
                     icon = { Icon(Icons.Rounded.GroupAdd, contentDescription = null) },
                     text = { Text("Invite Friends") },
                     trailing = { Icon(Icons.Rounded.KeyboardArrowRight, contentDescription = null) },
                     modifier = Modifier.clickable { /*TODO*/ }
                 )
 
-                11 -> ListItem(
+                10 -> ListItem(
                         icon = { Icon(Icons.Rounded.Logout, contentDescription = null) },
                         text = { Text("Logout") },
                         modifier = Modifier.clickable { auth.signOut(); navController.navigate(Screen.LoginScreen.route) }

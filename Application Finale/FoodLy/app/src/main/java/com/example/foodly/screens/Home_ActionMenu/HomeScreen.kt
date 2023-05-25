@@ -373,11 +373,11 @@ data class MenuItem(
     val date: String,
     val name: String,
     val price: Double,
-    val quantity : Double,
+    val quantity : Int,
     var quantiteCom : Int,
     val restaurant_name : String
 ){
-    constructor() : this(false,"","", "",0.0,0.0,1,"")
+    constructor() : this(false,"","", "",0.0,1,1,"")
 }
 
 @Composable

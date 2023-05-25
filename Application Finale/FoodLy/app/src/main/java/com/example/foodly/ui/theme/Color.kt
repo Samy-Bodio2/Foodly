@@ -4,7 +4,7 @@ import androidx.compose.ui.graphics.Color
 
 
 val Yellow200 = Color(0xFFFFEECC)
-val Yellow500 = Color(0xFFFDC913)
+val Yellow500 = Color(0xFFEC9E02)
 val Orange500 = Color(0xFFF8742A)
 val TextColor = Color(0xFF979797)
 val BlackTextColor = Color(0xFF212121)

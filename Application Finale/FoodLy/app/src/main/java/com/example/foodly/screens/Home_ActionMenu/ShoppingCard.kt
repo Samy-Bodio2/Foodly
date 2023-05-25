@@ -3,6 +3,7 @@ package com.example.foodly.screens.Home_ActionMenu
 import android.annotation.SuppressLint
 import android.content.ClipData
 import android.inputmethodservice.Keyboard
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.ui.graphics.Color.*
@@ -21,7 +22,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.BlendMode.Companion.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
+import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.graphics.Color.Companion.Green
+import androidx.compose.ui.graphics.Color.Companion.Transparent
+import androidx.compose.ui.graphics.Color.Companion.White
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -30,14 +35,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import coil.compose.rememberImagePainter
 import com.example.foodly.R
 import com.example.foodly.model.Meal
+import com.example.foodly.model.Meals
 import com.example.foodly.model.cartList
 import com.example.foodly.model.mealList
 import com.example.foodly.navigation.Screen
 import com.example.foodly.screens.RestaurantDetail_Order.Menu
 import com.example.foodly.ui.theme.FoodlyTheme
 import com.example.foodly.ui.theme.LightGreen
+import com.example.foodly.utils.read
+import com.example.foodly.utils.readConfirmedMenus
 import com.example.foodly.viewmodels.PanierViewModel
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
@@ -49,6 +58,9 @@ fun ShoppingCard(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppbar(navController)
+        },
+        bottomBar = {
+
         }
     ) {it
 
@@ -105,64 +117,100 @@ fun EmptyBasket() {
 }
 
 
-
+fun calculPrice(list: MutableList<MenuItem?>): Double{
+    var somme : Double = 0.0
+    list.forEach{
+        item ->
+        somme += (item!!.price * item!!.quantiteCom)
+    }
+    return somme
+}
 @Composable
 fun MenuList(meals: List<Meal>) {
-    var isContentVisible by remember { mutableStateOf(false) }
-    val cardState = remember { mutableStateListOf(*meals.toTypedArray()) }
-    if (cardState.isEmpty()) {
-        EmptyBasket()
-    }else{
-        LazyColumn {
-            items(cardState) { meal ->
-                Card(
-                    modifier = Modifier
-                        .padding(16.dp)
-                        .fillMaxWidth(),
-                    elevation = 8.dp
-                    //shape = RoundedCornerShape(16.dp)
+    val list by remember { mutableStateOf(readConfirmedMenus()) }
+    var totalPrice  by remember { mutableStateOf(0.0)}// Create a variable to hold the total price
+    totalPrice = calculPrice(list)
+
+    LazyColumn {
+        items(list) { meal ->
+            var quant by remember { mutableStateOf(1)}
+            var total by remember { mutableStateOf(0)}
+            total = totalPrice.toInt()
+            Card(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth(),
+                elevation = 8.dp
+//shape = RoundedCornerShape(16.dp)
+            ) {
+                Column(
+
                 ) {
-                    Column(
-
+                    Row( modifier = Modifier.padding(16.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
                     ) {
-                        Row( modifier = Modifier.padding(16.dp),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                        ) {
-                            Image(
-                                painter = painterResource(id = meal.image),
-                                contentDescription = null,
-                                modifier = Modifier
-                                    .size(80.dp)
-                            )
-                            Spacer(Modifier.width(20.dp))
-                            Column(modifier = Modifier.weight(1f)) {
-                                Text(text = meal.nom, fontWeight = FontWeight.Bold, fontSize = 20.sp, maxLines = 1)
-                                Spacer(modifier = Modifier.size(3.dp))
-                                //Text(text = "${meal.quantite} item(s)", fontSize = 20.sp, maxLines = 1)
-                                Text(text = "1 item(s)", fontSize = 20.sp, maxLines = 1)
-                                Spacer(modifier = Modifier.size(3.dp))
-                                Text(text = "${meal.prix} f CFA",color = androidx.compose.ui.graphics.Color.Green)
+                        val imagePainter: Painter = rememberImagePainter(meal!!.Image)
+                        Image(
+                            painter = imagePainter,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(80.dp)
+                        )
+                        Spacer(Modifier.width(20.dp))
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(text = meal!!.name, fontWeight = FontWeight.Bold, fontSize = 20.sp, maxLines = 1)
+                            Spacer(modifier = Modifier.size(3.dp))
+                            //Text(text = "${meal.quantite} item(s)", fontSize = 20.sp, maxLines = 1)
+                            Text(text = "${quant} item(s)", fontSize = 20.sp, maxLines = 1)
+                            Spacer(modifier = Modifier.size(3.dp))
+                            Text(text = "${meal!!.price} f CFA",color = androidx.compose.ui.graphics.Color.Green)
+                        }
+                        Spacer(Modifier.width(20.dp))
+                        Column(Modifier.height(90.dp).width(20.dp), verticalArrangement = Arrangement.SpaceBetween) {
+                            IconButton(onClick = {
+                                quant = incrementation(meal)
+                                totalPrice = calculPrice(list)
+                            }) {
+                                Icon(imageVector = Icons.Default.Add, contentDescription ="" )
                             }
-
-                            Spacer(modifier = Modifier.size(40.dp))
-
-                            Row(
-                            ) {
-                                IconButton(onClick = { cardState.remove(meal) }) {
-                                    Icon(Icons.Filled.Delete,
-                                        contentDescription = "Delete",
-                                    )
-                                }
+                            IconButton(onClick = {
+                                quant = decrementation(meal)
+                                totalPrice = calculPrice(list)
+                            }) {
+                                Icon(imageVector = Icons.Default.Remove, contentDescription = "")
                             }
                         }
+                        Spacer(modifier = Modifier.size(40.dp))
                     }
                 }
             }
+           // totalPrice += meal!!.price.toInt() // Add the price of the current menu item to the total price
         }
     }
-
+    Button(
+        onClick = { /*TODO*/ },
+        colors = ButtonDefaults.buttonColors( Green ),
+        modifier = Modifier.offset(y = 430.dp).height(50.dp).fillMaxWidth().padding(horizontal = 16.dp)
+    ) {
+        Text(text = "Total: $totalPrice f CFA", color = White, fontWeight = FontWeight.SemiBold)
+    }
+    }
+fun incrementation(meal: MenuItem): Int
+{
+    meal.quantiteCom = meal.quantiteCom + 1
+    Log.i("Incrementation", meal.quantiteCom.toString())
+    return  meal.quantiteCom
 }
 
+fun decrementation(meal: MenuItem): Int
+{
+    if(meal.quantiteCom > 0) {
+        meal.quantiteCom = meal.quantiteCom - 1
+        Log.i("Decrementation", meal.quantiteCom.toString())
+    }
+
+    return meal.quantiteCom
+}
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {

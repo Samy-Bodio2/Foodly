@@ -218,7 +218,7 @@ fun CheckOutOrders(navController: NavController) {
                     }
                 }
                 Spacer(modifier = Modifier.height(30.dp))
-                Payement()
+                Payement(navController)
                 Spacer(modifier = Modifier.height(30.dp))
                 Total()
             }
@@ -315,7 +315,7 @@ fun Total(){
 }
 
 @Composable
-fun Payement(){
+fun Payement(navController : NavController){
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -345,13 +345,16 @@ fun Payement(){
                     color = Black
                 )
                 Spacer(modifier = Modifier.weight(1f))
-                Icon(
-                    Icons.Rounded.KeyboardArrowRight,
-                    contentDescription = "pencil",
-                    tint = LightGreen,
-                    modifier = Modifier
-                        .size(28.dp)
-                )
+                IconButton(onClick = {navController.navigate(Screen.PayementMethodsProfile.route)}) {
+                    Icon(
+                        Icons.Rounded.KeyboardArrowRight,
+                        contentDescription = "pencil",
+                        tint = LightGreen,
+                        modifier = Modifier
+                            .size(28.dp)
+                    )
+                }
+
 
             }
             Divider(

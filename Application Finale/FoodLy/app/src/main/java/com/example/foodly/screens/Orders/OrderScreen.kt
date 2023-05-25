@@ -27,6 +27,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberImagePainter
 import com.example.foodly.R
+import com.example.foodly.navigation.Screen
 import com.example.foodly.ui.theme.LightGreen
 import com.example.foodly.ui.theme.LightGreen2
 
@@ -50,12 +51,12 @@ fun OrderScreen(navController: NavController) {
             },
             elevation = 0.dp
         )
-        OrderCategoryTab()
+        OrderCategoryTab(navController)
     }
 }
 
 @Composable
-fun OrderCategoryTab() {
+fun OrderCategoryTab(navController: NavController) {
     var selectedIndex by remember { mutableStateOf(0) }
     val categories = listOf("Active", "Completed", "Cancelled")
     val colors = listOf(
@@ -80,7 +81,7 @@ fun OrderCategoryTab() {
     when (selectedIndex) {
         0 -> ActiveOrders()
         1 -> CompletedOrders()
-        2 -> CancelledOrders()
+        2 -> CancelledOrders(navController)
     }
 }
 
@@ -95,6 +96,7 @@ fun ActiveOrders() {
         OrderItem(status = "Active", backgroundColor = Color.White) {
             // Handle Cancel button click
         }
+        SortButton()
     }
 }
 
@@ -104,24 +106,139 @@ fun CompletedOrders() {
         OrderItem(status = "Completed", backgroundColor = Color.White) {
             // Handle View Receipt button click
         }
+        SortButton()
 
         Spacer(modifier = Modifier.height(16.dp))
         OrderItem(status = "Completed", backgroundColor = Color.White) {
             // Handle View Receipt button click
         }
+        SortButton()
 
     }
 }
 
 @Composable
-fun CancelledOrders() {
+fun CancelledOrders(navController: NavController) {
     Column {
-        OrderItem(status = "Cancelled", backgroundColor = Color.White) {
-            // Handle Reorder button click
+        Card(
+            shape = RoundedCornerShape(20.dp),
+            backgroundColor = White,
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .fillMaxWidth()
+                .clickable {}
+                .padding(vertical = 16.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Image(
+                    painter = rememberImagePainter(R.drawable.okok),
+                    contentDescription = "Sandwich image",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(80.dp)
+                        .clip(CircleShape)
+                )
+                Spacer(modifier = Modifier.width(20.dp))
+                Column {
+                    Text(text = "Bite Me Sandwiches")
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(text = "3 items | 1.4km ")
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Row(horizontalArrangement = Arrangement.SpaceBetween) {
+                        Text(text = "XAF3500")
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Button(
+                            onClick = { navController.navigate(Screen.CancelOrder.route) },
+                            shape = RoundedCornerShape(16.dp),
+                            colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
+                        ) {
+                            Text(text = "Cancelled", color = LightGreen)
+                        }
+                    }
+                }
+            }
         }
         Spacer(modifier = Modifier.height(16.dp))
-        OrderItem(status = "Cancelled", backgroundColor = Color.White) {
-            // Handle Reorder button click
+        Card(
+            shape = RoundedCornerShape(20.dp),
+            backgroundColor = White,
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .fillMaxWidth()
+                .clickable {}
+                .padding(vertical = 16.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Image(
+                    painter = rememberImagePainter(R.drawable.okok),
+                    contentDescription = "Sandwich image",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(80.dp)
+                        .clip(CircleShape)
+                )
+                Spacer(modifier = Modifier.width(20.dp))
+                Column {
+                    Text(text = "Bite Me Sandwiches")
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(text = "3 items | 1.4km ")
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Row(horizontalArrangement = Arrangement.SpaceBetween) {
+                        Text(text = "XAF3500")
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Button(
+                            onClick = { navController.navigate(Screen.CancelOrder.route) },
+                            shape = RoundedCornerShape(16.dp),
+                            colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
+                        ) {
+                            Text(text = "Cancelled", color = LightGreen)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun OrderItems(status: String, backgroundColor: Color, onButtonClick: () -> Unit) {
+    val navController = rememberNavController()
+    Card(
+        shape = RoundedCornerShape(20.dp),
+        backgroundColor = backgroundColor,
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .fillMaxWidth()
+            .clickable(onClick = onButtonClick)
+            .padding(vertical = 16.dp)
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Image(
+                painter = rememberImagePainter(R.drawable.okok),
+                contentDescription = "Sandwich image",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .size(80.dp)
+                    .clip(CircleShape)
+            )
+            Spacer(modifier = Modifier.width(20.dp))
+            Column {
+                Text(text = "Bite Me Sandwiches")
+                Spacer(modifier = Modifier.height(10.dp))
+                Text(text = "3 items | 1.4km ")
+                Spacer(modifier = Modifier.height(5.dp))
+                Row(horizontalArrangement = Arrangement.SpaceBetween) {
+                    Text(text = "XAF3500")
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Button(
+                        onClick = {navController.navigate(Screen.CancelOrder.route)},
+                        shape = RoundedCornerShape(16.dp),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
+                    ) {
+                        Text(text = status, color = LightGreen)
+                    }
+                }
+            }
         }
     }
 }

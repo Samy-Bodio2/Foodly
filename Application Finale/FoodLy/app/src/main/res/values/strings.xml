@@ -6,4 +6,10 @@
     <string name="expiry_date">Expiry date</string>
     <string name="cvc">CVC</string>
     <string name="save">save</string>
+    <string name="try_again">try again</string>
+
+    <string name="facebook_app_id">1234</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">56789</string>
+    <string name="default_web_client_did">747773595038-6n81btut54ormlj1n9cvl1caklf4jb1v.apps.googleusercontent.com</string>
 </resources>

@@ -7,12 +7,18 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ChevronLeft
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.ShoppingCartCheckout
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -21,6 +27,8 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.foodly.navigation.Screen
+import com.example.foodly.ui.theme.LightGreen
 
 
 @Composable
@@ -35,7 +43,7 @@ fun CancelOrder(navController: NavController) {
     )
     {
         Column(modifier = Modifier.verticalScroll(state = scrollState)){
-            Header()
+            Header(navController)
             Spacer(modifier = Modifier.height(32.dp))
             Level()
             Spacer(modifier = Modifier.height(32.dp))
@@ -47,21 +55,16 @@ fun CancelOrder(navController: NavController) {
 }
 
 @Composable
-fun Header(){
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(end = 13.dp)
-    ){
-        BoxWithRes(
-            resId = com.example.foodly.R.drawable.arrow_left,
-            description = "Left"
+fun Header(navController: NavController){
+    Column(modifier = Modifier.fillMaxSize()) {
+        TopAppBar(
+            title = { Text(text = "Cancel Orders") },
+            backgroundColor = Color.White,
+            navigationIcon = { IconButton(onClick = { navController.navigate(Screen.OrderScreen.route) }) {
+                Icon(Icons.Filled.ArrowBack, contentDescription = "Search")
+            } },
+            elevation = 0.dp
         )
-        Row(verticalAlignment = Alignment.CenterVertically){
-            Text(text = "Cancel Order", Modifier.weight(1f), fontWeight = FontWeight.Medium)
-        }
     }
 }
 
@@ -140,13 +143,13 @@ fun Buttun(){
                 .padding(vertical = 6.dp)
                 .heightIn(min = 48.dp, max = 72.dp)
                 .padding(horizontal = 16.dp)
-                .background(Color.Blue)
+                .background(LightGreen)
                 .clip(RoundedCornerShape(24.dp))
                 .shadow(elevation = 2.dp, shape = RoundedCornerShape(24.dp))
         ){
             Text(
                 text = "Submit",
-                color = MaterialTheme.colors.onPrimary,
+                color = White,
                 fontSize = 18.sp
             )
         }

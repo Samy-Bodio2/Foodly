@@ -1,6 +1,7 @@
 package com.example.foodly.screens.Profile
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.IconButton
@@ -72,8 +73,8 @@ fun ProfileScreen(navController: NavController) {
 
             Column(modifier = Modifier.padding(start = 24.dp))
             {
-                Text(text = "Andrew Ainsley", fontSize = 24.sp)
-                Text(text = "+1 111 467 378 399", fontSize = 16.sp)
+                Text(text = "Jason Kamsu", fontSize = 24.sp)
+                Text(text = "237 6 93 91 00 55", fontSize = 16.sp)
             }
             Spacer(modifier = Modifier.width(width = 40.dp))
             Icon(Icons.Rounded.DriveFileRenameOutline, null, tint = LightGreen)

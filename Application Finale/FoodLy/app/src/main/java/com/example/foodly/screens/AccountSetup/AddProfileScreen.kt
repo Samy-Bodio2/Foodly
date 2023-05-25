@@ -36,6 +36,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
 import com.example.foodly.navigation.Screen
+import com.example.foodly.screens.Onboarding_SignUp_SignIn.BorderButton
+import com.example.foodly.ui.theme.LightGreen
 import com.example.foodly.ui.theme.md_theme_dark_onSecondaryContainer
 import com.example.foodly.ui.theme.metropolisFontFamily
 import com.example.foodly.ui.theme.primaryFontColor
@@ -103,6 +105,14 @@ fun AddProfileScreen(navController: NavController) {
                     gradientColors = gradientColor,
                     cornerRadius = cornerRadius,
                     nameButton = "Continue",
+                    roundedCornerShape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp , topEnd = 30.dp, bottomStart = 30.dp),
+                    navController
+                )
+
+                GradientButton(
+                    gradientColors = gradientColor,
+                    cornerRadius = cornerRadius,
+                    nameButton = "Skip",
                     roundedCornerShape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp , topEnd = 30.dp, bottomStart = 30.dp),
                     navController
                 )

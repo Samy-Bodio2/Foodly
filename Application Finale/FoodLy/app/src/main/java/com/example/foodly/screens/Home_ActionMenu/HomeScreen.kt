@@ -332,8 +332,8 @@ fun DiscountSection(navController: NavController){
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(text = "Discount Guaranteed", style = MaterialTheme.typography.h6)
-        TextButton(onClick = {}) {
-            Text(text = "See All", color = LightGreen)
+        TextButton(onClick = {navController.navigate(Screen.RestaurantScreen.route)}) {
+            Text(text = "View Restaurant", color = LightGreen)
         }
     }
     LazyRow(
@@ -435,6 +435,46 @@ fun DiscountSectionItem(
 }
 
 @Composable
+fun MenuItems(title: String,
+             subtitle: String,
+             price: String,
+             backgroundColor: Color,
+             imagePainter: Painter
+){
+    val navController = rememberNavController()
+    Card(
+        Modifier
+            .width(200.dp),
+        shape = RoundedCornerShape(20.dp),
+        backgroundColor = backgroundColor,
+        elevation = 0.dp,
+    ){
+        Row{
+            Image(
+                painter = imagePainter, contentDescription = "",
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .weight(1f)
+                    .clip(RoundedCornerShape(20.dp)),
+                alignment = Alignment.CenterEnd,
+                contentScale = ContentScale.Crop
+            )
+            Column(
+                Modifier
+                    .padding(horizontal = 16.dp)
+                    .fillMaxHeight(),
+                verticalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(text = title,  color = Color.Black)
+                Text(text = subtitle,  color = Color.Black, fontWeight = FontWeight.Bold)
+                Text(text = price, color = Color.Black)
+            }
+
+        }
+    }
+
+}
+@Composable
 fun Recommended(){
     Column(Modifier.padding(horizontal = 16.dp)) {
         Row(
@@ -477,13 +517,14 @@ fun ChipSection(chips: List<String>){
 
 @Composable
 fun MenuList(url: String,titre:String,restauName:String,price: Double) {
+    val navController = rememberNavController()
     val imagePainter: Painter = rememberImagePainter(url)
     Row(
         Modifier.height(90.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ){
 
-        MenuItem(
+        MenuItems(
             imagePainter = imagePainter,
             title = titre,
             subtitle = restauName,
@@ -496,107 +537,12 @@ fun MenuList(url: String,titre:String,restauName:String,price: Double) {
 
 }
 
-@Composable
-fun MenuItem(title: String ,
-             subtitle: String,
-             price: String ,
-             backgroundColor: Color ,
-             imagePainter: Painter
-){
-    val navController = rememberNavController()
-    Card(
-        Modifier.width(250.dp),
-        shape = RoundedCornerShape(20.dp),
-        backgroundColor = backgroundColor,
-        elevation = 0.dp,
-    ){
-        Row{
-            Image(
-                painter = imagePainter, contentDescription = "",
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .weight(1f)
-                    .clip(RoundedCornerShape(20.dp)),
-                alignment = Alignment.CenterEnd,
-                contentScale = ContentScale.Crop
-            )
-            Column(
-                Modifier
-                    .padding(horizontal = 16.dp)
-                    .fillMaxHeight(),
-                verticalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(text = title,  color = Color.Black)
-                Text(text = subtitle,  color = Color.Black, fontWeight = FontWeight.Bold)
-                Text(text = price, color = Color.Black)
-            }
 
-        }
-    }
 
-}
+
 
 @Composable
-fun MenuList1() {
-    LazyRow(
-        Modifier.height(90.dp),
-        contentPadding = PaddingValues(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
-    ){
-        item {
-            MenuItem1(
-                imagePainter = painterResource(id = R.drawable.eru),
-                title = "Water Fufu and Eru",
-                subtitle = "1.7 km | 4.6 (1.3k)",
-                price = "$2.50",
-                backgroundColor = Color.White
-            )
-        }
-
-    }
-
-}
-@Composable
-fun MenuItem1(title: String = "",
-              subtitle: String = "",
-              price: String = "",
-              backgroundColor: Color = Color.Transparent,
-              imagePainter: Painter
-){
-    Card(
-        Modifier.width(350.dp),
-        shape = RoundedCornerShape(8.dp),
-        backgroundColor = backgroundColor,
-        elevation = 0.dp
-    ){
-        Row{
-            Image(
-                painter = imagePainter, contentDescription = "",
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .weight(1f)
-                    .clip(RoundedCornerShape(8.dp)),
-                alignment = Alignment.CenterEnd,
-                contentScale = ContentScale.Crop
-            )
-            Column(
-                Modifier
-                    .padding(horizontal = 16.dp)
-                    .fillMaxHeight(),
-                verticalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(text = title,  color = Color.Black)
-                Text(text = subtitle,  color = Color.Black, fontWeight = FontWeight.Bold)
-                Text(text = price, color = Color.Black)
-            }
-
-        }
-    }
-
-}
-
-@Composable
-fun MenuList2() {
+fun MenuList2(navController: NavController) {
     LazyRow(
         Modifier.height(90.dp),
         contentPadding = PaddingValues(horizontal = 16.dp),
@@ -608,7 +554,8 @@ fun MenuList2() {
                 title = "Frites sauce ketchun",
                 subtitle = "1.4 km | 4.2 (1.4k)",
                 price = "$2.00",
-                backgroundColor = Color.White
+                backgroundColor = Color.White,
+                onButtonClick = {navController.navigate(Screen.RestaurantScreen.route)}
             )
         }
 
@@ -620,10 +567,13 @@ fun MenuItem2(title: String = "",
               subtitle: String = "",
               price: String = "",
               backgroundColor: Color = Color.Transparent,
-              imagePainter: Painter
+              imagePainter: Painter,
+              onButtonClick: () -> Unit
 ){
     Card(
-        Modifier.width(350.dp),
+        Modifier
+            .width(350.dp)
+            .clickable(onClick = onButtonClick),
         shape = RoundedCornerShape(8.dp),
         backgroundColor = backgroundColor,
         elevation = 0.dp

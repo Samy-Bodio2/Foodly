@@ -57,7 +57,7 @@ fun Let_You_In(navController: NavController) {
                 )
                 SocialButton(iconId = R.drawable.ic_facebook, label = "Continue with Facebook")
                 SocialButton(iconId = R.drawable.ic_google, label = "Continue with Google")
-                SocialButton(iconId = R.drawable.apple, label = "Continue with Apple")
+                //SocialButton(iconId = R.drawable.apple, label = "Continue with Apple")
                 Spacer(modifier = Modifier.height(16.dp))
                 Row(
                     verticalAlignment = Alignment.CenterVertically,

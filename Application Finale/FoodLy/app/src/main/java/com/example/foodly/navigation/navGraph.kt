@@ -7,12 +7,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.foodly.screens.AccountSetup.AddProfileScreen
-import com.example.foodly.screens.Home_ActionMenu.CategoryItem
-import com.example.foodly.screens.Home_ActionMenu.CategoryScreen
-import com.example.foodly.screens.Home_ActionMenu.HomeScreen
-import com.example.foodly.screens.Home_ActionMenu.ShoppingCard
+import com.example.foodly.screens.Home_ActionMenu.*
 import com.example.foodly.screens.Onboarding_SignUp_SignIn.*
 import com.example.foodly.screens.Orders.CancelOrder
+import com.example.foodly.screens.Orders.CancelledOrders
 import com.example.foodly.screens.Orders.OrderScreen
 import com.example.foodly.screens.Profile.*
 import com.example.foodly.screens.RestaurantDetail_Order.*
@@ -25,7 +23,7 @@ fun NavGraph(navController: NavHostController) {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.OrderScreen.route){
+        startDestination = Screen.Splash.route){
 
         composable(route = Screen.Splash.route){
             AnimatedSplashScreen(navController)
@@ -133,6 +131,12 @@ fun NavGraph(navController: NavHostController) {
         }
         composable(route = Screen.DocumentList.route){
             DocumentList(navController)
+        }
+        composable(route = Screen.CancelOrder.route){
+            CancelOrder(navController)
+        }
+        composable(route = "menu"){
+            MenuList1()
         }
     }
 }

@@ -119,6 +119,8 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11'
     implementation project(':mapLib')
 
+    implementation 'com.facebook.android:facebook-android-sdk:16.0.0'
+
 }
 
 kapt {

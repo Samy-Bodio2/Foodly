@@ -26,6 +26,7 @@ import com.example.foodly.R
 import com.example.foodly.model.Meal
 import com.example.foodly.model.mealList
 import com.example.foodly.navigation.Screen
+import com.example.foodly.ui.theme.LightGreen
 
 
 @Composable
@@ -95,7 +96,7 @@ fun SortButton(){
             onClick = { /* Gérer l'événement du clic */ },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.White,
-                contentColor = Color.Green
+                contentColor = LightGreen
             ),
 
             shape = RoundedCornerShape(50.dp)
@@ -109,7 +110,7 @@ fun SortButton(){
                 )
                 Spacer(modifier = Modifier.width(4.dp))
                 Text("Filter", fontWeight = FontWeight.Bold,
-                    fontSize = 12.sp)
+                    fontSize = 7.sp)
             }
         }
 

@@ -9,12 +9,15 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.rounded.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
+import androidx.compose.ui.graphics.Color.Companion.Blue
+import androidx.compose.ui.graphics.Color.Companion.Red
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -28,6 +31,8 @@ import com.example.foodly.ui.theme.md_theme_light_onPrimary
 import com.example.foodly.ui.theme.white
 import com.example.foodly.model.CheckOutData
 import com.example.foodly.navigation.Screen
+import com.example.foodly.screens.Home_ActionMenu.calculPrice
+import com.example.foodly.utils.readConfirmedMenus
 
 val order = listOf(
     CheckOutData(
@@ -174,6 +179,7 @@ fun CheckOutOrders(navController: NavController) {
                     }
                 }
                 Spacer(modifier = Modifier.height(30.dp))
+                /*
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -216,21 +222,27 @@ fun CheckOutOrders(navController: NavController) {
                         )
                         CheckOutList(order)
                     }
-                }
+                }*/
                 Spacer(modifier = Modifier.height(30.dp))
                 Payement(navController)
                 Spacer(modifier = Modifier.height(30.dp))
-                Total()
+                Total(navController)
             }
         }
     }
 }
 @Composable
-fun Total(){
+fun Total(navController: NavController){
+    var showDialog by remember { mutableStateOf(false) }
+    val list by remember { mutableStateOf(readConfirmedMenus()) }
+    var totalPrice  by remember { mutableStateOf(0.0)}// Create a variable to hold the total price
+    totalPrice = calculPrice(list)
+    var deliver = 1000
+    val somme = deliver + totalPrice
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(170.dp)
+            .height(180.dp)
             .background(
                 color = white,
                 shape = RoundedCornerShape(20.dp)
@@ -247,7 +259,7 @@ fun Total(){
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 Text(
-                    text = "FCFA24000",
+                    text = "$totalPrice FCFA",
                     fontSize = 14.sp,
                     style = MaterialTheme.typography.h6.copy(fontWeight = FontWeight.Bold),
                     color = Black
@@ -263,7 +275,7 @@ fun Total(){
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 Text(
-                    text = "FCFA2000",
+                    text = "$deliver FCFA",
                     fontSize = 14.sp,
                     style = MaterialTheme.typography.h6.copy(fontWeight = FontWeight.Bold),
                     color = Black
@@ -283,7 +295,7 @@ fun Total(){
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 Text(
-                    text = "FCFA26000",
+                    text = "$somme FCFA",
                     fontSize = 14.sp,
                     style = MaterialTheme.typography.h6.copy(fontWeight = FontWeight.Bold),
                     color = Black
@@ -292,12 +304,13 @@ fun Total(){
         }
     }
     Spacer(modifier = Modifier.height(10.dp))
+
     Button(
-        onClick = { /* TODO */ },
+        onClick = { showDialog = true },
         shape = RoundedCornerShape(16.dp),
         colors = ButtonDefaults.buttonColors(
-            LightGreen2,
-            contentColor = LightGreen2
+            LightGreen,
+            contentColor = LightGreen
         ),
         modifier = Modifier
             .fillMaxWidth()
@@ -305,11 +318,28 @@ fun Total(){
             .padding(horizontal = 16.dp, vertical = 16.dp)
     ) {
         Text(
-            text = "Place Orders - FCFA26000",
+            text = "Payer : $somme f CFA",
             fontSize = 11.sp,
             modifier = Modifier.padding( 0.dp),
             color = white,
             maxLines = 1
+        )
+    }
+
+    if (showDialog) {
+        AlertDialog(
+            onDismissRequest = { showDialog = false },
+            title = { Text(text = "Confirmation") },
+            text = { Text(text = "Votre commande a été prise en compte") },
+            confirmButton = {
+                Button(onClick = { if(showDialog) navController.navigate(Screen.HomeScreen.route)  },
+                    colors = ButtonDefaults.buttonColors(LightGreen)
+                    ) {
+                    Text("OK")
+                }
+            },
+            modifier = Modifier.padding(16.dp),
+            shape = RoundedCornerShape(30.dp),
         )
     }
 }
@@ -319,7 +349,7 @@ fun Payement(navController : NavController){
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(150.dp)
+            .height(200.dp)
             .background(
                 color = white,
                 shape = RoundedCornerShape(20.dp)

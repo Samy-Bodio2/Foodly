@@ -67,7 +67,7 @@ fun ShoppingCard(navController: NavController) {
     ) {it
 
         //MenuList(meals = viewModel.cartList)
-        MenuList(meals = cartList)
+        MenuList(meals = cartList, navController)
     }
 }
 
@@ -128,7 +128,7 @@ fun calculPrice(list: MutableList<MenuItem?>): Double{
     return somme
 }
 @Composable
-fun MenuList(meals: List<Meal>) {
+fun MenuList(meals: List<Meal>, navController: NavController) {
     if (cartList.isEmpty()) {
         EmptyBasket()
     }else{
@@ -220,14 +220,15 @@ fun MenuList(meals: List<Meal>) {
                 // totalPrice += meal!!.price.toInt() // Add the price of the current menu item to the total price
             }
         }
+        //
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate(Screen.CheckOutOrder.route) },
             colors = ButtonDefaults.buttonColors( LightGreen ),
-            modifier = Modifier.offset(y= 430.dp).height(50.dp).fillMaxWidth().padding(horizontal = 16.dp),
+            modifier = Modifier.offset(y = 450.dp).fillMaxWidth().padding(horizontal = 16.dp),
             shape = RoundedCornerShape(30.dp)
         ) {
             totalPrice = calculPrice(list)
-            Text(text = "Total: $totalPrice f CFA", color = White, fontWeight = FontWeight.SemiBold)
+            Text(text = "Orders : $totalPrice f CFA", color = White, fontWeight = FontWeight.SemiBold)
         }
 
     }

@@ -5,33 +5,38 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
-import androidx.compose.ui.graphics.Color.Companion.Blue
-import androidx.compose.ui.graphics.Color.Companion.Red
-import androidx.compose.ui.graphics.Color.Companion.White
-import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.rememberImagePainter
 import com.example.foodly.R
-import com.example.foodly.ui.theme.LightGreen
-import com.example.foodly.ui.theme.LightGreen2
-import com.example.foodly.ui.theme.md_theme_light_onPrimary
-import com.example.foodly.ui.theme.white
+import com.example.foodly.data.models.Paiement
+import com.example.foodly.di.effectuerPaiement
 import com.example.foodly.model.CheckOutData
 import com.example.foodly.navigation.Screen
 import com.example.foodly.screens.Home_ActionMenu.calculPrice
+import com.example.foodly.ui.theme.*
 import com.example.foodly.utils.readConfirmedMenus
 
 val order = listOf(
@@ -69,7 +74,7 @@ fun CheckOutOrders(navController: NavController) {
 //                            launchSingleTop = true
 //                        }
                     }) {
-                        IconButton(onClick = { navController.navigate(Screen.AddMenu.route) }) {
+                        IconButton(onClick = { navController.navigate(Screen.ShoppingCard.route) }) {
                             Icon(
                                 imageVector = Icons.Default.ArrowBack,
                                 tint = Black,
@@ -179,7 +184,7 @@ fun CheckOutOrders(navController: NavController) {
                     }
                 }
                 Spacer(modifier = Modifier.height(30.dp))
-                /*
+
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -220,9 +225,40 @@ fun CheckOutOrders(navController: NavController) {
                             color = md_theme_light_onPrimary,
                             thickness = 1.dp
                         )
-                        CheckOutList(order)
+                        val list by remember { mutableStateOf(readConfirmedMenus()) }
+                        var totalPrice  by remember { mutableStateOf(0.0)}// Create a variable to hold the total price
+                        totalPrice = calculPrice(list)
+                        LazyColumn {
+                            items(list) { meal ->
+                                var quant by remember { mutableStateOf(1)}
+                                var total by remember { mutableStateOf(0)}
+                                total = totalPrice.toInt()
+                                Column{
+                                    Row( modifier = Modifier.padding(16.dp),
+                                        horizontalArrangement = Arrangement.SpaceBetween,
+                                    ) {
+                                        val imagePainter: Painter = rememberImagePainter(meal!!.Image)
+                                        Image(
+                                            painter = imagePainter,
+                                            contentDescription = null,
+                                            modifier = Modifier
+                                                .size(80.dp)
+                                        )
+                                        Spacer(Modifier.width(20.dp))
+                                        Column(modifier = Modifier.weight(1f)) {
+                                            Text(text = meal!!.name, fontWeight = FontWeight.Bold, fontSize = 20.sp, maxLines = 1)
+                                            Spacer(modifier = Modifier.size(3.dp))
+                                            //Text(text = "${meal.quantite} item(s)", fontSize = 20.sp, maxLines = 1)
+                                            Text(text = "${quant} item(s)", fontSize = 20.sp, maxLines = 1)
+                                            Spacer(modifier = Modifier.size(3.dp))
+                                            Text(text = "${meal!!.price} f CFA",color = LightGreen)
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
-                }*/
+                }
                 Spacer(modifier = Modifier.height(30.dp))
                 Payement(navController)
                 Spacer(modifier = Modifier.height(30.dp))
@@ -231,14 +267,24 @@ fun CheckOutOrders(navController: NavController) {
         }
     }
 }
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun Total(navController: NavController){
     var showDialog by remember { mutableStateOf(false) }
+    var showDialog2 by remember { mutableStateOf(false) }
     val list by remember { mutableStateOf(readConfirmedMenus()) }
     var totalPrice  by remember { mutableStateOf(0.0)}// Create a variable to hold the total price
     totalPrice = calculPrice(list)
     var deliver = 1000
-    val somme = deliver + totalPrice
+    val somme: Double = deliver + totalPrice
+
+
+    var showBox = remember { mutableStateOf(false) }
+    var phoneNumber by remember { mutableStateOf("") }
+    var devise by remember { mutableStateOf("") }
+    val context = LocalContext.current
+    val keyboardController = LocalSoftwareKeyboardController.current
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -327,6 +373,151 @@ fun Total(navController: NavController){
     }
 
     if (showDialog) {
+        AlertDialog(
+            onDismissRequest = { showDialog = false },
+            title = { Text("Payement", fontSize = 15.sp) },
+            text = {
+                Column(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)) {
+                    OutlinedTextField(
+                        value = phoneNumber,
+                        onValueChange = { phoneNumber = it },
+                        shape = RoundedCornerShape(20.dp),
+                        leadingIcon = {
+                            Row(
+                                modifier = Modifier.wrapContentWidth(),
+                                verticalAlignment = Alignment.CenterVertically,
+                                content = {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.cameroon),
+                                        contentDescription = "",
+                                        modifier = Modifier
+                                            .size(24.dp, 24.dp)
+                                            .padding(start = 10.dp)
+                                    )
+                                    Text(
+                                        text = "+237",
+                                        color = colorBlack,
+                                        modifier = Modifier.padding(start = 10.dp)
+                                    )
+                                    Canvas(
+                                        modifier = Modifier
+                                            .height(24.dp)
+                                            .padding(start = 10.dp)
+                                    ) {
+                                        drawLine(
+                                            color = Color.Gray,
+                                            start = Offset(0f, 0f),
+                                            end = Offset(0f, size.height),
+                                            strokeWidth = 2.0F
+                                        )
+                                    }
+                                }
+                            )
+                        },
+                        label = {
+                            Text("Phone",
+                                color = androidx.compose.material3.MaterialTheme.colorScheme.scrim,
+                                style = androidx.compose.material3.MaterialTheme.typography.labelMedium,
+                            ) },
+                        placeholder = { Text(text = "Phone") },
+                        keyboardOptions = KeyboardOptions(
+                            imeAction = ImeAction.Next,
+                            keyboardType = KeyboardType.Phone
+                        ),
+                        colors = TextFieldDefaults.outlinedTextFieldColors(
+                            focusedBorderColor = LightGreen,
+                            unfocusedBorderColor = LightGreen),
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(0.8f),
+                        keyboardActions = KeyboardActions(
+                            onDone = {
+                                keyboardController?.hide()
+                            }
+                        )
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    OutlinedTextField(
+                        value = "$somme",
+                        onValueChange = { "$somme" },
+                        shape = RoundedCornerShape(20.dp),
+                        label = {
+                            Text("Montant",
+                                color = androidx.compose.material3.MaterialTheme.colorScheme.scrim,
+                                style = androidx.compose.material3.MaterialTheme.typography.labelMedium,
+                            ) },
+                        placeholder = { Text(text = "Montant") },
+                        leadingIcon = { Icon(Icons.Filled.Money, contentDescription = "Password") },
+                        keyboardOptions = KeyboardOptions(
+                            imeAction = ImeAction.Next,
+                            keyboardType = KeyboardType.Email
+                        ),
+                        colors = TextFieldDefaults.outlinedTextFieldColors(
+                            focusedBorderColor = LightGreen,
+                            unfocusedBorderColor = LightGreen),
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(0.8f),
+                        keyboardActions = KeyboardActions(
+                            onDone = {
+                                keyboardController?.hide()
+                            }
+                        )
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    OutlinedTextField(
+                        value = "USD",
+                        onValueChange = { "USD" },
+                        shape = RoundedCornerShape(20.dp),
+                        label = {
+                            Text("Devise",
+                                color = androidx.compose.material3.MaterialTheme.colorScheme.scrim,
+                                style = androidx.compose.material3.MaterialTheme.typography.labelMedium,
+                            ) },
+                        placeholder = { Text(text = "Devise") },
+                        leadingIcon = { Icon(Icons.Filled.CurrencyExchange, contentDescription = "Password") },
+                        keyboardOptions = KeyboardOptions(
+                            imeAction = ImeAction.Next,
+                            keyboardType = KeyboardType.Email
+                        ),
+                        colors = TextFieldDefaults.outlinedTextFieldColors(
+                            focusedBorderColor = LightGreen,
+                            unfocusedBorderColor = LightGreen),
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(0.8f),
+                        keyboardActions = KeyboardActions(
+                            onDone = {
+                                keyboardController?.hide()
+                            }
+                        )
+                    )
+                }
+            },
+            confirmButton = {
+                Button(onClick =
+                {
+                    val paiement = Paiement(somme, "USD")
+                    val paiementEffectué = effectuerPaiement(paiement)
+                    if (!paiementEffectué) {
+                        showDialog2 = true
+                    }
+                },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 32.dp, end = 32.dp),
+                    contentPadding = PaddingValues(),
+                    colors = ButtonDefaults.buttonColors(
+                        Color.Transparent
+                    ),
+                    shape = RoundedCornerShape(20.dp)
+                ) {
+                    Text("Valider")
+                }
+            }
+        )
+    }
+
+    if (showDialog2) {
         AlertDialog(
             onDismissRequest = { showDialog = false },
             title = { Text(text = "Confirmation") },
@@ -491,3 +682,6 @@ fun CheckOutList(order: List<CheckOutData>) {
         }
     }
 }
+
+
+

@@ -50,6 +50,8 @@ import com.example.foodly.ui.theme.colorWhite
 import com.example.foodly.utils.read
 import com.example.foodly.utils.readConfirmedMenus
 import com.example.foodly.viewmodels.PanierViewModel
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -91,7 +93,7 @@ fun TopAppbar(navController: NavController) {
             .border(1.dp, color = Black, shape = RoundedCornerShape(50.dp))
             .height(20.dp)
             .width(20.dp), contentAlignment = Alignment.Center){
-            Text(text = "...LOVE",Modifier.offset(y=(-7).dp))
+            Text(text = "...",Modifier.offset(y=(-7).dp))
         }
 
     }
@@ -170,7 +172,7 @@ fun MenuList(meals: List<Meal>, navController: NavController) {
                                 Text(text = "${meal!!.price} f CFA",color = LightGreen)
                             }
                             Spacer(Modifier.width(20.dp))
-                            Column(Modifier.height(90.dp).width(20.dp), verticalArrangement = Arrangement.SpaceBetween) {
+                            Column(Modifier.height(100.dp).width(20.dp), verticalArrangement = Arrangement.SpaceBetween) {
                                 Box(
                                     modifier = Modifier
                                         .clip(shape = CircleShape)
@@ -189,6 +191,13 @@ fun MenuList(meals: List<Meal>, navController: NavController) {
                                             modifier = Modifier.size(20.dp, 20.dp)
                                         )
                                     }
+                                }
+
+                                IconButton(onClick = {
+                                    deleteMenu(meal!!.name)
+                                }
+                                ) {
+                                    Icon(imageVector = Icons.Default.Delete, contentDescription = "")
                                 }
 
                                 Box(
@@ -224,7 +233,7 @@ fun MenuList(meals: List<Meal>, navController: NavController) {
         Button(
             onClick = { navController.navigate(Screen.CheckOutOrder.route) },
             colors = ButtonDefaults.buttonColors( LightGreen ),
-            modifier = Modifier.offset(y = 450.dp).fillMaxWidth().padding(horizontal = 16.dp),
+            modifier = Modifier.offset(y =530.dp).fillMaxWidth().padding(horizontal = 16.dp),
             shape = RoundedCornerShape(30.dp)
         ) {
             totalPrice = calculPrice(list)
@@ -249,6 +258,22 @@ fun decrementation(meal: MenuItem): Int
 
     return meal.quantiteCom
 }
+fun deleteMenu(Name : String) {
+    val db = Firebase.firestore
+    val menuRef = db.collection("Menu")
+    menuRef.whereEqualTo("name", Name)
+        .get()
+        .addOnSuccessListener { querySnapshot ->
+            for (document in querySnapshot.documents) {
+
+                val documentRef = menuRef.document(document.id)
+                val collectionUpdate = mapOf("Confirmed" to false)
+                documentRef.update(collectionUpdate)
+
+            }
+        }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {

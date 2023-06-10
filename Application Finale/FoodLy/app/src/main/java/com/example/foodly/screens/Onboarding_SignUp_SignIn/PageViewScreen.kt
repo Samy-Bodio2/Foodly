@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -64,7 +65,7 @@ fun PageViewScreen( navController: NavHostController){
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Image(painter = painterResource(id = list[index].image), contentDescription = null)
+                Image(painter = painterResource(id = list[index].image), contentDescription = null, contentScale = ContentScale.FillBounds)
                 Spacer(modifier = Modifier.height(30.dp))
                 Text(
                     text = list[index].title,

@@ -13,13 +13,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.foodly.component.StandardScaffold
 import com.example.foodly.navigation.NavGraph
 import com.example.foodly.navigation.Screen
-import com.example.foodly.screens.Onboarding_SignUp_SignIn.Login
 import com.example.foodly.ui.theme.FoodlyTheme
-import com.facebook.login.Login
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.tasks.await
-import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +41,7 @@ fun LoginApplication() {
         showBottomBar = navBackStackEntry?.destination?.route in listOf(
             Screen.HomeScreen.route,
             Screen.OrderScreen.route,
+            Screen.ChatScreen.route,
             Screen.EWalletScreen.route,
             Screen.ProfileScreen.route
         ),

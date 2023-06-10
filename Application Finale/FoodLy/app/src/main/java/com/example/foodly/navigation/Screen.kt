@@ -35,4 +35,11 @@ sealed class Screen(val route: String){
     object TransactionHistoryScreen: Screen("transaction_history")
     object DocumentList: Screen("document_list")
     object DocumentDetail: Screen("document_detail")
+    object HomeScreenAdministrateur: Screen("home_screen_admin")
+    object HomeScreenResto: Screen("home_screen_resto")
+    object Consult_Menu: Screen("consult_menu")
+    object PageManagement: Screen("page_management")
+    object ChatScreen: Screen("chat_screen")
+    object DashBoard: Screen("dashboard")
+    object AddMenuAdmin: Screen("add_menu_admin")
 }

@@ -1,12 +1,10 @@
-package com.example.foodly.screens.Home_ActionMenu
+package com.example.foodly.Restaurant
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -29,18 +27,16 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
-import com.example.foodly.model.*
 import com.example.foodly.navigation.Screen
 import com.example.foodly.utils.read
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.example.foodly.ui.theme.LightGreen
+import com.google.firebase.auth.ktx.auth
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun HomeScreen(
-    navController: NavController
-) {
+fun Consult_Menu(navController: NavController) {
     Scaffold(
         topBar = {
             AppBar(navController)
@@ -92,22 +88,19 @@ fun AppBar(navController : NavController){
 @Composable
 fun Content(navController: NavController){
 
-    var selectedCategories by remember { mutableStateOf(emptyList<Categories>()) }
-
     Column{
 
         Header()
         Spacer(modifier = Modifier.width(16.dp))
-        PromotionSection(navController)
+        //PromotionSection(navController)
         Spacer(modifier = Modifier.width(16.dp))
-        CategorySection(onCategoryClick = { selectedCategories = it  })
+        //CategorySection()
         Spacer(modifier = Modifier.width(16.dp))
-        //DiscountSection(navController)
-        CategoryList(categories = selectedCategories, navController)
+        DiscountSection(navController)
         Spacer(modifier = Modifier.width(16.dp))
-        Recommended()
+        //Recommended()
         Spacer(modifier = Modifier.width(16.dp))
-        ChipSection(chips = listOf("All","Hamburger","Pizza","Drink","Cake"))
+        //ChipSection(chips = listOf("All","Hamburger","Pizza","Drink","Cake"))
         Spacer(modifier = Modifier.width(16.dp))
     }
 }
@@ -244,95 +237,33 @@ fun PromotionItem(
 }
 
 @Composable
-fun CategorySection(onCategoryClick: (List<Categories>) -> Unit){
+fun CategorySection(){
     Row(
         Modifier
             .fillMaxWidth()
             .padding(20.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Column(
-            Modifier
-                .width(72.dp)
-                .clickable { }
-        ){
-            Box(
-                Modifier
-                    .size(72.dp)
-                    .background(
-                        color = Color(0xffFEF4E7),
-                        shape = RoundedCornerShape(12.dp)
-                    )
-                    .padding(18.dp)
-                    .clickable { onCategoryClick(tacos) }
-        ) {
-            Image(painter = painterResource(id = R.drawable.tacos), contentDescription = "", modifier = Modifier.fillMaxSize())
-        }
-            Text(text = "Tacos", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 12.sp)
-        }
-
-        Column(
-            Modifier
-                .width(72.dp)
-                .clickable { }
-        ){
-            Box(
-                Modifier
-                    .size(72.dp)
-                    .background(
-                        color = Color(0xffF6FBF3),
-                        shape = RoundedCornerShape(12.dp)
-                    )
-                    .padding(18.dp)
-                    .clickable { onCategoryClick(vegetarian) }
-            ) {
-                Image(painter = painterResource(id = R.drawable.ic_veg), contentDescription = "", modifier = Modifier.fillMaxSize())
-            }
-            Text(text = "Vegetables", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 12.sp)
-        }
-
-
-        Column(
-            Modifier
-                .width(72.dp)
-                .clickable { }
-        ){
-            Box(
-                Modifier
-                    .size(72.dp)
-                    .background(
-                        color = Color(0xffFFFBF3),
-                        shape = RoundedCornerShape(12.dp)
-                    )
-                    .padding(18.dp)
-                    .clickable { onCategoryClick(pizza) }
-            ) {
-                Image(painter = painterResource(id = R.drawable.pizzas), contentDescription = "", modifier = Modifier.fillMaxSize())
-            }
-            Text(text = "Pizza", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 12.sp)
-        }
-
-
-        Column(
-            Modifier
-                .width(72.dp)
-                .clickable { }
-        ){
-            Box(
-                Modifier
-                    .size(72.dp)
-                    .background(
-                        color = Color(0xffF6E6E9),
-                        shape = RoundedCornerShape(12.dp)
-                    )
-                    .padding(18.dp)
-                    .clickable { onCategoryClick(meat) }
-            ) {
-                Image(painter = painterResource(id = R.drawable.burgers), contentDescription = "", modifier = Modifier.fillMaxSize())
-            }
-            Text(text = "Meat", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 12.sp)
-        }
-
+        CategoryButton(
+            text = "Tacos",
+            icon = painterResource(id = R.drawable.tacos),
+            backgroundColor = Color(0xffFEF4E7)
+        )
+        CategoryButton(
+            text = "Vegetables",
+            icon = painterResource(id = R.drawable.ic_veg),
+            backgroundColor = Color(0xffF6FBF3)
+        )
+        CategoryButton(
+            text = "Pizza",
+            icon = painterResource(id = R.drawable.pizzas),
+            backgroundColor = Color(0xffFFFBF3)
+        )
+        CategoryButton(
+            text = "Hamburger",
+            icon = painterResource(id = R.drawable.burgers),
+            backgroundColor = Color(0xffF6E6E9)
+        )
     }
     Spacer(modifier = Modifier.width(4.dp))
     Row(
@@ -341,128 +272,26 @@ fun CategorySection(onCategoryClick: (List<Categories>) -> Unit){
             .padding(20.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Column(
-            Modifier
-                .width(72.dp)
-                .clickable { }
-        ){
-            Box(
-                Modifier
-                    .size(72.dp)
-                    .background(
-                        color = Color(0xffFEF4E7),
-                        shape = RoundedCornerShape(12.dp)
-                    )
-                    .padding(18.dp)
-                    .clickable { onCategoryClick(alcohol) }
-            ) {
-                Image(painter = painterResource(id = R.drawable.beer), contentDescription = "", modifier = Modifier.fillMaxSize())
-            }
-            Text(text = "Alcohol", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 12.sp)
-        }
-
-
-        Column(
-            Modifier
-                .width(72.dp)
-                .clickable { }
-        ){
-            Box(
-                Modifier
-                    .size(72.dp)
-                    .background(
-                        color = Color(0xffF6FBF3),
-                        shape = RoundedCornerShape(12.dp)
-                    )
-                    .padding(18.dp)
-                    .clickable { onCategoryClick(traditional) }
-            ) {
-                Image(painter = painterResource(id = R.drawable.traditionnal), contentDescription = "", modifier = Modifier.fillMaxSize())
-            }
-            Text(text = "Traditionnal", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 12.sp)
-        }
-
-
-        Column(
-            Modifier
-                .width(72.dp)
-                .clickable { }
-        ){
-            Box(
-                Modifier
-                    .size(72.dp)
-                    .background(
-                        color = Color(0xffFFFBF3),
-                        shape = RoundedCornerShape(12.dp)
-                    )
-                    .padding(18.dp)
-                    .clickable { onCategoryClick(chicken) }
-            ) {
-                Image(painter = painterResource(id = R.drawable.pane), contentDescription = "", modifier = Modifier.fillMaxSize())
-            }
-            Text(text = "Chicken", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 12.sp)
-        }
-
-        Column(
-            Modifier
-                .width(72.dp)
-                .clickable { }
-        ){
-            Box(
-                Modifier
-                    .size(72.dp)
-                    .background(
-                        color = Color(0xffF6E6E9),
-                        shape = RoundedCornerShape(12.dp)
-                    )
-                    .padding(18.dp)
-                    .clickable { onCategoryClick(drinks) }
-            ) {
-                Image(painter = painterResource(id = R.drawable.drink), contentDescription = "", modifier = Modifier.fillMaxSize())
-            }
-            Text(text = "Drinks", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 12.sp)
-        }
-    }
-}
-
-@Composable
-fun CategoryList(categories: List<Categories>, navController: NavController) {
-    Row(
-        Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Text(text = "Discount Guaranteed", style = MaterialTheme.typography.h6)
-        TextButton(onClick = {navController.navigate(Screen.RestaurantScreen.route)}) {
-            Text(text = "View Restaurant", color = LightGreen)
-        }
-    }
-    LazyRow(Modifier.fillMaxWidth()) {
-        items(categories) { category ->
-            Card(
-                Modifier.padding(8.dp),
-                elevation = 4.dp,
-                backgroundColor = MaterialTheme.colors.surface,
-                shape = RoundedCornerShape(20.dp)
-            ) {
-                Column {
-                    Image(
-                        painter = painterResource(id = category.image),
-                        contentDescription = null,
-                        Modifier
-                            .height(150.dp)
-                            .fillMaxWidth(),
-                        contentScale = ContentScale.FillBounds
-                    )
-                    Column(Modifier.padding(8.dp)) {
-                        Text(category.name, style = MaterialTheme.typography.h6)
-                        Text("Restaurant: ${category.restaurantName}")
-                    }
-                }
-            }
-        }
+        CategoryButton(
+            text = "Drink",
+            icon = painterResource(id = R.drawable.drink),
+            backgroundColor = Color(0xffFEF4E7)
+        )
+        CategoryButton(
+            text = "Beer",
+            icon = painterResource(id = R.drawable.beer),
+            backgroundColor = Color(0xffF6FBF3)
+        )
+        CategoryButton(
+            text = "Poulet",
+            icon = painterResource(id = R.drawable.pane),
+            backgroundColor = Color(0xffFFFBF3)
+        )
+        CategoryButton(
+            text = "Cheese",
+            icon = painterResource(id = R.drawable.cheese),
+            backgroundColor = Color(0xffF6E6E9)
+        )
     }
 }
 
@@ -470,8 +299,7 @@ fun CategoryList(categories: List<Categories>, navController: NavController) {
 fun CategoryButton(
     text: String = "",
     icon: Painter,
-    backgroundColor: Color,
-    onCategoryClick: MutableState<MutableList<Categories?>>
+    backgroundColor: Color
 ) {
     Column(
         Modifier
@@ -486,7 +314,6 @@ fun CategoryButton(
                     shape = RoundedCornerShape(12.dp)
                 )
                 .padding(18.dp)
-                .clickable { onCategoryClick }
         ) {
             Image(painter = icon, contentDescription = "", modifier = Modifier.fillMaxSize())
         }
@@ -525,6 +352,8 @@ fun DiscountSection(navController: NavController){
         }
     }
 }
+
+
 data class MenuItem(
     val Confirmed: Boolean,
     val Image: String,
@@ -594,6 +423,7 @@ fun DiscountSectionItem(
         }
     }
 }
+
 @Composable
 fun Recommended(){
     Column(Modifier.padding(horizontal = 16.dp)) {
@@ -678,14 +508,12 @@ fun MenuItem(
     }
     val navController = rememberNavController()
     Card(
-        Modifier
-            .width(250.dp)
-            .height(250.dp),
+        Modifier.width(250.dp).height(250.dp),
         shape = RoundedCornerShape(20.dp),
         backgroundColor = backgroundColor,
         elevation = 0.dp,
     ) {
-        Column() {
+        Row {
             Image(
                 painter = imagePainter, contentDescription = "",
                 modifier = Modifier
@@ -696,6 +524,8 @@ fun MenuItem(
                 contentScale = ContentScale.FillBounds
             )
             Column(
+                Modifier
+                    .padding(horizontal = 16.dp),
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 IconButton(onClick = {
@@ -718,14 +548,7 @@ fun MenuItem(
 
                     iconB = !iconB
                 }) {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier
-                            .size(24.dp)
-                            .clip(CircleShape)
-                    ){
-                        Icon(imageVector = icon, contentDescription = "", tint = LightGreen)
-                    }
+                    Icon(imageVector = icon, contentDescription = "")
                 }
                 Text(text = title, color = Color.Black)
                 Text(text = subtitle, color = Color.Black, fontWeight = FontWeight.Bold)
@@ -734,6 +557,8 @@ fun MenuItem(
         }
     }
 }
+
+
 @Composable
 fun BoxWithRes(
     resId: Int,
@@ -760,11 +585,4 @@ fun BoxWithRes(
         )
     }
 
-}
-
-@Preview
-@Composable
-fun HomeScreenPreview(){
-    val navController = rememberNavController()
-    HomeScreen(navController)
 }

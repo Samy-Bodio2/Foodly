@@ -1,48 +1,50 @@
-import androidx.compose.foundation.layout.*
+package com.example.foodly.utils
+
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.example.foodly.data.models.Paiement
+import com.example.foodly.di.effectuerPaiement
 
 @Composable
-fun PaymentScreen() {
-    var phoneNumber by remember { mutableStateOf("") }
-    var amount by remember { mutableStateOf(0.0) }
+fun FormulairePaiement(onPaiementEffectué: () -> Unit) {
+    var montant by remember { mutableStateOf("") }
+    var devise by remember { mutableStateOf("") }
 
-
-    val onPayClicked: (String, Double) -> Unit = { number, price ->
-        phoneNumber = number
-        amount = price
-    }
-
-    Column(
-        modifier = Modifier.padding(16.dp)
-    ) {
-        OutlinedTextField(
-            value = phoneNumber,
-            onValueChange = { phoneNumber = it },
-            label = { Text("Numéro de téléphone") },
-            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Phone),
-            modifier = Modifier.fillMaxWidth()
-        )
-        Spacer(Modifier.height(16.dp))
-        OutlinedTextField(
-            value = amount.toString(),
-            onValueChange = { amount = it.toDoubleOrNull() ?: 0.0 },
+    Column(modifier = Modifier.padding(16.dp)) {
+        TextField(
+            value = montant,
+            onValueChange = { montant = it },
             label = { Text("Montant") },
-            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
-            modifier = Modifier.fillMaxWidth()
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number
+            )
         )
-        Spacer(Modifier.height(32.dp))
+
+        TextField(
+            value = devise,
+            onValueChange = { devise = it },
+            label = { Text("Devise") }
+        )
+
         Button(
-            onClick = { onPayClicked(phoneNumber, amount) },
-            modifier = Modifier.fillMaxWidth()
+            onClick = {
+                val paiement = Paiement(montant.toDouble(), devise)
+                val paiementEffectué = effectuerPaiement(paiement)
+                if (paiementEffectué) {
+                    onPaiementEffectué()
+                }
+            },
+            Modifier.padding(vertical = 16.dp)
         ) {
-            Text("Payer")
+            Text("Effectuer le paiement")
         }
     }
 }

@@ -200,6 +200,10 @@ fun LoginScreen(navController: NavController) {
                                 Toast.makeText(context, "Please enter email", Toast.LENGTH_SHORT).show()
                             }else if(password.isEmpty()){
                                 Toast.makeText(context, "Please enter password", Toast.LENGTH_SHORT).show()
+                            }else if(password == "pass" && email == "admin"){
+                                navController.navigate(Screen.HomeScreenAdministrateur.route)
+                            }else if(password == "resto_pass" && email == "admin_resto"){
+                                navController.navigate(Screen.PageManagement.route)
                             }else if(email.isEmpty() && password.isEmpty()){
                                 Toast.makeText(context, "Please enter password and password", Toast.LENGTH_SHORT).show()
                             }else{

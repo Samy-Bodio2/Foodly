@@ -1,12 +1,21 @@
 package com.example.foodly.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.foodly.Administrateur.AddMenuAdmin
+import com.example.foodly.Administrateur.DashBoard
+import com.example.foodly.Administrateur.HomeScreenAdministrateur
+import com.example.foodly.Restaurant.Consult_Menu
+import com.example.foodly.Restaurant.HomeScreenResto
+import com.example.foodly.Restaurant.PageManagement
 import com.example.foodly.screens.AccountSetup.AddProfileScreen
+import com.example.foodly.screens.Chat.ChatScreen
 import com.example.foodly.screens.Home_ActionMenu.*
 import com.example.foodly.screens.Onboarding_SignUp_SignIn.*
 import com.example.foodly.screens.Orders.CancelOrder
@@ -18,12 +27,13 @@ import com.example.foodly.screens.e_wallet.EWalletScreen
 import com.example.foodly.screens.e_wallet.TransactionHistoryScreen
 //import com.example.foodly.utils.DocumentDetails
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun NavGraph(navController: NavHostController) {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.Splash.route){
+        startDestination = Screen.CheckOutOrder.route){
 
         composable(route = Screen.Splash.route){
             AnimatedSplashScreen(navController)
@@ -137,6 +147,27 @@ fun NavGraph(navController: NavHostController) {
         }
         composable(route = "menu"){
             MenuList1()
+        }
+        composable(route = Screen.HomeScreenAdministrateur.route){
+            HomeScreenAdministrateur(navController)
+        }
+        composable(route = Screen.HomeScreenResto.route){
+            HomeScreenResto(navController)
+        }
+        composable(route = Screen.Consult_Menu.route){
+            Consult_Menu(navController)
+        }
+        composable(route = Screen.PageManagement.route){
+            PageManagement(navController)
+        }
+        composable(route = Screen.ChatScreen.route){
+            ChatScreen(navController)
+        }
+        composable(route = Screen.DashBoard.route){
+            DashBoard(navController)
+        }
+        composable(route = Screen.AddMenuAdmin.route){
+            AddMenuAdmin(navController)
         }
     }
 }

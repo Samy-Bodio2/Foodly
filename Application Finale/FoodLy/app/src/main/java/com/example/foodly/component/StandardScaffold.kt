@@ -32,6 +32,11 @@ fun StandardScaffold(
             contentDescription = "Order"
         ),
         BottomNavItem(
+            route = Screen.ChatScreen.route,
+            icon = Icons.Outlined.ChatBubble,
+            contentDescription = "Chat"
+        ),
+        BottomNavItem(
             route = Screen.EWalletScreen.route,
             icon = Icons.Outlined.Wallet,
             contentDescription = "Wallet",

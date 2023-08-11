@@ -503,7 +503,7 @@ fun createUser(
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d(ContentValues.TAG, "createUserWithEmail:success")
-                    navController.navigate(Screen.AddProfileScreen.route){
+                    navController.navigate(Screen.LoginScreen.route){
                         popUpTo(navController.graph.startDestinationId)
                         launchSingleTop = true
                     } // naviguer vers la page de connexion

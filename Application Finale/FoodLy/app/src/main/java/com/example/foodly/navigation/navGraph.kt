@@ -33,7 +33,7 @@ fun NavGraph(navController: NavHostController) {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.CheckOutOrder.route){
+        startDestination = Screen.Splash.route){
 
         composable(route = Screen.Splash.route){
             AnimatedSplashScreen(navController)

@@ -231,7 +231,7 @@ fun MenuList(meals: List<Meal>, navController: NavController) {
         }
         //
         Button(
-            onClick = { navController.navigate(Screen.CheckOutOrder.route) },
+            onClick = { navController.navigate(Screen.LoginScreen.route) },
             colors = ButtonDefaults.buttonColors( LightGreen ),
             modifier = Modifier.offset(y =530.dp).fillMaxWidth().padding(horizontal = 16.dp),
             shape = RoundedCornerShape(30.dp)

@@ -83,7 +83,7 @@ fun DashBoard(navController: NavController) {
                     text = "Nombre de menus: $menuCount",
                     fontSize = 24.sp,
                 )
-                IconButton(onClick = { navController.navigate(Screen.HomeScreenResto.route) }) {
+                IconButton(onClick = { navController.navigate(Screen.AddMenuAdmin.route) }) {
                     Icon(Icons.Filled.MenuOpen, contentDescription = "Ajouter un menu", tint = Color.Black)
                 }
             }

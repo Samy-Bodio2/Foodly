@@ -21,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.foodly.R
 import com.example.foodly.navigation.Screen
@@ -35,7 +36,7 @@ fun PageManagement(navController: NavController){
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         item {
             TopAppBar(
-                title = { Text("Restaurant") },
+                title = { Text("Restaurant",  fontSize = 15.sp) },
                 actions = {
                     IconButton(onClick = { /*TODO*/ }) {
                         Icon(Icons.Rounded.MoreVert, contentDescription = null)

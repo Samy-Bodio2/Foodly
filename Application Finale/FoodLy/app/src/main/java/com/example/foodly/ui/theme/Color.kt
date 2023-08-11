@@ -12,6 +12,7 @@ val CardItemBg = Color(0xFFFAFAFA)
 val IconColor = Color(0xFF200E32)
 val DividerColor = Color(0xFFBABABA)
 
+val Gra = Color(0xFFA5A3A7)
 val Purple200 = Color(0xFFBB86FC)
 val Purple500 = Color(0xFF6200EE)
 val Purple700 = Color(0x4B49F721)

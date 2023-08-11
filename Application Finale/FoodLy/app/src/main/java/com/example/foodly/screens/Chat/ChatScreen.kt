@@ -147,6 +147,7 @@ fun Chats() {
                 DiscussionItem(R.drawable.dylan,"Dylan Kamsu", "Yo bro ")
                 DiscussionItem(R.drawable.roussel,"Roussel Elliette", "Salut Jason ")
                 DiscussionItem(R.drawable.angele,"Angele Nguiakam", "Salut Jordan")
+                DiscussionItem(R.drawable.demuto,"Demuto El Demunio", "Yooo Yooo Yooo 10 dose de feux ")
             }
         }
     }

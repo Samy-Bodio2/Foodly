@@ -201,7 +201,7 @@ fun LoginScreen(navController: NavController) {
                             }else if(password.isEmpty()){
                                 Toast.makeText(context, "Please enter password", Toast.LENGTH_SHORT).show()
                             }else if(password == "pass" && email == "admin"){
-                                navController.navigate(Screen.HomeScreenAdministrateur.route)
+                                navController.navigate(Screen.DashBoard.route)
                             }else if(password == "resto_pass" && email == "admin_resto"){
                                 navController.navigate(Screen.PageManagement.route)
                             }else if(email.isEmpty() && password.isEmpty()){
@@ -213,7 +213,7 @@ fun LoginScreen(navController: NavController) {
                                         .addOnCompleteListener { task ->
                                             showMessage = if (task.isSuccessful){
                                                 Log.d(TAG, "signInWithEmail: success")
-                                                navController.navigate(Screen.HomeScreen.route){
+                                                navController.navigate(Screen.CheckOutOrder.route){
                                                     popUpTo(navController.graph.startDestinationId)
                                                     launchSingleTop = true
                                                 }
@@ -336,7 +336,7 @@ fun SocialMediaSignInButtons(navController: NavController) {
     val launcher = rememberFirebaseAuthLauncher(
         onAuthComplete = { result ->
             user = result.user
-            navController.navigate(Screen.HomeScreen.route)
+            navController.navigate(Screen.CheckOutOrder.route)
         },
 
         onAuthError = {

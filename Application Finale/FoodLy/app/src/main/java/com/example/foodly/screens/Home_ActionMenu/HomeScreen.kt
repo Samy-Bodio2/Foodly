@@ -31,6 +31,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.foodly.R
 import com.example.foodly.model.*
 import com.example.foodly.navigation.Screen
+import com.example.foodly.ui.theme.Gra
 import com.example.foodly.utils.read
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -638,9 +639,9 @@ fun ChipSection(chips: List<String>){
 @Composable
 fun MenuList(inPanier: Boolean,url: String,titre:String,restauName:String,price: Double,iconB: Boolean) {
     val imagePainter: Painter = rememberImagePainter(url)
-    Row(
+    Column(
         Modifier.height(90.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ){
         MenuItem(
             inPanier = inPanier,
@@ -680,12 +681,12 @@ fun MenuItem(
     Card(
         Modifier
             .width(250.dp)
-            .height(250.dp),
+            .height(300.dp),
         shape = RoundedCornerShape(20.dp),
         backgroundColor = backgroundColor,
         elevation = 0.dp,
     ) {
-        Column() {
+        Row() {
             Image(
                 painter = imagePainter, contentDescription = "",
                 modifier = Modifier
@@ -693,10 +694,12 @@ fun MenuItem(
                     .weight(1f)
                     .clip(RoundedCornerShape(20.dp)),
                 alignment = Alignment.CenterEnd,
-                contentScale = ContentScale.FillBounds
+                contentScale = ContentScale.Crop
             )
+            Spacer(modifier = Modifier.width(20.dp))
             Column(
-                verticalArrangement = Arrangement.SpaceBetween
+                verticalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxHeight()
             ) {
                 IconButton(onClick = {
                     // j'aimerais un code qui me permet de faire exactement la meme chose que celui si mais au lieu d'entrer l'identifiant du document manuellement j'entre la valeur du champ menu correspondant au document :"@Composable
@@ -723,13 +726,21 @@ fun MenuItem(
                         modifier = Modifier
                             .size(24.dp)
                             .clip(CircleShape)
+                            .background(LightGreen)
                     ){
-                        Icon(imageVector = icon, contentDescription = "", tint = LightGreen)
+                        Icon(imageVector = icon, contentDescription = "", tint = Color.White)
                     }
                 }
-                Text(text = title, color = Color.Black)
+                Row{
+                    Text(text = title, color = Color.Black)
+                    Spacer(modifier = Modifier.width(5.dp))
+                    Text(text = price, color = Color.Black)
+                }
+
+                Spacer(modifier = Modifier.height(5.dp))
                 Text(text = subtitle, color = Color.Black, fontWeight = FontWeight.Bold)
-                Text(text = price, color = Color.Black)
+
+
             }
         }
     }

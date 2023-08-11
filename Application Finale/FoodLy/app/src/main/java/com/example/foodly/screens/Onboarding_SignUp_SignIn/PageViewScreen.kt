@@ -94,14 +94,14 @@ fun PageViewScreen( navController: NavHostController){
                         if (index < list.size - 1) {
                             pagerState.animateScrollToPage(index + 1)
                         } else {
-                            navController.navigate(Screen.Lets_You_In.route)
+                            navController.navigate(Screen.HomeScreen.route)
                         }
                     }
                 }
                 Spacer(modifier = Modifier.height(20.dp))
 
                 BorderButton(modifier = Modifier.padding(horizontal = 34.dp), text = "Skip", color = LightGreen) {
-                    navController.navigate(Screen.Lets_You_In.route)
+                    navController.navigate(Screen.HomeScreen.route)
                 }
             }
         }

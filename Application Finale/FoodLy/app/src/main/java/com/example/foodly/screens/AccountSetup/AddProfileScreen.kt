@@ -167,7 +167,7 @@ private fun GradientButton(
             .fillMaxWidth()
             .padding(start = 32.dp, end = 32.dp),
         onClick = {
-            navController.navigate(Screen.HomeScreen.route)
+            navController.navigate(Screen.LoginScreen.route)
         },
 
         contentPadding = PaddingValues(),
